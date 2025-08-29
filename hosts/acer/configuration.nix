@@ -9,6 +9,7 @@
     ../../modules/users.nix
     ../../modules/services.nix
     ../../modules/home-manager.nix
+    ../../modules/docker.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
