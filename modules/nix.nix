@@ -19,4 +19,20 @@
     git
     gh
   ];
+
+  # Automatic, safe upgrades from this flake
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/home/xfeusw/.config/nix";
+    flags = [ "--update-input" "nixpkgs" "--update-input" "nixpkgs-unstable" "--commit-lock-file" ];
+    dates = "03:00";
+    randomizedDelaySec = "45min";
+  };
+
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 } 
