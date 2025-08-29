@@ -34,6 +34,7 @@
 
             # Rust
             pkgs.rustup
+            pkgs.cargo
 
             # C/C++ toolchain
             pkgs.gcc
