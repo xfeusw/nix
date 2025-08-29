@@ -19,4 +19,7 @@
 
   # Input
   services.libinput.enable = true;
+
+  # Apps
+  programs.firefox.enable = true;
 } 
