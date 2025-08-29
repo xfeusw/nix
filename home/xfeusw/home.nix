@@ -17,6 +17,7 @@
     telegram-desktop
     zed-editor
     code-cursor
+    windsurf
     vscode
     spotify
     yandex-music

@@ -16,6 +16,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Bluetooth
+  hardware=bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Timezone
   time.timeZone = "Asia/Samarkand";
 
