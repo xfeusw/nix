@@ -8,6 +8,7 @@
     ../../modules/desktop/gnome.nix
     ../../modules/users.nix
     ../../modules/services.nix
+    ../../modules/home-manager.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
