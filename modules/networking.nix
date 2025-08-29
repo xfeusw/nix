@@ -4,6 +4,6 @@
   networking.hostName = "nixos-acer";
   networking.networkmanager.enable = true;
 
-  # Adjust as needed; currently disabled in original config
+  # Firewall is currently disabled; enable and open specific ports when needed
   networking.firewall.enable = false;
 } 

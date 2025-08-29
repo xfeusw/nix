@@ -12,13 +12,13 @@
     ../../modules/docker.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Set your time zone.
+  # Timezone
   time.timeZone = "Asia/Samarkand";
 
-  # For more information, see `man configuration.nix` or the manual.
+  # NixOS compatibility version
   system.stateVersion = "25.05";
 } 

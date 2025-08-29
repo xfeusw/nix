@@ -4,6 +4,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Expose unstable as pkgs.unstable
   nixpkgs.overlays = [
     (final: prev: {
       unstable = import inputs.nixpkgs-unstable {
@@ -13,6 +14,7 @@
     })
   ];
 
+  # Base CLI tools
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -20,7 +22,7 @@
     gh
   ];
 
-  # Automatic, safe upgrades from this flake
+  # Automatic upgrades from this flake
   system.autoUpgrade = {
     enable = true;
     flake = "/home/xfeusw/.config/nix";
