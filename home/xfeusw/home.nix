@@ -3,6 +3,7 @@
 {
   home.username = "xfeusw";
   home.homeDirectory = "/home/xfeusw";
+  home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
 
