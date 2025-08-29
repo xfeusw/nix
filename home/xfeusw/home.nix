@@ -16,7 +16,7 @@
     tree
     telegram-desktop
     zed-editor
-    code-cursor  # This will now work
+    code-cursor
     vscode
     spotify
     yandex-music
