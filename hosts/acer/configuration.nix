@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nix.nix
     ../../modules/networking.nix
-    ../../modules/desktop/gnome.nix
+    ../../modules/desktop/plasma.nix
     ../../modules/users.nix
     ../../modules/services.nix
     ../../modules/home-manager.nix
