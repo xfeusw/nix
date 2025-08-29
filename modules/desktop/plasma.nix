@@ -1,3 +1,4 @@
+# modules/desktop/plasma.nix
 { config, lib, pkgs, ... }:
 
 {

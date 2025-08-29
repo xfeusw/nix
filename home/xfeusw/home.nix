@@ -1,3 +1,4 @@
+# home/xfeusw/home.nix
 { config, pkgs, lib, ... }:
 {
   home.username = "xfeusw";
@@ -8,9 +9,6 @@
   
   # Fix version mismatch warning
   home.enableNixpkgsReleaseCheck = false;
-  
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
   
   home.packages = with pkgs; [
     tree

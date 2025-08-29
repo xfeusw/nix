@@ -1,3 +1,4 @@
+# modules/users.nix
 { config, lib, pkgs, ... }:
 
 {

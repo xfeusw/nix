@@ -1,3 +1,4 @@
+# modules/networking.nix
 { config, lib, pkgs, ... }:
 
 {

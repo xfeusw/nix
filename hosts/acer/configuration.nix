@@ -1,3 +1,4 @@
+# hosts/acer/configuration.nix
 { config, lib, pkgs, ... }:
 
 {

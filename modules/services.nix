@@ -1,3 +1,4 @@
+# modules/services.nix
 { config, lib, pkgs, ... }:
 
 {

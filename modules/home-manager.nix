@@ -10,4 +10,4 @@
   home-manager.users.xfeusw = {
     imports = [ ../home/xfeusw/home.nix ];
   };
-} 
+}
