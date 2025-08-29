@@ -17,7 +17,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Bluetooth
-  hardware=bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   # Timezone
