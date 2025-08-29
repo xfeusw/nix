@@ -1,1 +1,13 @@
-result/
+# Nix build results
+/result
+/result-*
+
+# Home-Manager and flakes
+/home-manager
+
+# direnv
+/.direnv
+/.envrc
+
+# Misc
+*.swp
