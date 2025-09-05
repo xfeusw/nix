@@ -9,7 +9,6 @@
     ../../modules/users.nix
     ../../modules/services.nix
     ../../modules/docker.nix
-    ../../modules/git.nix
   ];
 
   # Bootloader

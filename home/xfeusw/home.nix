@@ -43,4 +43,19 @@ in
     fira-code
     jetbrains-mono
   ];
+
+  programs.git = {
+      enable = true;
+      userName = "xfeusw";
+      userEmail = "you@example.com";
+      extraConfig = {
+        core.editor = "nano";
+        init.defaultBranch = "main";
+        color.ui = "auto";
+        pull.rebase = true;
+        push.default = "simple";
+        merge.conflictStyle = "diff3";
+        rerere.enabled = true;
+      };
+    };
 }
