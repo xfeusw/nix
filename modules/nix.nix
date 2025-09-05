@@ -20,6 +20,25 @@
     wget
     git
     gh
+    home-manager
+    # Node.js + pnpm
+    unstable.nodejs_22
+    pnpm
+
+    # Rust
+    rustup cargo
+
+    # C/C++ toolchain
+    gcc clang cmake gnumake pkg-config gdb
+
+    # Haskell
+    haskell.compiler.ghc96 cabal-install stack
+
+    # Scala / JVM
+    jdk sbt scala
+
+    # Containers
+    docker-client docker-compose
   ];
 
   # Automatic upgrades from this flake

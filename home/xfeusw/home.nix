@@ -1,27 +1,42 @@
-# home/xfeusw/home.nix
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, unstable ? null, ... }:
+let
+  # If unstable is not passed, create it
+  unstablePkgs = if unstable != null then unstable else
+    import <nixpkgs-unstable> {
+      system = pkgs.system;
+      config.allowUnfree = true;
+    };
+in
 {
   home.username = "xfeusw";
   home.homeDirectory = "/home/xfeusw";
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
-  
+
   # Fix version mismatch warning
   home.enableNixpkgsReleaseCheck = false;
-  
+
+  # Allow unfree packages in home-manager
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
+    # System tools
     tree
+
+    # Applications
     telegram-desktop
     zed-editor
     code-cursor
     windsurf
     vscode
     spotify
-    yandex-music
+    unstable.yandex-music
     discord
     tor-browser
     brave
+    firefox-devedition
+
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono

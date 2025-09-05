@@ -1,4 +1,3 @@
-# hosts/acer/configuration.nix
 { config, lib, pkgs, ... }:
 
 {
@@ -9,8 +8,8 @@
     ../../modules/desktop/plasma.nix
     ../../modules/users.nix
     ../../modules/services.nix
-    ../../modules/home-manager.nix
     ../../modules/docker.nix
+    ../../modules/git.nix
   ];
 
   # Bootloader
@@ -26,4 +25,4 @@
 
   # NixOS compatibility version
   system.stateVersion = "25.05";
-} 
+}
