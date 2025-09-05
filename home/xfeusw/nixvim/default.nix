@@ -1,5 +1,5 @@
 # home/xfeusw/nixvim/default.nix
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   imports = [
     ./options.nix
@@ -9,15 +9,14 @@
 
   programs.nixvim = {
     enable = true;
-
+    
     globals = {
       mapleader = " ";
       maplocalleader = " ";
     };
 
     # Clipboard integration
-    clipboard.providers.wl-copy.enable = true; # For Wayland
-    # clipboard.providers.xclip.enable = true; # For X11 (uncomment if needed)
+    clipboard.providers.wl-copy.enable = true;
 
     # Colorscheme
     colorschemes.catppuccin = {
@@ -35,19 +34,19 @@
       };
     };
 
-    # Extra packages available to nixvim
+    # FIXED: Use correct package references
     extraPackages = with pkgs; [
       # Language servers
       nil # Nix LSP
       lua-language-server
       nodePackages.typescript-language-server
       python3Packages.python-lsp-server
-
-      # Formatters
+      
+      # Formatters - FIXED: Use correct prettier package
       alejandra # Nix formatter
       stylua # Lua formatter
-      prettier # JS/TS/JSON formatter
-
+      nodePackages.prettier # FIXED: Full package path
+      
       # Tools for telescope
       ripgrep
       fd

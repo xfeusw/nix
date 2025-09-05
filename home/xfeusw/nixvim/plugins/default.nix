@@ -3,13 +3,13 @@
   programs.nixvim.plugins = {
     # File management
     oil.enable = true;
-
-    # Status line
+    
+    # FIXED: Status line configuration
     lualine = {
       enable = true;
-      theme = "catppuccin";
+      settings.options.theme = "catppuccin"; # FIXED: Moved to settings.options.theme
     };
-
+    
     # Syntax highlighting
     treesitter = {
       enable = true;
@@ -18,6 +18,9 @@
         indent.enable = true;
       };
     };
+
+    # FIXED: Explicitly enable web-devicons to remove deprecation warning
+    web-devicons.enable = true;
 
     # Fuzzy finder
     telescope = {
@@ -46,13 +49,13 @@
       };
     };
 
-    # LSP
+    # FIXED: LSP with correct server names
     lsp = {
       enable = true;
       servers = {
-        nil-ls.enable = true; # Nix
-        lua-ls.enable = true; # Lua
-        tsserver.enable = true; # TypeScript/JavaScript
+        nil_ls.enable = true;    # FIXED: nil-ls -> nil_ls
+        lua_ls.enable = true;    # FIXED: lua-ls -> lua_ls  
+        ts_ls.enable = true;     # FIXED: tsserver -> ts_ls
       };
     };
 
@@ -86,7 +89,7 @@
     comment.enable = true;
     nvim-surround.enable = true;
     nvim-autopairs.enable = true;
-
+    
     # Which-key for help
     which-key = {
       enable = true;

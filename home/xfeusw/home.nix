@@ -25,7 +25,7 @@ in
     ./nixvim
   ];
 
-  home.packages = with pkgs; [
+  home.packages = (with unstablePkgs; [
     # System tools
     tree
     # Applications
@@ -35,7 +35,7 @@ in
     windsurf
     vscode
     spotify
-    yandex-music
+    # yandex-music  # Should work better in unstable
     discord
     tor-browser
     brave
@@ -45,7 +45,7 @@ in
     nerd-fonts.jetbrains-mono
     fira-code
     jetbrains-mono
-  ];
+  ]);
 
   programs.git = {
     enable = true;
