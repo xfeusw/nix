@@ -1,3 +1,4 @@
+# modules/home-manager.nix
 { config, lib, pkgs, inputs, ... }:
 
 {

@@ -1,4 +1,5 @@
-{ config, pkgs, lib, unstable ? null, ... }:
+# home/xfeusw/home.nix
+{ config, pkgs, lib, unstable ? null, nixvim, ... }:
 let
   # If unstable is not passed, create it
   unstablePkgs = if unstable != null then unstable else
@@ -16,14 +17,17 @@ in
 
   # Fix version mismatch warning
   home.enableNixpkgsReleaseCheck = false;
-
   # Allow unfree packages in home-manager
   nixpkgs.config.allowUnfree = true;
+
+  # Import your nixvim configuration
+  imports = [
+    ./nixvim
+  ];
 
   home.packages = with pkgs; [
     # System tools
     tree
-
     # Applications
     telegram-desktop
     zed-editor
@@ -31,12 +35,11 @@ in
     windsurf
     vscode
     spotify
-    unstable.yandex-music
+    yandex-music
     discord
     tor-browser
     brave
     firefox-devedition
-
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
@@ -45,17 +48,17 @@ in
   ];
 
   programs.git = {
-      enable = true;
-      userName = "xfeusw";
-      userEmail = "you@example.com";
-      extraConfig = {
-        core.editor = "nano";
-        init.defaultBranch = "main";
-        color.ui = "auto";
-        pull.rebase = true;
-        push.default = "simple";
-        merge.conflictStyle = "diff3";
-        rerere.enabled = true;
-      };
+    enable = true;
+    userName = "xfeusw";
+    userEmail = "you@example.com";
+    extraConfig = {
+      core.editor = "nvim"; # Changed from nano to nvim
+      init.defaultBranch = "main";
+      color.ui = "auto";
+      pull.rebase = true;
+      push.default = "simple";
+      merge.conflictStyle = "diff3";
+      rerere.enabled = true;
     };
+  };
 }
