@@ -26,20 +26,34 @@
     unstable.nodejs_22
     pnpm
 
+    # Ruby (without neovim gem)
+    ruby
+
     # Rust
-    rustup cargo
+    rustup
+    cargo
 
     # C/C++ toolchain
-    gcc clang cmake gnumake pkg-config gdb
+    gcc
+    clang
+    cmake
+    gnumake
+    pkg-config
+    gdb
 
     # Haskell
-    haskell.compiler.ghc96 cabal-install stack
+    haskell.compiler.ghc96
+    cabal-install
+    stack
 
     # Scala / JVM
-    jdk sbt scala
+    jdk
+    sbt
+    scala
 
     # Containers
-    docker-client docker-compose
+    docker-client
+    docker-compose
   ];
 
   # Automatic upgrades from this flake

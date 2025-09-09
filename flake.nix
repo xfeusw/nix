@@ -6,14 +6,14 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    
+
     # Add nixvim input
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-  
+
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: {
     nixosConfigurations = {
       acer = nixpkgs.lib.nixosSystem {
@@ -27,7 +27,7 @@
         ];
       };
     };
-    
+
     # Updated homeConfigurations with nixvim - FIXED: homeModules instead of homeManagerModules
     homeConfigurations = {
       xfeusw = home-manager.lib.homeManagerConfiguration {
