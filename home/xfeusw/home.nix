@@ -43,11 +43,7 @@ in
     pnpm
     ruby
     rustup
-    cargo
-    rust-analyzer
-    rustfmt
     gcc
-    clang
     cmake
     gnumake
     pkg-config
@@ -84,7 +80,7 @@ in
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true; # Fixed: Changed to autosuggestion.enable
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";

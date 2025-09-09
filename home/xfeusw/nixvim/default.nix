@@ -18,10 +18,19 @@
       lsp = {
         enable = true;
         servers = {
-          rust-analyzer.enable = true; # Rust LSP
-          hls.enable = true; # Haskell LSP
+          rust_analyzer = {
+            enable = true; # Fixed: Changed from rust-analyzer
+            installCargo = false; # Provided by rustup
+            installRustc = false; # Provided by rustup
+          };
+          hls = {
+            enable = true;
+            installGhc = false; # Provided by haskell.compiler.ghc96
+          };
           metals.enable = true; # Scala LSP
-          nil-ls.enable = true; # Nix LSP
+          nil_ls = {
+            enable = true; # Fixed: Changed from nil-ls
+          };
         };
       };
       telescope = {
@@ -32,7 +41,8 @@
         };
       };
       lualine.enable = true; # Status line
-      nvim-cmp.enable = true; # Autocompletion
+      cmp.enable = true; # Fixed: Changed from nvim-cmp
+      web-devicons.enable = true; # Explicitly enable to avoid deprecation warning
     };
   };
 }
