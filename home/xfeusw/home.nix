@@ -1,7 +1,6 @@
 # home/xfeusw/home.nix
 { config, pkgs, lib, unstable ? null, nixvim, ... }:
 let
-  # If unstable is not passed, create it
   unstablePkgs = if unstable != null then unstable else
     import <nixpkgs-unstable> {
       system = pkgs.system;
@@ -17,10 +16,9 @@ in
 
   # Fix version mismatch warning
   home.enableNixpkgsReleaseCheck = false;
-  # Allow unfree packages in home-manager
   nixpkgs.config.allowUnfree = true;
 
-  # Import your nixvim configuration
+  # Import nixvim configuration
   imports = [
     ./nixvim
   ];
@@ -35,11 +33,31 @@ in
     windsurf
     vscode
     spotify
-    # yandex-music  # Should work better in unstable
     discord
     tor-browser
     brave
     firefox-devedition
+    google-chrome
+    # Developer tools
+    nodejs_22
+    pnpm
+    ruby
+    rustup
+    cargo
+    rust-analyzer
+    rustfmt
+    gcc
+    clang
+    cmake
+    gnumake
+    pkg-config
+    gdb
+    haskell.compiler.ghc96
+    cabal-install
+    stack
+    jdk
+    sbt
+    scala
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
@@ -50,15 +68,32 @@ in
   programs.git = {
     enable = true;
     userName = "xfeusw";
-    userEmail = "you@example.com";
+    userEmail = "khamrakulovkamron@gmail.com";
     extraConfig = {
-      core.editor = "nvim"; # Changed from nano to nvim
+      core.editor = "nvim";
       init.defaultBranch = "main";
       color.ui = "auto";
       pull.rebase = true;
       push.default = "simple";
       merge.conflictStyle = "diff3";
       rerere.enabled = true;
+    };
+  };
+
+  # Zsh configuration
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "docker" ];
+      theme = "robbyrussell";
     };
   };
 }

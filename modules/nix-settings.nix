@@ -1,4 +1,4 @@
-# modules/nix.nix
+# modules/nix-settings.nix
 { config, lib, pkgs, inputs, ... }:
 
 {
@@ -15,47 +15,6 @@
     })
   ];
 
-  # Base CLI tools
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    gh
-    home-manager
-    # Node.js + pnpm
-    unstable.nodejs_22
-    pnpm
-
-    # Ruby (without neovim gem)
-    ruby
-
-    # Rust
-    rustup
-    cargo
-
-    # C/C++ toolchain
-    gcc
-    clang
-    cmake
-    gnumake
-    pkg-config
-    gdb
-
-    # Haskell
-    haskell.compiler.ghc96
-    cabal-install
-    stack
-
-    # Scala / JVM
-    jdk
-    sbt
-    scala
-
-    # Containers
-    docker-client
-    docker-compose
-  ];
-
   # Automatic upgrades from this flake
   system.autoUpgrade = {
     enable = true;
@@ -69,6 +28,6 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 7d --max-freed 10G";
   };
 }

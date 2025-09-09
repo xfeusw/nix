@@ -3,7 +3,14 @@
 
 {
   # SSH server
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
 
   # Tools
   programs.mtr.enable = true;
@@ -11,4 +18,4 @@
     enable = true;
     enableSSHSupport = true;
   };
-} 
+}

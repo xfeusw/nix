@@ -7,10 +7,9 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Add nixvim input
+    # Pin nixvim to stable branch for nixos-25.05 compatibility
     nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/nixvim/nixos-25.05";
     };
   };
 
@@ -28,7 +27,7 @@
       };
     };
 
-    # Updated homeConfigurations with nixvim - FIXED: homeModules instead of homeManagerModules
+    # Updated homeConfigurations with nixvim
     homeConfigurations = {
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -40,7 +39,6 @@
           };
         };
         modules = [
-          # FIXED: Use homeModules instead of homeManagerModules
           nixvim.homeModules.nixvim
           ./home/xfeusw/home.nix
         ];

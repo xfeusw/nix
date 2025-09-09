@@ -2,11 +2,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Docker daemon and group
-  virtualisation.docker = {
+  # Podman instead of Docker for rootless containers
+  virtualisation.podman = {
     enable = true;
-    enableOnBoot = true;
+    dockerCompat = true; # Provides Docker CLI compatibility
   };
 
-  users.users.xfeusw.extraGroups = [ "docker" "wheel" ];
-} 
+  users.users.xfeusw.extraGroups = [ "wheel" ]; # Remove docker group
+}

@@ -22,5 +22,11 @@
   services.libinput.enable = true;
 
   # Apps
-  programs.firefox.enable = true;
-} 
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal" = true; # Wayland compatibility
+      "gfx.webrender.all" = true; # Hardware acceleration
+    };
+  };
+}
