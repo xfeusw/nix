@@ -1,3 +1,4 @@
+# home/xfeusw/home.nix
 { config, pkgs, lib, unstable ? null, nixvim, ... }:
 let
   unstablePkgs = if unstable != null then unstable else
@@ -24,5 +25,6 @@ in
     ./packages.nix
     ./git.nix
     ./zsh.nix
+    ./kitty.nix
   ];
 }
