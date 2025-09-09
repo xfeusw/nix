@@ -11,8 +11,6 @@ in
   home.packages = (with unstablePkgs; [
     # System tools
     tree
-    # Terminal
-    kitty
     # Applications
     telegram-desktop
     zed-editor
