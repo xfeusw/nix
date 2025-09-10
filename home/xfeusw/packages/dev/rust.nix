@@ -6,4 +6,5 @@ with unstablePkgs;
   rustc
   rust-analyzer
   rustfmt
+  rustlings
 ]

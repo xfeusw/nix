@@ -10,7 +10,7 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       theme = "default";
       colorScheme = "BreezeDark";
-      wallpaper = "../../wallpaper/elizabeth.jpg";
+      wallpaper = ../../wallpaper/elizabeth.jpg;
     };
 
     # Configure panels
