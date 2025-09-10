@@ -39,4 +39,10 @@
     dates = "weekly";
     options = "--delete-older-than 7d --max-freed 10G";
   };
+
+  # Enable ZRAM for memory compression
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
 }
