@@ -1,5 +1,5 @@
 # packages/dev/tooling.nix
-{ pkgs, unstablePkgs }:
+{ unstablePkgs }:
 with unstablePkgs;
 [
   pnpm
