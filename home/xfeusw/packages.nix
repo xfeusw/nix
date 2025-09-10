@@ -16,23 +16,23 @@ let
       };
 
   # System
-  coreTools = import ./packages/system/core-tools.nix { inherit pkgs unstablePkgs; };
-  cliUtils = import ./packages/system/cli-utils.nix { inherit pkgs unstablePkgs; };
-  monitoring = import ./packages/system/monitoring.nix { inherit pkgs unstablePkgs; };
+  coreTools = import ./packages/system/core-tools.nix { inherit unstablePkgs; };
+  cliUtils = import ./packages/system/cli-utils.nix { inherit unstablePkgs; };
+  monitoring = import ./packages/system/monitoring.nix { inherit unstablePkgs; };
 
   # Apps
-  browsers = import ./packages/apps/browsers.nix { inherit pkgs unstablePkgs; };
-  chat = import ./packages/apps/chat.nix { inherit pkgs unstablePkgs; };
-  media = import ./packages/apps/media.nix { inherit pkgs unstablePkgs; };
-  editors = import ./packages/apps/editors.nix { inherit pkgs unstablePkgs; };
+  browsers = import ./packages/apps/browsers.nix { inherit unstablePkgs; };
+  chat = import ./packages/apps/chat.nix { inherit unstablePkgs; };
+  media = import ./packages/apps/media.nix { inherit unstablePkgs; };
+  editors = import ./packages/apps/editors.nix { inherit unstablePkgs; };
 
   # Dev
-  languages = import ./packages/dev/languages.nix { inherit pkgs unstablePkgs; };
-  tooling = import ./packages/dev/tooling.nix { inherit pkgs unstablePkgs; };
+  languages = import ./packages/dev/languages.nix { inherit unstablePkgs; };
+  tooling = import ./packages/dev/tooling.nix { inherit unstablePkgs; };
 
   # Fonts
-  nerdFonts = import ./packages/fonts/nerd-fonts.nix { inherit pkgs unstablePkgs; };
-  regularFonts = import ./packages/fonts/regular-fonts.nix { inherit pkgs unstablePkgs; };
+  nerdFonts = import ./packages/fonts/nerd-fonts.nix { inherit unstablePkgs; };
+  regularFonts = import ./packages/fonts/regular-fonts.nix { inherit unstablePkgs; };
 
 in
 {
