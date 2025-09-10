@@ -8,5 +8,5 @@
     dockerCompat = true; # Provides Docker CLI compatibility
   };
 
-  users.users.xfeusw.extraGroups = [ "wheel" ]; # Remove docker group
+  users.users.xfeusw.extraGroups = [ "wheel" ];
 }
