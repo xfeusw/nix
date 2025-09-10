@@ -1,5 +1,5 @@
 # modules/system-packages.nix
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -11,7 +11,7 @@
     docker-client
     docker-compose
     xclip
-    kdePackages.kio-fuse #to mount remote filesystems via FUSE
-    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    kdePackages.kio-fuse # to mount remote filesystems via FUSE
+    kdePackages.kio-extras # extra protocols support (sftp, fish and more)
   ];
 }
