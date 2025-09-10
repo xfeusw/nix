@@ -18,13 +18,14 @@ in
   home.enableNixpkgsReleaseCheck = false;
   nixpkgs.config.allowUnfree = true;
 
+  # Zed config mini
+  nixGL.vulkan.enable = true;
+
   # Import modular configurations
   imports = [
-    ./nixvim
     ./settings.nix
     ./packages.nix
     ./git.nix
     ./zsh.nix
-    ./kitty.nix
   ];
 }

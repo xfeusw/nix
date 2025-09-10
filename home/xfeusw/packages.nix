@@ -1,5 +1,5 @@
 # home/xfeusw/packages.nix
-{ config, pkgs, lib, unstable ? null, ... }:
+{ config, pkgs, lib, unstable ? null, nixvim-config, ... }:
 let
   unstablePkgs = if unstable != null then unstable else
     import <nixpkgs-unstable> {
@@ -27,7 +27,11 @@ in
     nodejs_22
     pnpm
     ruby
-    rustup
+    cargo
+    rustc
+    rust-analyzer
+    nil
+    nixd
     gcc
     cmake
     gnumake
@@ -44,5 +48,8 @@ in
     nerd-fonts.jetbrains-mono
     fira-code
     jetbrains-mono
-  ]);
+  ]) ++ [
+    # Your custom nixvim configuration
+    nixvim-config.packages.${pkgs.system}.default
+  ];
 }
