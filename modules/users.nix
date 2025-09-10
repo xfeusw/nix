@@ -1,5 +1,5 @@
 # modules/users.nix
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.xfeusw = {

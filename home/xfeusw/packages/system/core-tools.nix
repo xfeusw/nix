@@ -5,12 +5,6 @@ with unstablePkgs;
   tree
   wget
   curl
-  git
-  unzip
-  htop
-  fd
-  ripgrep
-  bat
-  jq
-  which
+  coreutils
+  gnupg
 ]

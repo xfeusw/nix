@@ -1,12 +1,7 @@
 # home/xfeusw/home.nix
-{ config, pkgs, lib, unstable ? null, nixvim, ... }:
-let
-  unstablePkgs = if unstable != null then unstable else
-    import <nixpkgs-unstable> {
-      system = pkgs.system;
-      config.allowUnfree = true;
-    };
-in
+{
+  ...
+}:
 {
   home.username = "xfeusw";
   home.homeDirectory = "/home/xfeusw";

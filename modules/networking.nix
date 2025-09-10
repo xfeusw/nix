@@ -1,5 +1,5 @@
 # modules/networking.nix
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   networking.hostName = "nixos-acer";

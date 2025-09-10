@@ -6,5 +6,4 @@ with unstablePkgs;
   coreutils
   util-linux
   findutils
-  man
 ]

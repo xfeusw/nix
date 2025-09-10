@@ -1,9 +1,12 @@
 # modules/nix-settings.nix
-{ config, lib, pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Expose unstable as pkgs.unstable
   nixpkgs.overlays = [
@@ -19,7 +22,13 @@
   system.autoUpgrade = {
     enable = true;
     flake = "/home/xfeusw/.config/nix";
-    flags = [ "--update-input" "nixpkgs" "--update-input" "nixpkgs-unstable" "--commit-lock-file" ];
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--update-input"
+      "nixpkgs-unstable"
+      "--commit-lock-file"
+    ];
     dates = "03:00";
     randomizedDelaySec = "45min";
   };

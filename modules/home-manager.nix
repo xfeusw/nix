@@ -1,5 +1,5 @@
 # modules/home-manager.nix
-{ config, lib, pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   # Enable Home Manager and import user home configuration

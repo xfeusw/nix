@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   # X11 + GNOME
@@ -21,4 +21,4 @@
 
   # Apps
   programs.firefox.enable = true;
-} 
+}

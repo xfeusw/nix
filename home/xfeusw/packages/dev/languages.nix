@@ -1,15 +1,10 @@
 # packages/dev/languages.nix
 { unstablePkgs }:
-with unstablePkgs;
-[
-  nodejs_22
-  ruby
-  haskell.compiler.ghc96
-  jdk
-  sbt
-  scala
-  cargo
-  rustc
-  rust-analyzer
-  rustfmt
-]
+let
+  rust = import ./rust.nix { inherit unstablePkgs; };
+  nodejs = import ./nodejs.nix { inherit unstablePkgs; };
+  nix = import ./nix.nix { inherit unstablePkgs; };
+  haskell = import ./haskell.nix { inherit unstablePkgs; };
+  javaScala = import ./java-scala.nix { inherit unstablePkgs; };
+in
+rust ++ nodejs ++ nix ++ haskell ++ javaScala

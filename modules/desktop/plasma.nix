@@ -1,5 +1,5 @@
 # modules/desktop/plasma.nix
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   # Enable X11 and Plasma 6 with Wayland support

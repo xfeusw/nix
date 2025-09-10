@@ -1,5 +1,5 @@
 # modules/docker.nix
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   # Podman instead of Docker for rootless containers
