@@ -25,6 +25,7 @@ let
   chat = import ./packages/apps/chat.nix { inherit unstablePkgs; };
   media = import ./packages/apps/media.nix { inherit unstablePkgs; };
   editors = import ./packages/apps/editors.nix { inherit unstablePkgs; };
+  others = import ./packages/apps/others.nix { inherit unstablePkgs; };
 
   # Dev
   languages = import ./packages/dev/languages.nix { inherit unstablePkgs; };
@@ -44,6 +45,7 @@ in
     ++ chat
     ++ media
     ++ editors
+    ++ others
     ++ languages
     ++ tooling
     ++ nerdFonts
