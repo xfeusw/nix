@@ -1,5 +1,5 @@
 # home/xfeusw/zsh.nix
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   programs.zsh = {
     enable = true;
@@ -12,7 +12,10 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "docker" ];
+      plugins = [
+        "git"
+        "docker"
+      ];
       theme = "robbyrussell";
     };
   };
