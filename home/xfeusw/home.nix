@@ -19,7 +19,7 @@
 
   # Import modular configurations
   imports = [
-    plasma-manager.homeManagerModules.plasma-manager
+    plasma-manager.homeModules.plasma-manager
     ./settings.nix
     ./packages.nix
     ./git.nix

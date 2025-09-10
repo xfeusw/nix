@@ -10,12 +10,14 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       theme = "default";
       colorScheme = "BreezeDark";
+      wallpaper = "../../wallpaper/elizabeth.jpg";
     };
 
     # Configure panels
     panels = [
       {
-        location = "bottom";
+        location = "top";
+        height = 32; # Panel height in pixels (default is usually 44)
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
@@ -26,22 +28,6 @@
         ];
       }
     ];
-
-    # Desktop settings
-    desktop = {
-      widgets = [
-        {
-          name = "org.kde.plasma.folder";
-          config = {
-            General = {
-              url = "file:///home/xfeusw/Desktop";
-              arrangement = 0;
-              locked = false;
-            };
-          };
-        }
-      ];
-    };
 
     # Configure some applications
     configFile = {
