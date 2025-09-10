@@ -1,5 +1,5 @@
 # modules/services.nix
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   # SSH server
