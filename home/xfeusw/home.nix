@@ -1,5 +1,6 @@
 # home/xfeusw/home.nix
 {
+  plasma-manager,
   ...
 }:
 {
@@ -18,9 +19,11 @@
 
   # Import modular configurations
   imports = [
+    plasma-manager.homeManagerModules.plasma-manager
     ./settings.nix
     ./packages.nix
     ./git.nix
     ./zsh.nix
+    ./plasma.nix # New plasma configuration file
   ];
 }

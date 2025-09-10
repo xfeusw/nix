@@ -1,0 +1,116 @@
+# home/xfeusw/plasma.nix
+{ ... }:
+
+{
+  programs.plasma = {
+    enable = true;
+
+    # Workspace settings
+    workspace = {
+      lookAndFeel = "org.kde.breezedark.desktop";
+      theme = "default";
+      colorScheme = "BreezeDark";
+    };
+
+    # Configure panels
+    panels = [
+      {
+        location = "bottom";
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.pager"
+          "org.kde.plasma.icontasks"
+          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+        ];
+      }
+    ];
+
+    # Desktop settings
+    desktop = {
+      widgets = [
+        {
+          name = "org.kde.plasma.folder";
+          config = {
+            General = {
+              url = "file:///home/xfeusw/Desktop";
+              arrangement = 0;
+              locked = false;
+            };
+          };
+        }
+      ];
+    };
+
+    # Configure some applications
+    configFile = {
+      # Dolphin file manager settings
+      dolphinrc = {
+        General = {
+          BrowseThroughArchives = true;
+          OpenExternallyCalledFolderInNewTab = true;
+        };
+      };
+
+      # Kate text editor settings
+      katerc = {
+        General = {
+          "Auto Hide Tabs" = false;
+          "Close After Last" = false;
+          "Show Menu Bar" = true;
+        };
+      };
+
+      # Konsole terminal settings
+      konsolerc = {
+        "Desktop Entry" = {
+          DefaultProfile = "Profile 1.profile";
+        };
+      };
+
+      # Global shortcuts
+      kglobalshortcutsrc = {
+        "org.kde.krunner.desktop" = {
+          "_k_friendly_name" = "KRunner";
+          "_launch" = "Alt+Space\\tAlt+F2\\tSearch,Alt+Space\\tAlt+F2\\tSearch,KRunner";
+        };
+      };
+    };
+
+    # Hotkeys/shortcuts
+    shortcuts = {
+      "services/org.kde.krunner.desktop" = {
+        "_launch" = [
+          "Alt+Space"
+          "Alt+F2"
+        ];
+      };
+      "kwin" = {
+        "Switch to Desktop 1" = "Meta+1";
+        "Switch to Desktop 2" = "Meta+2";
+        "Switch to Desktop 3" = "Meta+3";
+        "Switch to Desktop 4" = "Meta+4";
+      };
+    };
+
+    # Window management
+    window-rules = [
+      {
+        description = "Konsole";
+        match = {
+          window-class = {
+            value = "konsole";
+            type = "substring";
+          };
+        };
+        apply = {
+          noborder = {
+            value = false;
+            apply = "initially";
+          };
+        };
+      }
+    ];
+  };
+}

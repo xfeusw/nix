@@ -13,6 +13,8 @@
       url = "github:Ahwxorg/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager.url = "github:nix-community/plasma-manager";
   };
 
   outputs =
@@ -21,6 +23,7 @@
       nixpkgs-unstable,
       home-manager,
       nixvim-config,
+      plasma-manager,
       ...
     }:
     {
@@ -34,6 +37,7 @@
                 nixpkgs-unstable
                 home-manager
                 nixvim-config
+                plasma-manager
                 ;
             };
             inherit
@@ -41,6 +45,7 @@
               nixpkgs-unstable
               home-manager
               nixvim-config
+              plasma-manager
               ;
           };
           modules = [
@@ -54,7 +59,12 @@
         xfeusw = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit nixpkgs nixpkgs-unstable nixvim-config;
+            inherit
+              nixpkgs
+              nixpkgs-unstable
+              nixvim-config
+              plasma-manager
+              ;
             unstable = import nixpkgs-unstable {
               system = "x86_64-linux";
               config.allowUnfree = true;
