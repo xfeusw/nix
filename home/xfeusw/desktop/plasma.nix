@@ -1,29 +1,44 @@
-# home/xfeusw/plasma.nix
+# home/xfeusw/desktop/plasma.nix
 { ... }:
-
 {
   programs.plasma = {
     enable = true;
 
-    # Workspace settings
     workspace = {
       lookAndFeel = "org.kde.breezedark.desktop";
       theme = "default";
       colorScheme = "BreezeDark";
       wallpaper = ../../wallpaper/elizabeth.jpg;
+      cursor = {
+        theme = "Breeze";
+        size = 24;
+      };
+      iconTheme = "breeze-dark";
     };
 
-    # Configure panels
+    # Enhanced panel configuration
     panels = [
       {
         location = "top";
-        height = 32; # Panel height in pixels (default is usually 44)
+        height = 32;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
           "org.kde.plasma.icontasks"
           "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.systemtray"
+          {
+            systemTray = {
+              items = {
+                shown = [
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.battery"
+                ];
+              };
+            };
+          }
           "org.kde.plasma.digitalclock"
         ];
       }
@@ -36,6 +51,7 @@
         General = {
           BrowseThroughArchives = true;
           OpenExternallyCalledFolderInNewTab = true;
+          ShowFullPath = true;
         };
       };
 
@@ -54,36 +70,29 @@
           DefaultProfile = "Profile 1.profile";
         };
       };
-
-      # Global shortcuts
-      kglobalshortcutsrc = {
-        "org.kde.krunner.desktop" = {
-          "_k_friendly_name" = "KRunner";
-          "_launch" = "Alt+Space\\tAlt+F2\\tSearch,Alt+Space\\tAlt+F2\\tSearch,KRunner";
-        };
-      };
     };
 
-    # Hotkeys/shortcuts
+    # Enhanced shortcuts
     shortcuts = {
-      "services/org.kde.krunner.desktop" = {
-        "_launch" = [
-          "Alt+Space"
-          "Alt+F2"
-        ];
-      };
+      "services/org.kde.krunner.desktop"._launch = [ "Alt+Space" ];
       "kwin" = {
         "Switch to Desktop 1" = "Meta+1";
         "Switch to Desktop 2" = "Meta+2";
         "Switch to Desktop 3" = "Meta+3";
         "Switch to Desktop 4" = "Meta+4";
+        "Window Close" = "Meta+Q";
+        "Window Maximize" = "Meta+Up";
+        "Window Minimize" = "Meta+Down";
+        "Show Desktop" = "Meta+D";
+        "Window Quick Tile Left" = "Meta+Left";
+        "Window Quick Tile Right" = "Meta+Right";
       };
     };
 
-    # Window management
+    # Window rules
     window-rules = [
       {
-        description = "Konsole";
+        description = "Konsole transparency";
         match = {
           window-class = {
             value = "konsole";

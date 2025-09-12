@@ -1,22 +1,30 @@
 # modules/services.nix
 { ... }:
-
 {
-  # SSH server
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
+  # Essential services
+  services = {
+    # Database (optional, uncomment if needed)
+    # postgresql.enable = true;
+
+    # Printing
+    printing = {
+      enable = true;
+      drivers = [ ];
     };
+
+    # Scanner support
+    sane.enable = true;
+
+    # Location services
+    geoclue2.enable = true;
   };
 
-  # Tools
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    zsh.enable = true;
   };
-  programs.zsh.enable = true;
 }

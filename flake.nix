@@ -1,20 +1,34 @@
 # flake.nix
 {
-  description = "NixOS configuration (flake) for acer";
+  description = "Enhanced NixOS configuration (flake) for acer";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Your personal nixvim configuration
-    nixvim-config = {
-      # url = "github:khamrakulov/nixvim";
-      url = "github:Ahwxorg/nixvim-config";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager.url = "github:nix-community/plasma-manager";
+    # Hardware optimization
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Additional useful inputs
+    nur.url = "github:nix-community/NUR";
+
+    # Your personal nixvim configuration
+    nixvim-config = {
+      url = "github:Ahwxorg/nixvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -22,6 +36,8 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      nixos-hardware,
+      nur,
       nixvim-config,
       plasma-manager,
       ...
@@ -36,6 +52,8 @@
                 nixpkgs
                 nixpkgs-unstable
                 home-manager
+                nixos-hardware
+                nur
                 nixvim-config
                 plasma-manager
                 ;
@@ -44,17 +62,19 @@
               nixpkgs
               nixpkgs-unstable
               home-manager
+              nixos-hardware
+              nur
               nixvim-config
               plasma-manager
               ;
           };
           modules = [
             ./hosts/acer/configuration.nix
+            nur.nixosModules.nur
           ];
         };
       };
 
-      # Updated homeConfigurations with your nixvim
       homeConfigurations = {
         xfeusw = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -64,6 +84,7 @@
               nixpkgs-unstable
               nixvim-config
               plasma-manager
+              nur
               ;
             unstable = import nixpkgs-unstable {
               system = "x86_64-linux";
@@ -72,6 +93,7 @@
           };
           modules = [
             ./home/xfeusw/home.nix
+            nur.hmModules.nur
           ];
         };
       };

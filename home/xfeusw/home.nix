@@ -1,29 +1,25 @@
 # home/xfeusw/home.nix
+{ plasma-manager, nur, ... }:
 {
-  plasma-manager,
-  ...
-}:
-{
-  home.username = "xfeusw";
-  home.homeDirectory = "/home/xfeusw";
-  home.stateVersion = "25.05";
+  home = {
+    username = "xfeusw";
+    homeDirectory = "/home/xfeusw";
+    stateVersion = "25.05";
+    enableNixpkgsReleaseCheck = false;
+  };
+
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
-
-  # Fix version mismatch warning
-  home.enableNixpkgsReleaseCheck = false;
   nixpkgs.config.allowUnfree = true;
-
-  # Zed config mini
-  nixGL.vulkan.enable = true;
 
   # Import modular configurations
   imports = [
     plasma-manager.homeModules.plasma-manager
-    ./settings.nix
-    ./packages.nix
+    nur.hmModules.nur
+    ./development
+    ./desktop
+    ./shell
+    ./applications
     ./git.nix
-    ./zsh.nix
-    ./plasma.nix # New plasma configuration file
   ];
 }

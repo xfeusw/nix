@@ -1,18 +1,26 @@
 # modules/networking.nix
 { ... }:
-
 {
-  networking.hostName = "nixos-acer";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos-acer";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = true;
+    };
 
-  # Bluetooth
-  hardware.bluetooth.enable = true;
+    # Faster DNS
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
+  };
+
   services.blueman.enable = true;
 
-  # Enable firewall with specific open ports
-  networking.firewall = {
+  # mDNS for local network discovery
+  services.avahi = {
     enable = true;
-    allowedTCPPorts = [ 22 ]; # SSH
-    allowedUDPPorts = [ ];
+    nssmdns4 = true;
+    openFirewall = true;
   };
 }
