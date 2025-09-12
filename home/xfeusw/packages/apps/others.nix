@@ -1,6 +1,6 @@
 # packages/apps/others.nix
-{ unstablePkgs }:
-with unstablePkgs;
+{ pkgs }:
+with pkgs;
 [
-  rustdesk
+  # rustdesk
 ]
