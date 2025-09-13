@@ -145,7 +145,7 @@ This configuration provides a complete desktop environment setup with:
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url> ~/.config/nix
+   git clone https://github.com/xfeusw/nix ~/.config/nix
    cd ~/.config/nix
    ```
 
