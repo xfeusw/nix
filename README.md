@@ -1,198 +1,298 @@
-# NixOS Configuration
+# 🚀 NixOS Configuration
 
-A declarative NixOS configuration using flakes for an Acer laptop with KDE Plasma 6 desktop environment.
+A comprehensive, modular NixOS configuration with Home Manager integration, optimized for development workflows and daily productivity.
 
-## 🖥️ System Overview
+## 📋 Overview
 
-- **Host**: `acer` (NixOS system configuration)
-- **User**: `xfeusw` (Home Manager configuration)
+This configuration provides a complete desktop environment setup with:
+- **OS**: NixOS 25.05 with Nix Flakes
 - **Desktop**: KDE Plasma 6 with Wayland support
-- **Shell**: Zsh with Oh My Zsh
-- **Editor**: Nixvim (custom Neovim configuration)
+- **Home Management**: Home Manager for user-space configuration
+- **Development**: Multi-language development environment
+- **Architecture**: Modular and maintainable configuration structure
 
-## 📁 Directory Structure
+## 🏗️ Structure
 
 ```
-├── flake.nix                 # Main flake configuration
+.
+├── flake.nix                    # Main flake configuration
+├── flake.lock                   # Flake input lockfile
 ├── hosts/
 │   └── acer/
-│       ├── configuration.nix # Host-specific system config
+│       ├── configuration.nix    # Host-specific configuration
 │       └── hardware-configuration.nix
-├── modules/                  # System modules
+├── modules/                     # System modules
+│   ├── backup.nix              # Restic backup configuration
+│   ├── nix-settings.nix        # Nix daemon settings & optimization
+│   ├── networking.nix          # Network & DNS configuration
+│   ├── power.nix               # TLP & power management
+│   ├── security.nix            # Security hardening & SSH
+│   ├── users.nix               # User account management
 │   ├── desktop/
-│   │   ├── plasma.nix       # KDE Plasma 6 configuration
-│   │   └── gnome.nix        # Alternative GNOME setup
-│   ├── networking.nix       # Network & Bluetooth
-│   ├── nix-settings.nix     # Nix configuration & optimizations
-│   ├── system-packages.nix  # System-wide packages
-│   ├── users.nix           # User account configuration
-│   ├── services.nix        # System services (SSH, GPG, etc.)
-│   └── docker.nix          # Container setup (Podman)
-├── home/xfeusw/            # Home Manager configuration
-│   ├── home.nix            # Main home config
-│   ├── packages.nix        # User packages
-│   ├── packages/           # Organized package lists
-│   │   ├── apps/          # Applications (browsers, chat, media)
-│   │   ├── dev/           # Development tools & languages
-│   │   ├── fonts/         # Font packages
-│   │   └── system/        # System utilities
-│   ├── git.nix            # Git configuration
-│   ├── zsh.nix            # Zsh shell configuration
-│   ├── plasma.nix         # KDE Plasma user settings
-│   └── settings.nix       # Additional user settings
+│   │   ├── plasma.nix          # KDE Plasma 6 configuration
+│   │   └── gnome.nix           # Alternative GNOME setup
+│   ├── hardware/
+│   │   ├── default.nix         # Hardware module imports
+│   │   ├── graphics.nix        # Intel graphics & VA-API
+│   │   ├── cpu.nix             # Intel CPU optimizations
+│   │   ├── bluetooth.nix       # Bluetooth configuration
+│   │   ├── firmware.nix        # Firmware updates
+│   │   └── ssd-optimization.nix # SSD performance tweaks
+│   ├── packages/
+│   │   ├── default.nix         # Package module imports
+│   │   ├── system-essentials.nix # Core system packages
+│   │   ├── development-cli.nix  # Development tools
+│   │   ├── kde-plasma.nix      # KDE applications
+│   │   ├── media.nix           # Media & graphics apps
+│   │   └── fonts.nix           # Font configuration
+│   ├── services/
+│   │   ├── default.nix         # Service module imports
+│   │   ├── printing.nix        # Printing & scanning
+│   │   ├── location.nix        # GPS & location services
+│   │   ├── database.nix        # Database services
+│   │   └── system-programs.nix # System-wide programs
+│   └── virtualization/
+│       ├── default.nix         # Virtualization imports
+│       ├── containers.nix      # Podman configuration
+│       └── kvm.nix            # KVM/QEMU setup
+├── home/
+│   └── xfeusw/
+│       ├── home.nix            # Main home configuration
+│       ├── git.nix             # Git configuration
+│       ├── applications/
+│       │   ├── default.nix     # Application imports
+│       │   ├── browsers.nix    # Web browsers
+│       │   ├── communication.nix # Chat & video apps
+│       │   ├── media.nix       # Media applications
+│       │   └── productivity.nix # Productivity tools
+│       ├── desktop/
+│       │   ├── default.nix     # Desktop imports
+│       │   └── plasma.nix      # Plasma user configuration
+│       ├── development/
+│       │   ├── default.nix     # Development imports
+│       │   ├── tools.nix       # Development tools
+│       │   └── languages/
+│       │       ├── default.nix # Language imports
+│       │       ├── rust.nix    # Rust toolchain
+│       │       ├── nodejs.nix  # Node.js & npm tools
+│       │       ├── nix.nix     # Nix language tools
+│       │       ├── haskell.nix # Haskell & GHC
+│       │       └── java-scala.nix # JVM languages
+│       └── shell/
+│           ├── default.nix     # Shell imports
+│           ├── zsh.nix         # Zsh configuration
+│           └── starship.nix    # Starship prompt
 └── wallpaper/
-    └── elizabeth.jpg       # Desktop wallpaper
+    └── elizabeth.jpg           # Desktop wallpaper
 ```
+
+## 🖥️ Hardware Support
+
+- **CPU**: Intel processors with microcode updates
+- **Graphics**: Intel integrated graphics with VA-API acceleration
+- **Storage**: SSD-optimized with TRIM support
+- **Power**: Laptop power management with TLP and auto-cpufreq
+- **Connectivity**: WiFi, Bluetooth, and networking
+
+## 🛠️ Development Environment
+
+### Languages & Runtimes
+- **Rust**: Complete toolchain with cargo, rustc, rust-analyzer
+- **Node.js**: Latest LTS with pnpm, yarn, and TypeScript
+- **Nix**: Language servers (nil, nixd) and formatters
+- **Haskell**: GHC, Stack, Cabal, and language server
+- **Java/Scala**: OpenJDK 21, Maven, Gradle, SBT, Metals
+
+### Development Tools
+- **Editors**: Neovim (nixvim), VS Code, Zed Editor
+- **Version Control**: Git with GitHub CLI, LazyGit, GitUI
+- **Containers**: Podman with Docker compatibility
+- **Virtualization**: KVM/QEMU with virt-manager
+- **Databases**: PostgreSQL, SQLite
+- **API Testing**: HTTPie, curl
+- **Monitoring**: htop, btop, k9s
+
+### Modern CLI Tools
+- **File Operations**: eza (ls), bat (cat), fd (find), ripgrep (grep)
+- **Navigation**: zoxide (smart cd), fzf (fuzzy finder)
+- **System Monitoring**: bottom/btop (top), dust (du), procs (ps)
+- **Network**: bandwhich, dogdns
+
+## 🎨 Desktop Environment
+
+### KDE Plasma 6 Features
+- **Display Protocol**: Wayland with X11 fallback
+- **Theme**: Breeze Dark with custom wallpaper
+- **Applications**: Full KDE suite (Dolphin, Kate, Konsole, etc.)
+- **Keyboard**: US/Russian layouts with smart switching
+- **Audio**: PipeWire with ALSA and JACK support
+
+### Applications
+- **Browsers**: Firefox, Brave, Chrome, Tor Browser
+- **Communication**: Telegram, Discord, Zoom
+- **Media**: VLC, MPV, Spotify, OBS Studio
+- **Graphics**: GIMP, Inkscape
+- **Productivity**: PDF tools, archive managers, clipboard manager
 
 ## 🚀 Quick Start
 
-### Initial Installation
+### Prerequisites
+- NixOS 25.05 or later
+- Git for cloning the repository
+- Administrative access (sudo)
 
-1. Clone this repository to `/home/xfeusw/.config/nix/`:
-```bash
-git clone <your-repo> ~/.config/nix
-cd ~/.config/nix
-```
+### Installation
 
-2. Build and switch to the system configuration:
-```bash
-sudo nixos-rebuild switch --flake .#acer
-```
+1. **Clone the repository**:
+   ```bash
+   git clone <your-repo-url> ~/.config/nix
+   cd ~/.config/nix
+   ```
 
-3. Install Home Manager configuration:
-```bash
-home-manager switch --flake .#xfeusw
-```
+2. **Update hardware configuration**:
+   ```bash
+   # Generate new hardware config for your system
+   sudo nixos-generate-config --show-hardware-config > hosts/acer/hardware-configuration.nix
+   ```
 
-### Daily Usage
+3. **Customize configuration**:
+   - Edit `hosts/acer/configuration.nix` for system settings
+   - Modify `home/xfeusw/home.nix` for user preferences
+   - Update timezone, locale, and hostname as needed
 
-The configuration includes convenient aliases in `zsh.nix`:
+4. **Build and switch**:
+   ```bash
+   # Build system configuration (test first)
+   sudo nixos-rebuild build --flake .#acer
+
+   # Apply system configuration
+   sudo nixos-rebuild switch --flake .#acer
+
+   # Apply home configuration
+   home-manager switch --flake .#xfeusw
+   ```
+
+## 📝 Usage
+
+### System Management
 
 ```bash
 # System operations
-sys-build     # Build system config (test before applying)
-sys-update    # Apply system configuration changes
+sys-build        # Build system configuration
+sys-update       # Apply system updates
+home-build       # Build home configuration
+home-update      # Apply home configuration
+check           # Check flake validity
 
-# Home Manager operations
-home-build    # Build home config (test before applying)
-home-update   # Apply home configuration changes
+# Navigation shortcuts
+config          # Go to ~/.config
+nix-config      # Go to ~/.config/nix
 
-# Flake operations
-check         # Validate flake configuration
+# Modern CLI usage
+ls              # eza with icons
+cat file.txt    # bat with syntax highlighting
+find . -name    # fd (faster find)
+grep pattern    # ripgrep (faster grep)
+cd project      # zoxide (smart cd with frecency)
 ```
 
-## 🔧 Key Features
+### Development Workflow
 
-### System Configuration
-- **Desktop Environment**: KDE Plasma 6 with Wayland support
-- **Boot**: systemd-boot with EFI support
-- **Security**: SSH with key-based authentication only
-- **Containers**: Podman with Docker compatibility
-- **Automatic Updates**: Daily system updates at 3:00 AM
-- **Memory**: ZRAM swap (50% of RAM)
-- **Garbage Collection**: Weekly cleanup of old generations
+```bash
+# Git shortcuts
+gs              # git status
+ga file.txt     # git add
+gc "message"    # git commit
+gp              # git push
+gl              # git pull
 
-### Development Environment
-- **Languages**: Rust, Node.js, Haskell, Java/Scala, Nix
-- **Tools**: GCC, CMake, GDB, various development utilities
-- **Editor**: Custom Nixvim configuration from external flake
-- **Version Control**: Git with sensible defaults
+# System information
+sysinfo         # Quick system overview
+top             # btop system monitor
+```
 
-### Applications
-- **Browsers**: Brave, Firefox Developer Edition, Chrome, Tor
-- **Communication**: Telegram, Discord
-- **Media**: Spotify
-- **Editors**: VS Code, Zed Editor
-- **System Tools**: btop, lsof, strace, and more
-
-### Fonts
-- **Programming**: Fira Code, JetBrains Mono (regular + Nerd Fonts)
-- **System**: Font configuration enabled for proper rendering
-
-## 🎨 Desktop Customization
-
-### KDE Plasma Configuration
-- **Theme**: Breeze Dark
-- **Panel**: Top panel (32px height) with essential widgets
-- **Shortcuts**:
-  - `Alt+Space` / `Alt+F2`: KRunner
-  - `Meta+1-4`: Switch to desktops 1-4
-- **Wallpaper**: Custom wallpaper at `wallpaper/elizabeth.jpg`
-
-### Shell Configuration
-- **Zsh**: With Oh My Zsh, autosuggestions, and syntax highlighting
-- **Theme**: robbyrussell
-- **Plugins**: git, docker
-
-## 📦 Package Management
-
-Packages are organized into logical categories in `home/xfeusw/packages/`:
-
-- **Apps**: Browsers, chat clients, media players, editors
-- **Dev**: Programming languages, development tools, compilers
-- **Fonts**: Regular fonts and Nerd Fonts variants
-- **System**: Core utilities, CLI tools, monitoring applications
-
-All packages use the unstable channel for latest versions while maintaining system stability.
-
-## 🔒 Security Features
-
-- **SSH**: Disabled root login and password authentication
-- **Firewall**: Enabled with SSH port (22) allowed
-- **User**: Standard user with sudo privileges via wheel group
-- **GPG**: Agent with SSH support enabled
-
-## 🔄 Update Strategy
-
-- **Automatic Updates**: System updates daily at 3:00 AM with randomized 45-minute delay
-- **Garbage Collection**: Weekly cleanup keeping only 7 days of history
-- **Input Updates**: Automatic updates for nixpkgs and nixpkgs-unstable
-- **Lock File**: Automatically committed during updates
-
-## 🛠️ Maintenance
+## 🔧 Customization
 
 ### Adding New Packages
 
-1. **System packages**: Add to `modules/system-packages.nix`
-2. **User packages**: Add to appropriate file in `home/xfeusw/packages/`
-3. **Development tools**: Use the organized structure in `packages/dev/`
+**System packages** (available to all users):
+```nix
+# Add to modules/packages/system-essentials.nix
+environment.systemPackages = with pkgs; [
+  your-package-here
+];
+```
 
-### Modifying Configuration
+**User packages** (home-manager):
+```nix
+# Add to home/xfeusw/applications/
+home.packages = with pkgs; [
+  your-package-here
+];
+```
 
-1. Make changes to relevant `.nix` files
-2. Test with build commands (`sys-build` or `home-build`)
-3. Apply changes (`sys-update` or `home-update`)
+### Adding New Services
 
-### Troubleshooting
+Create a new module in `modules/services/` or add to existing ones:
+```nix
+# modules/services/your-service.nix
+{ ... }:
+{
+  services.your-service = {
+    enable = true;
+    # configuration options
+  };
+}
+```
 
-- **Check flake syntax**: `nix flake check`
-- **View system generations**: `sudo nixos-rebuild list-generations`
-- **Rollback system**: `sudo nixos-rebuild switch --rollback`
-- **View home generations**: `home-manager generations`
+### Hardware-Specific Changes
 
-## 📝 Hardware Information
+Modify files in `modules/hardware/` for hardware-specific optimizations.
 
-This configuration is optimized for an Acer laptop with:
-- Intel CPU with KVM support
-- Standard laptop hardware (webcam, SD card reader, etc.)
-- Separate `/home` partition
-- EFI boot setup
+## 🔒 Security Features
 
-Hardware configuration is automatically generated and stored in `hosts/acer/hardware-configuration.nix`.
+- **AppArmor**: Mandatory access control
+- **Firewall**: Configured with SSH rate limiting
+- **SSH**: Hardened configuration with key-only authentication
+- **Automatic updates**: Daily system updates and garbage collection
+- **User isolation**: Proper user/group management
+
+## 💾 Backup Strategy
+
+- **Restic**: Automated daily backups
+- **Retention**: 7 daily, 4 weekly, 12 monthly, 3 yearly
+- **Scope**: Documents, configs, pictures
+- **Exclusions**: Cache, temporary files, trash
+
+## 🎯 Performance Optimizations
+
+- **SSD**: TRIM, noatime mounting, appropriate I/O schedulers
+- **Memory**: ZRAM compression (50% of RAM)
+- **CPU**: Auto frequency scaling, thermal management
+- **Network**: Optimized buffer sizes, DNS caching
+- **Boot**: Fast boot with minimal timeout
 
 ## 🤝 Contributing
 
-Feel free to submit issues and pull requests. When contributing:
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes following the modular structure
+4. Test with `nixos-rebuild build --flake .#acer`
+5. Commit and push: `git commit -m "Description" && git push`
+6. Submit a pull request
 
-1. Test changes with build commands before submitting
-2. Follow the existing directory structure
-3. Document significant changes in commit messages
-4. Update this README for major configuration changes
+## 📚 Resources
+
+- [NixOS Manual](https://nixos.org/manual/nixos/stable/)
+- [Home Manager Manual](https://nix-community.github.io/home-manager/)
+- [Nix Flakes](https://nixos.wiki/wiki/Flakes)
+- [NixOS Hardware](https://github.com/NixOS/nixos-hardware)
+- [nix.dev](https://nix.dev)
 
 ## 📄 License
 
-This configuration is provided as-is for educational and personal use.
+This configuration is provided as-is for educational and personal use. Feel free to adapt it for your own systems.
 
 ---
 
-**Note**: This is a personal NixOS configuration. Adapt the hardware configuration and personal settings (username, email, etc.) for your own use.
+**⚠️ Note**: This configuration is tailored for the specific hardware and preferences described above. You may need to adjust hardware-configuration.nix and other settings for your system.

@@ -12,6 +12,9 @@
       auto-optimise-store = true;
       builders-use-substitutes = true;
 
+      # Increase download buffer size to prevent warnings
+      download-buffer-size = 134217728; # 128 MB (default is 64 MB)
+
       # Substituters for faster builds
       substituters = [
         "https://cache.nixos.org/"

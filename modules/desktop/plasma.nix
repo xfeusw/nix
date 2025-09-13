@@ -29,6 +29,9 @@
       pulse.enable = true;
       jack.enable = true;
     };
+
+    # Enable PackageKit for Discover to work properly
+    packagekit.enable = true;
   };
 
   # Firefox with Wayland optimizations

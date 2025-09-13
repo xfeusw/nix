@@ -42,10 +42,10 @@
 
       # NixOS management
       check = "nix flake check";
-      sys-build = "sudo nixos-rebuild build --flake ~/.config/nix#acer";
-      sys-update = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --upgrade";
-      home-build = "home-manager build --flake ~/.config/nix#xfeusw";
-      home-update = "home-manager switch --flake ~/.config/nix#xfeusw";
+      sys-build = "sudo nixos-rebuild build --flake /home/xfeusw/.config/nix#acer";
+      sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --upgrade";
+      home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw";
+      home-update = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw";
 
       # System monitoring
       top = "btop";
@@ -58,7 +58,7 @@
     };
 
     # Enhanced initialization
-    initExtra = ''
+    initContent = ''
       # Initialize zoxide (smart cd)
       eval "$(zoxide init zsh)"
 
