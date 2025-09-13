@@ -1,5 +1,5 @@
 # hosts/acer/configuration.nix
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,8 +14,8 @@
     ../../modules/power.nix
     ../../modules/virtualization.nix
     ../../modules/backup.nix
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    # inputs.nixos-hardware.nixosModules.common-cpu-intel
+    # inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
   # Bootloader with enhanced options

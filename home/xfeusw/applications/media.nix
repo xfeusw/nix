@@ -10,21 +10,10 @@
       mpv
 
       # Graphics
-      gimp
-      inkscape
-      krita
-
-      # Photography
-      darktable
+      gimp3-with-plugins
 
       # Screen recording
       obs-studio
-
-      # Audio editing
-      audacity
-
-      # Video editing
-      kdenlive
     ]
     ++ (with unstable; [
       # Add unstable media packages here if needed

@@ -21,7 +21,6 @@
     nixvim-config = {
       url = "github:Ahwxorg/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     plasma-manager = {
@@ -70,7 +69,7 @@
           };
           modules = [
             ./hosts/acer/configuration.nix
-            nur.nixosModules.nur
+            nur.modules.nixos.default
           ];
         };
       };
@@ -93,7 +92,7 @@
           };
           modules = [
             ./home/xfeusw/home.nix
-            nur.hmModules.nur
+            nur.modules.homeManager.default
           ];
         };
       };

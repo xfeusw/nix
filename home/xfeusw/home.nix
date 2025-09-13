@@ -15,7 +15,7 @@
   # Import modular configurations
   imports = [
     plasma-manager.homeModules.plasma-manager
-    nur.hmModules.nur
+    nur.modules.homeManager.default
     ./development
     ./desktop
     ./shell

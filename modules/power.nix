@@ -1,7 +1,10 @@
 # modules/power.nix
 { ... }:
 {
-  # Power management
+  # Disable conflicting power management services
+  services.power-profiles-daemon.enable = false;
+
+  # Power management with TLP
   services.tlp = {
     enable = true;
     settings = {

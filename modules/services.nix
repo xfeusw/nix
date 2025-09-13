@@ -13,7 +13,7 @@
     };
 
     # Scanner support
-    sane.enable = true;
+    saned.enable = true;
 
     # Location services
     geoclue2.enable = true;

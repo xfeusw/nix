@@ -4,7 +4,7 @@
   imports = [
     ./rust.nix
     ./nodejs.nix
-    ./python.nix
+    # ./python.nix
     ./nix.nix
     ./haskell.nix
     ./java-scala.nix

@@ -5,10 +5,6 @@
     # Chat applications
     telegram-desktop
     discord
-    signal-desktop
-
-    # Email (if not using KMail)
-    thunderbird
 
     # Video conferencing
     zoom-us
