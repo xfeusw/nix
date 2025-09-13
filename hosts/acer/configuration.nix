@@ -3,17 +3,25 @@
 {
   imports = [
     ./hardware-configuration.nix
+
+    # Core system modules
     ../../modules/nix-settings.nix
-    ../../modules/system-packages.nix
     ../../modules/networking.nix
-    ../../modules/desktop/plasma.nix
     ../../modules/users.nix
-    ../../modules/services.nix
     ../../modules/security.nix
-    ../../modules/hardware.nix
     ../../modules/power.nix
-    ../../modules/virtualization.nix
     ../../modules/backup.nix
+
+    # Desktop environment
+    ../../modules/desktop/plasma.nix
+
+    # Modular imports (new structure)
+    ../../modules/packages # All package categories
+    ../../modules/hardware # All hardware configurations
+    ../../modules/services # All services
+    ../../modules/virtualization # All virtualization
+
+    # Hardware-specific (uncomment as needed)
     # inputs.nixos-hardware.nixosModules.common-cpu-intel
     # inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];

@@ -1,15 +1,8 @@
-# modules/virtualization.nix
+# modules/virtualization/kvm.nix
 { pkgs, ... }:
 {
-  # Podman instead of Docker for rootless containers
+  # KVM/QEMU virtualization
   virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-
-    # KVM/QEMU virtualization
     libvirtd = {
       enable = true;
       qemu = {
@@ -26,6 +19,9 @@
     spiceUSBRedirection.enable = true;
   };
 
+  # Virtual machine manager
   programs.virt-manager.enable = true;
+
+  # SPICE guest agent for better VM integration
   environment.systemPackages = with pkgs; [ spice-vdagent ];
 }
