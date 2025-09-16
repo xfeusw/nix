@@ -31,7 +31,9 @@
     gnomeExtensions.arc-menu
     gnomeExtensions.tiling-assistant
     gnomeExtensions.date-menu-formatter
-    gnomeExtensions.top-icons-plus
+    gnomeExtensions.topicons-plus
     gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.coverflow-alt-tab
+    gnomeExtensions.just-perfection
   ];
 }

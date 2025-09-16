@@ -13,5 +13,8 @@
     ./vitals.nix
     ./top-icons-plus.nix
     ./sound-output-device-chooser.nix
+    ./coverflow-alt-tab.nix
+    ./just-perfection.nix
+    ./workspace-indicator.nix
   ];
 }

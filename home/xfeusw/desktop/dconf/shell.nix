@@ -25,6 +25,9 @@
         "date-menu-formatter@marcinjakubowski.github.com"
         "top-icons-plus@lehmann.rocks"
         "sound-output-device-chooser@kgshank.net"
+        "coverflowalt-tab@palatis.blogspot.com"
+        "just-perfection-desktop@just-perfection"
+        "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
       ];
     };
   };
