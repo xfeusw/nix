@@ -74,7 +74,7 @@ The configuration is split into modular directories for clarity and maintainabil
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url> ~/.config/nix
+   git clone github:xfeusw/nix ~/.config/nix
    cd ~/.config/nix
    ```
 
