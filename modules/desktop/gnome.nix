@@ -1,11 +1,16 @@
 # modules/desktop/gnome.nix
 { pkgs, ... }:
 {
-  # Enable X11 and GNOME
+  # Enable GNOME with Wayland
   services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    enable = true; # Still needed for compatibility with some applications
+    displayManager.gdm = {
+      enable = true;
+      wayland = true; # Explicitly enable Wayland
+    };
+    desktopManager.gnome = {
+      enable = true;
+    };
 
     # Keyboard configuration
     xkb = {
@@ -14,7 +19,7 @@
     };
   };
 
-  # Audio with PipeWire (better than PulseAudio)
+  # Audio with PipeWire (Wayland-compatible)
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -33,7 +38,7 @@
     dconf-editor
   ];
 
-  # Remove some default GNOME applications you might not want
+  # Remove default GNOME applications not needed
   environment.gnome.excludePackages = with pkgs; [
     epiphany # GNOME web browser (you have Firefox)
     geary    # Email client
@@ -42,15 +47,35 @@
     totem    # Video player (you have VLC/MPV)
   ];
 
-  # Enable GNOME programs
-  programs.firefox.enable = true;
+  # Enable Firefox with Wayland optimizations
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal" = true;
+      "gfx.webrender.all" = true;
+      "mozilla.widget.use-wayland" = 1; # Explicit Wayland support
+    };
+  };
+
+  # Enable Wayland environment variables
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1"; # Enable Wayland for applications
+    MOZ_ENABLE_WAYLAND = "1"; # Firefox Wayland support
+    GDK_BACKEND = "wayland"; # Force GTK applications to use Wayland
+    QT_QPA_PLATFORM = "wayland"; # Force Qt applications to use Wayland
+    SDL_VIDEODRIVER = "wayland"; # SDL applications use Wayland
+    XDG_SESSION_TYPE = "wayland"; # Set session type to Wayland
+  };
 
   # GNOME keyring
   services.gnome.gnome-keyring.enable = true;
 
-  # Flatpak support (optional, good for GNOME apps)
+  # Flatpak support (Wayland-compatible)
   services.flatpak.enable = true;
 
   # Enable location services for automatic timezone
   services.geoclue2.enable = true;
+
+  # Ensure Wayland-compatible compositor
+  services.gnome.gnome-shell.enable = true;
 }
