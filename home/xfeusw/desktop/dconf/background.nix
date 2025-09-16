@@ -1,6 +1,6 @@
 { ... }:
 let
-  wallpaperPath = ../../../wallpaper/elizabeth.jpg;
+  wallpaperPath = ../../../../wallpaper/elizabeth.jpg;
 in
 {
   dconf.settings = {
