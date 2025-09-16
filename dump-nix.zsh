@@ -18,7 +18,7 @@ fi
 
 # Find and append relevant files, excluding specified patterns
 find home hosts modules \
-  -type d \( -name .git -o -name node_modules -o -name .direnv \) -prune -o \
+  -type d \( -name .git -o -name node_modules -o -name .direnv -o -name .github \) -prune -o \
   -type f \
   ! -name 'README.md' \
   ! -name 'flake.lock' \
