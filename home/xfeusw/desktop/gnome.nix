@@ -1,5 +1,8 @@
 # home/xfeusw/desktop/gnome.nix
 { pkgs, ... }:
+let
+  wallpaperPath = ../../../wallpaper/elizabeth.jpg;
+in
 {
   # GNOME-specific home manager configuration
 
@@ -32,6 +35,13 @@
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
       theme = "Adwaita";
+    };
+
+    # Set wallpaper (using relative path)
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://${wallpaperPath}";
+      picture-uri-dark = "file://${wallpaperPath}";
+      picture-options = "zoom";
     };
 
     "org/gnome/shell" = {

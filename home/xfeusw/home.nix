@@ -6,6 +6,7 @@
     homeDirectory = "/home/xfeusw";
     stateVersion = "25.05";
     enableNixpkgsReleaseCheck = false;
+    # activation.backupFileExtension = "backup";
   };
 
   programs.home-manager.enable = true;
