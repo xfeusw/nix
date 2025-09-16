@@ -1,148 +1,130 @@
-NixOS Configuration for Acer
-This repository contains a comprehensive NixOS flake configuration for an Acer laptop, designed for a modern, performant, and customizable development environment. It leverages NixOS 25.05 with unstable channel support, Home Manager for user configuration, and modular system settings for easy maintenance and reproducibility.
-Features
+# NixOS Configuration for Acer Laptop
 
-System Configuration:
+This repository contains a comprehensive [NixOS](https://nixos.org/) configuration tailored for an Acer laptop, utilizing the power of [Nix Flakes](https://nixos.wiki/wiki/Flakes) for reproducible and modular system setup. It includes both system-level (`nixosConfigurations`) and user-level (`homeConfigurations`) configurations managed through [Home Manager](https://github.com/nix-community/home-manager).
 
-Based on NixOS 25.05 with nixpkgs-unstable for cutting-edge packages
-Optimized for Intel CPU, SSD, and graphics with hardware-specific tweaks
-Uses systemd-boot with EFI support and kernel optimizations for performance
-Timezone set to Asia/Samarkand with en_US.UTF-8 locale
+## Overview
 
+This configuration is designed to provide a modern, performant, and developer-friendly environment with a focus on:
+- **GNOME Desktop Environment** with Wayland support and customized extensions.
+- **Development Tools** for multiple programming languages (Rust, Node.js, Haskell, Java/Scala, Nix).
+- **System Optimizations** for SSD, power management, and Intel hardware.
+- **Security Enhancements** including AppArmor, a hardened SSH setup, and a robust firewall.
+- **Modular Structure** for easy maintenance and extensibility.
 
-Desktop Environment:
+The configuration is organized into modular files for system settings, user environment, and specific hardware/services, ensuring clarity and reusability.
 
-GNOME with Wayland for a modern, smooth experience
-Customized with extensions: Dash-to-Panel, Vitals, Blur-my-Shell, GSConnect, Caffeine, ArcMenu, and more
-Adwaita-dark theme with custom wallpaper (elizabeth.jpg)
-Wayland-optimized environment variables for Firefox, GTK, and Qt apps
+## Features
 
+### System Configuration
+- **NixOS 25.05** as the base, with access to unstable packages via an overlay.
+- **GNOME Desktop** with Wayland, optimized with extensions like Dash-to-Panel, Blur-My-Shell, and Vitals.
+- **Hardware Optimizations** for Intel CPU, SSD, and Bluetooth.
+- **Power Management** using TLP and auto-cpufreq for efficient battery usage.
+- **Networking** with NetworkManager, fast DNS (Cloudflare/Google), and mDNS via Avahi.
+- **Virtualization** support for Podman (Docker-compatible) and KVM/QEMU.
+- **Backup** with Restic for daily backups of critical directories.
+- **Security** with AppArmor, a hardened SSH configuration, and firewall rate-limiting.
 
-User Environment:
+### User Configuration (Home Manager)
+- **Shell**: Zsh with Oh-My-Zsh, Starship prompt, and modern CLI tools (eza, bat, ripgrep, zoxide, fzf).
+- **Terminal**: Ghostty with custom configuration for appearance and Zsh integration.
+- **Development Tools**:
+  - Rust: cargo, rustc, rust-analyzer, rustfmt, clippy.
+  - Node.js: nodejs_22, pnpm, yarn, TypeScript, ESLint, Prettier.
+  - Haskell: GHC, Cabal, Stack, haskell-language-server.
+  - Java/Scala: JDK21, Maven, Gradle, Scala 3, SBT, Metals.
+  - Nix: nil, nixd, nixpkgs-fmt, alejandra, and other Nix-specific tools.
+- **Applications**:
+  - Browsers: Brave, Firefox Developer Edition, Google Chrome, Tor Browser.
+  - Communication: Telegram, Discord, Zoom, AnyDesk.
+  - Media: Spotify, VLC, MPV, GIMP, OBS Studio.
+  - Productivity: PDFtk, CopyQ (clipboard manager), unrar, p7zip.
+- **Git**: Configured with aliases, GPG signing (optional), and tools like lazygit and gitui.
+- **Desktop Customization**: Adwaita-dark theme, JetBrains Mono font, and a custom wallpaper.
 
-Managed by Home Manager for user xfeusw
-ZSH shell with Oh My Zsh, Starship prompt, and modern CLI tools (bat, eza, fd, ripgrep, zoxide, fzf)
-Git configuration with aliases, GitHub CLI, and TUIs (lazygit, gitui)
+## Structure
 
+The configuration is split into modular directories for clarity and maintainability:
 
-Development Tools:
+```
+├── flake.nix               # Main flake definition
+├── home/xfeusw/           # Home Manager configuration for user 'xfeusw'
+│   ├── applications/       # Application packages (browsers, media, etc.)
+│   ├── desktop/            # Desktop environment settings (GNOME, GTK, dconf)
+│   ├── development/        # Development tools and language-specific setups
+│   ├── shell/              # Shell configuration (Zsh, Starship, Ghostty)
+│   └── git.nix             # Git configuration
+├── hosts/acer/            # System configuration for Acer laptop
+│   ├── configuration.nix   # Main system configuration
+│   └── hardware-configuration.nix  # Hardware-specific settings
+├── modules/               # Reusable system modules
+│   ├── desktop/            # Desktop environment configurations
+│   ├── hardware/           # Hardware-specific settings
+│   ├── packages/           # System-wide packages
+│   ├── services/           # System services
+│   ├── virtualization/     # Virtualization and container settings
+│   ├── backup.nix         # Backup configuration
+│   ├── networking.nix      # Network settings
+│   ├── nix-settings.nix    # Nix-specific settings
+│   ├── power.nix          # Power management
+│   └── security.nix        # Security configurations
+```
 
-Comprehensive support for Rust, Node.js, Haskell, Java/Scala, and Nix
-Includes language servers, formatters, linters, and build tools
-Container tools: Podman, Docker Compose, Kubernetes (kubectl, k9s, helm)
-Database tools: SQLite, PostgreSQL
-Additional CLI utilities: jq, yq, httpie, mdbook, hyperfine, flamegraph
+## Installation
 
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url> ~/.config/nix
+   cd ~/.config/nix
+   ```
 
-System Services:
+2. **Build and Apply System Configuration**:
+   ```bash
+   sudo nixos-rebuild switch --flake .#acer
+   ```
 
-Restic for daily backups of /home/xfeusw/Documents, /home/xfeusw/.config, and /home/xfeusw/Pictures
-TLP and auto-cpufreq for power management
-Hardened SSH with no root login, no password auth, and rate limiting
-AppArmor and firewall with SSH rate limiting
-Podman for containerization and KVM/QEMU for virtualization
-Flatpak support for additional application flexibility
+3. **Build and Apply Home Manager Configuration**:
+   ```bash
+   home-manager switch --flake .#xfeusw
+   ```
 
+4. **Update the System**:
+   To update the system and inputs:
+   ```bash
+   sudo nixos-rebuild switch --flake .#acer --upgrade
+   ```
 
-Performance & Optimization:
+5. **Garbage Collection and Optimization**:
+   To clean up old generations and optimize the Nix store:
+   ```bash
+   nix-clean
+   ```
 
-SSD optimizations (noatime, nodiratime, fstrim)
-ZRAM for memory compression (50% of RAM)
-Aggressive Nix garbage collection and store optimization
-Automatic system upgrades with flake updates
+## Usage
 
+- **Zsh Aliases**: Use `ll` for detailed file listings, `gs` for git status, or `sys-update` for system updates.
+- **Development**: Access language-specific tools (e.g., `cargo`, `node`, `ghc`) and language servers directly.
+- **Desktop**: Customize GNOME via `gnome-tweaks` or manage extensions with `gnome-extension-manager`.
+- **Backup**: Restic automatically backs up `/home/xfeusw/{Documents,.config,Pictures}` daily. Check `/backup/restic` for snapshots.
+- **Virtualization**: Use `podman` for containers or `virt-manager` for KVM/QEMU virtual machines.
 
+## Customization
 
-Directory Structure
+- **Add New Packages**: Modify `home/xfeusw/applications/` or `modules/packages/` to include additional software.
+- **Change Theme/Wallpaper**: Update `home/xfeusw/desktop/dconf/` for GNOME settings or `home/xfeusw/shell/ghostty.nix` for terminal appearance.
+- **Extend Modules**: Add new modules in `modules/` for system-wide features or `home/xfeusw/` for user-specific configurations.
 
-flake.nix: Defines inputs (nixpkgs, home-manager, nixos-hardware, NUR, nixvim-config) and outputs for system (acer) and user (xfeusw) configurations
-hosts/acer/:
-configuration.nix: System settings, boot options, and module imports
-hardware-configuration.nix: Hardware-specific settings (filesystems, kernel modules)
+## Notes
 
+- **Secrets**: The Restic password is stored in `/etc/nixos/secrets/restic-password`. Replace `change-this-password` with a secure password.
+- **Unfree Software**: The configuration allows unfree packages (e.g., VSCode, Spotify). Modify `nixpkgs.config.allowUnfree` if needed.
+- **Nix Flakes**: Ensure `experimental-features = nix-command flakes` is enabled in your Nix configuration.
+- **Hardware**: The configuration is tailored for an Acer laptop with Intel CPU and SSD. Adjust `hosts/acer/hardware-configuration.nix` for other hardware.
 
-modules/:
-nix-settings.nix: Nix configuration with flakes, substituters, and auto-upgrade
-networking.nix: NetworkManager, fast DNS, and Avahi for mDNS
-security.nix: AppArmor, hardened SSH, and firewall
-power.nix: TLP, auto-cpufreq, and thermald for power efficiency
-users.nix: User xfeusw with ZSH and group permissions
-desktop/: GNOME and Plasma configurations
-hardware/: CPU, graphics, Bluetooth, and SSD optimizations
-packages/: System-wide packages (CLI tools, GNOME apps, fonts)
-services/: Optional database, printing, and location services
-virtualization/: Podman and KVM/QEMU configurations
+## Contributing
 
+Feel free to fork this repository and submit pull requests for improvements or additional features. Ensure changes are modular and follow the existing structure.
 
-home/xfeusw/:
-home.nix: Home Manager entry point
-applications/: Browsers (Brave, Firefox, Chrome, Tor), communication (Telegram, Discord, Zoom), media (Spotify, VLC, GIMP), and productivity tools
-desktop/: GNOME settings (GTK, dconf, extensions, wallpaper)
-development/: Language-specific tools (Rust, Node.js, Haskell, Java/Scala, Nix) and general dev tools
-shell/: ZSH with aliases, Starship prompt, and modern CLI replacements
-git.nix: Git configuration with aliases and tools
+## License
 
-
-
-Setup Instructions
-
-Clone the Repository:
-git clone github:xfeusw/nix ~/.config/nix
-cd ~/.config/nix
-
-
-Apply System Configuration:
-sudo nixos-rebuild switch --flake .#acer
-
-
-Apply Home Manager Configuration:
-home-manager switch --flake .#xfeusw
-
-
-Update System and Inputs:
-sudo nixos-rebuild switch --flake .#acer --upgrade
-nix flake update
-
-
-Clean Up Old Generations:
-nix-clean
-
-
-
-Customization
-
-Wallpaper: Update wallpaperPath in home/xfeusw/desktop/dconf/background.nix
-Restic Backup: Set a secure password in /etc/nixos/secrets/restic-password
-Services: Enable optional services (e.g., PostgreSQL, printing) in modules/services/
-Extensions: Modify GNOME extension settings in home/xfeusw/desktop/dconf/extensions/
-Packages: Add or remove packages in home/xfeusw/applications/ or modules/packages/
-ZSH Aliases: Customize aliases in home/xfeusw/shell/zsh.nix
-
-Maintenance
-
-Update Flake Inputs:
-nix flake update
-
-
-Check Flake:
-nix flake check
-
-
-Monitor Backups:
-systemctl status restic-backups-localbackup
-
-
-Garbage Collection:
-nix-clean
-
-
-
-Notes
-
-Ensure the wallpaper file (elizabeth.jpg) exists at the specified path
-Review commented-out modules (e.g., Python, printing) and enable as needed
-SSH keys must be set up for passwordless authentication
-Regularly check journalctl for service errors
-Use home-manager news to track Home Manager changes
-
-This configuration is designed for a balance of performance, usability, and development productivity. Adjust modules and settings to fit your specific needs.
+This configuration is licensed under the [MIT License](LICENSE).
