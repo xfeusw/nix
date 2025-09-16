@@ -46,6 +46,7 @@
       sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --upgrade";
       home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw";
       home-update = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw";
+      nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && home-manager expire-generations 0 && sudo nix-store --optimise && sudo nix-collect-garbage && nix-collect-garbage";
 
       # System monitoring
       top = "btop";
