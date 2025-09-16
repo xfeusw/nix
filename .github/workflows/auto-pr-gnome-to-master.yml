@@ -41,7 +41,7 @@ jobs:
           base: master
           branch: auto-gnome-to-master-${{ github.run_id }}  # Unique branch name
           labels: automated, gnome-sync
-          assignees: your-username  # Replace with your GitHub username
+          assignees: xfeusw
           draft: false
           delete-branch: true
 
