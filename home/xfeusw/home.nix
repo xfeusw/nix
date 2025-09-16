@@ -1,5 +1,5 @@
 # home/xfeusw/home.nix
-{ plasma-manager, nur, ... }:
+{ nur, ... }:
 {
   home = {
     username = "xfeusw";
@@ -14,7 +14,6 @@
 
   # Import modular configurations
   imports = [
-    plasma-manager.homeModules.plasma-manager
     nur.modules.homeManager.default
     ./development
     ./desktop
