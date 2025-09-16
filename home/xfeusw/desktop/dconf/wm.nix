@@ -13,7 +13,7 @@
       toggle-maximized = ["<Super>m"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Control><Alt>t";
+      binding = "<Super>Return";
       command = "ghostty";
       name = "Terminal";
     };
