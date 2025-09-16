@@ -4,7 +4,7 @@
   imports = [
     ./system-essentials.nix
     ./development-cli.nix
-    ./plasma.nix
+    ./gnome.nix
     ./media.nix
     ./fonts.nix
   ];
