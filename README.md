@@ -1,4 +1,4 @@
-NixOS Configuration
+NixOS Configuration :)
 This repository contains a comprehensive NixOS flake configuration, designed for a modern, performant, and customizable development environment. It leverages NixOS 25.05 with unstable channel support, Home Manager for user configuration, and modular system settings for easy maintenance and reproducibility.
 Features
 
