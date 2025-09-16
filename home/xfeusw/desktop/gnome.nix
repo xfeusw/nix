@@ -32,6 +32,10 @@ in
       cursor-theme = "Adwaita";
     };
 
+    "org/gnome/desktop/default-applications/terminal" = {
+      exec = "ghostty";
+    };
+
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
       theme = "Adwaita";
@@ -63,8 +67,10 @@ in
       toggle-maximized = ["<Super>m"];
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      terminal = ["<Control><Alt>t"];
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Control><Alt>t";
+      ommand = "ghostty";
+      name = "Terminal";
     };
   };
 }
