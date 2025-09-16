@@ -52,7 +52,8 @@ in
       favorite-apps = [
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
-        "org.gnome.Terminal.desktop"
+        "dev.zed.Zed.desktop"
+        "com.mitchellh.ghostty.desktop"
         "code.desktop"
         "spotify.desktop"
       ];
