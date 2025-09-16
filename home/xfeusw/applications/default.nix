@@ -13,5 +13,7 @@
     # Text editors
     vscode
     unstable.zed-editor
+
+    unstable.ghostty
   ];
 }

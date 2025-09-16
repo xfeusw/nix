@@ -55,5 +55,6 @@
     tree
     unzip
     p7zip
+    findutils
   ];
 }

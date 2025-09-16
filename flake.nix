@@ -22,12 +22,6 @@
       url = "github:Ahwxorg/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs =
@@ -38,7 +32,6 @@
       nixos-hardware,
       nur,
       nixvim-config,
-      plasma-manager,
       ...
     }:
     {
@@ -54,7 +47,6 @@
                 nixos-hardware
                 nur
                 nixvim-config
-                plasma-manager
                 ;
             };
             inherit
@@ -64,7 +56,6 @@
               nixos-hardware
               nur
               nixvim-config
-              plasma-manager
               ;
           };
           modules = [
@@ -82,7 +73,6 @@
               nixpkgs
               nixpkgs-unstable
               nixvim-config
-              plasma-manager
               nur
               ;
             unstable = import nixpkgs-unstable {
