@@ -1,11 +1,12 @@
 # home/xfeusw/home.nix
-{ plasma-manager, nur, ... }:
+{ nur, ... }:
 {
   home = {
     username = "xfeusw";
     homeDirectory = "/home/xfeusw";
     stateVersion = "25.05";
     enableNixpkgsReleaseCheck = false;
+    # activation.backupFileExtension = "backup";
   };
 
   programs.home-manager.enable = true;
@@ -14,7 +15,6 @@
 
   # Import modular configurations
   imports = [
-    plasma-manager.homeModules.plasma-manager
     nur.modules.homeManager.default
     ./development
     ./desktop

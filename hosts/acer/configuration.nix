@@ -13,7 +13,7 @@
     ../../modules/backup.nix
 
     # Desktop environment
-    ../../modules/desktop/plasma.nix
+    ../../modules/desktop/gnome.nix
 
     # Modular imports (new structure)
     ../../modules/packages # All package categories
