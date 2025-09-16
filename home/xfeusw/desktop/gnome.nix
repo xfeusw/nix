@@ -30,6 +30,7 @@ in
       gtk-theme = "Adwaita-dark";
       icon-theme = "Adwaita";
       cursor-theme = "Adwaita";
+      text-scaling-factor = 0.9;
     };
 
     "org/gnome/desktop/default-applications/terminal" = {
