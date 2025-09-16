@@ -8,7 +8,7 @@
     ./dash-to-panel.nix
     ./date-menu-formatter.nix
     ./gsconnect.nix
-    ./tiling-asssistant.nix
+    ./tiling-assistant.nix
     ./user-theme.nix
     ./vitals.nix
   ];

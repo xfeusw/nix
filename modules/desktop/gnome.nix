@@ -75,7 +75,4 @@
 
   # Enable location services for automatic timezone
   services.geoclue2.enable = true;
-
-  # Ensure Wayland-compatible compositor
-  services.gnome.gnome-shell.enable = true;
 }
