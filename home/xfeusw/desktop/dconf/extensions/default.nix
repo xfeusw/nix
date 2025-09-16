@@ -11,5 +11,7 @@
     ./tiling-assistant.nix
     ./user-theme.nix
     ./vitals.nix
+    ./top-icons-plus.nix
+    ./sound-output-device-chooser.nix
   ];
 }
