@@ -23,6 +23,8 @@
         "arcmenu@arcmenu.com"
         "tiling-assistant@leleat-on-github"
         "date-menu-formatter@marcinjakubowski.github.com"
+        "top-icons-plus@lehmann.rocks"
+        "sound-output-device-chooser@kgshank.net"
       ];
     };
   };

@@ -10,6 +10,7 @@
     home-manager
     xclip
     wl-clipboard
+    neofetch
 
     # Modern CLI tools
     bat # Better cat

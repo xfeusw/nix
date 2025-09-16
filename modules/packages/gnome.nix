@@ -31,5 +31,7 @@
     gnomeExtensions.arc-menu
     gnomeExtensions.tiling-assistant
     gnomeExtensions.date-menu-formatter
+    gnomeExtensions.top-icons-plus
+    gnomeExtensions.sound-output-device-chooser
   ];
 }
