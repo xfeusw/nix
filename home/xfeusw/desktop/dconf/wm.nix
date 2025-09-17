@@ -2,8 +2,11 @@
 {
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,maximize,close";
-      theme = "Adwaita";
+      # Default GNOME window controls (no minimize button)
+      # button-layout = "appmenu:close";           # Only close button on the right
+      button-layout = ":minimize,maximize,close"; # All buttons on right
+      # Alternative: button-layout = "close,minimize,maximize:"; # All buttons on left
+      theme = "Adwaita-dark";
     };
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
