@@ -15,7 +15,7 @@
     # Keyboard configuration
     xkb = {
       layout = "us,ru";
-      options = "eurosign:e,caps:escape,grp:alt_shift_toggle,grp:win_space_toggle";
+      options = "grp:alt_shift_toggle,grp:win_space_toggle,caps:escape,eurosign:e";
     };
   };
 
@@ -65,6 +65,10 @@
     QT_QPA_PLATFORM = "wayland"; # Force Qt applications to use Wayland
     SDL_VIDEODRIVER = "wayland"; # SDL applications use Wayland
     XDG_SESSION_TYPE = "wayland"; # Set session type to Wayland
+
+    GTK_THEME = "Adwaita-dark";
+
+    QT_STYLE_OVERRIDE = "Adwaita-Dark";
   };
 
   # GNOME keyring

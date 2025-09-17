@@ -1,3 +1,4 @@
+# home/xfeusw/desktop/gtk.nix
 { pkgs, ... }:
 {
   gtk = {
@@ -14,5 +15,43 @@
       name = "Adwaita";
       size = 24;
     };
+
+    # Custom CSS to override title bar colors
+    gtk3.extraCss = ''
+      headerbar {
+        background: #2d2d2d;
+        color: #ffffff;
+      }
+
+      headerbar button {
+        background: transparent;
+        color: #ffffff;
+      }
+
+      headerbar button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .titlebar {
+        background: #2d2d2d;
+        color: #ffffff;
+      }
+    '';
+
+    gtk4.extraCss = ''
+      headerbar {
+        background: #2d2d2d;
+        color: #ffffff;
+      }
+
+      headerbar button {
+        background: transparent;
+        color: #ffffff;
+      }
+
+      headerbar button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    '';
   };
 }

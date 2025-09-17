@@ -19,6 +19,9 @@
     gnome-extension-manager
     dconf-editor
 
+    gnome-themes-extra
+    gtk-engine-murrine
+
     # GNOME extensions
     gnomeExtensions.dash-to-panel
     gnomeExtensions.appindicator
@@ -34,6 +37,5 @@
     gnomeExtensions.topicons-plus
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.coverflow-alt-tab
-    gnomeExtensions.just-perfection
   ];
 }
