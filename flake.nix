@@ -79,7 +79,7 @@
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-pc-laptop
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           sops-nix.nixosModules.sops
 
           # Global overlays
