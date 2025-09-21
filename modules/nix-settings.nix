@@ -49,7 +49,7 @@
 
     # Nix daemon settings
     daemonCPUSchedPolicy = "batch";
-    daemonIOSchedClass = 2;
+    daemonIOSchedClass = "best-effort";
     daemonIOSchedPriority = 7;
   };
 
