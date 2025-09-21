@@ -1,5 +1,5 @@
 # modules/nix-settings.nix
-{ ... }:
+{ pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
