@@ -43,14 +43,6 @@
     allowReboot = false;  # Safety: don't auto-reboot
   };
 
-  # Improved garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d --max-freed 10G";
-    persistent = true;
-  };
-
   # SSD optimizations
   services = {
     fstrim = {
