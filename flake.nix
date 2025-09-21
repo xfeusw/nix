@@ -86,7 +86,7 @@
           {
             nixpkgs.overlays = [
               nixpkgs-wayland.overlay
-              nur.overlay
+              nur.overlays.default
               # Custom overlay for optimizations
               (final: prev: {
                 unstable = import nixpkgs-unstable {
@@ -126,7 +126,7 @@
           unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
-            overlays = [ nur.overlay ];
+            overlays = [ nur.overlays.default ];
           };
         };
         modules = [
@@ -136,7 +136,7 @@
           {
             nixpkgs.overlays = [
               nixpkgs-wayland.overlay
-              nur.overlay
+              nur.overlays.default
             ];
           }
         ];

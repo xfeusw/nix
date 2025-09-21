@@ -25,8 +25,6 @@
 
     polkit.enable = true;
     rtkit.enable = true;
-    dmesg.restrict = true;
-    systemd.coredump.enable = false;
   };
 
   # Fail2ban for intrusion prevention
