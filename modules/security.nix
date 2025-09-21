@@ -11,8 +11,6 @@
     };
 
     sudo = {
-      enable = true;
-      wheelNeedsPassword = true;  # SECURITY: Require password for sudo
       extraConfig = ''
         Defaults timestamp_timeout=15
         Defaults pwfeedback
@@ -135,7 +133,7 @@
 
   # Security tools
   environment.systemPackages = with pkgs; [
-    lynis chkrootkit rkhunter
+    lynis chkrootkit
     nmap wireshark tcpdump
   ];
 
