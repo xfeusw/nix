@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -24,67 +25,85 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      nixos-hardware,
-      nur,
-      nixvim-config,
-      ...
-    }:
-    {
-      nixosConfigurations = {
-        acer = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inputs = {
-              inherit
-                nixpkgs
-                nixpkgs-unstable
-                home-manager
-                nixos-hardware
-                nur
-                nixvim-config
-                ;
-            };
+  outputs = {
+    nixpkgs,
+    nixpkgs-unstable,
+    nixpkgs-wayland,
+    home-manager,
+    nixos-hardware,
+    nur,
+    nixvim-config,
+    ...
+  }: {
+    nixosConfigurations = {
+      acer = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inputs = {
             inherit
               nixpkgs
               nixpkgs-unstable
+              nixpkgs-wayland
               home-manager
               nixos-hardware
               nur
               nixvim-config
               ;
           };
-          modules = [
-            ./hosts/acer/configuration.nix
-            nur.modules.nixos.default
-          ];
+          inherit
+            nixpkgs
+            nixpkgs-unstable
+            nixpkgs-wayland
+            home-manager
+            nixos-hardware
+            nur
+            nixvim-config
+            ;
         };
-      };
+        modules = [
+          ./hosts/acer/configuration.nix
+          nur.modules.nixos.default
+          # Inject nixpkgs-wayland overlay + Cachix cache
+          {
+            nixpkgs.overlays = [nixpkgs-wayland.overlay];
 
-      homeConfigurations = {
-        xfeusw = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit
-              nixpkgs
-              nixpkgs-unstable
-              nixvim-config
-              nur
-              ;
-            unstable = import nixpkgs-unstable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
+            nix.settings = {
+              substituters = [
+                "https://cache.nixos.org/"
+                "https://nixpkgs-wayland.cachix.org"
+              ];
+              trusted-public-keys = [
+                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                "nixpkgs-wayland.cachix.org-1:4f5VsYvpWm4VE/KJioPp6TcbRZ3PgCWvu5Zf+HjMZ9o="
+              ];
             };
-          };
-          modules = [
-            ./home/xfeusw/home.nix
-            nur.modules.homeManager.default
-          ];
-        };
+          }
+        ];
       };
     };
+
+    homeConfigurations = {
+      xfeusw = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          inherit
+            nixpkgs
+            nixpkgs-unstable
+            nixpkgs-wayland
+            nixvim-config
+            nur
+            ;
+          unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [
+          ./home/xfeusw/home.nix
+          nur.modules.homeManager.default
+          {nixpkgs.overlays = [nixpkgs-wayland.overlay];}
+        ];
+      };
+    };
+  };
 }

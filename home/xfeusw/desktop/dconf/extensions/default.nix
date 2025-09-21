@@ -1,18 +1,15 @@
 { ... }:
 {
   imports = [
-    ./arc-menu.nix
     ./blur-my-shell.nix
-    ./caffeine.nix
     ./clipboard-indicator.nix
+    ./coverflow-alt-tab.nix
     ./dash-to-panel.nix
     ./date-menu-formatter.nix
-    ./gsconnect.nix
+    ./sound-output-device-chooser.nix
     ./tiling-assistant.nix
+    ./top-icons-plus.nix
     ./user-theme.nix
     ./vitals.nix
-    ./top-icons-plus.nix
-    ./sound-output-device-chooser.nix
-    ./coverflow-alt-tab.nix
   ];
 }
