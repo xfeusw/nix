@@ -13,5 +13,6 @@
     nodePackages.eslint
     nodePackages.prettier
     nodePackages."@tailwindcss/language-server"
+    package-version-server
   ];
 }
