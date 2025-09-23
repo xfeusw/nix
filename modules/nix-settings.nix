@@ -27,7 +27,7 @@
 
       # Sandbox settings
       sandbox = true;
-      restrict-eval = true;
+      restrict-eval = false;
 
       # Trusted users
       trusted-users = [ "root" "@wheel" ];

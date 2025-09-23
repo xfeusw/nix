@@ -1,6 +1,5 @@
 # home/xfeusw/shell/zsh.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -46,11 +45,12 @@
 
       # NixOS management
       check = "nix flake check";
-      sys-build = "sudo nixos-rebuild build --flake /home/xfeusw/.config/nix#acer";
-      sys-switch = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer";
-      sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --upgrade";
-      home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw";
-      home-switch = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw";
+      sys-build = "sudo nixos-rebuild build --flake /home/xfeusw/.config/nix#acer --option restrict-eval false";
+      sys-switch = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --option restrict-eval false";
+      sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --upgrade --option restrict-eval false";
+      home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
+      home-switch = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
+      home-update = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
       nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && home-manager expire-generations 0 && sudo nix-store --optimise";
       nix-search = "nix search nixpkgs";
 
@@ -169,7 +169,7 @@
         "z"
         "direnv"
       ];
-      theme = "";  # Using Starship instead
+      theme = ""; # Using Starship instead
     };
   };
 }
