@@ -1,0 +1,6 @@
+{ ... }:
+{
+  imports = [
+    ./dump-project.nix
+  ];
+}

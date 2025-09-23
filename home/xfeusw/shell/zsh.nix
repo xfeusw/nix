@@ -74,14 +74,17 @@
       # System info
       temp = "sensors";
       ports = "ss -tuln";
+
+      # Project dumping
+      dump = "dump-project";
+      dump-project = "dump-project";
+      dump-code = "dump-project";
+      project-dump = "dump-project";
     };
 
-    initExtraFirst = ''
+    initContent = ''
       # Performance: only load what's needed
       skip_global_compinit=1
-    '';
-
-    initExtra = ''
       # Initialize tools
       eval "$(zoxide init zsh)"
       eval "$(direnv hook zsh)"

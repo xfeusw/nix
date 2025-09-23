@@ -106,7 +106,7 @@
               ];
               trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                "nixpkgs-wayland.cachix.org-1:4f5VsYvpWm4VE/KJioPp6TcbRZ3PgCWvu5Zf+HjMZ9o="
+                "nixpkgs-wayland.cachix.org-1:3lwxaILJ2uV7M2uAyUBFx3L6Z8YQoa9N2vXgm6Q34Yo="
                 "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                 "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                 "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
@@ -126,12 +126,11 @@
           unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
-            overlays = [ nur.overlays.default ];
+            overlays = [nur.overlays.default];
           };
         };
         modules = [
           ./home/xfeusw/home.nix
-          nur.homeManagerModules.nur
           nix-colors.homeManagerModules.default
           {
             nixpkgs.overlays = [
