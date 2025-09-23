@@ -20,6 +20,8 @@
     ../../modules/hardware
     ../../modules/services
     ../../modules/virtualization
+
+    ../../modules/scripts
   ];
 
   # Bootloader with enhanced options
