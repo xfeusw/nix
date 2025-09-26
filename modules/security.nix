@@ -84,7 +84,7 @@
   # Enhanced firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 8080 ];
     allowPing = false;
     logReversePathDrops = true;
     logRefusedConnections = true;
