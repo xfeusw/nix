@@ -28,11 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +45,6 @@
     impermanence,
     nix-colors,
     firefox-addons,
-    sops-nix,
     flake-utils,
     hyprland,
     ...
@@ -68,7 +62,6 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-pc-laptop
           nur.modules.nixos.default
-          sops-nix.nixosModules.sops
 
           {
             nixpkgs.overlays = [

@@ -10,7 +10,6 @@
     ../../modules/users.nix
     ../../modules/security.nix
     ../../modules/performance.nix
-    ../../modules/backup.nix
 
     # Desktop environment
     ../../modules/desktop/gnome.nix
@@ -27,14 +26,13 @@
     loader = {
       systemd-boot = {
         enable = true;
-        configurationLimit = 10;  # Limit boot entries
-        editor = false;  # Security: disable boot editor
+        configurationLimit = 10;
+        editor = false;
       };
       efi.canTouchEfiVariables = true;
-      timeout = 2;  # Reduced timeout
+      timeout = 2;
     };
 
-    # Kernel optimizations
     kernelParams = [
       "quiet"
       "splash"
@@ -43,14 +41,12 @@
       "rd.udev.log_level=3"
     ];
 
-    # Faster boot
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelModules = [ "tcp_bbr" ];  # Better congestion control
+    kernelModules = [ "tcp_bbr" ];
   };
 
-  # Timezone and localization
-  time.timeZone = "Asia/Samarkand";
+  time.timeZone = "Asia/Tashkent";
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [
@@ -59,19 +55,5 @@
     ];
   };
 
-  # Secrets management
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/home/xfeusw/.config/sops/age/keys.txt";
-    secrets = {
-      user-password.neededForUsers = true;
-      restic-password = {
-        owner = "root";
-        mode = "0600";
-      };
-    };
-  };
-
-  # NixOS compatibility version
   system.stateVersion = "25.05";
 }

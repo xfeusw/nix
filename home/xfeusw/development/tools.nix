@@ -88,7 +88,6 @@
 
     # Security tools
     age
-    sops
 
     # Monitoring
     htop
