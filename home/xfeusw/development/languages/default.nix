@@ -7,6 +7,6 @@
     # ./python.nix
     ./nix.nix
     ./haskell.nix
-    ./java-scala.nix
+    # ./java-scala.nix
   ];
 }

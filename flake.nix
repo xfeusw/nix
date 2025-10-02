@@ -6,7 +6,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
-    # Utils for cleaner code
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -14,37 +13,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hardware optimization
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # Additional useful inputs
     nur.url = "github:nix-community/NUR";
-
-    # State management
     impermanence.url = "github:nix-community/impermanence";
-
-    # Consistent theming
     nix-colors.url = "github:misterio77/nix-colors";
 
-    # Firefox extensions
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Your personal nixvim configuration
     nixvim-config = {
       url = "github:Ahwxorg/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Secrets management
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland (optional Wayland compositor)
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,12 +70,10 @@
           nur.modules.nixos.default
           sops-nix.nixosModules.sops
 
-          # Global overlays
           {
             nixpkgs.overlays = [
               nixpkgs-wayland.overlay
               nur.overlays.default
-              # Custom overlay for optimizations
               (final: prev: {
                 unstable = import nixpkgs-unstable {
                   system = prev.system;
@@ -121,13 +107,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs;
-          inherit nixpkgs-unstable nixpkgs-wayland nixvim-config nur nix-colors firefox-addons;
-          unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-            overlays = [nur.overlays.default];
-          };
+          inherit inputs nixvim-config nix-colors firefox-addons;
         };
         modules = [
           ./home/xfeusw/home.nix
@@ -136,6 +116,12 @@
             nixpkgs.overlays = [
               nixpkgs-wayland.overlay
               nur.overlays.default
+              (final: prev: {
+                unstable = import nixpkgs-unstable {
+                  system = prev.system;
+                  config.allowUnfree = true;
+                };
+              })
             ];
           }
         ];
