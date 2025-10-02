@@ -3,10 +3,10 @@
 {
   imports = [
     ./rust.nix
-    ./nodejs.nix
+    # ./nodejs.nix
     # ./python.nix
     ./nix.nix
-    ./haskell.nix
+    # ./haskell.nix
     # ./java-scala.nix
   ];
 }
