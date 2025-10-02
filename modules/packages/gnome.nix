@@ -23,15 +23,11 @@
     gtk-engine-murrine
 
     # GNOME extensions
-    gnomeExtensions.dash-to-panel
     gnomeExtensions.appindicator
     gnomeExtensions.user-themes
     gnomeExtensions.vitals
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.gsconnect
-    gnomeExtensions.caffeine
-    gnomeExtensions.arc-menu
     gnomeExtensions.tiling-assistant
     gnomeExtensions.date-menu-formatter
     gnomeExtensions.topicons-plus

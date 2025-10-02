@@ -107,12 +107,13 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nixvim-config nix-colors firefox-addons;
+          inherit inputs nixvim-config nix-colors firefox-addons nur;
         };
         modules = [
           ./home/xfeusw/home.nix
           nix-colors.homeManagerModules.default
           {
+            nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
               nixpkgs-wayland.overlay
               nur.overlays.default
