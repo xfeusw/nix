@@ -31,5 +31,8 @@
     sysstat
     usbutils
     pciutils
+
+    nvidia-vaapi-driver
+    nvtopPackages.nvidia
   ];
 }

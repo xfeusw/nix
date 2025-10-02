@@ -75,6 +75,11 @@
               })
             ];
 
+            nixpkgs.config = {
+              allowUnfree = true;
+              nvidia.acceptLicense = true;
+            };
+
             nix.settings = {
               substituters = [
                 "https://cache.nixos.org/"
