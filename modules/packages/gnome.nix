@@ -23,15 +23,11 @@
     gtk-engine-murrine
 
     # GNOME extensions
-    gnomeExtensions.appindicator
     gnomeExtensions.user-themes
     gnomeExtensions.vitals
     gnomeExtensions.blur-my-shell
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.tiling-assistant
     gnomeExtensions.date-menu-formatter
     gnomeExtensions.topicons-plus
     gnomeExtensions.sound-output-device-chooser
-    gnomeExtensions.coverflow-alt-tab
   ];
 }

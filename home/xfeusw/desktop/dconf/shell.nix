@@ -12,7 +12,6 @@
         "org.telegram.desktop.desktop"
       ];
       enabled-extensions = [
-        "appindicator@ubuntu.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "Vitals@CoreCoding.com"
         "blur-my-shell@aunetx"
