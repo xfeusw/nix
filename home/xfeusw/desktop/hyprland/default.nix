@@ -8,6 +8,7 @@
     settings = builtins.foldl' (acc: module: acc // module) {} [
       (import ./autostart.nix)
       (import ./input.nix)
+      (import ./cursor.nix)
       (import ./general.nix)
       (import ./decoration.nix)
       (import ./animations.nix)
