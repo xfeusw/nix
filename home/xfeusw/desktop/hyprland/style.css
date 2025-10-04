@@ -1,15 +1,57 @@
 /* ==========================================
-   Waybar Style — Clean Catppuccin Hybrid
+   Waybar Style — Clean Catppuccin Hybrid (Fixed)
    ========================================== */
+
+/* ---------- Animations ---------- */
+@keyframes urgent-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes warning-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes critical-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 /* ---------- Global Styles ---------- */
 * {
-  font-family: JetBrainsMono Nerd Font, monospace;
+  font-family:
+    JetBrainsMono Nerd Font,
+    monospace;
   font-size: 13px;
   font-weight: 500;
   border: none;
   border-radius: 8px;
-  transition: background 0.3s, color 0.3s, opacity 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    opacity 0.3s;
 }
 
 window#waybar {
@@ -29,7 +71,9 @@ window#waybar {
   margin: 2px;
   color: #a6adc8;
   background: transparent;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 #workspaces button:hover {
@@ -64,7 +108,6 @@ window#waybar {
 #network,
 #pulseaudio,
 #tray,
-#backlight,
 #cpu,
 #memory {
   padding: 4px 10px;
@@ -110,18 +153,14 @@ window#waybar {
   background: rgba(245, 194, 231, 0.1);
 }
 
-/* ---------- Animations ---------- */
-@keyframes urgent-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+/* ---------- Tooltip ---------- */
+tooltip {
+  background: rgba(30, 30, 46, 0.95);
+  border: 2px solid rgba(137, 180, 250, 0.4);
+  border-radius: 10px;
+  padding: 10px;
 }
 
-@keyframes warning-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.75; }
-}
-
-@keyframes critical-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+tooltip label {
+  color: #cdd6f4;
 }
