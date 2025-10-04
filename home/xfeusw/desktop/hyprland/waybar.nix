@@ -7,12 +7,13 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 32;
-        spacing = 4;
+        height = 34;
+        spacing = 6;
 
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
         modules-right = [
+          "idle_inhibitor"
           "pulseaudio"
           "network"
           "cpu"
@@ -23,18 +24,16 @@
 
         # Workspaces
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{name}";
+          on-click = "activate";
           format-icons = {
-            "1" = "1";
-            "2" = "2";
-            "3" = "3";
-            "4" = "4";
-            "5" = "5";
-            "6" = "6";
-            "7" = "7";
-            "8" = "8";
-            "9" = "9";
-            "10" = "10";
+            "1" = "󰲠";
+            "2" = "󰲢";
+            "3" = "󰲤";
+            "4" = "󰲦";
+            "5" = "󰲨";
+            "active" = "";
+            "default" = "";
           };
           persistent-workspaces = {
             "*" = 5;
@@ -44,138 +43,118 @@
         # Window title
         "hyprland/window" = {
           format = "{}";
-          max-length = 50;
+          max-length = 60;
+          separate-outputs = true;
         };
 
-        # Clock
+        # Idle inhibitor
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󰅶";
+            deactivated = "󰾪";
+          };
+          tooltip-format-activated = "Idle inhibitor: ON";
+          tooltip-format-deactivated = "Idle inhibitor: OFF";
+        };
+
+        # Clock with calendar
         clock = {
           interval = 1;
           format = "{:%H:%M:%S}";
           format-alt = "{:%A, %B %d, %Y}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "month";
+            format = {
+              months = "<span color='#89b4fa'><b>{}</b></span>";
+              days = "<span color='#cdd6f4'>{}</span>";
+              today = "<span color='#f38ba8'><b><u>{}</u></b></span>";
+            };
+          };
         };
 
-        # CPU
+        # CPU with states
         cpu = {
           interval = 2;
-          format = " {usage}%";
+          format = "󰻠 {usage}%";
+          format-alt = "󰻠 {avg_frequency}GHz";
           tooltip = true;
+          states = {
+            warning = 70;
+            critical = 90;
+          };
         };
 
-        # Memory
+        # Memory with tooltip
         memory = {
           interval = 5;
-          format = " {}%";
-          tooltip-format = "RAM: {used:0.1f}G / {total:0.1f}G";
+          format = "󰍛 {}%";
+          format-alt = "󰍛 {used:0.1f}G/{total:0.1f}G";
+          tooltip-format = "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G";
+          states = {
+            warning = 70;
+            critical = 90;
+          };
         };
 
-        # Battery
+        # Battery with detailed info
         battery = {
           interval = 10;
           states = {
+            good = 80;
             warning = 30;
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
-          format-icons = ["" "" "" "" ""];
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰚥 {capacity}%";
+          format-full = "󱟢 Full";
+          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          tooltip-format = "{timeTo}\nCapacity: {capacity}%\nHealth: {health}%";
         };
 
-        # Network
+        # Network with bandwidth
         network = {
-          interval = 5;
-          format-wifi = " {essid}";
-          format-ethernet = " Connected";
-          format-disconnected = "⚠ Disconnected";
-          tooltip-format = "{ifname}: {ipaddr}";
+          interval = 3;
+          format-wifi = "󰖩 {essid}";
+          format-ethernet = "󰈀 {ipaddr}";
+          format-disconnected = "󰖪 Disconnected";
+          format-alt = "󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}";
+          tooltip-format = "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}\nSignal: {signalStrength}%";
+          tooltip-format-disconnected = "Disconnected";
+          on-click-right = "nm-connection-editor";
         };
 
-        # PulseAudio
+        # PulseAudio enhanced
         pulseaudio = {
           format = "{icon} {volume}%";
-          format-muted = " Muted";
+          format-muted = "󰝟 Muted";
+          format-bluetooth = "󰂯 {volume}%";
+          format-bluetooth-muted = "󰂯 󰝟";
           format-icons = {
-            default = ["" "" ""];
+            headphone = "󰋋";
+            hands-free = "󰋎";
+            headset = "󰋎";
+            phone = "󰄜";
+            portable = "󰄜";
+            car = "󰄋";
+            default = ["󰕿" "󰖀" "󰕾"];
           };
+          scroll-step = 5;
           on-click = "pavucontrol";
+          on-click-right = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          tooltip-format = "{desc}\nVolume: {volume}%";
         };
 
         # System tray
         tray = {
-          spacing = 10;
+          icon-size = 18;
+          spacing = 8;
         };
       };
     };
 
-    style = ''
-      * {
-        font-family: JetBrains Mono;
-        font-size: 13px;
-      }
-
-      window#waybar {
-        background-color: rgba(30, 30, 46, 0.9);
-        color: #cdd6f4;
-      }
-
-      #workspaces button {
-        padding: 0 10px;
-        color: #cdd6f4;
-        background: transparent;
-        border: none;
-      }
-
-      #workspaces button.active {
-        background-color: rgba(137, 180, 250, 0.3);
-      }
-
-      #workspaces button:hover {
-        background-color: rgba(137, 180, 250, 0.2);
-      }
-
-      #clock,
-      #battery,
-      #cpu,
-      #memory,
-      #network,
-      #pulseaudio,
-      #tray {
-        padding: 0 10px;
-      }
-
-      #battery.charging {
-        color: #a6e3a1;
-      }
-
-      #battery.warning:not(.charging) {
-        color: #fab387;
-      }
-
-      #battery.critical:not(.charging) {
-        color: #f38ba8;
-      }
-
-      #cpu {
-        color: #f9e2af;
-      }
-
-      #memory {
-        color: #f5c2e7;
-      }
-
-      #network {
-        color: #89b4fa;
-      }
-
-      #pulseaudio {
-        color: #cba6f7;
-      }
-
-      #clock {
-        color: #89dceb;
-        font-weight: bold;
-      }
-    '';
+    style = builtins.readFile ./style.css;
   };
 }
