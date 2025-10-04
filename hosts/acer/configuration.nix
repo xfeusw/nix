@@ -9,51 +9,51 @@
     ../../modules/networking.nix
     ../../modules/users.nix
     ../../modules/security.nix
-    ../../modules/power.nix
-    ../../modules/backup.nix
+    ../../modules/performance.nix
 
     # Desktop environment
-    ../../modules/desktop/gnome.nix
+    ../../modules/desktop/hyprland.nix
 
-    # Modular imports (new structure)
-    ../../modules/packages # All package categories
-    ../../modules/hardware # All hardware configurations
-    ../../modules/services # All services
-    ../../modules/virtualization # All virtualization
-
-    # Hardware-specific (uncomment as needed)
-    # inputs.nixos-hardware.nixosModules.common-cpu-intel
-    # inputs.nixos-hardware.nixosModules.common-pc-ssd
+    # Modular imports
+    ../../modules/packages
+    ../../modules/hardware
+    ../../modules/services
+    ../../modules/virtualization
   ];
 
   # Bootloader with enhanced options
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+        editor = false;
+      };
       efi.canTouchEfiVariables = true;
-      timeout = 3;
+      timeout = 2;
     };
 
-    # Kernel optimizations
     kernelParams = [
       "quiet"
       "splash"
-      "mitigations=off" # Better performance, slightly less security
+      "loglevel=3"
+      "systemd.show_status=auto"
+      "rd.udev.log_level=3"
     ];
 
-    kernel.sysctl = {
-      "vm.swappiness" = 10;
-      "vm.dirty_ratio" = 5;
-      "vm.dirty_background_ratio" = 2;
-      "net.core.rmem_max" = 16777216;
-      "net.core.wmem_max" = 16777216;
-    };
+    initrd.verbose = false;
+    consoleLogLevel = 0;
+    kernelModules = [ "tcp_bbr" ];
   };
 
-  # Timezone and localization
-  time.timeZone = "Asia/Samarkand";
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Asia/Tashkent";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ru_RU.UTF-8/UTF-8"
+    ];
+  };
 
-  # NixOS compatibility version
   system.stateVersion = "25.05";
 }

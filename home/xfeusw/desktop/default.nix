@@ -1,7 +1,9 @@
-# home/xfeusw/desktop/default.nix
 { ... }:
 {
   imports = [
-    ./gnome.nix
+    ./hyprland
+    ./waybar
+    ./wofi
+    ./mako
   ];
 }
