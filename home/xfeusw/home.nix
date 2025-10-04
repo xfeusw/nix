@@ -24,7 +24,7 @@
   imports = [
     nur.modules.homeManager.default
     ./development
-    ./desktop/hyprland
+    ./desktop
     ./shell
     ./applications
     ./git.nix
