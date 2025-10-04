@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./hyprland.nix
+    ./hyprland
     ./waybar.nix
     ./wofi.nix
     ./mako.nix
