@@ -1,0 +1,38 @@
+window {
+  margin: 0px;
+  border: 2px solid #89b4fa;
+  background-color: #1e1e2e;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+#input {
+  margin: 6px 8px;
+  border: none;
+  color: #cdd6f4;
+  background-color: #313244;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  caret-color: #89b4fa;
+}
+
+#entry {
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+#entry:selected {
+  background-color: #45475a;
+  border-left: 3px solid #89b4fa;
+}
+
+#text {
+  color: #cdd6f4;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+}
+
+#img {
+  margin-right: 8px;
+  border-radius: 4px;
+}

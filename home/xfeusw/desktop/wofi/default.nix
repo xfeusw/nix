@@ -5,7 +5,7 @@
   programs.wofi = {
     enable = true;
     settings = import ./settings.nix;
-    style = builtins.readFile ./style.nix;
+    style = builtins.readFile ./style.css;
   };
 
   home.packages = [
