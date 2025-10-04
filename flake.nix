@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    waybar.url = "github:Alexays/Waybar?ref=0.10.4";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -37,7 +37,7 @@
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-wayland,
+    waybar,
     home-manager,
     nixos-hardware,
     nur,
@@ -54,7 +54,8 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          inherit nixpkgs-unstable nixpkgs-wayland;
+          inherit nixpkgs-unstable;
+          inherit waybar; # Pass waybar input
         };
         modules = [
           ./hosts/acer/configuration.nix
@@ -62,16 +63,18 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-pc-laptop
           nur.modules.nixos.default
-
           {
             nixpkgs.overlays = [
-              nixpkgs-wayland.overlay
               nur.overlays.default
               (final: prev: {
                 unstable = import nixpkgs-unstable {
                   system = prev.system;
                   config.allowUnfree = true;
                 };
+                waybar = inputs.waybar.packages.${prev.system}.default; # Use Waybar from flake
+                weston = prev.weston.overrideAttrs (old: {
+                  mesonFlags = (old.mesonFlags or []) ++ [ "-Dbackend-vnc=false" ];
+                });
               })
             ];
 
@@ -83,14 +86,12 @@
             nix.settings = {
               substituters = [
                 "https://cache.nixos.org/"
-                "https://nixpkgs-wayland.cachix.org"
                 "https://nix-community.cachix.org"
                 "https://hyprland.cachix.org"
                 "https://nixpkgs-unfree.cachix.org"
               ];
               trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                "nixpkgs-wayland.cachix.org-1:3lwxaILJ2uV7M2uAyUBFx3L6Z8YQoa9N2vXgm6Q34Yo="
                 "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                 "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                 "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
@@ -113,13 +114,13 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
-              nixpkgs-wayland.overlay
               nur.overlays.default
               (final: prev: {
                 unstable = import nixpkgs-unstable {
                   system = prev.system;
                   config.allowUnfree = true;
                 };
+                waybar = inputs.waybar.packages.${prev.system}.default; # Use Waybar from flake
               })
             ];
           }
