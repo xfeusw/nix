@@ -1,3 +1,4 @@
+# home/xfeusw/desktop/hyprland/hyprland.nix
 { ... }:
 {
   wayland.windowManager.hyprland = {
@@ -6,7 +7,7 @@
     systemd.enable = true;
 
     settings = {
-      # Monitor configuration (adjust for your setup)
+      # Monitor configuration
       monitor = ",preferred,auto,1";
 
       # Autostart
@@ -33,48 +34,45 @@
         sensitivity = 0;
       };
 
-      # General settings
+      # General settings - optimized for performance
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        gaps_in = 3;           # Reduced from 5
+        gaps_out = 6;          # Reduced from 10
+        border_size = 0;       # Removed borders
 
         layout = "dwindle";
-
         allow_tearing = false;
       };
 
-      # Decoration
+      # Decoration - optimized for performance
       decoration = {
-        rounding = 8;
+        rounding = 0;          # Removed border radius
 
         blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
+          enabled = false;     # Disabled blur for better performance
         };
 
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = false;     # Disabled shadows for better performance
+        };
       };
 
-      # Animations
+      # Animations - faster and more responsive
       animations = {
         enabled = true;
 
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        bezier = [
+          "overshot, 0.05, 0.9, 0.1, 1.05"
+          "smoothOut, 0.36, 0, 0.66, -0.56"
+          "smoothIn, 0.25, 1, 0.5, 1"
+        ];
 
         animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+          "windows, 1, 4, overshot, slide"           # Faster: 7 -> 4
+          "windowsOut, 1, 4, smoothOut, slide"       # Faster: 7 -> 4
+          "border, 1, 6, default"                    # Faster: 10 -> 6
+          "fade, 1, 4, smoothIn"                     # Faster: 7 -> 4
+          "workspaces, 1, 4, default"                # Faster: 6 -> 4
         ];
       };
 
@@ -91,12 +89,18 @@
       # Gestures
       gestures = {
         workspace_swipe = true;
+        workspace_swipe_fingers = 3;
       };
 
-      # Miscellaneous
+      # Miscellaneous - performance optimizations
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        vfr = true;
+        vrr = 0;
+        mouse_move_enables_dpms = true;
+        key_press_enables_dpms = true;
       };
 
       # Key bindings
@@ -112,12 +116,19 @@
         "$mod, D, exec, wofi --show drun"
         "$mod, P, pseudo,"
         "$mod, J, togglesplit,"
+        "$mod, F, fullscreen,"
 
         # Move focus
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+        # Vim-style focus movement
+        "$mod, h, movefocus, l"
+        "$mod, l, movefocus, r"
+        "$mod, k, movefocus, u"
+        "$mod, j, movefocus, d"
 
         # Switch workspaces
         "$mod, 1, workspace, 1"
@@ -160,6 +171,12 @@
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+
+      # Window rules for better performance
+      windowrulev2 = [
+        "immediate, class:^(cs2)$"
+        "immediate, class:^(steam_app).*"
       ];
     };
   };

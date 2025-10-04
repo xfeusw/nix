@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
-  # Import Hyprland from your flake input
-  imports = [ inputs.hyprland.nixosModules.default ];
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
