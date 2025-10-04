@@ -1,32 +1,47 @@
+/* ===========================
+   Wofi — Minimal Centered Style
+   =========================== */
+
 window {
-  margin: 0px;
-  border: 2px solid #89b4fa;
-  background-color: #1e1e2e;
-  border-radius: 12px;
-  padding: 8px;
+  margin: 0;
+  border: none;
+  background-color: rgba(30, 30, 46, 0.92); /* subtle transparency */
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Input bar */
 #input {
-  margin: 6px 8px;
+  margin: 4px 8px;
   border: none;
   color: #cdd6f4;
-  background-color: #313244;
+  background-color: rgba(49, 50, 68, 0.95);
   border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 14px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
   caret-color: #89b4fa;
 }
 
+/* Entry layout */
+#inner-box, #outer-box {
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+
 #entry {
-  padding: 6px 10px;
+  padding: 5px 10px;
   border-radius: 6px;
 }
 
 #entry:selected {
-  background-color: #45475a;
-  border-left: 3px solid #89b4fa;
+  background-color: rgba(69, 71, 90, 0.9);
+  transition: background-color 0.15s ease-in-out;
 }
 
+/* Text and icons */
 #text {
   color: #cdd6f4;
   font-family: "JetBrainsMono Nerd Font", monospace;
@@ -35,4 +50,11 @@ window {
 #img {
   margin-right: 8px;
   border-radius: 4px;
+}
+
+/* Scroll area hidden */
+#scroll {
+  margin: 0;
+  border: none;
+  background: transparent;
 }

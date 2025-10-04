@@ -9,7 +9,7 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin "power-menu" (builtins.readFile ./scripts/power-menu.sh))
-    (pkgs.writeShellScriptBin "emoji-picker" (builtins.readFile ./scripts/emoji-picker.sh))
+    (pkgs.writeShellScriptBin "power-menu" (builtins.readFile ../scripts/power-menu.sh))
+    (pkgs.writeShellScriptBin "emoji-picker" (builtins.readFile ../scripts/emoji-picker.sh))
   ];
 }
