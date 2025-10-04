@@ -108,7 +108,7 @@
 
       bind = [
         # Applications
-        "$mod, Return, exec, kitty"
+        "$mod, Return, exec, ghostty"
         "$mod, Q, killactive,"
         "$mod, M, exit,"
         "$mod, E, exec, nautilus"

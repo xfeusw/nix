@@ -1,3 +1,4 @@
+# home/xfeusw/desktop/hyprland/waybar.nix
 { ... }:
 {
   programs.waybar = {
@@ -6,12 +7,21 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 32;
+        spacing = 4;
 
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "cpu" "memory" "battery" "tray" ];
+        modules-right = [
+          "pulseaudio"
+          "network"
+          "cpu"
+          "memory"
+          "battery"
+          "tray"
+        ];
 
+        # Workspaces
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
@@ -31,21 +41,37 @@
           };
         };
 
+        # Window title
+        "hyprland/window" = {
+          format = "{}";
+          max-length = 50;
+        };
+
+        # Clock
         clock = {
-          format = "{:%a %b %d, %I:%M %p}";
+          interval = 1;
+          format = "{:%H:%M:%S}";
+          format-alt = "{:%A, %B %d, %Y}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
 
+        # CPU
         cpu = {
+          interval = 2;
           format = " {usage}%";
-          tooltip = false;
+          tooltip = true;
         };
 
+        # Memory
         memory = {
+          interval = 5;
           format = " {}%";
+          tooltip-format = "RAM: {used:0.1f}G / {total:0.1f}G";
         };
 
+        # Battery
         battery = {
+          interval = 10;
           states = {
             warning = 30;
             critical = 15;
@@ -56,13 +82,16 @@
           format-icons = ["" "" "" "" ""];
         };
 
+        # Network
         network = {
+          interval = 5;
           format-wifi = " {essid}";
           format-ethernet = " Connected";
           format-disconnected = "⚠ Disconnected";
           tooltip-format = "{ifname}: {ipaddr}";
         };
 
+        # PulseAudio
         pulseaudio = {
           format = "{icon} {volume}%";
           format-muted = " Muted";
@@ -72,6 +101,7 @@
           on-click = "pavucontrol";
         };
 
+        # System tray
         tray = {
           spacing = 10;
         };
@@ -92,10 +122,16 @@
       #workspaces button {
         padding: 0 10px;
         color: #cdd6f4;
+        background: transparent;
+        border: none;
       }
 
       #workspaces button.active {
         background-color: rgba(137, 180, 250, 0.3);
+      }
+
+      #workspaces button:hover {
+        background-color: rgba(137, 180, 250, 0.2);
       }
 
       #clock,
@@ -118,6 +154,27 @@
 
       #battery.critical:not(.charging) {
         color: #f38ba8;
+      }
+
+      #cpu {
+        color: #f9e2af;
+      }
+
+      #memory {
+        color: #f5c2e7;
+      }
+
+      #network {
+        color: #89b4fa;
+      }
+
+      #pulseaudio {
+        color: #cba6f7;
+      }
+
+      #clock {
+        color: #89dceb;
+        font-weight: bold;
       }
     '';
   };
