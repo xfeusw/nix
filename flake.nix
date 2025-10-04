@@ -27,11 +27,6 @@
       url = "github:Ahwxorg/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -46,7 +41,6 @@
     nix-colors,
     firefox-addons,
     flake-utils,
-    hyprland,
     ...
   }: {
     nixosConfigurations = {
