@@ -24,6 +24,7 @@
   imports = [
     nur.modules.homeManager.default
     ./development
+    ./desktop
     ./shell
     ./applications
     ./git.nix
