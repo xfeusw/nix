@@ -35,4 +35,13 @@
     nvidia-vaapi-driver
     nvtopPackages.nvidia
   ];
+
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal" = true;
+      "gfx.webrender.all" = true;
+      "mozilla.widget.use-wayland" = 1; # Explicit Wayland support
+    };
+  };
 }
