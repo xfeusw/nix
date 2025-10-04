@@ -1,4 +1,3 @@
-# home/xfeusw/development/default.nix
 { nixvim-config, pkgs, ... }:
 {
   imports = [
@@ -6,7 +5,6 @@
     ./tools.nix
   ];
 
-  # Add nixvim
   home.packages = [
     nixvim-config.packages.${pkgs.system}.default
   ];

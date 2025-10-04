@@ -36,11 +36,11 @@
     gnome-tweaks
     gnome-extension-manager
     dconf-editor
+    gnome-network-displays
   ];
 
   # Remove default GNOME applications not needed
   environment.gnome.excludePackages = with pkgs; [
-    epiphany # GNOME web browser (you have Firefox)
     geary    # Email client
     gnome-music
     gnome-photos

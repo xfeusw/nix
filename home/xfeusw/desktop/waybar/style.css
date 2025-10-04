@@ -1,0 +1,166 @@
+/* ==========================================
+   Waybar Style — Clean Catppuccin Hybrid (Fixed)
+   ========================================== */
+
+/* ---------- Animations ---------- */
+@keyframes urgent-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes warning-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes critical-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ---------- Global Styles ---------- */
+* {
+  font-family:
+    JetBrainsMono Nerd Font,
+    monospace;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    opacity 0.3s;
+}
+
+window#waybar {
+  background: rgba(24, 24, 37, 0.9);
+  color: #cdd6f4;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+  margin: 0 6px;
+}
+
+#workspaces button {
+  padding: 4px 10px;
+  margin: 2px;
+  color: #a6adc8;
+  background: transparent;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+#workspaces button:hover {
+  background: rgba(137, 180, 250, 0.1);
+  color: #89b4fa;
+}
+
+#workspaces button.active {
+  background: rgba(137, 180, 250, 0.25);
+  color: #89b4fa;
+}
+
+#workspaces button.urgent {
+  background: rgba(243, 139, 168, 0.5);
+  color: #f38ba8;
+  animation: urgent-blink 1s ease infinite;
+}
+
+/* ---------- Window Title ---------- */
+#window {
+  margin: 0 10px;
+  padding: 4px 12px;
+  color: #89b4fa;
+  font-weight: 500;
+  background: rgba(137, 180, 250, 0.12);
+  border-radius: 6px;
+}
+
+/* ---------- Modules ---------- */
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#tray,
+#cpu,
+#memory {
+  padding: 4px 10px;
+  margin: 0 4px;
+  border-radius: 6px;
+}
+
+#clock {
+  color: #cba6f7;
+  background: rgba(203, 166, 247, 0.1);
+}
+
+#battery {
+  color: #a6e3a1;
+  background: rgba(166, 227, 161, 0.1);
+}
+
+#battery.warning {
+  color: #f9e2af;
+  background: rgba(249, 226, 175, 0.12);
+  animation: warning-pulse 1.2s ease-in-out infinite;
+}
+
+#battery.critical {
+  color: #f38ba8;
+  background: rgba(243, 139, 168, 0.15);
+  animation: critical-pulse 0.8s ease-in-out infinite;
+}
+
+#network {
+  color: #89dceb;
+  background: rgba(137, 220, 235, 0.12);
+}
+
+#pulseaudio {
+  color: #fab387;
+  background: rgba(250, 179, 135, 0.12);
+}
+
+#cpu,
+#memory {
+  color: #f5c2e7;
+  background: rgba(245, 194, 231, 0.1);
+}
+
+/* ---------- Tooltip ---------- */
+tooltip {
+  background: rgba(30, 30, 46, 0.95);
+  border: 2px solid rgba(137, 180, 250, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}

@@ -1,5 +1,5 @@
 # modules/nix-settings.nix
-{ inputs, ... }:
+{ pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -8,63 +8,62 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "ca-derivations"
+        "auto-allocate-uids"
       ];
+
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      warn-dirty = false;
 
-      # Increase download buffer size to prevent warnings
-      download-buffer-size = 134217728; # 128 MB (default is 64 MB)
+      # Performance optimizations
+      max-jobs = "auto";
+      cores = 0;  # Use all available cores
+      download-buffer-size = 134217728;  # 128 MB
 
-      # Substituters for faster builds
-      substituters = [
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-        "https://nixpkgs-unfree.cachix.org"
-      ];
+      # Build optimization
+      connect-timeout = 5;
+      stalled-download-timeout = 90;
 
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-      ];
+      # Sandbox settings
+      sandbox = true;
+      restrict-eval = false;
+
+      # Trusted users
+      trusted-users = [ "root" "@wheel" ];
     };
 
-    # More aggressive garbage collection
+    # Optimized garbage collection
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 3d --max-freed 15G";
+      options = "--delete-older-than 7d --max-freed 15G";
+      persistent = true;
     };
+
+    # Store optimization
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+
+    # Nix daemon settings
+    daemonCPUSchedPolicy = "batch";
+    daemonIOSchedClass = "best-effort";
+    daemonIOSchedPriority = 7;
   };
 
-  # Expose unstable as pkgs.unstable
-  nixpkgs.overlays = [
-    (final: prev: {
-      unstable = import inputs.nixpkgs-unstable {
-        system = prev.system;
-        config = prev.config;
-      };
-    })
+  # Enable flakes and new nix command globally
+  environment.systemPackages = with pkgs; [
+    nixpkgs-fmt
+    alejandra
+    nil
+    nixd
+    nix-tree
+    nix-du
+    nix-index
+    nix-output-monitor
+    cachix
+    nix-fast-build
   ];
-
-  # Automatic upgrades from this flake
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/xfeusw/.config/nix";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--update-input"
-      "nixpkgs-unstable"
-      "--commit-lock-file"
-    ];
-    dates = "03:00";
-    randomizedDelaySec = "45min";
-  };
-
-  # Enable ZRAM for memory compression
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-  };
 }

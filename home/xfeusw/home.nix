@@ -1,4 +1,3 @@
-# home/xfeusw/home.nix
 { nur, ... }:
 {
   home = {
@@ -6,14 +5,22 @@
     homeDirectory = "/home/xfeusw";
     stateVersion = "25.05";
     enableNixpkgsReleaseCheck = false;
-    # activation.backupFileExtension = "backup";
   };
 
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
-  # Import modular configurations
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+  };
+
   imports = [
     nur.modules.homeManager.default
     ./development
