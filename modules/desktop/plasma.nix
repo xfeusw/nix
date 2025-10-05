@@ -1,26 +1,33 @@
 # modules/desktop/plasma.nix
 { pkgs, ... }:
 {
-  # Enable X11 and Plasma 6 with Wayland support
+  # Enable Plasma 6 with Wayland support
   services = {
     xserver = {
       enable = true;
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        settings = {
-          # SDDM theming
-          Theme = "breeze";
-          Font = "JetBrains Mono,10,-1,5,50,0,0,0,0,0";
-        };
-      };
-      desktopManager.plasma6.enable = true;
-
       # Keyboard configuration
       xkb = {
         layout = "us,ru";
         options = "eurosign:e,caps:escape,grp:alt_shift_toggle,grp:win_space_toggle";
       };
+    };
+
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        settings = {
+          # SDDM theming - proper INI format
+          Theme = {
+            Current = "breeze";
+            Font = "JetBrains Mono,10,-1,5,50,0,0,0,0,0";
+          };
+        };
+      };
+    };
+
+    desktopManager = {
+      plasma6.enable = true;
     };
 
     # Audio configuration with PipeWire
@@ -46,30 +53,22 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Firefox with Wayland optimizations
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal" = true;
-      "gfx.webrender.all" = true;
-      "media.ffmpeg.vaapi.enable" = true;
-    };
-    nativeMessagingHosts = {
-      "org.kde.plasma.browser_integration" = true;
-    };
-  };
-
   # Additional Plasma packages at system level
   environment.systemPackages = with pkgs; [
-    # Core Plasma components
-    plasma6Packages.plasma-thunderbolt
-    plasma6Packages.plasma-firewall
-    plasma6Packages.plasma-vault
-    plasma6Packages.plasma-workspace-wallpapers
+    # KDE Applications (Qt6-based)
+    kdePackages.dolphin
+    kdePackages.konsole
+    kdePackages.kate
+    kdePackages.gwenview
+    kdePackages.okular
+    kdePackages.ark
+    kdePackages.kcalc
 
-    # System utilities
-    plasma6Packages.systemsettings
-    plasma6Packages.kde-inotify-survey
+    # SDDM KCM (Qt6-based)
+    kdePackages.sddm-kcm
+
+    # Additional useful packages
+    qt6.qtwayland             # Qt6 Wayland support
   ];
 
   # Wayland environment variables
@@ -88,7 +87,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
+      kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
     ];
     config = {

@@ -1,44 +1,44 @@
-# home/xfeusw/desktop/plasma/integration.nix
 { ... }:
 {
-  # KDE Connect for phone integration
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
-
-  # Plasma browser integration
-  services.plasma-browser-integration.enable = true;
+  # KDE Connect disabled (not used)
+  # services.kdeconnect.enable = false;
 
   programs.plasma = {
-    # Global configuration files
     configFile = {
       # Global KDE settings
-      "kdeglobals".settings = {
+      "kdeglobals" = {
         General = {
           ColorScheme = "BreezeDark";
           Name = "Breeze Dark";
           widgetStyle = "Breeze";
         };
-        "KDE".widgetStyle = "Breeze";
+        KDE = {
+          widgetStyle = "Breeze";
+        };
       };
 
       # KWin configuration
-      "kwinrc".settings = {
-        WindowsBorderless = true;
-        XwaylandMaximize = true;
-        XwaylandFullscreen = true;
+      "kwinrc" = {
+        Xwayland = {
+          XwaylandMaximizeMode = 1;
+        };
       };
 
       # Input device configuration
-      "kcminputrc".settings = {
-        "Mouse".XLbInptAccelProfileFlat = true;
-        "Touchpad".NaturalScroll = true;
+      "kcminputrc" = {
+        Mouse = {
+          XLbInptAccelProfileFlat = true;
+        };
+        Libinput = {
+          NaturalScroll = true;
+        };
       };
 
       # Notification configuration
-      "plasmanotifyrc".settings = {
-        Notifications.PopupPosition = "TopRight";
+      "plasmanotifyrc" = {
+        Notifications = {
+          PopupPosition = "TopRight";
+        };
       };
     };
   };
@@ -56,6 +56,6 @@
     CLUTTER_BACKEND = "wayland";
 
     # Application-specific
-    SAL_USE_VCLPLUGIN = "kf5";
+    SAL_USE_VCLPLUGIN = "kf6";
   };
 }
