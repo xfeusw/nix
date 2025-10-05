@@ -6,11 +6,11 @@
     enable = true;
     theme = {
       name = "Breeze-Dark";
-      package = pkgs.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
       name = "breeze-dark";
-      package = pkgs.breeze-icons;
+      package = pkgs.kdePackages.breeze-icons;
     };
     cursorTheme = {
       name = "Bibata-Modern-Ice";
@@ -28,29 +28,46 @@
   # Qt theme integration
   qt = {
     enable = true;
-    platformTheme = "kde";
+    platformTheme.name = "kde";
     style = {
       name = "breeze";
-      package = pkgs.breeze-qt5;
     };
   };
 
   programs.plasma = {
-    # Additional theming configurations
+    # Plasma configuration files
     configFile = {
       # Breeze theme settings
-      "breezerc".settings = {
-        Common.ShadowSize = "ShadowVeryLarge";
-        "kdeglobals"."General".ColorScheme = "BreezeDark";
+      "breezerc" = {
+        Common = {
+          ShadowSize = "ShadowVeryLarge";
+        };
       };
 
-      # Font configuration
-      "kdeglobals.KFonts".settings = {
-        activeFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        fixed = "JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        smallestReadableFont = "Noto Sans,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        toolBarFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        menuFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+      # Global KDE settings
+      "kdeglobals" = {
+        General = {
+          ColorScheme = "BreezeDark";
+          Name = "Breeze Dark";
+          widgetStyle = "Breeze";
+        };
+
+        KDE = {
+          widgetStyle = "Breeze";
+        };
+
+        # Font configuration
+        WM = {
+          activeFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        };
+
+        General = {
+          fixed = "JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+          font = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+          menuFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+          smallestReadableFont = "Noto Sans,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+          toolBarFont = "Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        };
       };
     };
   };

@@ -6,34 +6,36 @@
       # Theme and appearance
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      cursorTheme = "Bibata-Modern-Ice";
-      splashScreen = "None";
+      cursor.theme = "Bibata-Modern-Ice";
+      splashScreen.theme = "None";
 
       # Wallpaper configuration
-      wallpaper = "${./wallpaper/elizabeth.jpg}";
-
-      # Optional: Multiple wallpapers for slideshow
-      # wallpaper = [
-      #   "${./wallpaper/elizabeth.jpg}"
-      #   "${./wallpaper/another.jpg}"
-      # ];
-      # wallpaperMode = "Slideshow";
-      # wallpaperDuration = 300;
+      wallpaper = "${../../wallpaper/elizabeth.jpg}";
     };
 
-    # Hotkeys - disable conflicting ones for Hyprland compatibility
-    hotkeys.commands."launch" = { };
+    # Hotkeys configuration
+    hotkeys.commands = {
+      "launch-konsole" = {
+        name = "Launch Konsole";
+        key = "Meta+Return";
+        command = "konsole";
+      };
+    };
 
-    # Application launcher (Kickoff)
-    kickoff = {
-      favorites = [
-        "org.kde.dolphin.desktop"
-        "org.kde.konsole.desktop"
-        "firefox.desktop"
-        "org.kde.kate.desktop"
-        "systemsettings.desktop"
-        "org.kde.discover.desktop"
-      ];
+    configFile = {
+      # Kickoff configuration
+      "kickoffrc" = {
+        Favorites = {
+          FavoriteApps = "org.kde.dolphin.desktop,org.kde.konsole.desktop,firefox.desktop,org.kde.kate.desktop,systemsettings.desktop,org.kde.discover.desktop";
+        };
+      };
+
+      # Panel configuration
+      "plasmashellrc" = {
+        PlasmaViews = {
+          panelVisibility = 0;
+        };
+      };
     };
   };
 

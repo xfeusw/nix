@@ -2,9 +2,9 @@
 { ... }:
 {
   programs.plasma = {
-    # Dolphin file manager configuration
-    dolphin = {
-      settings = {
+    configFile = {
+      # Dolphin file manager configuration
+      "dolphinrc" = {
         General = {
           RememberOpenedTabs = false;
           ShowFullPath = true;
@@ -19,51 +19,48 @@
           AutoSelectExtension = false;
         };
       };
-    };
 
-    # Konsole terminal configuration
-    konsole = {
-      general = {
-        DefaultProfile = "DarkProfile";
-      };
-      profiles = {
-        DarkProfile = {
-          background-color = "#1e1e2e";
-          color-scheme = "CatppuccinMocha";
-          font = "JetBrainsMono Nerd Font,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-          foreground-color = "#cdd6f4";
-          # Additional terminal settings
-          "Appearance" = {
-            ColorScheme = "CatppuccinMocha";
-          };
-          "Scrolling" = {
-            HistoryMode = 2;
-            ScrollBarPosition = 2;
-          };
+      # Konsole terminal configuration
+      "konsolerc" = {
+        "Desktop Entry" = {
+          DefaultProfile = "DarkProfile.profile";
         };
       };
-    };
 
-    # Kate text editor configuration
-    kate = {
-      settings = {
+      # Kate text editor configuration
+      "katerc" = {
         General = {
           "Default Encoding" = "UTF-8";
         };
-        Editor = {
-          "Font Family" = "JetBrainsMono Nerd Font";
-          "Font Size" = 11;
+        "KTextEditor Document" = {
           "Tab Width" = 4;
           "Replace Tabs" = true;
         };
+        "KTextEditor View" = {
+          "Font Family" = "JetBrainsMono Nerd Font";
+          "Font Size" = 11;
+        };
       };
     };
-
-    # System Settings configuration
-    systemsettings = {
-      # You can add specific system settings configurations here
-    };
   };
+
+  # Konsole profile
+  home.file.".local/share/konsole/DarkProfile.profile".text = ''
+    [Appearance]
+    ColorScheme=Breeze
+    Font=JetBrainsMono Nerd Font,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+    [General]
+    Name=DarkProfile
+    Parent=FALLBACK/
+
+    [Scrolling]
+    HistoryMode=2
+    ScrollBarPosition=2
+
+    [Terminal Features]
+    BlinkingCursorEnabled=true
+  '';
 
   # XDG MIME type associations
   xdg.mimeApps = {

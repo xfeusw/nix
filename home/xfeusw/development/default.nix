@@ -1,8 +1,8 @@
 { nixvim-config, pkgs, ... }:
 {
   imports = [
-    ./languages
     ./tools.nix
+    ./languages
   ];
 
   home.packages = [
