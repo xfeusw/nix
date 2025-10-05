@@ -12,7 +12,7 @@
     ../../modules/performance.nix
 
     # Desktop environment
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/plasma.nix
 
     # Modular imports
     ../../modules/packages

@@ -1,26 +1,20 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-
-  ] ++ (with pkgs.unstable; [
+  home.packages = with pkgs.unstable; [
     # Browsers
     brave
     firefox-devedition
     google-chrome
     tor-browser
-    browserpass
 
     # Communication
     telegram-desktop
     discord
-    zoom-us
 
     # Media
     spotify
     vlc
     mpv
-    # gimp3-with-plugins
-    # obs-studio
 
     # Productivity
     pdftk
@@ -31,5 +25,5 @@
     # Text editors
     vscode
     zed-editor
-  ]);
+  ];
 }

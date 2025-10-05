@@ -13,6 +13,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Add Plasma Manager input
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
@@ -34,6 +41,7 @@
     nixpkgs-unstable,
     waybar,
     home-manager,
+    plasma-manager,
     nixos-hardware,
     nur,
     nixvim-config,
@@ -49,7 +57,7 @@
         specialArgs = {
           inherit inputs;
           inherit nixpkgs-unstable;
-          inherit waybar; # Pass waybar input
+          inherit waybar;
         };
         modules = [
           ./hosts/acer/configuration.nix
@@ -65,7 +73,7 @@
                   system = prev.system;
                   config.allowUnfree = true;
                 };
-                waybar = inputs.waybar.packages.${prev.system}.default; # Use Waybar from flake
+                waybar = inputs.waybar.packages.${prev.system}.default;
                 weston = prev.weston.overrideAttrs (old: {
                   mesonFlags = (old.mesonFlags or []) ++ [ "-Dbackend-vnc=false" ];
                 });
@@ -104,6 +112,7 @@
         };
         modules = [
           ./home/xfeusw/home.nix
+          plasma-manager.homeModules.plasma-manager  # Add Plasma Manager module
           nix-colors.homeManagerModules.default
           {
             nixpkgs.config.allowUnfree = true;
@@ -114,7 +123,7 @@
                   system = prev.system;
                   config.allowUnfree = true;
                 };
-                waybar = inputs.waybar.packages.${prev.system}.default; # Use Waybar from flake
+                waybar = inputs.waybar.packages.${prev.system}.default;
               })
             ];
           }

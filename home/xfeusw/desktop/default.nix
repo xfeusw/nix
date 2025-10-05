@@ -1,9 +1,6 @@
 { ... }:
 {
   imports = [
-    ./hyprland
-    ./waybar
-    ./wofi
-    ./mako
+    ./plasma
   ];
 }
