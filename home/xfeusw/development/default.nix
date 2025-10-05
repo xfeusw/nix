@@ -2,7 +2,7 @@
 {
   imports = [
     ./tools.nix
-    ./languages
+    ./nix.nix
   ];
 
   home.packages = [
