@@ -1,18 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # Modern development tools
-    gitoxide
-    delta
-    difftastic
-    just
-    direnv
-    cachix
-    nix-fast-build
-    nix-update
-    nurl
-
-    # Enhanced CLI tools
+    # Essential CLI tools
     bat
     eza
     fd
@@ -20,80 +9,44 @@
     zoxide
     fzf
     btop
-    dust
-    procs
-    hyperfine
-    tokei
 
-    # Build tools
+    # Build essentials (needed by many toolchains)
     gcc
     cmake
     gnumake
     pkg-config
-    meson
-    ninja
 
-    # Debuggers and profilers
+    # Debuggers
     gdb
-    valgrind
     lldb
-    perf-tools
-    flamegraph
 
     # Version control
     git-lfs
     gh
     lazygit
-    gitui
-    git-absorb
 
     # Container tools
     docker-compose
-    podman-compose
     kubectl
     k9s
-    helm
-    dive
-    ctop
 
-    # Database tools
-    sqlite
-    postgresql_16
-    redis
-    dbeaver-bin
-
-    # API and network tools
+    # API tools
     httpie
     curl
     wget
-    postman
-    insomnia
-
-    # Documentation
-    mdbook
-    hugo
 
     # Text processing
     jq
     yq
-    xmlstarlet
 
     # System tools
-    file
     tree
     unzip
-    findutils
-    patchelf
-    binutils
 
-    # Security tools
-    age
-
-    # Monitoring
-    htop
-    iotop
-    nethogs
-    bandwhich
+    # Nix tools
+    cachix
+    direnv
+    just
   ];
 
   programs.direnv = {
