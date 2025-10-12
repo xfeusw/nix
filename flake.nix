@@ -31,7 +31,7 @@
     };
 
     nixvim-config = {
-      url = "github:Ahwxorg/nixvim-config";
+      url = "github:xfeusw/astronixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

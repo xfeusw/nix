@@ -1,6 +1,8 @@
 # home/xfeusw/desktop/plasma/workspace.nix
-{ ... }:
+{ config, ... }:
 {
+  home.file.".local/share/wallpapers/elizabeth.jpg".source = ../../wallpaper/elizabeth.jpg;
+
   programs.plasma = {
     workspace = {
       # Theme and appearance
@@ -10,7 +12,7 @@
       splashScreen.theme = "None";
 
       # Wallpaper configuration
-      wallpaper = "${../../wallpaper/elizabeth.jpg}";
+      wallpaper = "${config.home.homeDirectory}/.local/share/wallpapers/elizabeth.jpg";
     };
 
     # Hotkeys configuration

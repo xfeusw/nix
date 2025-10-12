@@ -19,7 +19,7 @@
       # Performance optimizations
       max-jobs = "auto";
       cores = 0;  # Use all available cores
-      download-buffer-size = 134217728;  # 128 MB
+      download-buffer-size = 536870912;  # 128 MB
 
       # Build optimization
       connect-timeout = 5;

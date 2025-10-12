@@ -47,6 +47,8 @@
     cachix
     direnv
     just
+
+    unstable.dockerfile-language-server-nodejs
   ];
 
   programs.direnv = {
