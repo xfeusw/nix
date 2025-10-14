@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    waybar.url = "github:Alexays/Waybar?ref=0.10.4";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -13,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Add Plasma Manager input
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,22 +27,15 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixvim-config = {
-      url = "github:xfeusw/astronixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
-    waybar,
     home-manager,
     plasma-manager,
     nixos-hardware,
     nur,
-    nixvim-config,
     impermanence,
     nix-colors,
     firefox-addons,
@@ -55,9 +46,7 @@
       acer = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs;
-          inherit nixpkgs-unstable;
-          inherit waybar;
+          inherit inputs nixpkgs-unstable;
         };
         modules = [
           ./hosts/acer/configuration.nix
@@ -73,7 +62,6 @@
                   system = prev.system;
                   config.allowUnfree = true;
                 };
-                waybar = inputs.waybar.packages.${prev.system}.default;
                 weston = prev.weston.overrideAttrs (old: {
                   mesonFlags = (old.mesonFlags or []) ++ [ "-Dbackend-vnc=false" ];
                 });
@@ -108,11 +96,11 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nixvim-config nix-colors firefox-addons nur;
+          inherit inputs nix-colors firefox-addons nur;
         };
         modules = [
           ./home/xfeusw/home.nix
-          plasma-manager.homeModules.plasma-manager  # Add Plasma Manager module
+          plasma-manager.homeModules.plasma-manager
           nix-colors.homeManagerModules.default
           {
             nixpkgs.config.allowUnfree = true;
@@ -123,7 +111,6 @@
                   system = prev.system;
                   config.allowUnfree = true;
                 };
-                waybar = inputs.waybar.packages.${prev.system}.default;
               })
             ];
           }
