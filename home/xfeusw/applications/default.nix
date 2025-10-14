@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./vscode.nix
+  ];
+
   home.packages = with pkgs.unstable; [
     # Browsers
     brave
