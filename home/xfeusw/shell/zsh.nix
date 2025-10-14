@@ -81,7 +81,6 @@
       skip_global_compinit=1
       # Initialize tools
       eval "$(zoxide init zsh)"
-      eval "$(direnv hook zsh)"
 
       # FZF configuration
       export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -161,7 +160,6 @@
         "command-not-found"
         "extract"
         "z"
-        "direnv"
       ];
       theme = ""; # Using Starship instead
     };

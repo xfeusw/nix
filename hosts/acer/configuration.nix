@@ -55,5 +55,8 @@
     ];
   };
 
+  systemd.services.nixos-upgrade.enable = false;
+  systemd.timers.nixos-upgrade.enable = false;
+
   system.stateVersion = "25.05";
 }
