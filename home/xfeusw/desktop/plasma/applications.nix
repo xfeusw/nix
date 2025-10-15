@@ -66,6 +66,13 @@
           backgroundcontrastEnabled = false;
         };
       };
+
+      "kactivitymanagerdrc" = {
+        "activities" = {
+          "enabled" = false;
+        };
+        "Plugin-org.kde.ActivityManager.Resources.ScoringEnabled" = false;
+      };
     };
   };
 
@@ -104,11 +111,5 @@
       "video/mp4" = "org.kde.dragonplayer.desktop";
       "audio/mpeg" = "org.kde.elisa.desktop";
     };
-  };
-
-  # Disable indexing and analytics
-  services.plasma = {
-    # Disable kactivitymanagerd
-    enableActivityManager = false;
   };
 }

@@ -1,62 +1,53 @@
-# modules/performance.nix
-{...}: {
-  # Memory and swap optimization
+{lib, ...}: {
+  # Use zram swap — safe system-wide default
   zramSwap = {
-    enable = true;
-    memoryPercent = 100; # Reduced from 50%
-    algorithm = "zstd"; # Better compression
+    enable = lib.mkDefault true;
+    memoryPercent = lib.mkDefault 100;
+    algorithm = lib.mkDefault "zstd";
   };
 
-  # Kernel optimizations for performance
-  boot.kernel.sysctl = {
-    # Memory management
-    "vm.swappiness" = 10;
-    "vm.dirty_ratio" = 5;
-    "vm.dirty_background_ratio" = 2;
-    "vm.vfs_cache_pressure" = 50;
-    "vm.dirty_writeback_centisecs" = 1500;
-    "vm.dirty_expire_centisecs" = 3000;
+  # Kernel-level tuning
+  boot.kernel.sysctl = lib.mkMerge [
+    {
+      "vm.swappiness" = lib.mkDefault 10;
+      "vm.vfs_cache_pressure" = lib.mkDefault 50;
+      "vm.dirty_ratio" = lib.mkDefault 5;
+      "vm.dirty_background_ratio" = lib.mkDefault 2;
+      "vm.dirty_writeback_centisecs" = lib.mkDefault 1500;
+      "vm.dirty_expire_centisecs" = lib.mkDefault 3000;
 
-    # Network optimizations
-    "net.core.rmem_max" = 134217728;
-    "net.core.wmem_max" = 134217728;
-    "net.core.netdev_max_backlog" = 5000;
-    "net.core.default_qdisc" = "fq";
-    "net.ipv4.tcp_congestion_control" = "bbr";
-    "net.ipv4.tcp_rmem" = "4096 12582912 16777216";
-    "net.ipv4.tcp_wmem" = "4096 12582912 16777216";
-    "net.ipv4.tcp_fastopen" = 3;
-    "net.ipv4.tcp_slow_start_after_idle" = 0;
+      # Network tuning
+      "net.core.default_qdisc" = lib.mkDefault "fq";
+      "net.ipv4.tcp_congestion_control" = lib.mkDefault "bbr";
+      "net.core.rmem_max" = lib.mkDefault 134217728;
+      "net.core.wmem_max" = lib.mkDefault 134217728;
+      "net.ipv4.tcp_rmem" = lib.mkDefault "4096 12582912 16777216";
+      "net.ipv4.tcp_wmem" = lib.mkDefault "4096 12582912 16777216";
+      "net.core.netdev_max_backlog" = lib.mkDefault 5000;
+      "net.ipv4.tcp_fastopen" = lib.mkDefault 3;
+      "net.ipv4.tcp_slow_start_after_idle" = lib.mkDefault 0;
 
-    # File system optimizations
-    "fs.file-max" = 2097152;
-    "fs.inotify.max_user_watches" = 524288;
-  };
+      # Filesystem tuning
+      "fs.file-max" = lib.mkDefault 2097152;
+      "fs.inotify.max_user_watches" = lib.mkForce 524288;
+    }
+  ];
 
-  # More conservative auto-upgrade
+  # Auto system updates
   system.autoUpgrade = {
-    enable = true;
-    flake = "/home/xfeusw/.config/nix";
-    dates = "weekly"; # Changed from daily
-    randomizedDelaySec = "2h";
-    allowReboot = false; # Safety: don't auto-reboot
+    enable = lib.mkDefault true;
+    flake = lib.mkDefault "/home/xfeusw/.config/nix";
+    dates = lib.mkDefault "weekly";
+    randomizedDelaySec = lib.mkDefault "2h";
+    allowReboot = lib.mkDefault false;
   };
 
-  # SSD optimizations
-  services = {
-    fstrim = {
-      enable = true;
-      interval = "daily";
-    };
+  # SSD trimming
+  services.fstrim.enable = lib.mkDefault true;
 
-    # Disable write barriers for better SSD performance (if using ext4)
-    # Note: This sacrifices some data safety for performance
-    # Remove if you prefer safety over speed
-  };
-
-  # Power management for better performance/battery balance
+  # CPU and power
   powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "schedutil"; # Better than ondemand
+    enable = lib.mkDefault true;
+    cpuFreqGovernor = lib.mkDefault "schedutil";
   };
 }

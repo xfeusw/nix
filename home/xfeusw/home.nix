@@ -1,4 +1,9 @@
-{nur, ...}: {
+{
+  nur,
+  pkgs,
+  lib,
+  ...
+}: {
   home = {
     username = "xfeusw";
     homeDirectory = "/home/xfeusw";
@@ -21,17 +26,21 @@
   };
 
   xdg.enable = true;
-  xdg.systemDirs.data = ["/run/current-system/sw/share"];
+  xdg.systemDirs.data = [
+    "/run/current-system/sw/share"
+    "/usr/share"
+    "/usr/local/share"
+  ];
   xdg.userDirs.enable = true;
 
-  home.sessionVariables = {
-    XDG_DATA_DIRS = "${pkgs.lib.concatStringsSep ":" [
-      "$HOME/.nix-profile/share"
-      "$HOME/.local/share"
-      "/run/current-system/sw/share"
-      "/usr/share"
-    ]}";
+  home.sessionVariables = lib.mkForce {
+    XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
   };
+
+  # Ensure plasma can find home-manager applications
+  home.file.".config/plasma-workspace/env/home-manager-paths.sh".text = ''
+    export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.local/share:$XDG_DATA_DIRS"
+  '';
 
   imports = [
     nur.modules.homeManager.default
