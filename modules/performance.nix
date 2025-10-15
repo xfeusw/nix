@@ -1,19 +1,18 @@
 # modules/performance.nix
-{ ... }:
-{
+{...}: {
   # Memory and swap optimization
   zramSwap = {
     enable = true;
-    memoryPercent = 25;  # Reduced from 50%
-    algorithm = "zstd";  # Better compression
+    memoryPercent = 100; # Reduced from 50%
+    algorithm = "zstd"; # Better compression
   };
 
   # Kernel optimizations for performance
   boot.kernel.sysctl = {
     # Memory management
-    "vm.swappiness" = 1;
-    "vm.dirty_ratio" = 3;
-    "vm.dirty_background_ratio" = 1;
+    "vm.swappiness" = 10;
+    "vm.dirty_ratio" = 5;
+    "vm.dirty_background_ratio" = 2;
     "vm.vfs_cache_pressure" = 50;
     "vm.dirty_writeback_centisecs" = 1500;
     "vm.dirty_expire_centisecs" = 3000;
@@ -38,9 +37,9 @@
   system.autoUpgrade = {
     enable = true;
     flake = "/home/xfeusw/.config/nix";
-    dates = "weekly";  # Changed from daily
+    dates = "weekly"; # Changed from daily
     randomizedDelaySec = "2h";
-    allowReboot = false;  # Safety: don't auto-reboot
+    allowReboot = false; # Safety: don't auto-reboot
   };
 
   # SSD optimizations
@@ -58,6 +57,6 @@
   # Power management for better performance/battery balance
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "schedutil";  # Better than ondemand
+    cpuFreqGovernor = "schedutil"; # Better than ondemand
   };
 }

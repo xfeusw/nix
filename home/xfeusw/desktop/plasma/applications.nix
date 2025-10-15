@@ -1,6 +1,5 @@
 # home/xfeusw/desktop/plasma/applications.nix
-{ ... }:
-{
+{...}: {
   programs.plasma = {
     configFile = {
       # Dolphin file manager configuration
@@ -41,6 +40,32 @@
           "Font Size" = 11;
         };
       };
+
+      # Disable Baloo indexing
+      "baloorc" = {
+        "Basic Settings" = {
+          "Indexing-Enabled" = false;
+        };
+      };
+
+      "krunnerrc" = {"Plugins" = {"baloosearchEnabled" = false;};};
+      "plasma-thumbnailsrc" = {"General" = {"EnableThumbnails" = false;};};
+
+      "kwinrc" = {
+        Compositing = {
+          OpenGLIsUnsafe = false;
+          HiddenPreviews = 5;
+          MaxFPS = 60;
+          RefreshRate = 60;
+          VSync = "none";
+        };
+        Plugins = {
+          blurEnabled = true;
+          contrastEnabled = true;
+          wobblywindowsEnabled = false;
+          backgroundcontrastEnabled = false;
+        };
+      };
     };
   };
 
@@ -79,5 +104,11 @@
       "video/mp4" = "org.kde.dragonplayer.desktop";
       "audio/mpeg" = "org.kde.elisa.desktop";
     };
+  };
+
+  # Disable indexing and analytics
+  services.plasma = {
+    # Disable kactivitymanagerd
+    enableActivityManager = false;
   };
 }
