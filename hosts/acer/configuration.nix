@@ -1,6 +1,5 @@
 # hosts/acer/configuration.nix
-{ ... }:
-{
+{...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -17,7 +16,7 @@
     # Modular imports
     ../../modules/packages
     ../../modules/hardware
-    ../../modules/services
+    ../../modules/services.nix
     ../../modules/virtualization
   ];
 
@@ -43,7 +42,7 @@
 
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = ["tcp_bbr"];
   };
 
   time.timeZone = "Asia/Tashkent";
