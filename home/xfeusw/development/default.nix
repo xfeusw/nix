@@ -2,7 +2,6 @@
 {
   imports = [
     ./tools.nix
-    ./nix.nix
     ./haskell.nix
   ];
 
