@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
-    ./vscode
+    inputs.vscode.homeManagerModules.vscode
   ];
+  programs.vscode.enable = true;
 
   home.packages = with pkgs.unstable; [
     # Browsers

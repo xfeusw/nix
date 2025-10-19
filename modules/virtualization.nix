@@ -1,6 +1,12 @@
-# modules/virtualization/kvm.nix
-{ pkgs, ... }:
-{
+# modules/virtualization/default.nix
+{pkgs, ...}: {
+  # Podman container runtime (Docker alternative)
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   # KVM/QEMU virtualization
   virtualisation = {
     libvirtd = {
@@ -11,7 +17,7 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
+          packages = [pkgs.OVMFFull.fd];
         };
       };
     };
@@ -23,5 +29,5 @@
   programs.virt-manager.enable = true;
 
   # SPICE guest agent for better VM integration
-  environment.systemPackages = with pkgs; [ spice-vdagent ];
+  environment.systemPackages = with pkgs; [spice-vdagent];
 }

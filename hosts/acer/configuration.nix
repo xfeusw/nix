@@ -10,14 +10,12 @@
     ../../modules/security.nix
     ../../modules/performance.nix
 
-    # Desktop environment
     ../../modules/desktop/plasma.nix
 
-    # Modular imports
     ../../modules/packages
     ../../modules/hardware
     ../../modules/services.nix
-    ../../modules/virtualization
+    ../../modules/virtualization.nix
   ];
 
   # Bootloader with enhanced options
