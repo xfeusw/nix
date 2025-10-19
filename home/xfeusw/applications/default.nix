@@ -1,9 +1,11 @@
-{ pkgs, inputs, ... }:
+{ pkgs, vscode, helix, ... }:
 {
   imports = [
-    inputs.vscode.homeManagerModules.vscode
+    vscode.homeManagerModules.vscode
+    helix.homeManagerModules.default
   ];
   programs.vscode.enable = true;
+  programs.helix.installExtraPackages = false;
 
   home.packages = with pkgs.unstable; [
     # Browsers
