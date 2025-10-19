@@ -28,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # vscode.url = "github:xfeusw/vscode";
+    vscode.url = "github:xfeusw/vscode";
   };
 
   outputs = inputs @ {
@@ -42,7 +42,7 @@
     nix-colors,
     firefox-addons,
     flake-utils,
-    # vscode,
+    vscode,
     ...
   }: {
     nixosConfigurations = {
@@ -99,7 +99,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur;
+          inherit inputs nix-colors firefox-addons nur vscode;
         };
         modules = [
           ./home/xfeusw/home.nix

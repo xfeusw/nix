@@ -3,22 +3,22 @@
   lib,
   ...
 }: {
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us,ru";
-    xkb.options = "caps:escape,grp:alt_shift_toggle,grp:win_space_toggle";
-
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      settings.Theme = {
-        Current = "breeze";
-        Font = "JetBrains Mono,10,-1,5,50,0,0,0,0,0";
-      };
-    };
-
-    desktopManager.plasma6.enable = true;
+  services.xserver.enable = true;
+  services.xserver.xkb = {
+    layout = "us,ru";
+    options = "caps:escape,grp:alt_shift_toggle,grp:win_space_toggle";
   };
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    settings.Theme = {
+      Current = "breeze";
+      Font = "JetBrains Mono,10,-1,5,50,0,0,0,0,0";
+    };
+  };
+
+  services.desktopManager.plasma6.enable = true;
 
   # Audio
   services.pipewire = {
