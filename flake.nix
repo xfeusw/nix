@@ -27,6 +27,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # vscode.url = "github:xfeusw/vscode";
   };
 
   outputs = inputs @ {
@@ -40,6 +42,7 @@
     nix-colors,
     firefox-addons,
     flake-utils,
+    # vscode,
     ...
   }: {
     nixosConfigurations = {
@@ -63,7 +66,7 @@
                   config.allowUnfree = true;
                 };
                 weston = prev.weston.overrideAttrs (old: {
-                  mesonFlags = (old.mesonFlags or []) ++ [ "-Dbackend-vnc=false" ];
+                  mesonFlags = (old.mesonFlags or []) ++ ["-Dbackend-vnc=false"];
                 });
               })
             ];
