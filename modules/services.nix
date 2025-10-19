@@ -1,6 +1,4 @@
-# modules/services/system-programs.nix
-{ ... }:
-{
+{lib, ...}: {
   # System-wide programs
   programs = {
     mtr.enable = true;
@@ -10,4 +8,8 @@
     };
     zsh.enable = true;
   };
+
+  services.accounts-daemon.enable = lib.mkForce true;
+  services.geoclue2.enable = false;
+  services.fwupd.enable = false;
 }

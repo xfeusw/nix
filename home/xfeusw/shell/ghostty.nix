@@ -8,7 +8,7 @@
     font-family = JetBrains Mono
     font-size = 11
     background-opacity = 0.95
-    background = 1e1e2e
+    background = 1a1b26
     foreground = c0caf5
 
     window-decoration = true

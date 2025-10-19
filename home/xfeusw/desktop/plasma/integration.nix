@@ -1,7 +1,5 @@
-{ ... }:
-{
-  # KDE Connect disabled (not used)
-  # services.kdeconnect.enable = false;
+{...}: {
+  services.kdeconnect.enable = false;
 
   programs.plasma = {
     configFile = {
@@ -59,8 +57,19 @@
     SAL_USE_VCLPLUGIN = "kf6";
   };
 
-  systemd.user.services.drkonqi-coredump-pickup.Unit.After = [ "graphical-session.target" ];
-  systemd.user.services.drkonqi-coredump-pickup.Unit.PartOf = [ "graphical-session.target" ];
-  systemd.user.services.drkonqi-coredump-pickup.Service.Type = "oneshot";
-  systemd.user.services.drkonqi-coredump-pickup.Service.RemainAfterExit = true;
+  # Disable unwanted systemd services
+  systemd.user.services = {
+    drkonqi-coredump-pickup = {
+      Unit = {
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+      };
+      Service = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+    };
+
+    plasma-browser-integration.Unit.ConditionPathExists = "/dev/null";
+  };
 }

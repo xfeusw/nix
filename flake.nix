@@ -27,6 +27,9 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vscode.url = "github:xfeusw/vscode";
+    helix.url = "github:xfeusw/helix";
   };
 
   outputs = inputs @ {
@@ -40,6 +43,8 @@
     nix-colors,
     firefox-addons,
     flake-utils,
+    vscode,
+    helix,
     ...
   }: {
     nixosConfigurations = {
@@ -63,7 +68,7 @@
                   config.allowUnfree = true;
                 };
                 weston = prev.weston.overrideAttrs (old: {
-                  mesonFlags = (old.mesonFlags or []) ++ [ "-Dbackend-vnc=false" ];
+                  mesonFlags = (old.mesonFlags or []) ++ ["-Dbackend-vnc=false"];
                 });
               })
             ];
@@ -96,7 +101,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur;
+          inherit inputs nix-colors firefox-addons nur vscode helix;
         };
         modules = [
           ./home/xfeusw/home.nix

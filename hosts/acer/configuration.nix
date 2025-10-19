@@ -1,6 +1,5 @@
 # hosts/acer/configuration.nix
-{ ... }:
-{
+{...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -11,14 +10,12 @@
     ../../modules/security.nix
     ../../modules/performance.nix
 
-    # Desktop environment
     ../../modules/desktop/plasma.nix
 
-    # Modular imports
     ../../modules/packages
     ../../modules/hardware
-    ../../modules/services
-    ../../modules/virtualization
+    ../../modules/services.nix
+    ../../modules/virtualization.nix
   ];
 
   # Bootloader with enhanced options
@@ -43,7 +40,7 @@
 
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = ["tcp_bbr"];
   };
 
   time.timeZone = "Asia/Tashkent";

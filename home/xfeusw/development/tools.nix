@@ -47,6 +47,9 @@
     cachix
     direnv
     just
+    nil
+    nixd
+    alejandra
   ];
 
   programs.direnv = {
