@@ -1,5 +1,5 @@
 # home/xfeusw/shell/zsh.nix
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -77,6 +77,12 @@
     };
 
     initContent = ''
+      # --- Environment ---
+      export EDITOR='hx'
+      export VISUAL='hx'
+      export PAGER='less'
+      export MANPAGER='hx +Man!'
+
       # Performance: only load what's needed
       skip_global_compinit=1
       # Initialize tools

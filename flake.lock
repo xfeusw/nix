@@ -83,11 +83,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1760887729,
-        "narHash": "sha256-LjTJsO7ehSbeONXuSYmRRCpuhRxhzQKL5ltMMr3X+Rs=",
+        "lastModified": 1760889446,
+        "narHash": "sha256-g+aRHoktti/aMgrWK3ljRXXVehECvafLc2zgdZmeWGU=",
         "owner": "xfeusw",
         "repo": "helix",
-        "rev": "f5546d65b6e02939c9b97d39d1ace7e40398ff5e",
+        "rev": "c0238e6b1bd59f17dda76737c1415bd496775cd1",
         "type": "github"
       },
       "original": {
