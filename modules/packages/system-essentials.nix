@@ -5,6 +5,7 @@
     # System essentials
     vim
     git
+    git-filter-repo
     wget
     curl
     home-manager

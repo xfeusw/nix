@@ -2,6 +2,7 @@
   nur,
   pkgs,
   lib,
+  niri,
   ...
 }: {
   home = {
