@@ -30,6 +30,8 @@
 
     vscode.url = "github:xfeusw/vscode";
     helix.url = "github:xfeusw/helix";
+
+    niri.url = "github:xfeusw/niri";
   };
 
   outputs = inputs @ {
@@ -45,6 +47,7 @@
     flake-utils,
     vscode,
     helix,
+    niri,
     ...
   }: {
     nixosConfigurations = {
@@ -101,12 +104,13 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur vscode helix;
+          inherit inputs nix-colors firefox-addons nur vscode helix niri;
         };
         modules = [
           ./home/xfeusw/home.nix
           plasma-manager.homeModules.plasma-manager
           nix-colors.homeManagerModules.default
+          niri.homeManagerModules.x86_64-linux.default
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [

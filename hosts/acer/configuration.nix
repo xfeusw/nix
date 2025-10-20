@@ -1,5 +1,5 @@
 # hosts/acer/configuration.nix
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -51,6 +51,10 @@
       "ru_RU.UTF-8/UTF-8"
     ];
   };
+
+  services.xserver.displayManager.sessionPackages = [ pkgs.niri ];
+  environment.systemPackages = with pkgs; [ niri ];
+  programs.xwayland.enable = true;
 
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
