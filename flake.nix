@@ -31,7 +31,7 @@
     vscode.url = "github:xfeusw/vscode";
     helix.url = "github:xfeusw/helix";
 
-    niri.url = "github:xfeusw/niri";
+    niri.url = "/home/xfeusw/.config/niri";
   };
 
   outputs = inputs @ {
@@ -110,7 +110,8 @@
           ./home/xfeusw/home.nix
           plasma-manager.homeModules.plasma-manager
           nix-colors.homeManagerModules.default
-          niri.homeManagerModules.x86_64-linux.default
+          niri.homeModules.niri
+          niri.homeManagerModules.default
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [

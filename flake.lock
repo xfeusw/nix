@@ -216,8 +216,8 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1760972501,
-        "narHash": "sha256-xz4Ja4BCc9ATjVKMfHRuWyblCAVUFXU3mWAEBnqRKtU=",
+        "lastModified": 1760989781,
+        "narHash": "sha256-L46uO+LFOmCmmmn5HFay4uqTyzcUHeqgQmkTQLbLS4M=",
         "path": "/home/xfeusw/.config/niri",
         "type": "path"
       },
