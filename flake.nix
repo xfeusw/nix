@@ -31,7 +31,8 @@
     vscode.url = "github:xfeusw/vscode";
     helix.url = "github:xfeusw/helix";
 
-    niri.url = "/home/xfeusw/.config/niri";
+    niri.url = "github:xfeusw/niri";
+    # niri.url = "/home/xfeusw/.config/niri";
   };
 
   outputs = inputs @ {

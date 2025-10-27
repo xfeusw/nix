@@ -8,7 +8,7 @@
 
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = "hx";
         autocrlf = "input";
       };
       init.defaultBranch = "main";
