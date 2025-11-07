@@ -1,5 +1,5 @@
 # home/xfeusw/git.nix
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -41,11 +41,33 @@
     };
   };
 
-  # Git-related tools
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+  };
+
+  home.activation.setupGhToken = config.lib.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p $HOME/.config/gh
+
+    # The secret will be available at this path after sops-nix decrypts it
+    SECRET_PATH="${config.sops.secrets.gh_token.path}"
+
+    if [ -f "$SECRET_PATH" ]; then
+      cat > $HOME/.config/gh/hosts.yml <<EOF
+github.com:
+    user: khamrakulov
+    oauth_token: $(cat "$SECRET_PATH")
+    git_protocol: ssh
+EOF
+      chmod 600 $HOME/.config/gh/hosts.yml
+    fi
+  '';
+
   home.packages = with pkgs; [
-    gh # GitHub CLI
-    git-lfs # Large file support
-    lazygit # Terminal Git UI
-    gitui # Another Git TUI
+    gh
+    git-lfs
+    lazygit
   ];
 }

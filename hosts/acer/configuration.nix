@@ -16,6 +16,8 @@
     ../../modules/hardware
     ../../modules/services.nix
     ../../modules/virtualization.nix
+
+    ../../modules/sops.nix
   ];
 
   # Bootloader with enhanced options
@@ -52,7 +54,7 @@
     ];
   };
 
-  services.xserver.displayManager.sessionPackages = [ pkgs.niri ];
+  services.displayManager.sessionPackages = [ pkgs.niri ];
   environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 
