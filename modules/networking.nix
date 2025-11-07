@@ -8,6 +8,11 @@
       wifi.powersave = true;
     };
 
+    firewall = {
+      allowedTCPPorts = [ 57 621 ];
+      allowedUDPPorts = [ 5353 ];
+    };
+
     # Faster DNS
     nameservers = [
       "1.1.1.1"

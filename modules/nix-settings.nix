@@ -66,4 +66,6 @@
     cachix
     nix-fast-build
   ];
+
+  programs.nix-ld.enable = true;
 }

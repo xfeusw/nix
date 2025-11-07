@@ -1,4 +1,4 @@
-{ pkgs, vscode, helix, ... }:
+{ pkgs, vscode, helix, config, ... }:
 {
   imports = [
     vscode.homeManagerModules.vscode
@@ -9,8 +9,6 @@
 
   programs.yazi = {
     enable = true;
-
-    # This sets up config.toml and themes.toml in ~/.config/yazi/
 
     settings = {
       mgr = {
@@ -62,6 +60,10 @@
 
     # Media
     spotify
+    spotifyd
+    spotify-tray
+    spotify-tui
+    playerctl
     vlc
     mpv
 
@@ -77,5 +79,20 @@
 
     # yazi
   ];
-}
 
+  services.spotifyd = {
+    enable = true;
+    package = pkgs.spotifyd;
+    settings = {
+      global = {
+        backend = "pulseaudio";
+        device_name = "nixos-acer";
+        volume_controller = "softvol";
+        cache_path = "${config.xdg.cacheHome}/spotifyd";
+        bitrate = 320;
+        # username = "youremail@example.com";
+        # password_cmd = "cat /run/keys/spotify_pass";
+      };
+    };
+  };
+}
