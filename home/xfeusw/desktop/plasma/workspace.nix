@@ -28,7 +28,7 @@
       # Kickoff configuration
       "kickoffrc" = {
         Favorites = {
-          FavoriteApps = "org.kde.dolphin.desktop,org.kde.konsole.desktop,firefox.desktop,org.kde.kate.desktop,systemsettings.desktop,org.kde.discover.desktop";
+          FavoriteApps = "org.kde.dolphin.desktop,firefox.desktop,org.kde.kate.desktop";
         };
       };
 

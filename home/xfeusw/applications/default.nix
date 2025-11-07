@@ -62,7 +62,6 @@
     spotify
     spotifyd
     spotify-tray
-    spotify-tui
     playerctl
     vlc
     mpv

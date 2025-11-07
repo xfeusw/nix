@@ -33,6 +33,11 @@
 
     niri.url = "github:xfeusw/niri";
     # niri.url = "/home/xfeusw/.config/niri";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -49,6 +54,7 @@
     vscode,
     helix,
     niri,
+    sops-nix,
     ...
   }: {
     nixosConfigurations = {
@@ -63,6 +69,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-pc-laptop
           nur.modules.nixos.default
+          sops-nix.nixosModules.sops
           {
             nixpkgs.overlays = [
               nur.overlays.default
@@ -105,7 +112,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur vscode helix niri;
+          inherit inputs nix-colors firefox-addons nur vscode helix niri sops-nix;
         };
         modules = [
           ./home/xfeusw/home.nix
@@ -113,6 +120,7 @@
           nix-colors.homeManagerModules.default
           niri.homeModules.niri
           niri.homeManagerModules.default
+          sops-nix.homeModules.sops
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
