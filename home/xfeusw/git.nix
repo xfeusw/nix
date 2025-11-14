@@ -51,14 +51,12 @@
   home.activation.setupGhToken = config.lib.dag.entryAfter ["writeBoundary"] ''
     mkdir -p $HOME/.config/gh
 
-    # The secret will be available at this path after sops-nix decrypts it
-    SECRET_PATH="${config.sops.secrets.gh_token.path}"
-
-    if [ -f "$SECRET_PATH" ]; then
+    # System-wide secrets are always at /run/secrets/<name>
+    if [ -f /run/secrets/gh_token ]; then
       cat > $HOME/.config/gh/hosts.yml <<EOF
 github.com:
     user: khamrakulov
-    oauth_token: $(cat "$SECRET_PATH")
+    oauth_token: $(cat /run/secrets/gh_token)
     git_protocol: ssh
 EOF
       chmod 600 $HOME/.config/gh/hosts.yml

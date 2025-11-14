@@ -12,6 +12,7 @@
     xclip
     wl-clipboard
     neofetch
+    pavucontrol
 
     # Modern CLI tools
     bat # Better cat

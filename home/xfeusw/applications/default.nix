@@ -1,4 +1,4 @@
-{ pkgs, vscode, helix, config, ... }:
+{ pkgs, vscode, helix, config, inputs, ... }:
 {
   imports = [
     vscode.homeManagerModules.vscode
@@ -56,12 +56,14 @@
 
     # Communication
     telegram-desktop
+    element-desktop
+    ayugram-desktop
     discord
 
     # Media
     spotify
-    spotifyd
     spotify-tray
+    spotify-cli-linux
     playerctl
     vlc
     mpv
@@ -79,9 +81,33 @@
     # yazi
   ];
 
+  # programs.spicetify =
+  # let
+  #   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  # in
+  # {
+  #   enable = true;
+
+  #   enabledExtensions = with spicePkgs.extensions; [
+  #     adblock
+  #     hidePodcasts
+  #     shuffle # shuffle+ (special characters are sanitized out of extension names)
+  #   ];
+  #   enabledCustomApps = with spicePkgs.apps; [
+  #     newReleases
+  #     ncsVisualizer
+  #   ];
+  #   enabledSnippets = with spicePkgs.snippets; [
+  #     rotatingCoverart
+  #     pointer
+  #   ];
+
+  #   theme = spicePkgs.themes.catppuccin;
+  #   colorScheme = "mocha";
+  # };
+
   services.spotifyd = {
     enable = true;
-    package = pkgs.spotifyd;
     settings = {
       global = {
         backend = "pulseaudio";
