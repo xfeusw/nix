@@ -38,6 +38,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = inputs @ {
@@ -55,6 +57,7 @@
     helix,
     niri,
     sops-nix,
+    spicetify-nix,
     ...
   }: {
     nixosConfigurations = {
@@ -112,7 +115,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur vscode helix niri sops-nix;
+          inherit inputs nix-colors firefox-addons nur vscode helix niri sops-nix spicetify-nix;
         };
         modules = [
           ./home/xfeusw/home.nix
@@ -121,6 +124,7 @@
           niri.homeModules.niri
           niri.homeManagerModules.default
           sops-nix.homeModules.sops
+          spicetify-nix.homeManagerModules.default
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
