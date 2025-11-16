@@ -1,4 +1,3 @@
-# modules/packages/fonts.nix
 { pkgs, ... }:
 {
   # Font configuration

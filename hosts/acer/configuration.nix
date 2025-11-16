@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     # Core system modules
+    ../../modules/fonts
     ../../modules/nix-settings
     ../../modules/packages
     ../../modules/plasma

@@ -28,7 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode.url = "github:xfeusw/vscode";
     helix.url = "github:xfeusw/helix";
 
     niri.url = "github:xfeusw/niri";
@@ -53,7 +52,6 @@
     nix-colors,
     firefox-addons,
     flake-utils,
-    vscode,
     helix,
     niri,
     sops-nix,
@@ -162,7 +160,7 @@
       xfeusw = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur vscode helix niri sops-nix spicetify-nix;
+          inherit inputs nix-colors firefox-addons nur helix niri sops-nix spicetify-nix;
         };
         modules = [
           ./home/xfeusw/home.nix

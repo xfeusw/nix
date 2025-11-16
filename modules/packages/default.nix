@@ -1,9 +1,37 @@
-# modules/packages/default.nix
-{...}: {
-  imports = [
-    ./system-essentials.nix
-    ./development-cli.nix
-    ./media.nix
-    ./fonts.nix
+{pkgs,...}: {
+
+  environment.systemPackages = with pkgs; [
+    gh
+    lazygit
+    docker-compose
+    vlc
+    alsa-utils
+    vim
+    git
+    git-filter-repo
+    wget
+    curl
+    home-manager
+    xclip
+    wl-clipboard
+    neofetch
+    pavucontrol
+    bat
+    eza
+    fd
+    ripgrep
+    zoxide
+    fzf
+    dust
+    procs
+    htop
+    iotop
+    lsof
+    strace
+    sysstat
+    usbutils
+    pciutils
+    nvidia-vaapi-driver
+    nvtopPackages.nvidia
   ];
 }

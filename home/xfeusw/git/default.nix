@@ -62,10 +62,4 @@ EOF
       chmod 600 $HOME/.config/gh/hosts.yml
     fi
   '';
-
-  home.packages = with pkgs; [
-    gh
-    git-lfs
-    lazygit
-  ];
 }

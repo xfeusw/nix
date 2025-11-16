@@ -3,14 +3,12 @@
   pkgs,
   lib,
   niri,
-  vscode,
   helix,
   ...
 }: {
   imports = [
     nur.modules.homeManager.default
     helix.homeManagerModules.default
-    vscode.homeManagerModules.vscode
 
     ./direnv
     ./ghostty
@@ -21,6 +19,7 @@
     ./rust
     ./spotify
     ./starship
+    ./vscode
     ./yazi
     ./zsh
   ];

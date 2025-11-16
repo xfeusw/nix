@@ -24,7 +24,6 @@ let
   ];
 
   vcs = with pkgs.unstable; [
-    gh
     git-lfs
     lazygit
   ];
