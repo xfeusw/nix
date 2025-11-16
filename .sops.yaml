@@ -1,7 +1,8 @@
 keys:
-  - &primary age1hr036ygk2sw5hfm6xaztvn95awarhyt7x634fxaea0mqv7fxw9gqj3685e
+  - &xeon age1kylzu8v7trg4dpdgllkexjvyd0ua766v7fr05wdk2xc2apczks5snru8ee
+
 creation_rules:
-  - path_regex: secrets/.*\.yaml$
+  - path_regex: secrets/secrets\.yaml$
     key_groups:
-        - age:
-            - *primary
+      - age:
+          - *xeon
