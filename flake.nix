@@ -28,10 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix.url = "github:xfeusw/helix";
+    helix.url = "github:helix-editor/helix";
 
-    niri.url = "github:xfeusw/niri";
-    # niri.url = "/home/xfeusw/.config/niri";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";

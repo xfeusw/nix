@@ -1,26 +1,30 @@
 {
   nur,
-  pkgs,
   lib,
-  niri,
-  helix,
   ...
 }: {
   imports = [
     nur.modules.homeManager.default
-    helix.homeManagerModules.default
 
     ./direnv
+    ./dunst
+    ./fuzzel
     ./ghostty
     ./git
     ./haskell
+    ./helix
+    ./mako
+    ./niri
     ./packages
     ./plasma
     ./rust
     ./spotify
     ./starship
     ./vscode
+    ./waybar
+    ./wayland
     ./yazi
+    ./zed
     ./zsh
   ];
 
