@@ -1,7 +1,11 @@
 # home/xfeusw/desktop/plasma/workspace.nix
 { config, ... }:
 {
-  home.file.".local/share/wallpapers/elizabeth.jpg".source = ../../wallpaper/elizabeth.jpg;
+  home.file.".local/share/wallpapers/elizabeth.jpg".source = ../../../wallpapers/elizabeth.jpg;
+
+  home.file.".config/plasma-workspace/env/home-manager-paths.sh".text = ''
+    export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.local/share:$XDG_DATA_DIRS"
+  '';
 
   programs.plasma = {
     workspace = {

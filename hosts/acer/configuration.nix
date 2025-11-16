@@ -9,7 +9,7 @@
     ../../modules/plasma
     ../../modules/services
     ../../modules/security
-    ../../modules/virtualization.nix
+    ../../modules/virtualization
 
     ./hardware
     ./networking
