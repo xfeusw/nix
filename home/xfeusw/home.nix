@@ -7,7 +7,7 @@
     nur.modules.homeManager.default
 
     ./direnv
-    ./dunst
+    # ./dunst
     ./fuzzel
     ./ghostty
     ./git
@@ -18,18 +18,16 @@
     ./packages
     ./plasma
     ./rust
+    ./sops
     ./spotify
     ./starship
     ./vscode
     ./waybar
-    ./wayland
     ./yazi
     ./zed
     ./zsh
   ];
 
-  programs.vscode.enable = true;
-  programs.helix.installExtraPackages = false;
   programs.home-manager.enable = true;
 
   fonts.fontconfig.enable = true;
@@ -43,6 +41,11 @@
       XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
       EDITOR = "hx";
       VISUAL = "hx";
+      NIXOS_OZONE_WL = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_SESSION_TYPE = "wayland";
     };
   };
 

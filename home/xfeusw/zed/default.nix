@@ -106,7 +106,7 @@
     bottom_dock_layout = "contained";
     buffer_font_family = "FiraCode Nerd Font Mono";
     buffer_font_size = 13;
-    ui_font_size = 15;
+    ui_font_size = 14;
     ui_font_family = "FreeSans";
     auto_update = false;
     telemetry = {

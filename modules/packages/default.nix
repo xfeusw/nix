@@ -13,7 +13,7 @@
     curl
     home-manager
     xclip
-    wl-clipboard
+    wl-clipboard-rs
     neofetch
     pavucontrol
     bat

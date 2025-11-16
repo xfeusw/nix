@@ -6,7 +6,7 @@
 
   home.file.".config/ghostty/config".text = ''
     font-family = JetBrains Mono
-    font-size = 11
+    font-size = 9
     background-opacity = 0.95
     background = 1a1b26
     foreground = c0caf5

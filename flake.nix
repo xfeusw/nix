@@ -64,6 +64,7 @@
     # Common NixOS modules shared across all hosts
     commonNixosModules = [
       nur.modules.nixos.default
+      niri.nixosModules.niri
       sops-nix.nixosModules.sops
       {
         nixpkgs.overlays = [
@@ -106,7 +107,6 @@
       plasma-manager.homeModules.plasma-manager
       nix-colors.homeManagerModules.default
       niri.homeModules.niri
-      niri.homeManagerModules.default
       sops-nix.homeModules.sops
       spicetify-nix.homeManagerModules.default
       {

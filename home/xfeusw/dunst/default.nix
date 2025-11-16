@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Install notification tools
-  home.packages = with pkgs; [
-    libnotify  # Provides notify-send command
-  ];
-
   services.dunst = {
     enable = true;
 

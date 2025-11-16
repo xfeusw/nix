@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ pkgs, config, ... }: {
   services.spotifyd = {
     enable = true;
     settings = {
@@ -8,8 +8,8 @@
         volume_controller = "softvol";
         cache_path = "${config.xdg.cacheHome}/spotifyd";
         bitrate = 320;
-        # username = "youremail@example.com";
-        # password_cmd = "cat /run/keys/spotify_pass";
+        username_cmd = "${pkgs.coreutils}/bin/cat ${config.sops.secrets.spotify-username.path}";
+        password_cmd = "${pkgs.coreutils}/bin/cat ${config.sops.secrets.spotify-password.path}";
       };
     };
   };

@@ -57,7 +57,7 @@
   ];
 
   services.displayManager.sessionPackages = [ pkgs.niri ];
-  environment.systemPackages = with pkgs; [ niri ];
+  # environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 
   systemd.services.nixos-upgrade.enable = false;

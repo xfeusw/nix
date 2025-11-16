@@ -1,8 +1,10 @@
+{ pkgs, inputs, ...}:
 {
-  ...
-}: {
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
 
     settings = {
       input = {
@@ -23,12 +25,12 @@
       layout = {
         gaps = 1;
         border = {
-          width = 0;
+          width = 2;
           active.color = "#7aa2f7";
           inactive.color = "#414868";
         };
         focus-ring = {
-          width = 0;
+          width = 2;
           active.color = "#7aa2f7";
           inactive.color = "#414868";
         };
@@ -37,6 +39,13 @@
       prefer-no-csd = true;
 
       screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+
+      # Spawn services at startup
+      spawn-at-startup = [
+        { command = ["swaybg" "-m" "fill" "-i" "${builtins.getEnv "HOME"}/Pictures/Wallpapers/wallpaper.jpg"]; }
+        { command = ["swayidle" "-w"]; }
+        { command = ["dunst"]; }
+      ];
 
       binds = {
         # Window management
@@ -48,8 +57,7 @@
         "Mod+F".action.fullscreen-window = {};
         "Mod+M".action.maximize-column = {};
 
-        # --- ENHANCEMENTS: System Control ---
-        # NOTE: Assumes 'pactl' and 'brightnessctl' are available in your environment.
+        # System Control
         "XF86AudioRaiseVolume".action.spawn = ["pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"];
         "XF86AudioLowerVolume".action.spawn = ["pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"];
         "XF86AudioMute".action.spawn = ["pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"];
@@ -58,9 +66,11 @@
         "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "+5%"];
         "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
 
-        # Lock Screen (Uses 'loginctl' to lock the session)
+        # Lock Screen
         "Mod+Alt+L".action.spawn = ["loginctl" "lock-session"];
-        # ------------------------------------
+
+        # Power off monitors
+        "Mod+Shift+P".action.power-off-monitors = {};
 
         # Focus navigation
         "Mod+H".action.focus-column-left = {};
@@ -74,7 +84,7 @@
 
         # Move windows
         "Mod+Shift+H".action.move-column-left = {};
-        "Mod+Shift+L".action.move-column-right = {}; # Changed 'Mod+Shift+L' for consistency, moved lock to 'Mod+Shift+L'
+        "Mod+Shift+L".action.move-column-right = {};
         "Mod+Shift+K".action.move-workspace-up = {};
         "Mod+Shift+J".action.move-workspace-down = {};
         "Mod+Shift+Left".action.move-column-left = {};
@@ -99,7 +109,7 @@
         "Mod+Shift+E".action.quit = {};
         "Mod+Shift+R".action.spawn = ["sh" "-c" "niri msg action quit; niri"];
 
-        # Alt bindings (alternative shortcuts)
+        # Alt bindings
         "Super+Shift+E".action.spawn = ["sh" "-c" "niri msg action quit; niri"];
         "Alt+Q".action.close-window = {};
         "Alt+H".action.focus-column-left = {};
@@ -114,8 +124,11 @@
         # Screenshot to clipboard
         "Print".action.spawn = ["sh" "-c" "grim - | wl-copy"];
 
+        # Screenshot to file
+        "Mod+Print".action.spawn = ["sh" "-c" "grim ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%H-%M-%S).png"];
+
         # Screen recording with audio
-        "Mod+Print".action.spawn = ["sh" "-c" "if pgrep wf-recorder; then pkill wf-recorder; else wf-recorder -a -f ~/Videos/Recordings/Recording-$(date +%Y-%m-%d-%H-%M-%S).mp4; fi"];
+        "Mod+Shift+Print".action.spawn = ["sh" "-c" "if pgrep wf-recorder; then pkill wf-recorder; else wf-recorder -a -f ~/Videos/Recordings/Recording-$(date +%Y-%m-%d-%H-%M-%S).mp4; fi"];
       };
 
       cursor = {

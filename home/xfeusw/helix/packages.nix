@@ -1,8 +1,5 @@
 {pkgs}:
 with pkgs; [
-  # Language servers
-  nil
-  rust-analyzer
   nodePackages.typescript-language-server
   vscode-langservers-extracted
   pyright
@@ -15,7 +12,6 @@ with pkgs; [
   gofumpt
 
   # Additional tools
-  ripgrep
   fd
   tree-sitter
 ]

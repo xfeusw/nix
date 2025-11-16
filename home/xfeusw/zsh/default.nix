@@ -45,12 +45,12 @@
 
       # NixOS management
       check = "nix flake check";
-      sys-build = "sudo nixos-rebuild build --flake /home/xfeusw/.config/nix#acer --option restrict-eval false";
-      sys-switch = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --option restrict-eval false";
-      sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#acer --upgrade --option restrict-eval false";
-      home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
-      home-switch = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
-      home-update = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false";
+      sys-build = "sudo nixos-rebuild build --flake /home/xfeusw/.config/nix#xeon --option restrict-eval false";
+      sys-switch = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#xeon --option restrict-eval false";
+      sys-update = "sudo nixos-rebuild switch --flake /home/xfeusw/.config/nix#xeon --upgrade --option restrict-eval false";
+      home-build = "home-manager build --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false -b backup";
+      home-switch = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false -b backup";
+      home-update = "home-manager switch --flake /home/xfeusw/.config/nix#xfeusw --option restrict-eval false -b backup";
       nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && home-manager expire-generations 0 && sudo nix-store --optimise";
       nix-search = "nix search nixpkgs";
 
