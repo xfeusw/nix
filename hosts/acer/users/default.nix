@@ -15,6 +15,5 @@
     shell = pkgs.zsh;
   };
 
-  # Enable sudo without password for wheel group (optional)
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 }

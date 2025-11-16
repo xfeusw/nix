@@ -21,7 +21,6 @@
     ripgrep # Better grep
     zoxide # Smart cd
     fzf # Fuzzy finder
-    btop # Better top
     dust # Better du
     procs # Better ps
 

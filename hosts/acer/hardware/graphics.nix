@@ -14,7 +14,6 @@
     ];
   };
 
-  # NVIDIA Configuration for 940MX
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
