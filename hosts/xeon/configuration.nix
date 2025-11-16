@@ -14,7 +14,6 @@
     ./hardware
     ./networking
     ./performance
-    ./power
     ./users
   ];
 

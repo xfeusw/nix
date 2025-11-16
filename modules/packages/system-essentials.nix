@@ -5,12 +5,14 @@
     # System essentials
     vim
     git
+    git-filter-repo
     wget
     curl
     home-manager
     xclip
     wl-clipboard
     neofetch
+    pavucontrol
 
     # Modern CLI tools
     bat # Better cat
@@ -19,7 +21,6 @@
     ripgrep # Better grep
     zoxide # Smart cd
     fzf # Fuzzy finder
-    btop # Better top
     dust # Better du
     procs # Better ps
 
