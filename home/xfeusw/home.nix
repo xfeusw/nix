@@ -8,6 +8,7 @@
 
     ./direnv
     # ./dunst
+    ./firefox
     ./fuzzel
     ./ghostty
     ./git
