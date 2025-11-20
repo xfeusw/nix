@@ -1,15 +1,17 @@
 {
   pkgs,
   treefmt,
+  gitHooksShellHook,
+  gitHooksPackages,
 }:
 pkgs.mkShell {
   name = "nixos-config-devshell";
 
   packages =
     [
-      # Treefmt for unified formatting
       treefmt
     ]
+    ++ gitHooksPackages
     ++ (with pkgs; [
       # Nix tools
       nil
@@ -44,5 +46,6 @@ pkgs.mkShell {
 
   shellHook = ''
     echo "🚀 NixOS Configuration Development Shell"
+    ${gitHooksShellHook}
   '';
 }

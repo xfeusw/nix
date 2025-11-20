@@ -4,15 +4,23 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
@@ -21,7 +29,6 @@
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
@@ -29,6 +36,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    git-hooks,
     nixos-hardware,
     nur,
     niri,
@@ -59,6 +67,23 @@
         ];
       }
     ];
+
+    pre-commit-check = git-hooks.lib.${system}.run {
+      src = ./.;
+      hooks = {
+        shellcheck.enable = true;
+        check-merge-conflicts.enable = true;
+
+        treefmt = {
+          enable = true;
+          name = "treefmt-check";
+          entry = "${treefmtEval.config.build.wrapper}/bin/treefmt --fail-on-change";
+          pass_filenames = false;
+          stages = [ "commit" ];
+          deps = [ treefmtEval.config.build.wrapper ];
+        };
+      };
+    };
 
     treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
   in {
@@ -115,9 +140,15 @@
       ];
     };
 
+    checks = {
+      inherit pre-commit-check;
+    };
+
     devShells.${system}.default = import ./shell.nix {
       inherit pkgs;
       treefmt = treefmtEval.config.build.wrapper;
+      gitHooksShellHook = pre-commit-check.shellHook;
+      gitHooksPackages = pre-commit-check.enabledPackages;
     };
 
     formatter.${system} = treefmtEval.config.build.wrapper;
