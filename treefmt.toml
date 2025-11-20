@@ -1,0 +1,43 @@
+[formatter.alejandra]
+command = "alejandra"
+options = ["--quiet"]
+includes = ["*.nix"]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = [
+  "*.json",
+  "*.yaml",
+  "*.yml",
+  "*.md",
+  "*.toml",
+]
+
+[formatter.shellcheck]
+command = "shellcheck"
+options = ["--format=gcc"]
+includes = ["*.sh"]
+
+[formatter.shfmt]
+command = "shfmt"
+options = [
+  "-i",
+  "2",
+  "-s",
+  "-w",
+]
+includes = ["*.sh", "*.bash"]
+
+[global]
+excludes = [
+  "*.age",
+  "*.key",
+  ".git/**",
+  ".direnv/**",
+  "result",
+  "result-*",
+  ".vscode/**",
+  ".idea/**",
+  "node_modules/**",
+]

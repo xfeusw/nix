@@ -41,6 +41,7 @@
     initrd.verbose = false;
     consoleLogLevel = 0;
     kernelModules = ["tcp_bbr"];
+    kernelPackages = pkgs.linuxPackages_zen;
   };
 
   time.timeZone = "Asia/Tashkent";

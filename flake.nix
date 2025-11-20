@@ -4,18 +4,15 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
@@ -25,11 +22,25 @@
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nur, niri, sops-nix, ... } @ inputs:
-  let
+  outputs = {
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    nixos-hardware,
+    nur,
+    niri,
+    sops-nix,
+    treefmt-nix,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
     commonModules = [
       nur.modules.nixos.default
@@ -48,25 +59,31 @@
         ];
       }
     ];
+
+    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
   in {
     nixosConfigurations = {
       acer = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/acer/configuration.nix
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc-laptop
-        ] ++ commonModules;
+        specialArgs = {inherit inputs;};
+        modules =
+          [
+            ./hosts/acer/configuration.nix
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc-laptop
+          ]
+          ++ commonModules;
       };
 
       xeon = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/xeon/configuration.nix
-          nixos-hardware.nixosModules.common-cpu-intel
-        ] ++ commonModules;
+        specialArgs = {inherit inputs;};
+        modules =
+          [
+            ./hosts/xeon/configuration.nix
+            nixos-hardware.nixosModules.common-cpu-intel
+          ]
+          ++ commonModules;
       };
     };
 
@@ -75,7 +92,7 @@
         inherit system;
         config.allowUnfree = true;
       };
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
       modules = [
         inputs.plasma-manager.homeModules.plasma-manager
         inputs.nix-colors.homeManagerModules.default
@@ -96,6 +113,16 @@
         }
         ./home/xfeusw/home.nix
       ];
+    };
+
+    devShells.${system}.default = (import ./shell.nix {inherit pkgs;}).overrideAttrs (oldAttrs: {
+      packages = oldAttrs.packages ++ [treefmtEval.config.build.wrapper];
+    });
+
+    formatter.${system} = treefmtEval.config.build.wrapper;
+
+    checks.${system} = {
+      formatting = treefmtEval.config.build.check pkgs.hello;
     };
   };
 }

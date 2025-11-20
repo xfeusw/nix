@@ -1,4 +1,3 @@
-# modules/nix-settings.nix
 { pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
@@ -19,7 +18,7 @@
       # Performance optimizations
       max-jobs = "auto";
       cores = 0;  # Use all available cores
-      download-buffer-size = 536870912;  # 128 MB
+      download-buffer-size = 2147483648;  # 128 MB
 
       # Build optimization
       connect-timeout = 5;
