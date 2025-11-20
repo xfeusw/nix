@@ -7,17 +7,17 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
 
@@ -79,8 +79,8 @@
           name = "treefmt-check";
           entry = "${treefmtEval.config.build.wrapper}/bin/treefmt --fail-on-change";
           pass_filenames = false;
-          stages = [ "commit" ];
-          deps = [ treefmtEval.config.build.wrapper ];
+          stages = ["commit"];
+          deps = [treefmtEval.config.build.wrapper];
         };
       };
     };
