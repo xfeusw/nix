@@ -43,6 +43,6 @@ pkgs.mkShell {
     ]);
 
   shellHook = ''
-    source ${./scripts/shell-hook.sh}
+    echo "🚀 NixOS Configuration Development Shell"
   '';
 }
