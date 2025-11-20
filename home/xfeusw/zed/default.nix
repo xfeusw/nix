@@ -8,6 +8,7 @@
     "assembly"
     "deno"
     "env"
+    "gitignore"
     "glsl"
     "haskell"
     "html"
@@ -70,11 +71,6 @@
         binary = {
           ignore_system_version = false;
         };
-        settings = {
-          formatting = {
-            command = ["alejandra"];
-          };
-        };
       };
       hls = {
         binary = {
@@ -86,14 +82,23 @@
           };
         };
       };
+      prettier = {
+        binary = {
+          ignore_system_version = false;
+        };
+      };
+      typescript-language-server = {
+        binary = {
+          ignore_system_version = false;
+        };
+      };
     };
     languages = {
       Nix = {
-        formatter = "language_server";
+        formatter = "alejandra";
         language_servers = [
           "nixd"
           "!nil"
-          "alejandra"
         ];
       };
 
@@ -106,34 +111,30 @@
 
       TypeScript = {
         formatter = "prettier";
-        language_servers = [
-          "typescript-language-server"
-        ];
+        language_servers = [ "typescript-language-server" ];
       };
-
       TSX = {
         formatter = "prettier";
-        language_servers = [
-          "typescript-language-server"
-        ];
+        language_servers = [ "typescript-language-server" ];
       };
-
       JavaScript = {
         formatter = "prettier";
-        language_servers = [
-          "typescript-language-server"
-        ];
+        language_servers = [ "typescript-language-server" ];
       };
-
       JSX = {
         formatter = "prettier";
-        language_servers = [
-          "typescript-language-server"
-        ];
+        language_servers = [ "typescript-language-server" ];
+      };
+
+      GitIgnore = {
+        formatter = "none";
+        language_servers = [ ];
       };
     };
-    disable_ai = true;
+
     format_on_save = "off";
+
+    disable_ai = true;
     soft_wrap = "editor_width";
     active_pane_modifiers = {
       border_size = 0.0;
