@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Swaylock configuration (screen locker)
   programs.swaylock = {
     enable = true;
     settings = {
@@ -72,6 +71,7 @@
 
   # Systemd service for swaybg (background)
   systemd.user.services.swaybg = {
+    package = pkgs.swaybg;
     Unit = {
       Description = "Wayland wallpaper daemon";
       PartOf = [ "graphical-session.target" ];

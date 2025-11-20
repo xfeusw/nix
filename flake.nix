@@ -1,11 +1,9 @@
 {
-  description = "Enhanced NixOS configuration (flake) for acer and xeon";
+  description = "NixOS configuration for acer and xeon";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -22,93 +20,21 @@
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     helix.url = "github:helix-editor/helix";
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    niri.url = "github:sodiboo/niri-flake";
+    sops-nix.url = "github:Mic92/sops-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    plasma-manager,
-    nixos-hardware,
-    nur,
-    impermanence,
-    nix-colors,
-    firefox-addons,
-    flake-utils,
-    helix,
-    niri,
-    sops-nix,
-    spicetify-nix,
-    ...
-  }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, nur, niri, sops-nix, ... } @ inputs:
   let
-    # Common NixOS modules shared across all hosts
-    commonNixosModules = [
+    system = "x86_64-linux";
+
+    commonModules = [
       nur.modules.nixos.default
       niri.nixosModules.niri
       sops-nix.nixosModules.sops
-      {
-        nixpkgs.overlays = [
-          nur.overlays.default
-          (final: prev: {
-            unstable = import nixpkgs-unstable {
-              system = prev.system;
-              config.allowUnfree = true;
-            };
-            weston = prev.weston.overrideAttrs (old: {
-              mesonFlags = (old.mesonFlags or []) ++ ["-Dbackend-vnc=false"];
-            });
-          })
-        ];
-
-        nixpkgs.config = {
-          allowUnfree = true;
-          nvidia.acceptLicense = true;
-        };
-
-        nix.settings = {
-          substituters = [
-            "https://cache.nixos.org/"
-            "https://nix-community.cachix.org"
-            "https://hyprland.cachix.org"
-            "https://nixpkgs-unfree.cachix.org"
-          ];
-          trusted-public-keys = [
-            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-            "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-          ];
-        };
-      }
-    ];
-
-    # Common home-manager modules
-    commonHomeModules = [
-      plasma-manager.homeModules.plasma-manager
-      nix-colors.homeManagerModules.default
-      niri.homeModules.niri
-      sops-nix.homeModules.sops
-      spicetify-nix.homeManagerModules.default
       {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
@@ -122,52 +48,54 @@
         ];
       }
     ];
-
-    # Host-specific configurations
-    hosts = {
-      acer = {
-        system = "x86_64-linux";
-        hardwareModules = [
+  in {
+    nixosConfigurations = {
+      acer = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/acer/configuration.nix
           nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-pc-laptop
-        ];
+        ] ++ commonModules;
       };
-      xeon = {
-        system = "x86_64-linux";
-        hardwareModules = [
-          # Add xeon-specific hardware modules here
+
+      xeon = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/xeon/configuration.nix
           nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc-ssd
-        ];
+        ] ++ commonModules;
       };
     };
 
-    # Generate NixOS configurations for all hosts
-    mkNixosConfiguration = hostname: hostConfig:
-      nixpkgs.lib.nixosSystem {
-        system = hostConfig.system;
-        specialArgs = {
-          inherit inputs nixpkgs-unstable;
-        };
-        modules = [
-          ./hosts/${hostname}/configuration.nix
-        ] ++ hostConfig.hardwareModules ++ commonNixosModules;
+    homeConfigurations.xfeusw = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
       };
-
-  in {
-    nixosConfigurations = nixpkgs.lib.mapAttrs mkNixosConfiguration hosts;
-
-    homeConfigurations = {
-      xfeusw = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs nix-colors firefox-addons nur helix niri sops-nix spicetify-nix;
-        };
-        modules = [
-          ./home/xfeusw/home.nix
-        ] ++ commonHomeModules;
-      };
+      extraSpecialArgs = { inherit inputs; };
+      modules = [
+        inputs.plasma-manager.homeModules.plasma-manager
+        inputs.nix-colors.homeManagerModules.default
+        inputs.niri.homeModules.niri
+        inputs.sops-nix.homeModules.sops
+        inputs.spicetify-nix.homeManagerModules.default
+        nur.modules.homeManager.default
+        {
+          nixpkgs.overlays = [
+            nur.overlays.default
+            (final: prev: {
+              unstable = import nixpkgs-unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            })
+          ];
+        }
+        ./home/xfeusw/home.nix
+      ];
     };
   };
 }

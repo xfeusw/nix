@@ -93,6 +93,42 @@
         language_servers = [
           "nixd"
           "!nil"
+          "alejandra"
+        ];
+      };
+
+      Haskell = {
+        formatter = "language_server";
+        language_servers = [
+          "hls"
+        ];
+      };
+
+      TypeScript = {
+        formatter = "prettier";
+        language_servers = [
+          "typescript-language-server"
+        ];
+      };
+
+      TSX = {
+        formatter = "prettier";
+        language_servers = [
+          "typescript-language-server"
+        ];
+      };
+
+      JavaScript = {
+        formatter = "prettier";
+        language_servers = [
+          "typescript-language-server"
+        ];
+      };
+
+      JSX = {
+        formatter = "prettier";
+        language_servers = [
+          "typescript-language-server"
         ];
       };
     };

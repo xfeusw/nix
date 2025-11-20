@@ -1,11 +1,9 @@
 {
-  nur,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
-    nur.modules.homeManager.default
-
     ./direnv
     # ./dunst
     ./firefox
@@ -22,7 +20,7 @@
     ./sops
     ./spotify
     ./starship
-    ./sway
+    # ./sway
     ./vscode
     ./waybar
     ./yazi

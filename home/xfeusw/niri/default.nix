@@ -42,9 +42,9 @@
 
       # Spawn services at startup
       spawn-at-startup = [
-        { command = ["swaybg" "-m" "fill" "-i" "${builtins.getEnv "HOME"}/Pictures/Wallpapers/wallpaper.jpg"]; }
-        { command = ["swayidle" "-w"]; }
-        { command = ["dunst"]; }
+        # { command = ["swaybg" "-m" "fill" "-i" "../../../wallpapers/elizabeth.jpg"]; }
+        # { command = ["swayidle" "-w"]; }
+        { command = ["mako"]; }
       ];
 
       binds = {

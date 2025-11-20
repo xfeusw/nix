@@ -78,9 +78,9 @@ let
     wdisplays
     cliphist
     wl-clipboard-rs
-    swaylock
-    swayidle
-    swaybg
+    # swaylock
+    # swayidle
+    # swaybg
     hyprpicker
     brightnessctl
     pamixer

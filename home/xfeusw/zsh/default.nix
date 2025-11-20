@@ -1,8 +1,11 @@
-# home/xfeusw/shell/zsh.nix
 { pkgs, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    completionInit = ''
+      autoload -Uz compinit
+      compinit
+    '';
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -159,7 +162,6 @@
       enable = true;
       plugins = [
         "git"
-        "docker"
         "sudo"
         "history"
         "colored-man-pages"
