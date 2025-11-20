@@ -60,7 +60,7 @@
           nur.overlays.default
           (final: prev: {
             unstable = import nixpkgs-unstable {
-              system = prev.system;
+              inherit (prev) system;
               config.allowUnfree = true;
             };
           })
@@ -71,17 +71,10 @@
     pre-commit-check = git-hooks.lib.${system}.run {
       src = ./.;
       hooks = {
+        statix.enable = true;
+        treefmt.enable = true;
         shellcheck.enable = true;
         check-merge-conflicts.enable = true;
-
-        treefmt = {
-          enable = true;
-          name = "treefmt-check";
-          entry = "${treefmtEval.config.build.wrapper}/bin/treefmt --fail-on-change";
-          pass_filenames = false;
-          stages = ["commit"];
-          deps = [treefmtEval.config.build.wrapper];
-        };
       };
     };
 

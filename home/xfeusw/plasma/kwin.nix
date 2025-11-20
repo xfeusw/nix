@@ -1,8 +1,7 @@
 # home/xfeusw/desktop/plasma/kwin.nix
-{...}: {
+{_}: {
   programs.plasma = {
     kwin = {
-      # Window behavior and rules
       borderlessMaximizedWindows = true;
 
       virtualDesktops = {
@@ -11,7 +10,6 @@
       };
     };
 
-    # Window rules using configFile
     configFile = {
       "kwinrc" = {
         Windows = {
@@ -24,7 +22,6 @@
         };
 
         Compositing = {
-          # Disable heavy effects for performance
           GLCore = true;
           HiddenPreviews = 5;
           OpenGLIsUnsafe = false;

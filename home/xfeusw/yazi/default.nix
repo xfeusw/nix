@@ -1,4 +1,4 @@
-{...}: {
+{_}: {
   programs.yazi = {
     enable = true;
 
@@ -16,15 +16,13 @@
       };
     };
 
-    # Optional: custom keybindings
     keymap = {
       normal = {
-        "e" = "open"; # press e to edit in Helix
-        "ctrl-y" = "cd .."; # example remap
+        "e" = "open";
+        "ctrl-y" = "cd ..";
       };
     };
 
-    # Optional theme override (if you want to customize colors)
     theme = {
       mgr = {
         border = "blue";

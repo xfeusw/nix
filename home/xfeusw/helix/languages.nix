@@ -8,12 +8,15 @@
       command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
       config = {
         check.command = "clippy";
-        inlayHints.bindingModeHints.enable = false;
-        inlayHints.closingBraceHints.minLines = 10;
-        inlayHints.closureReturnTypeHints.enable = "with_block";
-        inlayHints.discriminantHints.enable = "fieldless";
-        inlayHints.lifetimeElisionHints.enable = "skip_trivial";
-        inlayHints.typeHints.hideClosureInitialization = false;
+        # FIX: Merged all inlayHints assignments into a single block
+        inlayHints = {
+          bindingModeHints.enable = false;
+          closingBraceHints.minLines = 10;
+          closureReturnTypeHints.enable = "with_block";
+          discriminantHints.enable = "fieldless";
+          lifetimeElisionHints.enable = "skip_trivial";
+          typeHints.hideClosureInitialization = false;
+        };
       };
     };
 

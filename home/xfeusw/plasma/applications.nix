@@ -1,8 +1,6 @@
-# home/xfeusw/desktop/plasma/applications.nix
-{...}: {
+{_}: {
   programs.plasma = {
     configFile = {
-      # Dolphin file manager configuration
       "dolphinrc" = {
         General = {
           RememberOpenedTabs = false;
@@ -19,14 +17,12 @@
         };
       };
 
-      # Konsole terminal configuration
       "konsolerc" = {
         "Desktop Entry" = {
           DefaultProfile = "DarkProfile.profile";
         };
       };
 
-      # Kate text editor configuration
       "katerc" = {
         General = {
           "Default Encoding" = "UTF-8";
@@ -41,7 +37,6 @@
         };
       };
 
-      # Disable Baloo indexing
       "baloorc" = {
         "Basic Settings" = {
           "Indexing-Enabled" = false;
@@ -55,8 +50,8 @@
         Compositing = {
           OpenGLIsUnsafe = false;
           HiddenPreviews = 5;
-          MaxFPS = 60;
-          RefreshRate = 60;
+          MaxFPS = 75;
+          RefreshRate = 75;
           VSync = "none";
         };
         Plugins = {
@@ -76,7 +71,6 @@
     };
   };
 
-  # Konsole profile
   home.file.".local/share/konsole/DarkProfile.profile".text = ''
     [Appearance]
     ColorScheme=Breeze
@@ -94,7 +88,6 @@
     BlinkingCursorEnabled=true
   '';
 
-  # XDG MIME type associations
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

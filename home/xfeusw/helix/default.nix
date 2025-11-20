@@ -23,7 +23,7 @@ in {
         // {
           keys = keybindings;
         };
-      languages = languages;
+      inherit languages;
     };
 
     home.packages = lib.mkIf config.programs.helix.installExtraPackages packages;

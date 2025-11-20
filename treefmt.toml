@@ -3,17 +3,6 @@ command = "alejandra"
 options = ["--quiet"]
 includes = ["*.nix"]
 
-[formatter.prettier]
-command = "prettier"
-options = ["--write"]
-includes = [
-  ".json",
-  ".yaml",
-  ".yml",
-  ".md",
-  "*.toml",
-]
-
 [formatter.shellcheck]
 command = "shellcheck"
 options = ["--format=gcc"]

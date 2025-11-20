@@ -11,12 +11,10 @@
       font = "Inter";
       font-size = 24;
 
-      # Indicator settings
       indicator-radius = 150;
       indicator-thickness = 20;
       indicator-idle-visible = true;
 
-      # Colors (Tokyo Night theme)
       key-hl-color = "7aa2f7";
       bs-hl-color = "f7768e";
 
@@ -42,7 +40,6 @@
       text-ver-color = "a9b1d6";
       text-wrong-color = "a9b1d6";
 
-      # Effects
       effect-blur = "7x5";
       effect-vignette = "0.5:0.5";
 
@@ -57,7 +54,6 @@
     };
   };
 
-  # Swayidle configuration (idle management)
   services.swayidle = {
     enable = true;
     events = [
@@ -72,13 +68,12 @@
     ];
     timeouts = [
       {
-        timeout = 300; # 5 minutes
+        timeout = 300;
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
     ];
   };
 
-  # Systemd service for swaybg (background)
   systemd.user.services.swaybg = {
     package = pkgs.swaybg;
     Unit = {
@@ -96,7 +91,9 @@
     };
   };
 
-  home.file."Pictures/Screenshots/.keep".text = "";
-  home.file."Pictures/Wallpapers/.keep".text = "";
-  home.file."Videos/Recordings/.keep".text = "";
+  home.file = {
+    "Pictures/Screenshots/.keep".text = "";
+    "Pictures/Wallpapers/.keep".text = "";
+    "Videos/Recordings/.keep".text = "";
+  };
 }

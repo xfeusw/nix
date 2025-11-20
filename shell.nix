@@ -42,6 +42,8 @@ pkgs.mkShell {
       # Testing and validation
       nixos-rebuild
       home-manager
+
+      shfmt
     ]);
 
   shellHook = ''

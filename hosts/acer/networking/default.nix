@@ -1,5 +1,4 @@
-# modules/networking.nix
-{...}: {
+{_}: {
   networking = {
     hostName = "nixos-acer";
     networkmanager = {
