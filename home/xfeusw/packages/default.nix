@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   coreUtils = with pkgs.unstable; [
     bat
     btop

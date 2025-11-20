@@ -1,6 +1,9 @@
 # modules/hardware/graphics.nix
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   nixpkgs.config.nvidia.acceptLicense = true;
 
   # Hardware acceleration and graphics
@@ -14,7 +17,7 @@
     ];
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     # Modesetting is required for Wayland
@@ -49,10 +52,10 @@
 
       # Find your bus IDs by running: lspci | grep -E "VGA|3D"
       # Intel bus ID (integrated GPU)
-      intelBusId = "PCI:0:2:0";  # Typical value, verify with lspci
+      intelBusId = "PCI:0:2:0"; # Typical value, verify with lspci
 
       # NVIDIA bus ID (discrete GPU)
-      nvidiaBusId = "PCI:1:0:0";  # Typical value, verify with lspci
+      nvidiaBusId = "PCI:1:0:0"; # Typical value, verify with lspci
     };
   };
 
@@ -63,5 +66,5 @@
   };
 
   # Blacklist nouveau (open-source NVIDIA driver)
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.blacklistedKernelModules = ["nouveau"];
 }

@@ -1,6 +1,5 @@
 # home/xfeusw/desktop/plasma/kwin.nix
-{ ... }:
-{
+{...}: {
   programs.plasma = {
     kwin = {
       # Window behavior and rules

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -17,8 +16,8 @@
 
       # Performance optimizations
       max-jobs = "auto";
-      cores = 0;  # Use all available cores
-      download-buffer-size = 2147483648;  # 128 MB
+      cores = 0; # Use all available cores
+      download-buffer-size = 2147483648; # 128 MB
 
       # Build optimization
       connect-timeout = 5;
@@ -29,7 +28,7 @@
       restrict-eval = false;
 
       # Trusted users
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
     };
 
     # Optimized garbage collection
@@ -43,7 +42,7 @@
     # Store optimization
     optimise = {
       automatic = true;
-      dates = [ "weekly" ];
+      dates = ["weekly"];
     };
 
     # Nix daemon settings

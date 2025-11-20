@@ -1,34 +1,34 @@
 * {
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-    transition: all 0.2s ease;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  transition: all 0.2s ease;
 }
 
 window#waybar {
-    background-color: rgba(26, 27, 38, 0.95);
-    color: #c0caf5;
-    border-bottom: 1px solid #7aa2f7;
+  background-color: rgba(26, 27, 38, 0.95);
+  color: #c0caf5;
+  border-bottom: 1px solid #7aa2f7;
 }
 
 #workspaces button {
-    padding: 0 10px;
-    color: #c0caf5;
-    border-radius: 4px;
-    margin: 2px 4px;
+  padding: 0 10px;
+  color: #c0caf5;
+  border-radius: 4px;
+  margin: 2px 4px;
 }
 
 #workspaces button:hover {
-    background-color: #414868;
+  background-color: #414868;
 }
 
 #workspaces button.focused {
-    background-color: #7aa2f7;
-    color: #1a1b26;
+  background-color: #7aa2f7;
+  color: #1a1b26;
 }
 
 #clock {
-    padding: 0 10px;
-    font-weight: bold;
+  padding: 0 10px;
+  font-weight: bold;
 }
 
 #cpu,
@@ -36,31 +36,31 @@ window#waybar {
 #battery,
 #network,
 #pulseaudio {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 
 #cpu.warning,
 #memory.warning {
-    color: #ff9e64;
+  color: #ff9e64;
 }
 
 #cpu.critical,
 #memory.critical {
-    color: #f7768e;
+  color: #f7768e;
 }
 
 #battery.warning {
-    color: #ff9e64;
+  color: #ff9e64;
 }
 
 #battery.critical {
-    color: #f7768e;
+  color: #f7768e;
 }
 
 #pulseaudio.muted {
-    color: #f7768e;
+  color: #f7768e;
 }
 
 #tray {
-    padding: 0 10px;
+  padding: 0 10px;
 }

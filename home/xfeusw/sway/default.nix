@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.swaylock = {
     enable = true;
     settings = {
@@ -58,12 +61,18 @@
   services.swayidle = {
     enable = true;
     events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-      { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        event = "lock";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
     ];
     timeouts = [
       {
-        timeout = 300;  # 5 minutes
+        timeout = 300; # 5 minutes
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
     ];
@@ -74,16 +83,16 @@
     package = pkgs.swaybg;
     Unit = {
       Description = "Wayland wallpaper daemon";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-      Requisite = [ "graphical-session.target" ];
+      PartOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
+      Requisite = ["graphical-session.target"];
     };
     Service = {
       ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ../../../wallpapers/elizabeth.jpg";
       Restart = "on-failure";
     };
     Install = {
-      WantedBy = [ "niri.service" ];
+      WantedBy = ["niri.service"];
     };
   };
 

@@ -1,6 +1,9 @@
 # modules/security.nix
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   security = {
     apparmor = {
       enable = true;
@@ -84,7 +87,7 @@
   # Enhanced firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 8080 ];
+    allowedTCPPorts = [22 8080];
     allowPing = false;
     logReversePathDrops = true;
     logRefusedConnections = true;
@@ -126,15 +129,24 @@
   ];
 
   boot.blacklistedKernelModules = [
-    "dccp" "sctp" "rds" "tipc"
-    "jffs2" "hfs" "hfsplus"
-    "firewire-core" "thunderbolt"
+    "dccp"
+    "sctp"
+    "rds"
+    "tipc"
+    "jffs2"
+    "hfs"
+    "hfsplus"
+    "firewire-core"
+    "thunderbolt"
   ];
 
   # Security tools
   environment.systemPackages = with pkgs; [
-    lynis chkrootkit
-    nmap wireshark tcpdump
+    lynis
+    chkrootkit
+    nmap
+    wireshark
+    tcpdump
   ];
 
   # Audit framework

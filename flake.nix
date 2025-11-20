@@ -115,9 +115,10 @@
       ];
     };
 
-    devShells.${system}.default = (import ./shell.nix {inherit pkgs;}).overrideAttrs (oldAttrs: {
-      packages = oldAttrs.packages ++ [treefmtEval.config.build.wrapper];
-    });
+    devShells.${system}.default = import ./shell.nix {
+      inherit pkgs;
+      treefmt = treefmtEval.config.build.wrapper;
+    };
 
     formatter.${system} = treefmtEval.config.build.wrapper;
 

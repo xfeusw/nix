@@ -19,14 +19,14 @@
     clipboard-provider = "wayland";
 
     statusline = {
-      left = [ "mode" "spinner" "file-name" "file-modification-indicator" ];
-      center = [ "diagnostics" ];
-      right = [ "selections" "position" "file-encoding" "file-line-ending" "file-type" ];
+      left = ["mode" "spinner" "file-name" "file-modification-indicator"];
+      center = ["diagnostics"];
+      right = ["selections" "position" "file-encoding" "file-line-ending" "file-type"];
       separator = "│";
       mode = {
-          normal = "NORMAL";
-          insert = "INSERT";
-          select = "SELECT";
+        normal = "NORMAL";
+        insert = "INSERT";
+        select = "SELECT";
       };
     };
 

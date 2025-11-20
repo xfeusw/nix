@@ -1,6 +1,9 @@
 # home/xfeusw/git.nix
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.git = {
     enable = true;
     userName = "xfeusw";
@@ -49,18 +52,18 @@
   };
   home.activation = {
     setupGhToken = config.lib.dag.entryAfter ["writeBoundary"] ''
-      mkdir -p $HOME/.config/gh
+          mkdir -p $HOME/.config/gh
 
-      # System-wide secrets are always at /run/secrets/<name>
-      if [ -f /run/secrets/gh_token ]; then
-        cat > $HOME/.config/gh/hosts.yml <<EOF
-  github.com:
-      user: khamrakulov
-      oauth_token: $(cat /run/secrets/gh_token)
-      git_protocol: ssh
-  EOF
-        chmod 600 $HOME/.config/gh/hosts.yml
-      fi
+          # System-wide secrets are always at /run/secrets/<name>
+          if [ -f /run/secrets/gh_token ]; then
+            cat > $HOME/.config/gh/hosts.yml <<EOF
+      github.com:
+          user: khamrakulov
+          oauth_token: $(cat /run/secrets/gh_token)
+          git_protocol: ssh
+      EOF
+            chmod 600 $HOME/.config/gh/hosts.yml
+          fi
     '';
   };
 }

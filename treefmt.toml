@@ -7,10 +7,10 @@ includes = ["*.nix"]
 command = "prettier"
 options = ["--write"]
 includes = [
-  "*.json",
-  "*.yaml",
-  "*.yml",
-  "*.md",
+  ".json",
+  ".yaml",
+  ".yml",
+  ".md",
   "*.toml",
 ]
 
@@ -27,17 +27,17 @@ options = [
   "-s",
   "-w",
 ]
-includes = ["*.sh", "*.bash"]
+includes = [".sh", ".bash"]
 
 [global]
 excludes = [
-  "*.age",
-  "*.key",
-  ".git/**",
-  ".direnv/**",
+  ".age",
+  ".key",
+  ".git/",
+  ".direnv/",
   "result",
   "result-*",
-  ".vscode/**",
-  ".idea/**",
+  ".vscode/",
+  ".idea/",
   "node_modules/**",
 ]

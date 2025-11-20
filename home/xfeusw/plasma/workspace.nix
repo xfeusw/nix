@@ -1,6 +1,5 @@
 # home/xfeusw/desktop/plasma/workspace.nix
-{ config, ... }:
-{
+{config, ...}: {
   home.file.".local/share/wallpapers/elizabeth.jpg".source = ../../../wallpapers/elizabeth.jpg;
 
   home.file.".config/plasma-workspace/env/home-manager-paths.sh".text = ''

@@ -1,6 +1,5 @@
 # home/xfeusw/desktop/plasma/themes.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # GTK theme integration
   gtk = {
     enable = true;

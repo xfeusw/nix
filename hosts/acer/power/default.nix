@@ -1,6 +1,5 @@
 # modules/power.nix
-{ ... }:
-{
+{...}: {
   # Disable conflicting power management services
   services.power-profiles-daemon.enable = false;
 

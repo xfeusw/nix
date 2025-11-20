@@ -1,5 +1,5 @@
-{ pkgs, ... }: let
-  vscodeExtensions = import ./extensions.nix { inherit pkgs; };
+{pkgs, ...}: let
+  vscodeExtensions = import ./extensions.nix {inherit pkgs;};
 in {
   programs.vscode = {
     enable = true;
@@ -49,7 +49,7 @@ in {
         "rust-analyzer.imports.granularity.group" = "module";
         "rust-analyzer.imports.prefix" = "crate";
         "rust-analyzer.inlayHints.enable" = true;
-        "rust-analyzer.diagnostics.disabled" = [ "unresolved-proc-macro" ];
+        "rust-analyzer.diagnostics.disabled" = ["unresolved-proc-macro"];
         # --- Haskell ---
         "haskell.formattingProvider" = "fourmolu";
         "haskell.plugin.ghcide-completions.globalOn" = true;

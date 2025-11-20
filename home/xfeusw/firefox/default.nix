@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   # For using addons
   # addon = pkgs.firefox-addons.buildFirefoxXpiAddon;
-in
-{
+in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;

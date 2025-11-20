@@ -1,6 +1,5 @@
 # modules/users.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users.users.xfeusw = {
     isNormalUser = true;
     extraGroups = [

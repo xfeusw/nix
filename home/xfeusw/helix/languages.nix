@@ -1,4 +1,4 @@
-{ pkgs }: {
+{pkgs}: {
   language-server = {
     nil = {
       command = "${pkgs.nil}/bin/nil";
@@ -19,17 +19,17 @@
 
     typescript-language-server = {
       command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
-      args = [ "--stdio" ];
+      args = ["--stdio"];
     };
 
     vscode-langservers-extracted = {
       command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
-      args = [ "--stdio" ];
+      args = ["--stdio"];
     };
 
     pyright = {
       command = "${pkgs.pyright}/bin/pyright-langserver";
-      args = [ "--stdio" ];
+      args = ["--stdio"];
     };
 
     gopls = {
@@ -38,12 +38,12 @@
 
     marksman = {
       command = "${pkgs.marksman}/bin/marksman";
-      args = [ "server" ];
+      args = ["server"];
     };
 
     haskell-language-server = {
       command = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
-      args = [ "--lsp" ];
+      args = ["--lsp"];
     };
   };
 
@@ -52,51 +52,51 @@
       name = "nix";
       auto-format = true;
       formatter.command = "${pkgs.alejandra}/bin/alejandra";
-      language-servers = [ "nil" ];
+      language-servers = ["nil"];
     }
     {
       name = "rust";
       auto-format = true;
-      language-servers = [ "rust-analyzer" ];
+      language-servers = ["rust-analyzer"];
     }
     {
       name = "typescript";
       auto-format = true;
-      language-servers = [ "typescript-language-server" ];
+      language-servers = ["typescript-language-server"];
     }
     {
       name = "javascript";
       auto-format = true;
-      language-servers = [ "typescript-language-server" ];
+      language-servers = ["typescript-language-server"];
     }
     {
       name = "json";
       auto-format = true;
-      language-servers = [ "vscode-langservers-extracted" ];
+      language-servers = ["vscode-langservers-extracted"];
     }
     {
       name = "python";
       auto-format = true;
       formatter.command = "${pkgs.black}/bin/black";
-      formatter.args = [ "-" "--quiet" ];
-      language-servers = [ "pyright" ];
+      formatter.args = ["-" "--quiet"];
+      language-servers = ["pyright"];
     }
     {
       name = "go";
       auto-format = true;
       formatter.command = "${pkgs.gofumpt}/bin/gofumpt";
-      language-servers = [ "gopls" ];
+      language-servers = ["gopls"];
     }
     {
       name = "markdown";
       auto-format = true;
-      language-servers = [ "marksman" ];
+      language-servers = ["marksman"];
     }
     {
       name = "haskell";
       auto-format = true;
       formatter.command = "${pkgs.ormolu}/bin/ormolu";
-      language-servers = [ "haskell-language-server" ];
+      language-servers = ["haskell-language-server"];
     }
   ];
 }

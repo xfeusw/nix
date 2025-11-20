@@ -57,7 +57,7 @@
     "olm-3.2.16"
   ];
 
-  services.displayManager.sessionPackages = [ pkgs.niri ];
+  services.displayManager.sessionPackages = [pkgs.niri];
   # environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 

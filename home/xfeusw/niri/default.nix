@@ -1,6 +1,9 @@
-{ pkgs, inputs, ...}:
 {
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  pkgs,
+  inputs,
+  ...
+}: {
+  nixpkgs.overlays = [inputs.niri.overlays.niri];
 
   programs.niri = {
     enable = true;
@@ -44,7 +47,7 @@
       spawn-at-startup = [
         # { command = ["swaybg" "-m" "fill" "-i" "../../../wallpapers/elizabeth.jpg"]; }
         # { command = ["swayidle" "-w"]; }
-        { command = ["mako"]; }
+        {command = ["mako"];}
       ];
 
       binds = {

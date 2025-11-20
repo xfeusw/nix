@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.dunst = {
     enable = true;
 
@@ -24,7 +26,7 @@
         progress_bar_max_width = 400;
 
         # Visual
-        transparency = 10;  # 10% transparent (90% opaque)
+        transparency = 10; # 10% transparent (90% opaque)
         separator_height = 2;
         padding = 15;
         horizontal_padding = 15;

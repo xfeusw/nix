@@ -1,6 +1,5 @@
 # modules/networking.nix
-{ ... }:
-{
+{...}: {
   networking = {
     hostName = "nixos-xeon";
     networkmanager = {
@@ -9,8 +8,8 @@
     };
 
     firewall = {
-      allowedTCPPorts = [ 57 621 ];
-      allowedUDPPorts = [ 5353 ];
+      allowedTCPPorts = [57 621];
+      allowedUDPPorts = [5353];
     };
 
     # Faster DNS
