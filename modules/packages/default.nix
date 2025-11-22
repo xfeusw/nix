@@ -32,5 +32,6 @@
     pciutils
     nvidia-vaapi-driver
     nvtopPackages.nvidia
+    ngrok
   ];
 }

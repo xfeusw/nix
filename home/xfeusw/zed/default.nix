@@ -111,24 +111,24 @@
 
       TypeScript = {
         formatter = "prettier";
-        language_servers = [ "typescript-language-server" ];
+        language_servers = ["typescript-language-server"];
       };
       TSX = {
         formatter = "prettier";
-        language_servers = [ "typescript-language-server" ];
+        language_servers = ["typescript-language-server"];
       };
       JavaScript = {
         formatter = "prettier";
-        language_servers = [ "typescript-language-server" ];
+        language_servers = ["typescript-language-server"];
       };
       JSX = {
         formatter = "prettier";
-        language_servers = [ "typescript-language-server" ];
+        language_servers = ["typescript-language-server"];
       };
 
       GitIgnore = {
         formatter = "none";
-        language_servers = [ ];
+        language_servers = [];
       };
     };
 

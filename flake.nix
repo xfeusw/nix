@@ -30,6 +30,11 @@
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    mac-style-plymouth = {
+      url = "github:bemeritus/bemeritus-plymouth-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
   outputs = {
@@ -42,6 +47,8 @@
     niri,
     sops-nix,
     treefmt-nix,
+    mac-style-plymouth,
+    tarmoqchi,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -63,6 +70,7 @@
               inherit (prev) system;
               config.allowUnfree = true;
             };
+            mac-style-plymouth = mac-style-plymouth.packages.${system}.default;
           })
         ];
       }
@@ -71,7 +79,6 @@
     pre-commit-check = git-hooks.lib.${system}.run {
       src = ./.;
       hooks = {
-        statix.enable = true;
         treefmt.enable = true;
         shellcheck.enable = true;
         check-merge-conflicts.enable = true;
@@ -116,7 +123,6 @@
         inputs.nix-colors.homeManagerModules.default
         inputs.niri.homeModules.niri
         inputs.sops-nix.homeModules.sops
-        inputs.spicetify-nix.homeManagerModules.default
         nur.modules.homeManager.default
         {
           nixpkgs.overlays = [

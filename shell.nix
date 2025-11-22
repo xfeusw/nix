@@ -17,7 +17,6 @@ pkgs.mkShell {
       nil
       alejandra
       nixpkgs-fmt
-      statix
       deadnix
       nix-tree
       nix-diff

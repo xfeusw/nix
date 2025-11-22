@@ -21,13 +21,29 @@
   # Bootloader with enhanced options
   boot = {
     loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-        editor = false;
-      };
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
-      timeout = 2;
+      grub = {
+        enable = true;
+        devices = ["nodev"];
+        #splashImage = ./background.png;
+        useOSProber = true;
+        efiSupport = true;
+        theme = "${
+          (pkgs.fetchFromGitHub {
+            owner = "xinux-org";
+            repo = "bootloader-theme";
+            tag = "v1.0.3";
+            hash = "sha256-ipaiJiQ3r2B3si1pFKdp/qykcpaGV+EqXRwl6UkCohs=";
+          })
+        }/xinux";
+      };
+    };
+
+    plymouth = {
+      enable = true;
+      theme = "mac-style";
+      themePackages = [pkgs.mac-style-plymouth];
     };
 
     kernelParams = [
@@ -39,7 +55,8 @@
     ];
 
     initrd.verbose = false;
-    consoleLogLevel = 0;
+    initrd.systemd.enable = true;
+    consoleLogLevel = 3;
     kernelModules = ["tcp_bbr"];
     kernelPackages = pkgs.linuxPackages_zen;
   };

@@ -1,5 +1,5 @@
 # home/xfeusw/desktop/plasma/kwin.nix
-{_}: {
+{...}: {
   programs.plasma = {
     kwin = {
       borderlessMaximizedWindows = true;

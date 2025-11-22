@@ -37,9 +37,9 @@
     switch-acer = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --option restrict-eval false";
     update-acer = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --upgrade --option restrict-eval false";
 
-    build-home = "home-manager build --flake ~/.config/nix#user --option restrict-eval false -b backup";
-    switch-home = "home-manager switch --flake ~/.config/nix#user --option restrict-eval false -b backup";
-    update-home = "home-manager switch --flake ~/.config/nix#user --option restrict-eval false -b backup";
+    build-home = "home-manager build --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
+    switch-home = "home-manager switch --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
+    update-home = "home-manager switch --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
 
     nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && home-manager expire-generations 0 && sudo nix-store --optimise";
     nix-search = "nix search nixpkgs";

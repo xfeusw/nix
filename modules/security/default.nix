@@ -172,14 +172,6 @@
         owner = "xfeusw";
         mode = "0400";
       };
-      spotify-username = {
-        owner = "xfeusw";
-        mode = "0400";
-      };
-      spotify-password = {
-        owner = "xfeusw";
-        mode = "0400";
-      };
     };
   };
 }

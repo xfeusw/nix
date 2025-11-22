@@ -1,104 +1,96 @@
-{pkgs, ...}: let
-  coreUtils = with pkgs.unstable; [
-    bat
-    btop
-    eza
-  ];
-  devToolchain = with pkgs.unstable; [
-    cmake
-    gcc
-    gnumake
-    pkg-config
-  ];
-  debuggers = with pkgs.unstable; [
-    gdb
-    lldb
-  ];
-  vcs = with pkgs.unstable; [
-    git-lfs
-    lazygit
-  ];
-  containerOrchestration = with pkgs.unstable; [
-    docker-compose
-    k9s
-    kubectl
-  ];
-  networkClients = with pkgs.unstable; [
-    curl
-    httpie
-    wget
-  ];
-  dataTransform = with pkgs.unstable; [
-    jq
-    yq
-  ];
-  sysUtils = with pkgs.unstable; [
-    p7zip
-    tree
-    unrar
-    unzip
-    sops
-  ];
-  nixEcosystem = with pkgs.unstable; [
-    alejandra
-    cachix
-    just
-    nil
-    nixd
-  ];
-  browsers = with pkgs.unstable; [
-    brave
-    google-chrome
-    tor-browser
-  ];
-  commsClients = with pkgs.unstable; [
-    discord
-    element-desktop
-    telegram-desktop
-  ];
-  mediaStack = with pkgs.unstable; [
-    mpv
-    pdftk
-    playerctl
-    spotify
-    spotify-cli-linux
-    spotify-tray
-    vlc
-  ];
-  waylandTools = with pkgs.unstable; [
-    wayland
-    wayland-protocols
-    wayland-utils
-    grim
-    slurp
-    wf-recorder
-    swappy
-    wlr-randr
-    wdisplays
-    cliphist
-    wl-clipboard-rs
-    # swaylock
-    # swayidle
-    # swaybg
-    hyprpicker
-    brightnessctl
-    pamixer
-    xwayland
-    libnotify
-  ];
-in {
-  home.packages =
-    coreUtils
-    ++ devToolchain
-    ++ debuggers
-    ++ vcs
-    ++ containerOrchestration
-    ++ networkClients
-    ++ dataTransform
-    ++ sysUtils
-    ++ nixEcosystem
-    ++ browsers
-    ++ commsClients
-    ++ mediaStack
-    ++ waylandTools;
+{pkgs, ...}: {
+  home.packages = with pkgs;
+    [
+      # insomnia
+    ]
+    ++ (with pkgs.unstable; [
+      # Core utilities
+      bat
+      btop
+      eza
+
+      # Dev toolchain
+      cmake
+      gcc
+      gnumake
+      pkg-config
+      bruno
+      bruno-cli
+
+      # Debuggers
+      gdb
+      lldb
+
+      # Version control
+      git-lfs
+      lazygit
+
+      # Container orchestration
+      docker-compose
+      k9s
+      kubectl
+
+      # Network clients
+      curl
+      httpie
+      wget
+
+      # Data transformation
+      jq
+      yq
+
+      # System utilities
+      p7zip
+      tree
+      unrar
+      unzip
+      sops
+
+      # Nix ecosystem tools
+      alejandra
+      cachix
+      just
+      nil
+      nixd
+
+      # Browsers
+      brave
+      google-chrome
+      tor-browser
+
+      # Communication clients
+      discord
+      element-desktop
+      telegram-desktop
+
+      # Media stack
+      mpv
+      pdftk
+      playerctl
+      spotify
+      spotify-cli-linux
+      spotify-tray
+      vlc
+
+      # Wayland tools
+      wayland
+      wayland-protocols
+      wayland-utils
+      grim
+      slurp
+      wf-recorder
+      swappy
+      wlr-randr
+      wdisplays
+      cliphist
+      wl-clipboard-rs
+      # swaylock
+      # swayidle
+      # swaybg
+      hyprpicker
+      brightnessctl
+      pamixer
+      xwayland
+      libnotify
+    ]);
 }
