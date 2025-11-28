@@ -8,6 +8,7 @@
       bat
       btop
       eza
+      ffmpeg
 
       # Dev toolchain
       cmake
@@ -92,5 +93,12 @@
       pamixer
       xwayland
       libnotify
+
+      # etc
+      obs-studio
+      code-cursor
+      antigravity
+      ollama-vulkan
+      open-webui
     ]);
 }
