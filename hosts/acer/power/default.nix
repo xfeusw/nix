@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   networking = {
     networkmanager = {
       enable = true;
@@ -11,7 +10,7 @@
         57
         621
       ];
-      allowedUDPPorts = [ 5353 ];
+      allowedUDPPorts = [5353];
     };
 
     nameservers = [

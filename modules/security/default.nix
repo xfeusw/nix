@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   security = {
     apparmor = {
       enable = true;

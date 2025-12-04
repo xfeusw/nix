@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages =
-    with pkgs;
+{pkgs, ...}: {
+  home.packages = with pkgs;
     [
       # insomnia
     ]
@@ -100,6 +98,6 @@
       obs-studio
       code-cursor
       antigravity
-      windsurf
+      android-studio
     ]);
 }

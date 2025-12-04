@@ -9,7 +9,9 @@
       "video"
       "libvirtd"
       "scanner"
+      "kvm"
       "lp"
+      "adbusers"
     ];
     shell = pkgs.zsh;
   };

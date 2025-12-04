@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   programs = {
     mtr.enable = true;
     gnupg.agent = {

@@ -12,6 +12,7 @@
     ../../modules/security
     ../../modules/virtualization
 
+    ./android
     ./hardware
     ./networking
     ./performance
