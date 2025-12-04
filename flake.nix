@@ -34,10 +34,6 @@
       url = "github:bemeritus/bemeritus-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rtmp-server = {
-      url = "/home/xfeusw/workspace/slip-stream/rtmp-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
@@ -52,7 +48,6 @@
     sops-nix,
     treefmt-nix,
     mac-style-plymouth,
-    rtmp-server,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -111,7 +106,6 @@
           [
             ./hosts/xeon/configuration.nix
             nixos-hardware.nixosModules.common-cpu-intel
-            rtmp-server.nixosModules.${system}.rtmpServerModule
           ]
           ++ commonModules;
       };
