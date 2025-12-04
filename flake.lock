@@ -517,26 +517,8 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
-        "rtmp-server": "rtmp-server",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix"
-      }
-    },
-    "rtmp-server": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764671802,
-        "narHash": "sha256-reGqifPy57xftZAyLLAj6Y5In1xwjFRWmByw53NZoF8=",
-        "path": "/home/xfeusw/workspace/slip-stream/rtmp-server",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/xfeusw/workspace/slip-stream/rtmp-server",
-        "type": "path"
       }
     },
     "rust-overlay": {

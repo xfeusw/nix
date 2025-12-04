@@ -10,6 +10,7 @@
     "env"
     "gitignore"
     "glsl"
+    "go"
     "haskell"
     "html"
     "ini"
@@ -67,6 +68,22 @@
           };
         };
       };
+      gopls = {
+        binary = {
+          ignore_system_version = false;
+        };
+        initialization_options = {
+          hints = {
+            assignVariableTypes = true;
+            compositeLiteralFields = true;
+            compositeLiteralTypes = true;
+            constantValues = true;
+            functionTypeParameters = true;
+            parameterNames = true;
+            rangeVariableTypes = true;
+          };
+        };
+      };
       nixd = {
         binary = {
           ignore_system_version = false;
@@ -75,11 +92,6 @@
       hls = {
         binary = {
           ignore_system_version = false;
-        };
-        initialization_options = {
-          haskell = {
-            formattingProvider = "fourmolu";
-          };
         };
       };
       prettier = {
@@ -94,52 +106,44 @@
       };
     };
     languages = {
+      Rust = {
+        language_servers = ["rust-analyzer"];
+        tab_size = 4;
+      };
       Nix = {
-        formatter = "alejandra";
         language_servers = [
           "nixd"
           "!nil"
         ];
       };
-
+      Go = {
+        language_servers = ["gopls"];
+        tab_size = 4;
+        hard_tabs = true;
+      };
       Haskell = {
-        formatter = "language_server";
         language_servers = [
           "hls"
         ];
       };
-
       TypeScript = {
-        formatter = "prettier";
         language_servers = ["typescript-language-server"];
       };
       TSX = {
-        formatter = "prettier";
         language_servers = ["typescript-language-server"];
       };
       JavaScript = {
-        formatter = "prettier";
         language_servers = ["typescript-language-server"];
       };
       JSX = {
-        formatter = "prettier";
         language_servers = ["typescript-language-server"];
       };
-
       GitIgnore = {
-        formatter = "none";
         language_servers = [];
       };
     };
-
     format_on_save = "off";
-
-    disable_ai = true;
     soft_wrap = "editor_width";
-    active_pane_modifiers = {
-      border_size = 0.0;
-      inactive_opacity = 1.0;
-    };
     bottom_dock_layout = "contained";
     buffer_font_family = "FiraCode Nerd Font Mono";
     buffer_font_size = 13;
@@ -150,24 +154,17 @@
       metrics = false;
       diagnostics = false;
     };
-    show_edit_predictions = false;
     load_direnv = "shell_hook";
     confirm_quit = false;
     use_autoclose = false;
     inlay_hints = {
       enabled = true;
     };
-    title_bar = {
-      show_branch_icon = true;
-    };
     collaboration_panel = {
       button = false;
     };
     chat_panel = {
-      button = "never";
-    };
-    agent = {
-      enabled = false;
+      button = false;
     };
   };
 in {
