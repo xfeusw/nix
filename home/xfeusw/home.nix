@@ -10,6 +10,7 @@
     ./fuzzel
     ./ghostty
     ./git
+    ./go
     ./haskell
     ./helix
     ./mako

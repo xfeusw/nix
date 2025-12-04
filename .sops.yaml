@@ -1,5 +1,5 @@
 keys:
-  - &xeon age1suhvgvsmq03fs59vedhwsr6efywscc5crunlsuswuydfrdw5e42sddl5lp
+  - &xeon age1cd8la756dm3as7tvyy2zg48x8l4wm3xcereqh7uq0m4e6fxh93dstnhutl
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$

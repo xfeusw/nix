@@ -7,7 +7,6 @@
 
 # direnv
 /.direnv
-/.envrc
 /hosts/acer/secrets.yaml
 
 # Misc

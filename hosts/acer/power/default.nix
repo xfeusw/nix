@@ -1,14 +1,17 @@
-{...}: {
+{ ... }:
+{
   networking = {
-    hostName = "nixos-xeon";
     networkmanager = {
       enable = true;
       wifi.powersave = true;
     };
 
     firewall = {
-      allowedTCPPorts = [57 621];
-      allowedUDPPorts = [5353];
+      allowedTCPPorts = [
+        57
+        621
+      ];
+      allowedUDPPorts = [ 5353 ];
     };
 
     nameservers = [

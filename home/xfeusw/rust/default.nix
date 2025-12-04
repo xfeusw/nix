@@ -8,12 +8,12 @@
         hard_tabs = false
         use_small_heuristics = "Max"
       '';
-      packages = [
-        pkgs.rustc
-        pkgs.rust-analyzer
-        pkgs.cargo
-        pkgs.clippy
-        pkgs.rustfmt
+      packages = with pkgs; [
+        rustc
+        rust-analyzer
+        cargo
+        clippy
+        rustfmt
       ];
     };
   };

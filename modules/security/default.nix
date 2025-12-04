@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   security = {
     apparmor = {
       enable = true;
@@ -87,7 +88,13 @@
   # Enhanced firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [22 8080];
+    allowedTCPPorts = [
+      22
+      8080
+      39393
+      5000
+      1935
+    ];
     allowPing = false;
     logReversePathDrops = true;
     logRefusedConnections = true;
