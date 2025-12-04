@@ -33,5 +33,11 @@
     nvidia-vaapi-driver
     nvtopPackages.nvidia
     ngrok
+
+    # livekit
+    livekit
+    livekit-cli
+    livekit-ingress
+    livekit-libwebrtc
   ];
 }

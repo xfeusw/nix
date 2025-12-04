@@ -151,7 +151,6 @@
   # Security tools
   environment.systemPackages = with pkgs; [
     lynis
-    chkrootkit
     nmap
     wireshark
     tcpdump

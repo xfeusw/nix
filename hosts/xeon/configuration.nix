@@ -12,7 +12,7 @@
     ../../modules/security
     ../../modules/virtualization
 
-    ./android
+    # ./android
     ./hardware
     ./networking
     ./performance
@@ -82,5 +82,5 @@
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

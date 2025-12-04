@@ -2,22 +2,21 @@
   description = "NixOS configuration for acer and xeon";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
@@ -39,7 +38,6 @@
 
   outputs = {
     nixpkgs,
-    nixpkgs-unstable,
     home-manager,
     git-hooks,
     nixos-hardware,
@@ -65,10 +63,6 @@
         nixpkgs.overlays = [
           nur.overlays.default
           (final: prev: {
-            unstable = import nixpkgs-unstable {
-              inherit (prev) system;
-              config.allowUnfree = true;
-            };
             mac-style-plymouth = mac-style-plymouth.packages.${system}.default;
           })
         ];
@@ -126,12 +120,6 @@
         {
           nixpkgs.overlays = [
             nur.overlays.default
-            (final: prev: {
-              unstable = import nixpkgs-unstable {
-                inherit system;
-                config.allowUnfree = true;
-              };
-            })
           ];
         }
         ./home/xfeusw/home.nix

@@ -1,103 +1,99 @@
 {pkgs, ...}: {
-  home.packages = with pkgs;
-    [
-      # insomnia
-    ]
-    ++ (with pkgs.unstable; [
-      # Core utilities
-      bat
-      btop
-      eza
-      ffmpeg
+  home.packages = with pkgs; [
+    # Core utilities
+    bat
+    btop
+    eza
+    ffmpeg
 
-      # Dev toolchain
-      cmake
-      gcc
-      gnumake
-      pkg-config
-      bruno
-      bruno-cli
+    # Dev toolchain
+    cmake
+    gcc
+    gnumake
+    pkg-config
+    bruno
+    bruno-cli
 
-      # Debuggers
-      gdb
-      lldb
+    # Debuggers
+    gdb
+    lldb
 
-      # Version control
-      git-lfs
-      lazygit
+    # Version control
+    git-lfs
+    lazygit
 
-      # Container orchestration
-      docker-compose
-      k9s
-      kubectl
+    # Container orchestration
+    docker-compose
+    k9s
+    kubectl
 
-      # Network clients
-      curl
-      httpie
-      wget
+    # Network clients
+    curl
+    httpie
+    wget
 
-      # Data transformation
-      jq
-      yq
+    # Data transformation
+    jq
+    yq
 
-      # System utilities
-      p7zip
-      tree
-      unrar
-      unzip
-      sops
+    # System utilities
+    p7zip
+    tree
+    unrar
+    unzip
+    sops
 
-      # Nix ecosystem tools
-      alejandra
-      cachix
-      just
-      nil
-      nixd
+    # Nix ecosystem tools
+    alejandra
+    cachix
+    just
+    nil
+    nixd
 
-      # Browsers
-      brave
-      google-chrome
-      tor-browser
+    # Browsers
+    brave
+    google-chrome
+    tor-browser
 
-      # Communication clients
-      discord
-      element-desktop
-      telegram-desktop
+    # Communication clients
+    discord
+    element-desktop
+    telegram-desktop
 
-      # Media stack
-      mpv
-      pdftk
-      playerctl
-      spotify
-      spotify-cli-linux
-      spotify-tray
-      vlc
+    # Media stack
+    mpv
+    pdftk
+    playerctl
+    spotify
+    spotify-cli-linux
+    spotify-tray
+    vlc
 
-      # Wayland tools
-      wayland
-      wayland-protocols
-      wayland-utils
-      grim
-      slurp
-      wf-recorder
-      swappy
-      wlr-randr
-      wdisplays
-      cliphist
-      wl-clipboard-rs
-      # swaylock
-      # swayidle
-      # swaybg
-      hyprpicker
-      brightnessctl
-      pamixer
-      xwayland
-      libnotify
+    # Wayland tools
+    wayland
+    wayland-protocols
+    wayland-utils
+    grim
+    slurp
+    wf-recorder
+    swappy
+    wlr-randr
+    wdisplays
+    cliphist
+    wl-clipboard-rs
+    # swaylock
+    # swayidle
+    # swaybg
+    hyprpicker
+    brightnessctl
+    pamixer
+    xwayland
+    libnotify
 
-      # etc
-      obs-studio
-      code-cursor
-      antigravity
-      android-studio
-    ]);
+    # etc
+    obs-studio
+    code-cursor
+    antigravity
+    android-studio
+  ];
 }
