@@ -92,8 +92,7 @@
 
     # etc
     obs-studio
-    code-cursor
-    antigravity
     android-studio
+    hyperbeam
   ];
 }

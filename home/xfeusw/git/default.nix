@@ -6,41 +6,44 @@
 }: {
   programs.git = {
     enable = true;
-    userName = "xfeusw";
-    userEmail = "khamrakulovkamron@gmail.com";
-
-    extraConfig = {
-      core = {
-        editor = "hx";
-        autocrlf = "input";
+    settings = {
+      user = {
+        name = "xfeusw";
+        email = "khamrakulovkamron@gmail.com";
       };
-      init.defaultBranch = "main";
-      color.ui = "auto";
-      pull.rebase = true;
-      push.default = "simple";
-      merge.conflictStyle = "diff3";
-      rerere.enabled = true;
+      aliases = {
+        st = "status -s";
+        co = "checkout";
+        br = "branch";
+        ci = "commit";
+        unstage = "reset HEAD --";
+        last = "log -1 HEAD";
+        visual = "!gitk";
+        lg = "log --oneline --graph --decorate --all";
+        wip = "commit -am 'WIP'";
+        unwip = "reset HEAD~1";
+      };
 
-      # Better diffs
-      diff.tool = "vimdiff";
-      merge.tool = "vimdiff";
+      extraConfig = {
+        core = {
+          editor = "hx";
+          autocrlf = "input";
+        };
+        init.defaultBranch = "main";
+        color.ui = "auto";
+        pull.rebase = true;
+        push.default = "simple";
+        merge.conflictStyle = "diff3";
+        rerere.enabled = true;
 
-      # Signing commits (optional)
-      # commit.gpgsign = true;
-      # user.signingkey = "your-gpg-key";
-    };
+        # Better diffs
+        diff.tool = "vimdiff";
+        merge.tool = "vimdiff";
 
-    aliases = {
-      st = "status -s";
-      co = "checkout";
-      br = "branch";
-      ci = "commit";
-      unstage = "reset HEAD --";
-      last = "log -1 HEAD";
-      visual = "!gitk";
-      lg = "log --oneline --graph --decorate --all";
-      wip = "commit -am 'WIP'";
-      unwip = "reset HEAD~1";
+        # Signing commits (optional)
+        # commit.gpgsign = true;
+        # user.signingkey = "your-gpg-key";
+      };
     };
   };
 

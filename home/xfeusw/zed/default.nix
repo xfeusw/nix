@@ -3,178 +3,174 @@
   pkgs,
   config,
   ...
-}: let
-  extensions = [
-    "assembly"
-    "deno"
-    "env"
-    "gitignore"
-    "glsl"
-    "go"
-    "haskell"
-    "html"
-    "ini"
-    "just"
-    "latex"
-    "lua"
-    "make"
-    "material-icon-theme"
-    "neocmake"
-    "nginx"
-    "nix"
-    "nu"
-    "pkl"
-    "ruby"
-    "slint"
-    "sql"
-    "swift"
-    "toml"
-    "typst"
-    "tokyo-night"
-    "vercel-theme"
-    "wgsl"
-    "xml"
-    "zig"
-  ];
-  settings = {
-    project_panel = {
-      dock = "right";
-    };
-    icon_theme = "Material Icon Theme";
-    tab_size = 2;
-    theme = {
-      mode = "system";
-      light = "Tokyo Night";
-      dark = "Tokyo Night";
-    };
-    lsp = {
-      rust-analyzer = {
-        binary = {
-          ignore_system_version = false;
-        };
-        initialization_options = {
-          inlayHints = {
-            maxLength = null;
-            lifetimeElisionHints = {
-              enable = "skip_trivial";
-              useParameterNames = true;
-            };
-            closureReturnTypeHints = {
-              enable = "always";
-            };
-          };
-          rust = {
-            analyzerTargetDir = true;
-          };
-        };
-      };
-      gopls = {
-        binary = {
-          ignore_system_version = false;
-        };
-        initialization_options = {
-          hints = {
-            assignVariableTypes = true;
-            compositeLiteralFields = true;
-            compositeLiteralTypes = true;
-            constantValues = true;
-            functionTypeParameters = true;
-            parameterNames = true;
-            rangeVariableTypes = true;
-          };
-        };
-      };
-      nixd = {
-        binary = {
-          ignore_system_version = false;
-        };
-      };
-      hls = {
-        binary = {
-          ignore_system_version = false;
-        };
-      };
-      prettier = {
-        binary = {
-          ignore_system_version = false;
-        };
-      };
-      typescript-language-server = {
-        binary = {
-          ignore_system_version = false;
-        };
-      };
-    };
-    languages = {
-      Rust = {
-        language_servers = ["rust-analyzer"];
-        tab_size = 4;
-      };
-      Nix = {
-        language_servers = [
-          "nixd"
-          "!nil"
-        ];
-      };
-      Go = {
-        language_servers = ["gopls"];
-        tab_size = 4;
-        hard_tabs = true;
-      };
-      Haskell = {
-        language_servers = [
-          "hls"
-        ];
-      };
-      TypeScript = {
-        language_servers = ["typescript-language-server"];
-      };
-      TSX = {
-        language_servers = ["typescript-language-server"];
-      };
-      JavaScript = {
-        language_servers = ["typescript-language-server"];
-      };
-      JSX = {
-        language_servers = ["typescript-language-server"];
-      };
-      GitIgnore = {
-        language_servers = [];
-      };
-    };
-    format_on_save = "off";
-    soft_wrap = "editor_width";
-    bottom_dock_layout = "contained";
-    buffer_font_family = "FiraCode Nerd Font Mono";
-    buffer_font_size = 13;
-    ui_font_size = 14;
-    ui_font_family = "FreeSans";
-    auto_update = false;
-    telemetry = {
-      metrics = false;
-      diagnostics = false;
-    };
-    load_direnv = "shell_hook";
-    confirm_quit = false;
-    use_autoclose = false;
-    inlay_hints = {
-      enabled = true;
-    };
-    collaboration_panel = {
-      button = false;
-    };
-    chat_panel = {
-      button = false;
-    };
-  };
-in {
+}: {
   config = {
     programs.zed-editor = {
       enable = true;
-      inherit extensions;
-      userSettings = settings;
-      installRemoteServer = true;
-      package = pkgs.zed-editor;
+
+      extensions = [
+        "tokyo-night"
+        "nix"
+        "toml"
+        "material-icon-theme"
+        "make"
+        "assembly"
+        "haskell"
+        "typst"
+        "xml"
+        "just"
+        "sql"
+        "nginx"
+        "html"
+        "env"
+        "deno"
+        "lua"
+        "yaml"
+      ];
+
+      userSettings = {
+        assistant = {
+          enabled = false;
+        };
+
+        disable_ai = true;
+
+        telemetry = {
+          metrics = false;
+          diagnostics = false;
+        };
+
+        show_edit_predictions = false;
+
+        node = {
+          path = lib.getExe pkgs.nodejs;
+          npm_path = lib.getExe' pkgs.nodejs "npm";
+        };
+
+        languages = {
+          Markdown = {
+            format_on_save = "on";
+            use_on_type_format = true;
+            remove_trailing_whitespace_on_save = true;
+          };
+
+          Nix = {
+            formatter = "language_server";
+            language_servers = [
+              "nixd"
+              "!nil"
+            ];
+          };
+
+          TypeScript = {
+            language_servers = [
+              "typescript-language-server"
+              "deno"
+              "!vtsls"
+              "!eslint"
+            ];
+            formatter = "language_server";
+          };
+
+          TSX = {
+            language_servers = [
+              "typescript-language-server"
+              "deno"
+              "!eslint"
+              "!vtsls"
+            ];
+            formatter = "language_server";
+          };
+        };
+
+        lsp = {
+          nixd = {
+            binary = {
+              ignore_system_version = false;
+            };
+            settings = {
+              formatting = {
+                command = [
+                  "alejandra"
+                ];
+              };
+              diagnostic = {
+                suppress = [
+                  "sema-extra-with"
+                  "sema-extra-rec"
+                ];
+              };
+            };
+          };
+
+          rust-analyzer = {
+            binary = {
+              ignore_system_version = false;
+            };
+            initialization_options = {
+              check = {
+                command = "clippy";
+              };
+            };
+          };
+
+          deno = {
+            binary = {
+              ignore_system_version = false;
+            };
+          };
+
+          haskell = {
+            initialization_options = {
+              haskell = {
+                formattingProvider = "fourmolu";
+              };
+            };
+          };
+        };
+
+        tab_size = 2;
+        preferred_line_length = 75;
+
+        autosave = "off";
+        enable_language_server = true;
+
+        hour_format = "hour12";
+        auto_update = false;
+
+        theme = {
+          dark = "Tokyo Night";
+          light = "Tokyo Night Light";
+          mode = "dark";
+        };
+
+        icon_theme = {
+          "dark" = "Material Icon Theme";
+          "light" = "Material Icon Theme";
+          "mode" = "dark";
+        };
+
+        show_whitespaces = "all";
+        ui_font_size = 13;
+        buffer_font_size = 13;
+        buffer_font_family = "FiraCode Nerd Font";
+
+        active_pane_modifiers = {
+          inactive_opacity = 0.8;
+        };
+
+        project_panel = {
+          button = true;
+          dock = "right";
+        };
+
+        agent = {
+          enabled = false;
+        };
+
+        load_direnv = "shell_hook";
+        base_keymap = "VSCode";
+      };
     };
   };
 }
