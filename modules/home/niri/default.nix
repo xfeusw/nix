@@ -2,7 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  wallpaper = ../../../wallpapers/elizabeth.jpg;
+in {
   nixpkgs.overlays = [inputs.niri.overlays.niri];
   programs.niri = {
     enable = true;
@@ -26,6 +28,7 @@
         };
       };
       layout = {
+        background-color = "#00000000";
         gaps = 1;
         border = {
           width = 0;
@@ -48,7 +51,7 @@
       spawn-at-startup = [
         {argv = ["waybar"];}
         {argv = ["mako"];}
-        {argv = ["swaybg" "--image" "../../../wallpapers/elizabeth.jpg"];}
+        {argv = ["swaybg" "--image" "${wallpaper}"];}
       ];
 
       # Import binds from separate file

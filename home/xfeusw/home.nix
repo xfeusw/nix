@@ -2,32 +2,36 @@
   lib,
   pkgs,
   ...
-}: {
-  imports = [
-    ./direnv
-    # ./dunst
-    ./firefox
-    ./fuzzel
-    ./ghostty
-    ./git
-    ./go
-    ./haskell
-    ./helix
-    ./mako
-    ./niri
-    ./packages
-    ./plasma
-    ./rust
-    ./sops
-    ./spotify
-    ./starship
-    ./sway
-    ./vscode
-    ./waybar
-    ./yazi
-    ./zed
-    ./zsh
+}: let
+  homeModules = ./../../modules/home;
+
+  modules = [
+    "direnv"
+    # "dunst"
+    "firefox"
+    "fuzzel"
+    "ghostty"
+    "git"
+    "go"
+    "haskell"
+    "helix"
+    "mako"
+    "niri"
+    "packages"
+    "plasma"
+    "rust"
+    "sops"
+    "spotify"
+    "starship"
+    "sway"
+    "vscode"
+    "waybar"
+    "yazi"
+    "zed"
+    "zsh"
   ];
+in {
+  imports = map (m: homeModules + "/${m}") modules;
 
   programs.home-manager.enable = true;
 
