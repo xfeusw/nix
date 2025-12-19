@@ -93,21 +93,4 @@
     };
     style = builtins.readFile ./style.css;
   };
-
-  # Autostart Waybar via systemd service (assuming this is correct)
-  systemd.user.services.waybar = {
-    Unit = {
-      Description = "Waybar status bar";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
-    };
-    Service = {
-      ExecStart = "${pkgs.waybar}/bin/waybar";
-      Restart = "on-failure";
-      RestartSec = 3;
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
-  };
 }

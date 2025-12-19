@@ -8,6 +8,8 @@
     programs.zed-editor = {
       enable = true;
 
+      package = pkgs.zed-editor;
+
       extensions = [
         "tokyo-night"
         "nix"

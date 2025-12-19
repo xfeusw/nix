@@ -157,15 +157,15 @@
   ];
 
   # Audit framework
-  security.auditd.enable = true;
+  security.auditd.enable = false;
   security.audit = {
-    enable = true;
-    rules = [
-      "-w /etc/passwd -p wa -k identity"
-      "-w /etc/shadow -p wa -k identity"
-      "-w /etc/sudoers -p wa -k identity"
-      "-a always,exit -F arch=b64 -S execve -k exec"
-    ];
+    enable = false;
+    # rules = [
+    #   "-w /etc/passwd -p wa -k identity"
+    #   "-w /etc/shadow -p wa -k identity"
+    #   "-w /etc/sudoers -p wa -k identity"
+    #   "-a always,exit -F arch=b64 -S execve -k exec"
+    # ];
   };
 
   sops = {
