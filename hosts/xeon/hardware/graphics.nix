@@ -9,6 +9,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
+      nvidia-vaapi-driver
       libva-vdpau-driver
       libvdpau-va-gl
       vulkan-loader
@@ -44,8 +45,6 @@
   };
 
   environment.variables = {
-    # Use the correct filename with .x86_64 suffix
-    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
     ZED_ALLOW_EMULATED_GPU = "1";
   };
 }

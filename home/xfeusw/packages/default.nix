@@ -92,8 +92,7 @@
 
     # etc
     obs-studio
-    android-studio
     hyperbeam
-    steam
+    treefmt
   ];
 }

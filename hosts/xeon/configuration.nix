@@ -76,6 +76,7 @@
   ];
 
   services.displayManager.sessionPackages = [pkgs.niri];
+  security.pam.services.swaylock = {};
   # environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 

@@ -21,7 +21,7 @@
     ./sops
     ./spotify
     ./starship
-    # ./sway
+    ./sway
     ./vscode
     ./waybar
     ./yazi

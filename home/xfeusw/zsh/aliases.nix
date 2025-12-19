@@ -64,5 +64,7 @@
     # System info
     temp = "sensors";
     ports = "ss -tuln";
+
+    zed = "zeditor";
   };
 }
