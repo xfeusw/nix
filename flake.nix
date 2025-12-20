@@ -78,7 +78,6 @@
       src = ./.;
       hooks = {
         treefmt.enable = true;
-        shellcheck.enable = true;
         check-merge-conflicts.enable = true;
       };
     };

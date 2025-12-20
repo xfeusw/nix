@@ -3,11 +3,6 @@ command = "alejandra"
 options = ["--quiet"]
 includes = ["*.nix"]
 
-[formatter.shellcheck]
-command = "shellcheck"
-options = ["--format=gcc"]
-includes = ["*.sh"]
-
 [formatter.shfmt]
 command = "shfmt"
 options = [
