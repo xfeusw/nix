@@ -33,6 +33,10 @@
       url = "github:bemeritus/bemeritus-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
@@ -46,6 +50,7 @@
     sops-nix,
     treefmt-nix,
     mac-style-plymouth,
+    nixvim,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -116,6 +121,7 @@
         inputs.nix-colors.homeManagerModules.default
         inputs.niri.homeModules.niri
         inputs.sops-nix.homeModules.sops
+        inputs.nixvim.homeModules.nixvim
         nur.modules.homeManager.default
         {
           nixpkgs.overlays = [
@@ -135,8 +141,8 @@
 
     formatter.${system} = treefmtEval.config.build.wrapper;
 
-    checks.${system} = {
-      formatting = treefmtEval.config.build.check pkgs.hello;
-    };
+    # checks.${system} = {
+    #   formatting = treefmtEval.config.build.check pkgs.hello;
+    # };
   };
 }

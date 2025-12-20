@@ -19,11 +19,8 @@ in
         syntaxHighlighting.enable = true;
 
         history = {
-          size = 50000;
-          save = 50000;
-          expireDuplicatesFirst = true;
-          ignoreDups = true;
-          ignoreSpace = true;
+          size = 500000;
+          save = 500000;
           extended = true;
         };
 
@@ -37,6 +34,15 @@ in
             "command-not-found"
             "extract"
             "z"
+            "history-substring-search"
+            "docker"
+            "docker-compose"
+            "podman"
+            "npm"
+            "web-search"
+            "thefuck"
+            "rust"
+            "urltools"
           ];
           theme = ""; # Using Starship instead
         };

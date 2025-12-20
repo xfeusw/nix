@@ -17,6 +17,7 @@
     "helix"
     "mako"
     "niri"
+    "nixvim"
     "packages"
     "plasma"
     "rust"
@@ -31,7 +32,7 @@
     "zsh"
   ];
 in {
-  imports = map (m: homeModules + "/${m}") modules;
+  imports = map (m: homeModules + "/${m}/") modules;
 
   programs.home-manager.enable = true;
 

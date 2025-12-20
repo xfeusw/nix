@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  wallpaper = ../../../wallpapers/elizabeth.jpg;
+  wallpaper = ../../../wallpapers/133.jpg;
 in {
   nixpkgs.overlays = [inputs.niri.overlays.niri];
   programs.niri = {

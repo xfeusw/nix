@@ -1,23 +1,31 @@
 # hosts/acer/configuration.nix
-{pkgs, ...}: {
-  imports = [
-    ./hardware-configuration.nix
+{pkgs, ...}: let
+  nixosModules = ./../../modules/nixos;
 
-    # Core system modules
-    ../../modules/fonts
-    ../../modules/nix-settings
-    ../../modules/packages
-    ../../modules/plasma
-    ../../modules/services
-    ../../modules/security
-    ../../modules/virtualization
-
-    ./hardware
-    ./networking
-    ./performance
-    ./power
-    ./users
+  sharedModules = [
+    "fonts"
+    "nix-settings"
+    "packages"
+    "plasma"
+    "services"
+    "security"
+    "virtualization"
   ];
+
+  localModules = [
+    "hardware"
+    "networking"
+    "performance"
+    "power"
+    "users"
+  ];
+in {
+  imports =
+    [
+      ./hardware-configuration.nix
+    ]
+    ++ map (m: nixosModules + "/${m}") sharedModules
+    ++ map (m: ./${m}) localModules;
 
   # Bootloader with enhanced options
   boot = {

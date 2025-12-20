@@ -24,22 +24,6 @@
 
     # --- Custom Functions ---
 
-    # Make directory and change into it
-    mkcd() { mkdir -p "$1" && cd "$1" }
-
-    # Quick system info
-    sysinfo() {
-      echo "System: $(uname -sr)"
-      echo "Host: $(hostname)"
-      echo "Uptime: $(uptime -p)"
-      echo "Memory: $(free -h | grep '^Mem:' | awk '{print $3 "/" $2}')"
-      echo "Disk: $(df -h / | tail -1 | awk '{print $3 "/" $2 " (" $5 ")"}')"
-      echo "CPU: $(lscpu | grep 'Model name' | sed 's/Model name: *//')"
-      if command -v sensors >/dev/null 2>&1; then
-        echo "Temp: $(sensors | grep 'Core 0' | awk '{print $3}' | head -1)"
-      fi
-    }
-
     # Extract any archive
     extract() {
       if [[ -f $1 ]]; then
@@ -72,10 +56,6 @@
     git-clean-branches() {
       git branch --merged | grep -v "\*\|main\|master\|develop" | xargs -r git branch -d
     }
-
-    # Performance monitoring
-    mem-top() { ps aux --sort=-%mem | head }
-    cpu-top() { ps aux --sort=-%cpu | head }
 
     # Network helpers
     myip() { curl -s ifconfig.me && echo }
