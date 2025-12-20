@@ -40,7 +40,6 @@ in
             "podman"
             "npm"
             "web-search"
-            "thefuck"
             "rust"
             "urltools"
           ];
