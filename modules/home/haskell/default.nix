@@ -7,6 +7,7 @@ in {
     h.cabal-install
     h.haskell-language-server
     hpkgs.cabal-fmt
+    hpkgs.cabal-gild
     h.fourmolu
     h.hlint
   ];
