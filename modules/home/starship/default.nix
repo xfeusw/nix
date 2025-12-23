@@ -1,4 +1,3 @@
-# home/xfeusw/shell/starship.nix
 {lib, ...}: {
   programs.starship = {
     enable = true;

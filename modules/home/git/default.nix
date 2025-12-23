@@ -1,4 +1,3 @@
-# home/xfeusw/git.nix
 {
   config,
   pkgs,

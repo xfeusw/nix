@@ -1,52 +1,65 @@
 {
   pkgs,
-  treefmt,
-  gitHooksShellHook,
-  gitHooksPackages,
-}:
-pkgs.mkShell {
-  name = "nixos-config-devshell";
+  inputs,
+  system,
+  treefmtEval,
+}: let
+  pre-commit-check = inputs.git-hooks.lib.${system}.run {
+    src = ./.;
+    hooks = {
+      treefmt.enable = true;
+      check-merge-conflicts.enable = true;
+    };
+  };
 
-  packages =
-    [
-      treefmt
-    ]
-    ++ gitHooksPackages
-    ++ (with pkgs; [
-      # Nix tools
-      nil
-      alejandra
-      nixpkgs-fmt
-      deadnix
-      nix-tree
-      nix-diff
-      nvd
+  gitHooksPackages = pre-commit-check.enabledPackages;
+  gitHooksShellHook = pre-commit-check.shellHook;
 
-      # Development tools
-      git
-      gh
+  treefmt = treefmtEval.config.build.wrapper;
+in
+  pkgs.mkShell {
+    name = "nixos-config-devshell";
 
-      # File management
-      fd
-      ripgrep
+    packages =
+      [
+        treefmt
+      ]
+      ++ gitHooksPackages
+      ++ (with pkgs; [
+        # Nix tools
+        nil
+        alejandra
+        nixpkgs-fmt
+        deadnix
+        nix-tree
+        nix-diff
+        nvd
 
-      # Secrets management (for sops-nix)
-      sops
-      age
-      ssh-to-age
+        # Development tools
+        git
+        gh
 
-      # Documentation
-      manix
+        # File management
+        fd
+        ripgrep
 
-      # Testing and validation
-      nixos-rebuild
-      home-manager
+        # Secrets management (for sops-nix)
+        sops
+        age
+        ssh-to-age
 
-      shfmt
-    ]);
+        # Documentation
+        manix
 
-  shellHook = ''
-    echo "🚀 NixOS Configuration Development Shell"
-    ${gitHooksShellHook}
-  '';
-}
+        # Testing and validation
+        nixos-rebuild
+        home-manager
+
+        shfmt
+      ]);
+
+    shellHook = ''
+      echo "🚀 NixOS Configuration Development Shell"
+      ${gitHooksShellHook}
+    '';
+  }

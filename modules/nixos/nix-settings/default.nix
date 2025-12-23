@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
     settings = {
       experimental-features = [
@@ -20,8 +18,8 @@
       download-buffer-size = 2147483648; # 128 MB
 
       # Build optimization
-      connect-timeout = 5;
-      stalled-download-timeout = 90;
+      connect-timeout = 20;
+      stalled-download-timeout = 400;
 
       # Sandbox settings
       sandbox = true;
@@ -29,20 +27,6 @@
 
       # Trusted users
       trusted-users = ["root" "@wheel"];
-    };
-
-    # Optimized garbage collection
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d --max-freed 15G";
-      persistent = true;
-    };
-
-    # Store optimization
-    optimise = {
-      automatic = true;
-      dates = ["weekly"];
     };
 
     # Nix daemon settings

@@ -28,7 +28,10 @@
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-style-plymouth = {
       url = "github:bemeritus/bemeritus-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,8 +50,6 @@
   outputs = {
     nixpkgs,
     home-manager,
-    git-hooks,
-    treefmt-nix,
     nixvim,
     android-nixpkgs,
     ...
@@ -56,46 +57,45 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
-    };
-
-    commonModules = [
-      inputs.nur.modules.nixos.default
-      inputs.niri.nixosModules.niri
-      inputs.sops-nix.nixosModules.sops
-      {
-        nixpkgs.config.allowUnfree = true;
-        nixpkgs.overlays = [
-          inputs.nur.overlays.default
-          (final: prev: {
-            mac-style-plymouth = inputs.mac-style-plymouth.packages.${system}.default;
-          })
-        ];
-      }
-    ];
-
-    pre-commit-check = git-hooks.lib.${system}.run {
-      src = ./.;
-      hooks = {
-        treefmt.enable = true;
-        check-merge-conflicts.enable = true;
+      config = {
+        allowUnfree = true;
+        nvidia.acceptLicense = true;
       };
+      permittedInsecurePackages = [
+        "olm-3.2.16"
+      ];
     };
 
-    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+    treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+    formatterVar = treefmtEval.config.build.wrapper;
   in {
-    nixosConfigurations = import ./hosts;
+    nixosConfigurations = import ./hosts {
+      inherit
+        inputs
+        pkgs
+        nixpkgs
+        system
+        ;
+    };
 
-    homeConfigurations = import ./home;
+    homeConfigurations = import ./home {
+      inherit
+        home-manager
+        pkgs
+        inputs
+        ;
+    };
 
     devShells.${system}.default = import ./shell.nix {
-      inherit pkgs;
-      treefmt = treefmtEval.config.build.wrapper;
-      gitHooksShellHook = pre-commit-check.shellHook;
-      gitHooksPackages = pre-commit-check.enabledPackages;
+      inherit
+        pkgs
+        inputs
+        system
+        treefmtEval
+        ;
     };
 
-    formatter.${system} = treefmtEval.config.build.wrapper;
+    formatter.${system} = formatterVar;
 
     # checks.${system} = {
     #   formatting = treefmtEval.config.build.check pkgs.hello;

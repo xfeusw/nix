@@ -1,4 +1,3 @@
-# home/xfeusw/desktop/plasma/default.nix
 {...}: {
   imports = [
     ./workspace.nix

@@ -1,4 +1,3 @@
-# home/xfeusw/desktop/plasma/kwin.nix
 {...}: {
   programs.plasma = {
     kwin = {

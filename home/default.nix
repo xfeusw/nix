@@ -1,15 +1,11 @@
 {
   home-manager,
-  nixpkgs,
-  system,
+  pkgs,
   inputs,
   ...
 }: {
   xfeusw = home-manager.lib.homeManagerConfiguration {
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    inherit pkgs;
     extraSpecialArgs = {inherit inputs;};
     modules = [
       inputs.plasma-manager.homeModules.plasma-manager

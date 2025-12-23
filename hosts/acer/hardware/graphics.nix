@@ -1,11 +1,8 @@
-# modules/hardware/graphics.nix
 {
   pkgs,
   config,
   ...
 }: {
-  nixpkgs.config.nvidia.acceptLicense = true;
-
   # Hardware acceleration and graphics
   hardware.graphics = {
     enable = true;

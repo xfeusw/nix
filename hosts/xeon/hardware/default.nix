@@ -1,4 +1,3 @@
-# modules/hardware/default.nix
 {...}: {
   imports = [
     ./graphics.nix

@@ -1,4 +1,3 @@
-# modules/users.nix
 {pkgs, ...}: {
   users.users.xfeusw = {
     isNormalUser = true;

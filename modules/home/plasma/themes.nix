@@ -1,4 +1,3 @@
-# home/xfeusw/desktop/plasma/themes.nix
 {pkgs, ...}: {
   # GTK theme integration
   gtk = {

@@ -1,4 +1,3 @@
-# hosts/acer/configuration.nix
 {pkgs, ...}: let
   nixosModules = ./../../modules/nixos;
 
@@ -60,10 +59,6 @@ in {
       "ru_RU.UTF-8/UTF-8"
     ];
   };
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "olm-3.2.16"
-  ];
 
   services.displayManager.sessionPackages = [pkgs.niri];
   environment.systemPackages = with pkgs; [niri];

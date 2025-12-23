@@ -1,4 +1,3 @@
-# modules/virtualization/default.nix
 {pkgs, ...}: {
   # Podman container runtime (Docker alternative)
   virtualisation.podman = {

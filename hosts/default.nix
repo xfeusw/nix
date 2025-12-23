@@ -1,12 +1,26 @@
 {
   inputs,
+  pkgs,
   nixpkgs,
   system,
-  commonModules,
   ...
-}: {
+}: let
+  commonModules = [
+    inputs.nur.modules.nixos.default
+    inputs.niri.nixosModules.niri
+    inputs.sops-nix.nixosModules.sops
+    {
+      nixpkgs.overlays = [
+        inputs.nur.overlays.default
+        (final: prev: {
+          mac-style-plymouth = inputs.mac-style-plymouth.packages.${system}.default;
+        })
+      ];
+    }
+  ];
+in {
   acer = nixpkgs.lib.nixosSystem {
-    inherit system;
+    inherit system pkgs;
     specialArgs = {inherit inputs;};
     modules =
       [
@@ -18,7 +32,7 @@
   };
 
   xeon = nixpkgs.lib.nixosSystem {
-    inherit system;
+    inherit system pkgs;
     specialArgs = {inherit inputs;};
     modules =
       [
