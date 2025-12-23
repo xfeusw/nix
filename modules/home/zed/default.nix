@@ -28,6 +28,7 @@
         "deno"
         "lua"
         "yaml"
+        "git-firefly"
       ];
 
       userSettings = {
@@ -82,6 +83,10 @@
               "!vtsls"
             ];
             formatter = "language_server";
+          };
+
+          Haskell = {
+            format_on_save = "off";
           };
         };
 
@@ -173,6 +178,15 @@
         load_direnv = "shell_hook";
         base_keymap = "VSCode";
       };
+
+      userKeymaps = [
+        {
+          context = "Workspace";
+          bindings = {
+            "ctrl-'" = "terminal_panel::Toggle";
+          };
+        }
+      ];
     };
   };
 }

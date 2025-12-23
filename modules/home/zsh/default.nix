@@ -35,8 +35,6 @@ in
             "extract"
             "z"
             "history-substring-search"
-            "docker"
-            "docker-compose"
             "podman"
             "npm"
             "web-search"

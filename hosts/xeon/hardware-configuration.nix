@@ -17,6 +17,18 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
+  fileSystems."/mnt/windows-c" = {
+    device = "/dev/disk/by-uuid/B260A84660A812E1";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000" "gid=100" "dmask=022" "fmask=133"];
+  };
+
+  fileSystems."/mnt/windows-d" = {
+    device = "/dev/disk/by-uuid/E078BD0778BCDD8A";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000" "gid=100" "dmask=022" "fmask=133"];
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/e2c86d1a-9a3b-44ff-b7d6-58054774937e";
     fsType = "ext4";
@@ -27,6 +39,8 @@
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
+
+  boot.supportedFilesystems = ["ntfs"];
 
   swapDevices = [];
 
