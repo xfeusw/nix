@@ -34,16 +34,16 @@
 in {
   acer = mkHost {
     hostPath = ./acer;
-    hardwareModules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop
+    hardwareModules = with inputs; [
+      nixos-hardware.nixosModules.common-cpu-intel
+      nixos-hardware.nixosModules.common-pc-laptop
     ];
   };
 
   xeon = mkHost {
     hostPath = ./xeon;
-    hardwareModules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
+    hardwareModules = with inputs; [
+      nixos-hardware.nixosModules.common-cpu-intel
     ];
   };
 }

@@ -6,6 +6,7 @@
   homeModules = ./../../modules/home;
 
   modules = [
+    "android"
     "direnv"
     # "dunst"
     "firefox"

@@ -50,8 +50,6 @@
   outputs = {
     nixpkgs,
     home-manager,
-    nixvim,
-    android-nixpkgs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -80,9 +78,9 @@
 
     homeConfigurations = import ./home {
       inherit
+        inputs
         home-manager
         pkgs
-        inputs
         ;
     };
 
