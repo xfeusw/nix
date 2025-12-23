@@ -94,5 +94,8 @@
     obs-studio
     hyperbeam
     treefmt
+    qbittorrent
+    shfmt
+    # android-studio-full
   ];
 }

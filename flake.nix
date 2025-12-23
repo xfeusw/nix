@@ -37,6 +37,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
@@ -44,13 +48,9 @@
     nixpkgs,
     home-manager,
     git-hooks,
-    nixos-hardware,
-    nur,
-    niri,
-    sops-nix,
     treefmt-nix,
-    mac-style-plymouth,
     nixvim,
+    android-nixpkgs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -60,15 +60,15 @@
     };
 
     commonModules = [
-      nur.modules.nixos.default
-      niri.nixosModules.niri
-      sops-nix.nixosModules.sops
+      inputs.nur.modules.nixos.default
+      inputs.niri.nixosModules.niri
+      inputs.sops-nix.nixosModules.sops
       {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
-          nur.overlays.default
+          inputs.nur.overlays.default
           (final: prev: {
-            mac-style-plymouth = mac-style-plymouth.packages.${system}.default;
+            mac-style-plymouth = inputs.mac-style-plymouth.packages.${system}.default;
           })
         ];
       }
@@ -84,52 +84,9 @@
 
     treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
   in {
-    nixosConfigurations = {
-      acer = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules =
-          [
-            ./hosts/acer/configuration.nix
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-pc-laptop
-          ]
-          ++ commonModules;
-      };
+    nixosConfigurations = import ./hosts;
 
-      xeon = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules =
-          [
-            ./hosts/xeon/configuration.nix
-            nixos-hardware.nixosModules.common-cpu-intel
-          ]
-          ++ commonModules;
-      };
-    };
-
-    homeConfigurations.xfeusw = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      extraSpecialArgs = {inherit inputs;};
-      modules = [
-        inputs.plasma-manager.homeModules.plasma-manager
-        inputs.nix-colors.homeManagerModules.default
-        inputs.niri.homeModules.niri
-        inputs.sops-nix.homeModules.sops
-        inputs.nixvim.homeModules.nixvim
-        nur.modules.homeManager.default
-        {
-          nixpkgs.overlays = [
-            nur.overlays.default
-          ];
-        }
-        ./home/xfeusw/home.nix
-      ];
-    };
+    homeConfigurations = import ./home;
 
     devShells.${system}.default = import ./shell.nix {
       inherit pkgs;

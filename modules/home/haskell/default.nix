@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  h = pkgs.haskell.packages.ghc912;
+  h = pkgs.haskell.packages.ghc910;
   hpkgs = pkgs.haskellPackages;
 in {
   home.packages = [
@@ -8,6 +8,7 @@ in {
     h.haskell-language-server
     hpkgs.cabal-fmt
     hpkgs.cabal-gild
+    hpkgs.stack
     h.fourmolu
     h.hlint
   ];

@@ -12,7 +12,6 @@
   ];
 
   localModules = [
-    # "android"
     "hardware"
     "networking"
     "performance"

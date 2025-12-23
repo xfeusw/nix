@@ -24,7 +24,7 @@
   };
 
   fileSystems."/mnt/windows-d" = {
-    device = "/dev/disk/by-uuid/E078BD0778BCDD8A";
+    device = "/dev/disk/by-uuid/90B83AF4B83AD904";
     fsType = "ntfs-3g";
     options = ["rw" "uid=1000" "gid=100" "dmask=022" "fmask=133"];
   };
