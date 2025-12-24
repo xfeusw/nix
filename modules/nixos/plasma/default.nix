@@ -12,6 +12,21 @@
       };
     };
 
+    keyd = {
+      enable = true;
+      keyboards = {
+        default = {
+          ids = ["*"];
+          settings = {
+            main = {
+              enter = "rightshift";
+              rightshift = "enter";
+            };
+          };
+        };
+      };
+    };
+
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
