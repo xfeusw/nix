@@ -5,6 +5,8 @@
 }: let
   wallpaper = ../../../wallpapers/133.jpg;
 in {
+  imports = [inputs.niri.homeModules.niri];
+
   nixpkgs.overlays = [inputs.niri.overlays.niri];
   programs.niri = {
     enable = true;

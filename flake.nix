@@ -20,6 +20,26 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    mac-style-plymouth = {
+      url = "github:bemeritus/bemeritus-plymouth-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
@@ -28,22 +48,6 @@
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mac-style-plymouth = {
-      url = "github:bemeritus/bemeritus-plymouth-theme";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
@@ -58,6 +62,7 @@
       config = {
         allowUnfree = true;
         nvidia.acceptLicense = true;
+        android_sdk.accept_license = true;
       };
       permittedInsecurePackages = [
         "olm-3.2.16"

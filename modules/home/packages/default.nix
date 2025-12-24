@@ -96,6 +96,5 @@
     treefmt
     qbittorrent
     shfmt
-    # android-studio-full
   ];
 }

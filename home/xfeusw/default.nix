@@ -67,6 +67,7 @@ in {
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
       };
+      list.force = true;
     };
     systemDirs.data = [
       "/run/current-system/sw/share"
