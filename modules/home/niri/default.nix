@@ -3,7 +3,11 @@
   inputs,
   ...
 }: let
-  wallpaper = ../../../wallpapers/133.jpg;
+  # wallpaper = ../../../wallpapers/133.jpg;
+  wallpaper = builtins.fetchUrl {
+    url = "https://github.com/xfeusw/nix/blob/master/wallpapers/133.jpg";
+    hash = "#";
+  };
 in {
   imports = [inputs.niri.homeModules.niri];
 
