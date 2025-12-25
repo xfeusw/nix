@@ -4,9 +4,10 @@
   sharedModules = [
     # "cosmic"
     "fonts"
+    "gnome"
     "nix-settings"
     "packages"
-    "plasma"
+    # "plasma"
     "services"
     "security"
     "virtualization"

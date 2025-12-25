@@ -3,7 +3,7 @@
   "Mod+Return".action.spawn = ["ghostty"];
   "Mod+D".action.spawn = ["fuzzel"];
   "Mod+Q".action.close-window = {};
-  "Mod+E".action.spawn = ["dolphin"];
+  "Mod+E".action.spawn = ["nautilus"];
   "Mod+B".action.spawn = ["firefox"];
   "Mod+F".action.fullscreen-window = {};
   "Mod+M".action.maximize-column = {};
