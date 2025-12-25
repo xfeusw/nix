@@ -2,7 +2,7 @@
   nixosModules = ./../../modules/nixos;
 
   sharedModules = [
-    "cosmic"
+    # "cosmic"
     "fonts"
     "nix-settings"
     "packages"

@@ -10,7 +10,7 @@
 
   services = {
     accounts-daemon.enable = lib.mkForce true;
-    geoclue2.enable = false;
+    # geoclue2.enable = false;
     fwupd.enable = false;
   };
 }

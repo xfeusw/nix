@@ -1,5 +1,5 @@
 {...}: {
-  servicies = {
+  services = {
     displayManager = {
       cosmic-greeter = {
         enable = true;
@@ -13,7 +13,7 @@
     };
 
     system76-scheduler.enable = true;
-
-    environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
   };
+
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 }
