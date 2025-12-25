@@ -65,8 +65,6 @@
     pdftk
     playerctl
     spotify
-    spotify-cli-linux
-    spotify-tray
     vlc
 
     # Wayland tools

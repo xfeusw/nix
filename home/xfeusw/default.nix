@@ -13,6 +13,7 @@
     "fuzzel"
     "ghostty"
     "git"
+    "gnome"
     "go"
     "haskell"
     "helix"
@@ -20,10 +21,10 @@
     "niri"
     "nixvim"
     "packages"
-    "plasma"
+    # "plasma"
     "rust"
     "sops"
-    "spotify"
+    # "spotify"
     "starship"
     "sway"
     "vscode"
@@ -75,5 +76,9 @@ in {
     ];
     userDirs.enable = true;
     configFile."mimeapps.list".force = true;
+  };
+
+  home-manager.users.xfeusw = {
+    gtk.enable = true;
   };
 }
