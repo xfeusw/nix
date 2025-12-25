@@ -7,7 +7,7 @@
   nix = {
     settings = {
       access-tokens = lib.mkIf (config.sops.secrets ? gh_token) [
-        "github.com=${builtins.mkForce (builtins.readFile config.sops.secrets.gh_token.path)}"
+        "github.com=${builtins.readFile config.sops.secrets.gh_token.path}"
       ];
 
       experimental-features = [

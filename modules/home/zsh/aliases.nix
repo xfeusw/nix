@@ -66,5 +66,6 @@
     ports = "ss -tuln";
 
     zed = "zeditor";
+    lg = "lazygit";
   };
 }
