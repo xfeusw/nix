@@ -4,7 +4,7 @@
     settings = {
       main = {
         terminal = "ghostty";
-        font = "JetBrains Mono:size=11";
+        font = "JetBrainsMono Nerd Font:size=14";
         dpi-aware = "yes";
       };
       colors = {

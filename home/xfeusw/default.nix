@@ -78,7 +78,5 @@ in {
     configFile."mimeapps.list".force = true;
   };
 
-  home-manager.users.xfeusw = {
-    gtk.enable = true;
-  };
+  gtk.enable = true;
 }

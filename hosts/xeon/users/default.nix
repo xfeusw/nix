@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  users.groups.plugdev = {};
+
   users.users.xfeusw = {
     isNormalUser = true;
     extraGroups = [
@@ -11,6 +13,7 @@
       "kvm"
       "lp"
       "adbusers"
+      "plugdev"
     ];
     shell = pkgs.zsh;
   };

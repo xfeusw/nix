@@ -1,16 +1,13 @@
 {pkgs, ...}: {
+  imports = [./dconf.nix];
+
   gtk = {
     font = {
       name = "Noto Sans";
       package = pkgs.noto-fonts;
     };
 
-    theme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
-    };
-
-    icontheme = {
+    iconTheme = {
       name = "colloid-icon-theme";
       package = pkgs.colloid-icon-theme;
     };
@@ -23,10 +20,4 @@
     #   };
     # };
   };
-
-  dconf = import ./dconf.nix;
-
-  home.packages = with pkgs; [
-    dconf-editor
-  ];
 }

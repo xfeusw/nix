@@ -18,7 +18,7 @@
       defaultFonts = {
         serif = ["Noto Serif"];
         sansSerif = ["Noto Sans"];
-        monospace = ["JetBrains Mono"];
+        monospace = ["JetBrainsMono Nerd Font"];
       };
     };
   };
