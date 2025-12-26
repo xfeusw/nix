@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # zen-browser = {
+    #   url = "0xc000022070/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   home-manager.follows = "home-manager";
+    # };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";

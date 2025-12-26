@@ -4,11 +4,10 @@
   ];
 
   home.file.".config/ghostty/config".text = ''
-    font-family = JetBrainsMono Nerd Font
-    font-size = 9
-    background-opacity = 0.95
-    background = 1a1b26
-    foreground = c0caf5
+    font-family = "FiraCode Nerd Font Mono"
+    font-size = 11
+    background-opacity = 1
+    theme = TokyoNight Night
 
     window-decoration = true
     window-padding-x = 10

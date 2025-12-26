@@ -43,10 +43,6 @@ in {
     nodejs_22
   ];
 
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
-
   home.sessionVariables = {
     JAVA_HOME = "${pinnedJDK}";
     ANDROID_SDK_ROOT = ANDROID_SDK_ROOT_PATH;

@@ -102,7 +102,9 @@ in {
         picture-uri-dark = wallpaper;
       };
 
-      # "org/gnome/"
+      "org/gnome/mutter" = {
+        experimental-features = ["variable-refresh-rate"];
+      };
     };
   };
 }

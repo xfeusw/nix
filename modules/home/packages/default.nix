@@ -94,5 +94,7 @@
     treefmt
     qbittorrent
     shfmt
+    rustdesk
+    fastfetch
   ];
 }
