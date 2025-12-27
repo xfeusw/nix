@@ -96,5 +96,6 @@
     shfmt
     rustdesk
     fastfetch
+    omnix
   ];
 }

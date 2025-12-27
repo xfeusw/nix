@@ -67,5 +67,7 @@
 
     zed = "zeditor";
     lg = "lazygit";
+
+    rust-init = "om init github:srid/rust-nix-template -o slip-stream";
   };
 }
