@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # Core utilities
     bat
@@ -11,8 +12,8 @@
     gcc
     gnumake
     pkg-config
-    bruno
-    bruno-cli
+    # bruno
+    # bruno-cli
 
     # Debuggers
     gdb

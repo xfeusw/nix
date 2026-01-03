@@ -1,16 +1,13 @@
 {
   pkgs,
   inputs,
+  wallpaper,
   ...
-}: let
-  wallpaper = builtins.fetchurl {
-    url = "https://github.com/xfeusw/nix/blob/master/wallpapers/133.jpg";
-    sha256 = "105ljph96bkvvfzwfy6gdyxjfxynn26g61j2q43z8iw7w9k1fjgx";
-  };
-in {
-  imports = [inputs.niri.homeModules.niri];
+}:
+{
+  imports = [ inputs.niri.homeModules.niri ];
 
-  nixpkgs.overlays = [inputs.niri.overlays.niri];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
@@ -54,9 +51,15 @@ in {
       ];
       # Spawn services at startup
       spawn-at-startup = [
-        {argv = ["waybar"];}
-        {argv = ["mako"];}
-        {argv = ["swaybg" "--image" "${wallpaper}"];}
+        { argv = [ "waybar" ]; }
+        { argv = [ "mako" ]; }
+        {
+          argv = [
+            "swaybg"
+            "--image"
+            "${wallpaper}"
+          ];
+        }
       ];
 
       # Import binds from separate file

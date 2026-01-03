@@ -1,13 +1,10 @@
 {
   pkgs,
   lib,
+  wallpaper,
   ...
-}: let
-  wallpaper = builtins.fetchurl {
-    url = "https://raw.github.com/xfeusw/nix/blob/master/wallpapers/133.jpg";
-    sha256 = "105ljph96bkvvfzwfy6gdyxjfxynn26g61j2q43z8iw7w9k1fjgx";
-  };
-
+}:
+let
   extensions = with pkgs.gnomeExtensions; [
     appindicator
     bluetooth-quick-connect
@@ -21,8 +18,10 @@
     system-monitor
     transparent-window-moving
   ];
-in {
-  home.packages = with pkgs;
+in
+{
+  home.packages =
+    with pkgs;
     [
       dconf-editor
       bibata-cursors
@@ -86,8 +85,17 @@ in {
       };
 
       "org/gnome/desktop/input-sources" = with lib.hm.gvariant; {
-        sources = [(mkTuple ["xkb" "us"]) (mkTuple ["xkb" "ru"])];
-        xkb-options = ["grp:alt_shift_toggle"];
+        sources = [
+          (mkTuple [
+            "xkb"
+            "us"
+          ])
+          (mkTuple [
+            "xkb"
+            "ru"
+          ])
+        ];
+        xkb-options = [ "grp:alt_shift_toggle" ];
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
@@ -103,7 +111,7 @@ in {
       };
 
       "org/gnome/mutter" = {
-        experimental-features = ["variable-refresh-rate"];
+        experimental-features = [ "variable-refresh-rate" ];
       };
     };
   };

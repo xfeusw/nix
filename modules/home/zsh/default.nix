@@ -24,6 +24,8 @@ in
           extended = true;
         };
 
+        dotDir = config.home.homeDirectory;
+
         oh-my-zsh = {
           enable = true;
           plugins = [

@@ -57,57 +57,68 @@
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        nvidia.acceptLicense = true;
-        android_sdk.accept_license = true;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          nvidia.acceptLicense = true;
+          android_sdk.accept_license = true;
+        };
+        permittedInsecurePackages = [
+          "olm-3.2.16"
+        ];
       };
-      permittedInsecurePackages = [
-        "olm-3.2.16"
+      overlays = [
+        (import ./overlays { inherit inputs; })
       ];
+
+      treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      formatterVar = treefmtEval.config.build.wrapper;
+      wallpaper = builtins.fetchurl {
+        url = "https://raw.github.com/xfeusw/nix/blob/master/wallpapers/133.jpg";
+        sha256 = "0nhb0sjm6y817smlaa4d8ydic8l8hdzyyrbs8ix76xz67mkcqpyw";
+      };
+    in
+    {
+      nixosConfigurations = import ./hosts {
+        inherit
+          inputs
+          pkgs
+          nixpkgs
+          system
+          ;
+      };
+
+      homeConfigurations = import ./home {
+        inherit
+          inputs
+          home-manager
+          pkgs
+          wallpaper
+          ;
+      };
+
+      devShells.${system}.default = import ./shell.nix {
+        inherit
+          pkgs
+          inputs
+          system
+          treefmtEval
+          ;
+      };
+
+      formatter.${system} = formatterVar;
+
+      # checks.${system} = {
+      #   formatting = treefmtEval.config.build.check pkgs.hello;
+      # };
     };
-
-    treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-    formatterVar = treefmtEval.config.build.wrapper;
-  in {
-    nixosConfigurations = import ./hosts {
-      inherit
-        inputs
-        pkgs
-        nixpkgs
-        system
-        ;
-    };
-
-    homeConfigurations = import ./home {
-      inherit
-        inputs
-        home-manager
-        pkgs
-        ;
-    };
-
-    devShells.${system}.default = import ./shell.nix {
-      inherit
-        pkgs
-        inputs
-        system
-        treefmtEval
-        ;
-    };
-
-    formatter.${system} = formatterVar;
-
-    # checks.${system} = {
-    #   formatting = treefmtEval.config.build.check pkgs.hello;
-    # };
-  };
 }

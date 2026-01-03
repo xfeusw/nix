@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   nixosModules = ./../../modules/nixos;
 
   sharedModules = [
@@ -19,13 +20,13 @@
     "performance"
     "users"
   ];
-in {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ]
-    ++ map (m: nixosModules + "/${m}") sharedModules
-    ++ map (m: ./${m}) localModules;
+in
+{
+  imports = [
+    ./hardware-configuration.nix
+  ]
+  ++ map (m: nixosModules + "/${m}") sharedModules
+  ++ map (m: ./${m}) localModules;
 
   # Bootloader with enhanced options
   boot = {
@@ -34,7 +35,7 @@ in {
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         #splashImage = ./background.png;
         useOSProber = true;
         efiSupport = true;
@@ -52,7 +53,7 @@ in {
     plymouth = {
       enable = true;
       theme = "mac-style";
-      themePackages = [pkgs.mac-style-plymouth];
+      themePackages = [ pkgs.mac-style-plymouth ];
     };
 
     kernelParams = [
@@ -66,7 +67,7 @@ in {
     initrd.verbose = false;
     initrd.systemd.enable = true;
     consoleLogLevel = 3;
-    kernelModules = ["tcp_bbr"];
+    kernelModules = [ "tcp_bbr" ];
     kernelPackages = pkgs.linuxPackages_zen;
   };
 
@@ -79,13 +80,13 @@ in {
     ];
   };
 
-  services.displayManager.sessionPackages = [pkgs.niri];
-  security.pam.services.swaylock = {};
+  services.displayManager.sessionPackages = [ pkgs.niri ];
+  security.pam.services.swaylock = { };
   # environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

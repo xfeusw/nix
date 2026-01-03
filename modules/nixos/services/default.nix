@@ -24,8 +24,8 @@
           ids = ["*"];
           settings = {
             main = {
-              enter = "rightshift";
-              rightshift = "enter";
+              # enter = "rightshift";
+              # rightshift = "enter";
             };
           };
         };
