@@ -30,6 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    boot-club = {
+      url = "github:NewDawn0/boot-club";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,85 +45,86 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # zen-browser = {
-    #   url = "0xc000022070/zen-browser-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   home-manager.follows = "home-manager";
-    # };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # home-manager.follows = "home-manager";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
-    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          nvidia.acceptLicense = true;
-          android_sdk.accept_license = true;
-        };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        nvidia.acceptLicense = true;
+        android_sdk.accept_license = true;
         permittedInsecurePackages = [
           "olm-3.2.16"
         ];
       };
       overlays = [
-        (import ./overlays { inherit inputs; })
+        (import ./overlays)
       ];
-
-      treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-      formatterVar = treefmtEval.config.build.wrapper;
-      wallpaper = builtins.fetchurl {
-        url = "https://raw.github.com/xfeusw/nix/blob/master/wallpapers/133.jpg";
-        sha256 = "0nhb0sjm6y817smlaa4d8ydic8l8hdzyyrbs8ix76xz67mkcqpyw";
-      };
-    in
-    {
-      nixosConfigurations = import ./hosts {
-        inherit
-          inputs
-          pkgs
-          nixpkgs
-          system
-          ;
-      };
-
-      homeConfigurations = import ./home {
-        inherit
-          inputs
-          home-manager
-          pkgs
-          wallpaper
-          ;
-      };
-
-      devShells.${system}.default = import ./shell.nix {
-        inherit
-          pkgs
-          inputs
-          system
-          treefmtEval
-          ;
-      };
-
-      formatter.${system} = formatterVar;
-
-      # checks.${system} = {
-      #   formatting = treefmtEval.config.build.check pkgs.hello;
-      # };
     };
+
+    treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+    formatterVar = treefmtEval.config.build.wrapper;
+    wallpaper = builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/xfeusw/nix/1fc84abf17f28e43e1b863df639afb345e86e9fd/wallpapers/133.jpg";
+      sha256 = "105ljph96bkvvfzwfy6gdyxjfxynn26g61j2q43z8iw7w9k1fjgx";
+    };
+  in {
+    nixosConfigurations = import ./hosts {
+      inherit
+        inputs
+        pkgs
+        nixpkgs
+        system
+        ;
+    };
+
+    homeConfigurations = import ./home {
+      inherit
+        inputs
+        home-manager
+        pkgs
+        wallpaper
+        ;
+    };
+
+    devShells.${system}.default = import ./shell.nix {
+      inherit
+        pkgs
+        inputs
+        system
+        treefmtEval
+        ;
+    };
+
+    formatter.${system} = formatterVar;
+
+    # checks.${system} = {
+    #   formatting = treefmtEval.config.build.check pkgs.hello;
+    # };
+  };
 }

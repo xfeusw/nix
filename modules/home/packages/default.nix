@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Core utilities
     bat
@@ -95,8 +94,8 @@
     treefmt
     qbittorrent
     shfmt
-    rustdesk
+    # rustdesk
     fastfetch
-    omnix
+    # omnix
   ];
 }

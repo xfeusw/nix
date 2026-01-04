@@ -1,8 +1,10 @@
 keys:
-  - &xeon age1cd8la756dm3as7tvyy2zg48x8l4wm3xcereqh7uq0m4e6fxh93dstnhutl
+  - &xeon_system age1dmcw62n3lc7ppwvstcspardvdj4t383hslc5kpghjpkejzgtw9ssq06k2a
+  - &xeon_user age1dmcw62n3lc7ppwvstcspardvdj4t383hslc5kpghjpkejzgtw9ssq06k2a
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
     key_groups:
       - age:
-          - *xeon
+          - *xeon_system
+          - *xeon_user

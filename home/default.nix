@@ -4,8 +4,7 @@
   inputs,
   wallpaper,
   ...
-}:
-let
+}: let
   commonModules = [
     inputs.sops-nix.homeModules.sops
     inputs.nur.modules.homeManager.default
@@ -16,12 +15,11 @@ let
     }
   ];
 
-  mkHome =
-    {
-      userPath,
-      extraModules ? [ ],
-      extraSpecialArgs ? { },
-    }:
+  mkHome = {
+    userPath,
+    extraModules ? [],
+    extraSpecialArgs ? {},
+  }:
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
@@ -29,17 +27,15 @@ let
         inherit inputs wallpaper;
       };
 
-      modules =
-        with inputs;
+      modules = with inputs;
         [
           nix-colors.homeManagerModules.default
         ]
         ++ commonModules
-        ++ [ userPath ]
+        ++ [userPath]
         ++ extraModules;
     };
-in
-{
+in {
   xfeusw = mkHome {
     userPath = ./xfeusw;
   };

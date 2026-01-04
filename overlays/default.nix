@@ -1,5 +1,4 @@
-self: super:
-let
+self: super: let
   omnixOverlay = import ./omnix.nix;
 in
-super
+  super // (omnixOverlay {inherit self super;})

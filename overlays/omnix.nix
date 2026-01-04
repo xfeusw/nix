@@ -1,12 +1,24 @@
-self: super: {
-
+{
+  self,
+  super,
+}: let
+  gccVersion = self.gcc13;
+in {
   omnix = super.omnix.overrideAttrs (old: {
-    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.gcc12 ];
-    buildInputs = (old.buildInputs or [ ]) ++ [ self.gcc12 ];
+    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [gccVersion];
+    buildInputs = (old.buildInputs or []) ++ [gccVersion];
 
-    stdenv = super.stdenv // {
-      cc = self.gcc12;
-      cxx = self.gcc12;
-    };
+    NIX_CC = gccVersion;
+    NIX_CXX = gccVersion;
+    CC = "${gccVersion}/bin/gcc";
+    CXX = "${gccVersion}/bin/g++";
+
+    PKG_CONFIG_PATH = old.PKG_CONFIG_PATH or "";
+
+    # env = (old.env or { }) // {
+    #   NIX_CFLAGS_COMPILE = "-Wno-error=deprecated-declarations -Wno-deprecated-declarations";
+    # };
+
+    stdenv = super.gcc13Stdenv;
   });
 }

@@ -12,6 +12,7 @@
     {
       nixpkgs.overlays = [
         inputs.nur.overlays.default
+        inputs.boot-club.overlays.default
         (final: prev: {
           mac-style-plymouth = inputs.mac-style-plymouth.packages.${system}.default;
         })
@@ -26,10 +27,7 @@
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = {inherit inputs;};
-      modules =
-        [hostPath]
-        ++ hardwareModules
-        ++ commonModules;
+      modules = [hostPath] ++ hardwareModules ++ commonModules;
     };
 in {
   acer = mkHost {
