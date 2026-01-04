@@ -8,7 +8,7 @@
 
     # Dev toolchain
     cmake
-    gcc
+    gcc14
     gnumake
     pkg-config
     # bruno
@@ -96,6 +96,7 @@
     shfmt
     # rustdesk
     fastfetch
+    floorp-bin
     # omnix
   ];
 }

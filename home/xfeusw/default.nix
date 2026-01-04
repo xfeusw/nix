@@ -31,6 +31,7 @@
     "waybar"
     "yazi"
     "zed"
+    "zen"
     "zsh"
   ];
 in {
