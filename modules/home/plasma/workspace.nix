@@ -3,7 +3,7 @@
     workspace = {
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      cursor.theme = "Bibata-Modern-Ice";
+      cursor.theme = "Bibata-Original-Classic";
       splashScreen.theme = "None";
 
       wallpaper = "${config.home.homeDirectory}/.local/share/wallpapers/elizabeth.jpg";

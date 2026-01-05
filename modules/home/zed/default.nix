@@ -88,6 +88,15 @@
           Haskell = {
             format_on_save = "off";
           };
+
+          Rust = {
+            language_servers = [
+              "rust_analyzer"
+            ];
+            # formatter = "language_server";
+            # format_on_save = "on";
+            tab_size = 2;
+          };
         };
 
         lsp = {
@@ -180,12 +189,12 @@
       };
 
       userKeymaps = [
-        {
-          context = "Workspace";
-          bindings = {
-            "ctrl-'" = "terminal_panel::Toggle";
-          };
-        }
+        # {
+        #   context = "Workspace";
+        #   bindings = {
+        #     "ctrl-'" = "terminal_panel::toggle";
+        #   };
+        # }
       ];
     };
   };

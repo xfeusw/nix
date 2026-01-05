@@ -13,6 +13,7 @@
         inputs.nur.overlays.default
       ];
     }
+    inputs.zen-browser.homeModules.twilight
   ];
 
   mkHome = {

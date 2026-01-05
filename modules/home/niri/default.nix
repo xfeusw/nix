@@ -65,11 +65,11 @@
       binds = import ./binds.nix;
 
       cursor = {
-        theme = "Bibata-Modern-Ice";
+        theme = "Bibata-Modern-dark";
         size = 21;
       };
       environment = {
-        XCURSOR_THEME = "Bibata-Modern-Ice";
+        XCURSOR_THEME = "Bibata-Original-Classic";
         XCURSOR_SIZE = "21";
       };
     };
