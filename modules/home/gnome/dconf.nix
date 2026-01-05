@@ -18,6 +18,8 @@
     transparent-window-moving
   ];
 in {
+  imports = [./keybindings.nix];
+
   home.packages = with pkgs;
     [
       dconf-editor
