@@ -1,6 +1,6 @@
 {
   # Window management
-  "Mod+Return".action.spawn = ["ghostty"];
+  "Mod+T".action.spawn = ["ghostty"];
   "Mod+D".action.spawn = ["fuzzel"];
   "Mod+Q".action.close-window = {};
   "Mod+E".action.spawn = ["nautilus"];

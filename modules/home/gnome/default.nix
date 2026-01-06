@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./dconf.nix];
+  imports = [./dconf.nix ./binds.nix];
 
   gtk = {
     font = {
