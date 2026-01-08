@@ -68,7 +68,7 @@ in {
     initrd.systemd.enable = true;
     consoleLogLevel = 3;
     kernelModules = ["tcp_bbr"];
-    kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_zen;
   };
 
   time.timeZone = "Asia/Tashkent";
@@ -88,5 +88,5 @@ in {
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "25.11";
 }

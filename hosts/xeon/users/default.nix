@@ -11,11 +11,12 @@
       "libvirtd"
       "scanner"
       "kvm"
+      "podman"
       "lp"
       "adbusers"
       "plugdev"
     ];
-    shell = pkgs.zsh;
+    shell = "${pkgs.zsh}/bin/zsh";
   };
 
   security.sudo.wheelNeedsPassword = true;

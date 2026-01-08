@@ -188,14 +188,14 @@
         base_keymap = "VSCode";
       };
 
-      userKeymaps = [
-        # {
-        #   context = "Workspace";
-        #   bindings = {
-        #     "ctrl-'" = "terminal_panel::toggle";
-        #   };
-        # }
-      ];
+      # userKeymaps = [
+      # {
+      #   context = "Workspace";
+      #   bindings = {
+      #     "ctrl-'" = "terminal_panel::toggle";
+      #   };
+      # }
+      # ];
     };
   };
 }

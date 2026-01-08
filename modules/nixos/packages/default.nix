@@ -3,6 +3,7 @@
     gh
     lazygit
     docker-compose
+    podman-compose
     vlc
     alsa-utils
     vim
@@ -33,11 +34,5 @@
     nvidia-vaapi-driver
     nvtopPackages.nvidia
     ngrok
-
-    # livekit
-    livekit
-    livekit-cli
-    livekit-ingress
-    livekit-libwebrtc
   ];
 }

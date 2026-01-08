@@ -6,9 +6,10 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  # KVM/QEMU virtualization
   virtualisation = {
     spiceUSBRedirection.enable = true;
+    vmware.guest.enable = true;
+    vmware.host.enable = true;
   };
 
   # Virtual machine manager
@@ -16,4 +17,6 @@
 
   # SPICE guest agent for better VM integration
   environment.systemPackages = with pkgs; [spice-vdagent];
+
+  services.xserver.videoDrivers = ["vmware"];
 }

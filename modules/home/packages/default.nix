@@ -28,6 +28,7 @@
 
     # Container orchestration
     docker-compose
+    podman-compose
     k9s
     kubectl
 
