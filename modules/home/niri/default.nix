@@ -14,7 +14,7 @@
       input = {
         keyboard.xkb = {
           layout = "us,ru";
-          options = "grp:alt_shift_toggle";
+          options = "grp:win_space_toggle";
         };
         touchpad = {
           tap = true;

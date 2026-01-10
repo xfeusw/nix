@@ -8,27 +8,32 @@
     programs.zed-editor = {
       enable = true;
 
-      package = pkgs.zed-editor;
+      package = pkgs.stable.zed-editor;
 
       extensions = [
-        "tokyo-night"
-        "nix"
-        "toml"
-        "material-icon-theme"
-        "make"
         "assembly"
+        "catppuccin"
+        "deno"
+        "dracula"
+        "elm"
+        "env"
+        "git-firefly"
+        "github-theme"
         "haskell"
+        "html"
+        "just"
+        "lua"
+        "make"
+        "material-icon-theme"
+        "nginx"
+        "nix"
+        "one-dark-pro"
+        "tokyo-night"
+        "sql"
+        "toml"
         "typst"
         "xml"
-        "just"
-        "sql"
-        "nginx"
-        "html"
-        "env"
-        "deno"
-        "lua"
         "yaml"
-        "git-firefly"
       ];
 
       userSettings = {
@@ -47,7 +52,7 @@
 
         node = {
           path = lib.getExe pkgs.nodejs;
-          npm_path = lib.getExe' pkgs.nodejs "npm";
+          npm_path = lib.getExe pkgs.pnpm;
         };
 
         languages = {
@@ -97,6 +102,15 @@
             # format_on_save = "on";
             tab_size = 2;
           };
+
+          Elm = {
+            language_serverss = [
+              "elm-language-server"
+            ];
+            formatter = "language_server";
+            format_on_save = "on";
+            tab_size = 2;
+          };
         };
 
         lsp = {
@@ -136,11 +150,34 @@
             };
           };
 
+          typescript-language-server = {
+            binary = {
+              ignore_system_version = false;
+            };
+            initialization_options = {
+              preferences = {
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayVariableTypeHints = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayEnumMemberValueHints = true;
+              };
+            };
+          };
+
           haskell = {
             initialization_options = {
               haskell = {
                 formattingProvider = "fourmolu";
               };
+            };
+          };
+
+          elm-language-server = {
+            binary = {
+              ignore_system_version = false;
             };
           };
         };

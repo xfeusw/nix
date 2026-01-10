@@ -93,7 +93,7 @@ in {
             "ru"
           ])
         ];
-        xkb-options = ["grp:alt_shift_toggle"];
+        xkb-options = ["grp:win_space_toggle"];
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
