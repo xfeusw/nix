@@ -13,7 +13,7 @@
       enable = true;
       xkb = {
         layout = "us,ru";
-        options = "caps:escape,grp:alt_shift_toggle,grp:win_space_toggle";
+        options = "grp:win_space_toggle";
       };
     };
 

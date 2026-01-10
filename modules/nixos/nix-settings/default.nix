@@ -5,10 +5,15 @@
   ...
 }: {
   nix = {
+    # extraOptions = lib.mkIf (config.sops.secrets ? gh_token) ''
+    #   access-tokens = github.com=$(cat ${config.sops.secrets.gh_token.path})
+    # '';
+
     settings = {
-      access-tokens = lib.mkIf (config.sops.secrets ? gh_token) [
-        # "github.com=${builtins.readFile config.sops.secrets.gh_token.path}"
-      ];
+      # access-tokens = lib.mkIf (config.sops.secrets ? gh_token) [
+      #   "github.com=${builtins.readFile config.sops.secrets.gh_token.path}"
+      # ];
+      #
 
       experimental-features = [
         "nix-command"

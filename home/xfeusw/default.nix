@@ -55,7 +55,7 @@ in {
       QT_QPA_PLATFORM = "wayland";
       SDL_VIDEODRIVER = "wayland";
       XDG_SESSION_TYPE = "wayland";
-      SHELL = pkgs.zsh;
+      SHELL = "${pkgs.zsh}/bin/zsh";
     };
   };
 

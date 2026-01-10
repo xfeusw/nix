@@ -176,6 +176,7 @@
       gh_token = {
         owner = "xfeusw";
         mode = "0400";
+        path = "${config.users.users.xfeusw.home}/.config/nix/github-token";
       };
     };
   };
