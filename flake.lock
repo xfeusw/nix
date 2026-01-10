@@ -78,6 +78,27 @@
         "type": "github"
       }
     },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1768065117,
+        "narHash": "sha256-4NHVfihGrY67Nd8Vpjv3r1JgyNE+e/HX2CwsvQH9Vac=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "0b331688c0610e1dfd33854623e86e3185c21d8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -364,7 +385,7 @@
         "niri-stable": "niri-stable",
         "niri-unstable": "niri-unstable",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-stable": "nixpkgs-stable_2",
         "xwayland-satellite-stable": "xwayland-satellite-stable",
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
@@ -483,6 +504,22 @@
     },
     "nixpkgs-stable": {
       "locked": {
+        "lastModified": 1767313136,
+        "narHash": "sha256-16KkgfdYqjaeRGBaYsNrhPRRENs0qzkQVUooNHtoy2w=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ac62194c3917d5f474c1a844b6fd6da2db95077d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_2": {
+      "locked": {
         "lastModified": 1767799921,
         "narHash": "sha256-r4GVX+FToWVE2My8VVZH4V0pTIpnu2ZE8/Z4uxGEMBE=",
         "owner": "NixOS",
@@ -497,7 +534,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable_2": {
+    "nixpkgs-stable_3": {
       "locked": {
         "lastModified": 1767799921,
         "narHash": "sha256-r4GVX+FToWVE2My8VVZH4V0pTIpnu2ZE8/Z4uxGEMBE=",
@@ -637,11 +674,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1768069453,
-        "narHash": "sha256-qpa7Ei+GFRXcrVwQZ6nyirF22PmmJZd1RsDkAcLWKHI=",
+        "lastModified": 1768074235,
+        "narHash": "sha256-bYpVz/HgXBy5vEdJsXWPYsflGt5P7e1KrUScsoRcEhQ=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "0801fc4f80e82002cc5fea6cc0eee3792bbb2bcd",
+        "rev": "e408185201a70859f87e66d78d9b0411724c769c",
         "type": "github"
       },
       "original": {
@@ -677,6 +714,7 @@
       "inputs": {
         "android-nixpkgs": "android-nixpkgs",
         "boot-club": "boot-club",
+        "emacs-overlay": "emacs-overlay",
         "firefox-addons": "firefox-addons",
         "git-hooks": "git-hooks",
         "helix": "helix",
@@ -687,7 +725,7 @@
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-stable": "nixpkgs-stable_3",
         "nixvim": "nixvim",
         "nur": "nur",
         "plasma-manager": "plasma-manager",

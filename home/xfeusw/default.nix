@@ -9,6 +9,7 @@
     "android"
     "direnv"
     # "dunst"
+    "emacs"
     "firefox"
     "fuzzel"
     "ghostty"
