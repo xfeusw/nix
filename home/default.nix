@@ -31,7 +31,7 @@
       modules = with inputs;
         [
           nix-colors.homeManagerModules.default
-          inputs.emacs-overlay.overlays.default
+          # inputs.emacs-overlay.overlays.default
         ]
         ++ commonModules
         ++ [userPath]

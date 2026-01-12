@@ -14,6 +14,8 @@
         "assembly"
         "catppuccin"
         "deno"
+        "dockerfile"
+        "docker-compose"
         "dracula"
         "elm"
         "env"

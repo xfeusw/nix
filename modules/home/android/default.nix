@@ -41,6 +41,7 @@ in {
     pkg-config
     ccache
     nodejs_22
+    pnpm
   ];
 
   home.sessionVariables = {

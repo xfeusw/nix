@@ -62,7 +62,7 @@
 
     # Communication clients
     discord
-    element-desktop
+    # element-desktop
     telegram-desktop
 
     # Media stack
@@ -103,5 +103,9 @@
     fastfetch
     floorp-bin
     # omnix
+    postgresql
+    libpq
+    libiconv
+    rustlings
   ];
 }
