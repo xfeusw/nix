@@ -105,6 +105,8 @@
     # omnix
     postgresql
     libpq
+    pkg-config
+    openssl
     libiconv
     rustlings
   ];

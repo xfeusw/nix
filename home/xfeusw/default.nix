@@ -6,7 +6,7 @@
   homeModules = ./../../modules/home;
 
   modules = [
-    "android"
+    # "android"
     "direnv"
     # "dunst"
     "emacs"

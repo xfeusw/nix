@@ -34,5 +34,6 @@
     nvidia-vaapi-driver
     nvtopPackages.nvidia
     ngrok
+    ncdu
   ];
 }
