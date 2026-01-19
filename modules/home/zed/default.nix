@@ -16,10 +16,6 @@
         languages = import ./languages.nix;
         lsp = import ./lsp.nix;
 
-        assistant = {
-          enabled = false;
-        };
-
         disable_ai = true;
 
         telemetry = {
@@ -29,9 +25,17 @@
 
         show_edit_predictions = false;
 
+        inlay_hints = {
+          enabled = true;
+          show_type_hints = true;
+          show_parameter_hints = true;
+          show_other_hints = true;
+          show_background = true;
+        };
+
         node = {
           path = lib.getExe pkgs.nodejs;
-          npm_path = lib.getExe pkgs.pnpm;
+          npm_path = lib.getExe' pkgs.nodejs "npm";
         };
 
         tab_size = 2;
@@ -40,7 +44,6 @@
         autosave = "off";
         enable_language_server = true;
 
-        hour_format = "hour12";
         auto_update = false;
 
         theme = {
@@ -75,6 +78,10 @@
 
         load_direnv = "shell_hook";
         base_keymap = "VSCode";
+
+        session = {
+          trust_all_worktrees = true;
+        };
       };
 
       # userKeymaps = [
