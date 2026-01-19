@@ -47,15 +47,15 @@
     tab_size = 2;
   };
 
-  JSX = {
-    language_servers = [
-      "typescript-language-server"
-      "!eslint"
-    ];
-    formatter = "language_server";
-    format_on_save = "off";
-    tab_size = 2;
-  };
+  # JSX = {
+  #   language_servers = [
+  #     "typescript-language-server"
+  #     "!eslint"
+  #   ];
+  #   formatter = "language_server";
+  #   format_on_save = "off";
+  #   tab_size = 2;
+  # };
 
   CSS = {
     formatter = "language_server";
@@ -92,16 +92,17 @@
     # formatter = "language_server";
     # format_on_save = "on";
     tab_size = 2;
+    inlay_hints = {enabled = true;};
   };
 
-  Elm = {
-    language_servers = [
-      "elm-language-server"
-    ];
-    formatter = "language_server";
-    format_on_save = "on";
-    tab_size = 2;
-  };
+  # Elm = {
+  #   language_servers = [
+  #     "elm-language-server"
+  #   ];
+  #   formatter = "language_server";
+  #   format_on_save = "on";
+  #   tab_size = 2;
+  # };
 
   Just = {
     format_on_save = "off";
