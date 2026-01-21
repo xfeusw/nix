@@ -108,6 +108,5 @@
     pkg-config
     openssl
     libiconv
-    rustlings
   ];
 }
