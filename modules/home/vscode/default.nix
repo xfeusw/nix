@@ -15,8 +15,8 @@ in {
         # --- Privacy & performance ---
         "telemetry.enableTelemetry" = false;
         "telemetry.enableCrashReporter" = false;
-        "extensions.autoUpdate" = true;
-        "extensions.autoCheckUpdates" = true;
+        "extensions.autoUpdate" = false;
+        "extensions.autoCheckUpdates" = false;
         "files.watcherExclude" = {
           "**/node_modules/**" = true;
           "**/.git/**" = true;
@@ -40,6 +40,15 @@ in {
         };
         "search.followSymlinks" = false;
         "git.autofetch" = false;
+        # --- Fonts ---
+        "editor.fontFamily" = "FiraCode Nerd Font";
+        "editor.fontSize" = 13;
+        "editor.lineHeight" = 21;
+        "editor.fontLigatures" = true;
+
+        "terminal.integrated.fontFamily" = "FiraCode Nerd Font";
+        "terminal.integrated.fontSize" = 13;
+        "terminal.integrated.lineHeight" = 1.2;
         # --- Rust ---
         "rust-analyzer.server.path" = "";
         "rust-analyzer.cargo.runBuildScripts" = true;
@@ -55,6 +64,13 @@ in {
         "haskell.plugin.ghcide-completions.globalOn" = true;
         "haskell.hlintOn" = true;
         "haskell.trace.server" = "off";
+        "files.associations" = {
+          "*.hs" = "haskell";
+          "*.lhs" = "literate haskell";
+          "*.hs-boot" = "haskell";
+          "*.cabal" = "cabal";
+        };
+        "haskell.serverExecutablePath" = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
         # --- Language associations ---
         "[nix]" = {
           "editor.defaultFormatter" = "kamadorueda.alejandra";
@@ -68,6 +84,8 @@ in {
         "breadcrumbs.enabled" = true;
         "window.titleBarStyle" = "custom";
         "files.hotExit" = "off";
+        "window.restoreWindows" = "none";
+        "settingsSync.enable" = false;
       };
 
       extensions = vscodeExtensions;

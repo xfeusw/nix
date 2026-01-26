@@ -12,6 +12,7 @@ with pkgs.vscode-extensions;
     # Language support
     rust-lang.rust-analyzer
     haskell.haskell
+    justusadam.language-haskell
     tamasfe.even-better-toml
 
     # Essential tools
