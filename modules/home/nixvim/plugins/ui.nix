@@ -1,15 +1,33 @@
 {
   programs.nixvim.plugins = {
     web-devicons.enable = true;
-    rainbow-delimiters.enable = true;
     nvim-autopairs.enable = true;
     bufferline.enable = true;
     which-key.enable = true;
 
-    lightline = {
+    rainbow-delimeters = {
       enable = true;
-      settings = {
-        colorscheme = "tokyonight";
+      highlight = [
+        "RainbowDelimiterRed"
+        "RainbowDelimiterYellow"
+        "RainbowDelimiterBlue"
+        "RainbowDelimiterOrange"
+        "RainbowDelimiterGreen"
+        "RainbowDelimiterViolet"
+        "RainbowDelimiterCyan"
+      ];
+    };
+
+    lualine = {
+      enable = true;
+      theme = "tokyonight";
+      sections = {
+        lualine_a = ["mode"];
+        lualine_b = ["branch" "diff" "diagnostics"];
+        lualine_c = ["filename"];
+        lualine_x = ["encoding" "fileformat" "filetype"];
+        lualine_y = ["progress"];
+        lualine_z = ["location"];
       };
     };
 

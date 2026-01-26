@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nixvim.plugins = {
     lsp = {
       enable = true;
@@ -7,10 +7,19 @@
         clangd.enable = true;
         nixd.enable = true;
         ruff.enable = true;
+        dockerls.enable = true;
+        docker_compose_language_service.enable = true;
 
         gopls = {
           enable = true;
           package = null;
+        };
+
+        hls = {
+          enable = true;
+          package = null;
+          installGhc = false;
+          ghcPackage = pkgs.haskell.packages.ghc910.ghc;
         };
       };
       keymaps.lspBuf = {
@@ -40,18 +49,31 @@
           statix.enable = true;
         };
         formatting = {
-          fantomas.enable = true;
           gofmt.enable = true;
           goimports.enable = true;
           nixfmt.enable = true;
           markdownlint.enable = true;
           shellharden.enable = true;
           shfmt.enable = true;
+
+          rustfmt = {
+            enable = true;
+            package = null;
+          };
+
+          fourmolu = {
+            enable = true;
+            package = null;
+          };
         };
       };
     };
 
     rustaceanvim.enable = true;
     trouble.enable = true;
+    sqls.enable = true;
+    yamlls.enable = true;
+    jsonls.enable = true;
+    taplo.enable = true;
   };
 }

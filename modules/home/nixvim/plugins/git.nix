@@ -1,6 +1,16 @@
 {
   programs.nixvim.plugins = {
-    lazygit.enable = true;
+    neogit = {
+      enable = true;
+      settings = {
+        integrations = {
+          telescope = true;
+          diffview = true;
+        };
+      };
+    };
+
+    diffview.enable = true;
 
     gitsigns = {
       enable = true;
