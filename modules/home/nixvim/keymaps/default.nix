@@ -5,6 +5,7 @@
     ./git.nix
     ./lsp.nix
     ./files.nix
+    ./terminal.nix
     ./ui.nix
   ];
 }
