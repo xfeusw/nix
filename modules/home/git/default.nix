@@ -25,7 +25,7 @@
 
       extraConfig = {
         core = {
-          editor = "hx";
+          editor = "nvim";
           autocrlf = "input";
         };
         init.defaultBranch = "main";

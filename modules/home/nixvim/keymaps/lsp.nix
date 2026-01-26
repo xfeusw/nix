@@ -3,7 +3,7 @@
     # Format buffer
     {
       mode = "n";
-      key = "<leader>f";
+      key = "<leader>fm";
       action = "<cmd>lua vim.lsp.buf.format({ async = false })<CR>";
       options.desc = "Format buffer";
     }

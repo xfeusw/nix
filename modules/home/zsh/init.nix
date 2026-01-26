@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.zsh.initContent = ''
     # --- Environment Variables ---
-    export EDITOR='hx'
-    export VISUAL='hx'
+    export EDITOR='nvim'
+    export VISUAL='nvim'
     export PAGER='less'
-    export MANPAGER='hx +Man!'
+    export MANPAGER='nvim +Man!'
 
     # Performance: skip global compinit if you rely on the completionInit block in the main config
     skip_global_compinit=1

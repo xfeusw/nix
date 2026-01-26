@@ -49,8 +49,8 @@ in {
     enableNixpkgsReleaseCheck = false;
     sessionVariables = lib.mkForce {
       XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
-      EDITOR = "hx";
-      VISUAL = "hx";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
       NIXOS_OZONE_WL = "1";
       MOZ_ENABLE_WAYLAND = "1";
       QT_QPA_PLATFORM = "wayland";
