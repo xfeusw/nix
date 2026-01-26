@@ -60,12 +60,60 @@
       options.desc = "Find diagnostics";
     }
 
+    # An alternative that DOES NOT respect ignore
+    {
+      mode = "n";
+      key = "<leader>p";
+      action = ":Telescope find_files hidden=true no_ignore=true follow=true<CR>";
+      options.desc = "Find files (include ignored + dotfiles)";
+    }
+
     # Source current file
     {
       mode = "n";
       key = "<leader><leader>";
       action = ":source %<CR>";
       options.desc = "Source current file";
+    }
+
+    # New file creation
+    {
+      mode = "n";
+      key = "<leader>fn";
+      action = ":ene | startinsert<CR>";
+      options.desc = "New empty file";
+    }
+
+    {
+      mode = "n";
+      key = "<leader>fN";
+      action.__raw = ''
+        function()
+        local dir = vim.fn.expand("%:p:h")
+        if dir == "" then
+        vim.cmd("ene")
+        else
+        vim.cmd("edit " .. dir .. "/")
+        end
+        vim.cmd("startinsert")
+        end
+      '';
+      options.desc = "New file in current directory";
+    }
+
+    # .env and ignored files helpers
+    {
+      mode = "n";
+      key = "<leader>fe";
+      action = ":edit .env<CR>";
+      options.desc = "Open .env (project root)";
+    }
+
+    {
+      mode = "n";
+      key = "<leader>fE";
+      action = ":Telescope find_files hidden=true no_ignore=true search_file=.env<CR>";
+      options.desc = "Find .env* files (including ignored)";
     }
   ];
 }

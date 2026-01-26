@@ -56,7 +56,10 @@
 
     # Delete without yanking
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<leader>d";
       action = "\"_d";
       options.desc = "Delete without yanking";
@@ -116,13 +119,19 @@
 
     # Better line start/end
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "H";
       action = "^";
       options.desc = "Go to first non-blank character";
     }
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "L";
       action = "$";
       options.desc = "Go to end of line";

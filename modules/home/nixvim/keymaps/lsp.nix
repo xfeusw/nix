@@ -19,7 +19,7 @@
     # Diagnostics
     {
       mode = "n";
-      key = "<leader>e";
+      key = "<leader>g";
       action = "<cmd>lua vim.diagnostic.open_float()<CR>";
       options.desc = "Show line diagnostics";
     }
