@@ -14,6 +14,7 @@
   "haskell"
   "html"
   "just"
+  "kanagawa-themes"
   "lua"
   "make"
   "material-icon-theme"

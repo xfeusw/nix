@@ -60,7 +60,7 @@
 
         show_whitespaces = "all";
         ui_font_size = 13;
-        buffer_font_size = 13;
+        buffer_font_size = 12;
         buffer_font_family = "FiraCode Nerd Font";
 
         active_pane_modifiers = {
