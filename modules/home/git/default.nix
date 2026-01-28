@@ -10,7 +10,7 @@
         name = "xfeusw";
         email = "khamrakulovkamron@gmail.com";
       };
-      aliases = {
+      alias = {
         st = "status -s";
         co = "checkout";
         br = "branch";
