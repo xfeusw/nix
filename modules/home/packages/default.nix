@@ -56,7 +56,7 @@
     nixd
 
     # Browsers
-    brave
+    # brave
     google-chrome
     tor-browser
 
@@ -101,12 +101,14 @@
     shfmt
     # rustdesk
     fastfetch
-    floorp-bin
+    # floorp-bin
     # omnix
     postgresql
     libpq
     pkg-config
     openssl
     libiconv
+    libreoffice
+    element-desktop
   ];
 }

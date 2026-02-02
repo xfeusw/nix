@@ -41,12 +41,13 @@ in {
         enabled-extensions = map (ext: ext.extensionUuid) extensions;
         favorite-apps = [
           "org.telegram.desktop.desktop"
+          "element-desktop.desktop"
           # "blueman-manager.desktop"
           "spotify.desktop"
-          "floorp.desktop"
+          "zen-twilight.desktop"
           "dev.zed.Zed.desktop"
+          "code.desktop"
           "com.mitchellh.ghostty.desktop"
-          # "code.desktop"
           # "android-studio.desktop"
         ];
       };

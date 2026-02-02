@@ -83,6 +83,12 @@
 
   Haskell = {
     format_on_save = "off";
+    tab_size = 2;
+  };
+
+  Cabal = {
+    format_on_save = "off";
+    tab_size = 4;
   };
 
   Rust = {

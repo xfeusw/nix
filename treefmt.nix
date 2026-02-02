@@ -2,14 +2,17 @@
   projectRootFile = "flake.nix";
 
   programs = {
-    alejandra.enable = true;
+    nixfmt.enable = true;
 
     shfmt = {
       enable = true;
       indent_size = 2;
     };
 
-    mdformat.enable = true;
+    mdformat = {
+      enable = true;
+      package = pkgs.stable.mdformat;
+    };
   };
 
   settings = {
@@ -42,7 +45,7 @@
     };
 
     formatter = {
-      alejandra = {
+      nixfmt = {
         options = ["--quiet"];
         priority = 1;
       };

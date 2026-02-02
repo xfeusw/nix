@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  browser = "floorp.desktop";
+  browser = "zen-twilight.desktop";
 in {
   imports = [
     ./dconf.nix
