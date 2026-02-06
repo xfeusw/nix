@@ -81,7 +81,10 @@
       name = "python";
       auto-format = true;
       formatter.command = "${pkgs.black}/bin/black";
-      formatter.args = ["-" "--quiet"];
+      formatter.args = [
+        "-"
+        "--quiet"
+      ];
       language-servers = ["pyright"];
     }
     {

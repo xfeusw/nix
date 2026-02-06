@@ -69,7 +69,11 @@
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
+    yandex-music.url = "/home/xfeusw/workspace/yandex-music-nix";
+
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
+
+    # usbguard-gnome.url = "github:xfeusw/usbguard-gnome";
   };
 
   outputs = {
@@ -97,6 +101,7 @@
             config.allowUnfree = true;
           };
         })
+        inputs.yandex-music.overlays.default
       ];
     };
 

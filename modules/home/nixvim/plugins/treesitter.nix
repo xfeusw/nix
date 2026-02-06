@@ -25,7 +25,9 @@
 
     treesitter-context = {
       enable = true;
-      settings = {max_lines = 2;};
+      settings = {
+        max_lines = 2;
+      };
     };
 
     filetype = {

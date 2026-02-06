@@ -35,6 +35,9 @@
       kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
     ];
-    config.common.default = ["kde" "gtk"];
+    config.common.default = [
+      "kde"
+      "gtk"
+    ];
   };
 }

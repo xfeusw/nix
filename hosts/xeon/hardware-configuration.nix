@@ -12,7 +12,14 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["ahci" "xhci_pci" "ehci_pci" "usbhid" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = [
+    "ahci"
+    "xhci_pci"
+    "ehci_pci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
@@ -20,13 +27,25 @@
   fileSystems."/mnt/windows-c" = {
     device = "/dev/disk/by-uuid/B260A84660A812E1";
     fsType = "ntfs-3g";
-    options = ["rw" "uid=1000" "gid=100" "dmask=022" "fmask=133"];
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=100"
+      "dmask=022"
+      "fmask=133"
+    ];
   };
 
   fileSystems."/mnt/windows-d" = {
     device = "/dev/disk/by-uuid/90B83AF4B83AD904";
     fsType = "ntfs-3g";
-    options = ["rw" "uid=1000" "gid=100" "dmask=022" "fmask=133"];
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=100"
+      "dmask=022"
+      "fmask=133"
+    ];
   };
 
   fileSystems."/" = {
@@ -37,7 +56,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/7DEA-4A88";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   boot.supportedFilesystems = ["ntfs"];

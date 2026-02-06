@@ -40,7 +40,10 @@
       restrict-eval = false;
 
       # Trusted users
-      trusted-users = ["root" "@wheel"];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
     };
 
     # Nix daemon settings

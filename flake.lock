@@ -179,6 +179,24 @@
         "type": "github"
       }
     },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
+        "lastModified": 1769996383,
+        "narHash": "sha256-AnYjnFWgS49RlqX7LrC4uA+sCCDBj0Ry/WOJ5XWAsa0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "57928607ea566b5db3ad13af0e57e921e6b12381",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -502,6 +520,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_2": {
+      "locked": {
+        "lastModified": 1769909678,
+        "narHash": "sha256-cBEymOf4/o3FD5AZnzC3J9hLbiZ+QDT/KDuyHXVJOpM=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "72716169fe93074c333e8d0173151350670b824c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1767313136,
@@ -646,6 +679,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1770181073,
+        "narHash": "sha256-ksTL7P9QC1WfZasNlaAdLOzqD8x5EPyods69YBqxSfk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "bf922a59c5c9998a6584645f7d0de689512e444c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -731,6 +780,7 @@
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix",
+        "yandex-music": "yandex-music",
         "zen-browser": "zen-browser"
       }
     },
@@ -887,6 +937,22 @@
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
         "type": "github"
+      }
+    },
+    "yandex-music": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "nixpkgs": "nixpkgs_8"
+      },
+      "locked": {
+        "lastModified": 1770289034,
+        "narHash": "sha256-dA4ilfTcrYJjh4q4bGaT06d99iDD6FAYuy+tRDH4K9g=",
+        "path": "/home/xfeusw/workspace/yandex-music-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/xfeusw/workspace/yandex-music-nix",
+        "type": "path"
       }
     },
     "zen-browser": {

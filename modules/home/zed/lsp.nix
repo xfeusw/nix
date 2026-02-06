@@ -26,7 +26,19 @@
       check = {
         command = "clippy";
       };
+      checkOnSave = true;
+      inlayHints = {
+        maxLength = null;
+        lifetimeElisionHints = {
+          enable = "skip_trivial";
+          useParameterNames = true;
+        };
+        closureReturnTypeHints = {
+          enable = "always";
+        };
+      };
     };
+    enable_lsp_tasks = true;
   };
 
   deno = {

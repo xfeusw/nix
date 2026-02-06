@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   nixosModules = ./../../modules/nixos;
 
   sharedModules = [
@@ -24,6 +28,7 @@ in {
   imports =
     [
       ./hardware-configuration.nix
+      # inputs.usbguard-gnome.nixosModules.default
     ]
     ++ map (m: nixosModules + "/${m}") sharedModules
     ++ map (m: ./${m}) localModules;

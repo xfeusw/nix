@@ -7,8 +7,14 @@
     };
 
     firewall = {
-      allowedTCPPorts = [57 621];
-      allowedUDPPorts = [5353 8888];
+      allowedTCPPorts = [
+        57
+        621
+      ];
+      allowedUDPPorts = [
+        5353
+        8888
+      ];
     };
 
     # Faster DNS

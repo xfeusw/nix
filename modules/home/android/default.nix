@@ -10,15 +10,28 @@
     cmdLineToolsVersion = "8.0";
     toolsVersion = "26.1.1";
     platformToolsVersion = "35.0.1";
-    buildToolsVersions = [buildToolsVersion "30.0.1"];
+    buildToolsVersions = [
+      buildToolsVersion
+      "30.0.1"
+    ];
     includeEmulator = true;
     emulatorVersion = "34.1.19";
-    platformVersions = ["33" "30"];
+    platformVersions = [
+      "33"
+      "30"
+    ];
     includeSources = false;
     includeSystemImages = true;
     systemImageTypes = ["google_apis_playstore"];
-    abiVersions = ["armeabi-v7a" "arm64-v8a" "x86_64"];
-    cmakeVersions = ["3.10.2" "3.22.1"];
+    abiVersions = [
+      "armeabi-v7a"
+      "arm64-v8a"
+      "x86_64"
+    ];
+    cmakeVersions = [
+      "3.10.2"
+      "3.22.1"
+    ];
     includeNDK = true;
     ndkVersions = [ndkVersion];
     useGoogleAPIs = true;

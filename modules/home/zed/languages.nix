@@ -11,6 +11,7 @@
       "nixd"
       "!nil"
     ];
+    format_on_save = "on";
   };
 
   TypeScript = {
@@ -98,7 +99,9 @@
     # formatter = "language_server";
     # format_on_save = "on";
     tab_size = 2;
-    inlay_hints = {enabled = true;};
+    inlay_hints = {
+      enabled = true;
+    };
   };
 
   # Elm = {

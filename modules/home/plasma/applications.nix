@@ -43,8 +43,16 @@
         };
       };
 
-      "krunnerrc" = {"Plugins" = {"baloosearchEnabled" = false;};};
-      "plasma-thumbnailsrc" = {"General" = {"EnableThumbnails" = false;};};
+      "krunnerrc" = {
+        "Plugins" = {
+          "baloosearchEnabled" = false;
+        };
+      };
+      "plasma-thumbnailsrc" = {
+        "General" = {
+          "EnableThumbnails" = false;
+        };
+      };
 
       "kwinrc" = {
         Compositing = {

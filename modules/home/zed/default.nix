@@ -13,6 +13,18 @@
       extensions = import ./extensions.nix;
 
       userSettings = {
+        format_on_save = "off";
+
+        completions = {
+          words = "enabled";
+          words_min_length = 3;
+          lsp = true;
+          lsp_insert_mode = "replace_suffix";
+        };
+
+        show_completions_on_input = true;
+        show_completion_documentation = true;
+
         languages = import ./languages.nix;
         lsp = import ./lsp.nix;
 
@@ -23,7 +35,7 @@
           diagnostics = false;
         };
 
-        show_edit_predictions = false;
+        show_edit_predictions = true;
 
         inlay_hints = {
           enabled = true;
@@ -60,7 +72,7 @@
 
         show_whitespaces = "all";
         ui_font_size = 13;
-        buffer_font_size = 12;
+        buffer_font_size = 11;
         buffer_font_family = "FiraCode Nerd Font";
 
         active_pane_modifiers = {

@@ -45,7 +45,10 @@
       }
       {
         event = "BufWritePre";
-        pattern = ["*.hs" "*.lhs"];
+        pattern = [
+          "*.hs"
+          "*.lhs"
+        ];
         callback.__raw = ''
           function()
             vim.lsp.buf.format({ async = false })

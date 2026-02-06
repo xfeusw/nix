@@ -12,9 +12,22 @@
         position = "top";
         height = 32;
 
-        modules-left = ["niri/workspaces" "niri/window"];
-        modules-center = ["clock" "date"];
-        modules-right = ["cpu" "memory" "pulseaudio" "network" "battery" "tray"];
+        modules-left = [
+          "niri/workspaces"
+          "niri/window"
+        ];
+        modules-center = [
+          "clock"
+          "date"
+        ];
+        modules-right = [
+          "cpu"
+          "memory"
+          "pulseaudio"
+          "network"
+          "battery"
+          "tray"
+        ];
 
         "wlr/workspaces" = {
           format = "{index}";
@@ -60,7 +73,13 @@
           };
           format = "{capacity}% {icon}";
           format-charging = "{capacity}% ⚡";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           tooltip-format = "{timeTo} ({capacity}%)";
         };
 
@@ -79,7 +98,11 @@
           format = "{volume}% {icon}";
           format-muted = "Muted 🔇";
           format-icons = {
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           # 💡 Scrollable Audio Enhancement
           tooltip = true;

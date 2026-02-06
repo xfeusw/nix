@@ -14,24 +14,70 @@
   "Mod+Shift+S".action.screenshot = {};
 
   # Screen recording
-  "Mod+R".action.spawn = ["wf-recorder" "-g" "$(slurp)" "-f" "~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"];
+  "Mod+R".action.spawn = [
+    "wf-recorder"
+    "-g"
+    "$(slurp)"
+    "-f"
+    "~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
+  ];
 
   # Lock screen
   "Mod+L".action.spawn = ["swaylock"];
 
   # Color picker
-  "Mod+P".action.spawn = ["hyprpicker" "-a"];
+  "Mod+P".action.spawn = [
+    "hyprpicker"
+    "-a"
+  ];
 
   # System Control
-  "XF86AudioRaiseVolume".action.spawn = ["pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"];
-  "XF86AudioLowerVolume".action.spawn = ["pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"];
-  "XF86AudioMute".action.spawn = ["pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"];
-  "XF86AudioMicMute".action.spawn = ["pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"];
-  "XF86AudioPlay".action.spawn = ["playerctl" "play-pause"];
-  "XF86AudioNext".action.spawn = ["playerctl" "next"];
-  "XF86AudioPrev".action.spawn = ["playerctl" "previous"];
-  "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "+5%"];
-  "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
+  "XF86AudioRaiseVolume".action.spawn = [
+    "pactl"
+    "set-sink-volume"
+    "@DEFAULT_SINK@"
+    "+5%"
+  ];
+  "XF86AudioLowerVolume".action.spawn = [
+    "pactl"
+    "set-sink-volume"
+    "@DEFAULT_SINK@"
+    "-5%"
+  ];
+  "XF86AudioMute".action.spawn = [
+    "pactl"
+    "set-sink-mute"
+    "@DEFAULT_SINK@"
+    "toggle"
+  ];
+  "XF86AudioMicMute".action.spawn = [
+    "pactl"
+    "set-source-mute"
+    "@DEFAULT_SOURCE@"
+    "toggle"
+  ];
+  "XF86AudioPlay".action.spawn = [
+    "playerctl"
+    "play-pause"
+  ];
+  "XF86AudioNext".action.spawn = [
+    "playerctl"
+    "next"
+  ];
+  "XF86AudioPrev".action.spawn = [
+    "playerctl"
+    "previous"
+  ];
+  "XF86MonBrightnessUp".action.spawn = [
+    "brightnessctl"
+    "set"
+    "+5%"
+  ];
+  "XF86MonBrightnessDown".action.spawn = [
+    "brightnessctl"
+    "set"
+    "5%-"
+  ];
 
   # Workspaces - Focus
   "Mod+1".action.focus-workspace = 1;
@@ -92,7 +138,12 @@
 
   # System
   "Mod+Shift+E".action.quit = {};
-  "Mod+Shift+R".action.spawn = ["niri" "msg" "action" "reload-config"];
+  "Mod+Shift+R".action.spawn = [
+    "niri"
+    "msg"
+    "action"
+    "reload-config"
+  ];
 
   # Alt bindings
   "Super+Shift+E".action.quit = {};

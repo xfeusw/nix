@@ -11,7 +11,9 @@
       enable = true;
 
       settings = {
-        experimental = {ghost_text = true;};
+        experimental = {
+          ghost_text = true;
+        };
         snippet.expand = ''
           function(args)
             require('luasnip').lsp_expand(args.body)
@@ -31,7 +33,11 @@
       ];
 
       formatting = {
-        fields = ["abbr" "kind" "menu"];
+        fields = [
+          "abbr"
+          "kind"
+          "menu"
+        ];
         format = ''
           function(_, item)
             local icons = {
@@ -89,11 +95,29 @@
           winhighlight = "FloatBorder:CmpBorder,Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel";
           scrollbar = false;
           sidePadding = 0;
-          border = ["╭" "─" "╮" "│" "╯" "─" "╰" "│"];
+          border = [
+            "╭"
+            "─"
+            "╮"
+            "│"
+            "╯"
+            "─"
+            "╰"
+            "│"
+          ];
         };
 
         documentation = {
-          border = ["╭" "─" "╮" "│" "╯" "─" "╰" "│"];
+          border = [
+            "╭"
+            "─"
+            "╮"
+            "│"
+            "╯"
+            "─"
+            "╰"
+            "│"
+          ];
           winhighlight = "FloatBorder:CmpBorder,Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel";
         };
       };

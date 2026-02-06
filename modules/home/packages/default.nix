@@ -105,10 +105,11 @@
     # omnix
     postgresql
     libpq
-    pkg-config
     openssl
     libiconv
     libreoffice
     element-desktop
+    postman
+    yandex-music-bin
   ];
 }
