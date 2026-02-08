@@ -44,4 +44,12 @@ in {
       nixos-hardware.nixosModules.common-cpu-intel
     ];
   };
+
+
+  soterium = mkHost {
+    hostPath = ./soterium;
+    hardwareModules = with inputs; [
+      nixos-hardware.nixosModules.common-cpu-intel
+    ];
+  };
 }
