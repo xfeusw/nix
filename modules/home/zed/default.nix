@@ -8,7 +8,7 @@
     programs.zed-editor = {
       enable = true;
 
-      package = pkgs.stable.zed-editor;
+      package = pkgs.zed-editor;
 
       extensions = import ./extensions.nix;
 
@@ -71,8 +71,8 @@
         };
 
         show_whitespaces = "all";
-        ui_font_size = 13;
-        buffer_font_size = 11;
+        ui_font_size = 14;
+        buffer_font_size = 14;
         buffer_font_family = "FiraCode Nerd Font";
 
         active_pane_modifiers = {

@@ -29,9 +29,9 @@
 
     # NixOS management (Customize paths as needed)
     check = "nix flake check";
-    build-xeon = "sudo nixos-rebuild build --flake ~/.config/nix#xeon --option restrict-eval false";
-    switch-xeon = "sudo nixos-rebuild switch --flake ~/.config/nix#xeon --option restrict-eval false";
-    update-xeon = "sudo nixos-rebuild switch --flake ~/.config/nix#xeon --upgrade --option restrict-eval false";
+    build-soterium = "sudo nixos-rebuild build --flake ~/.config/nix#soterium --option restrict-eval false";
+    switch-soterium = "sudo nixos-rebuild switch --flake ~/.config/nix#soterium --option restrict-eval false";
+    update-soterium = "sudo nixos-rebuild switch --flake ~/.config/nix#soterium --upgrade --option restrict-eval false";
 
     build-acer = "sudo nixos-rebuild build --flake ~/.config/nix#acer --option restrict-eval false";
     switch-acer = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --option restrict-eval false";

@@ -1,6 +1,6 @@
 {...}: {
   networking = {
-    hostName = "nixos-xeon";
+    hostName = "nixos-soterium";
     networkmanager = {
       enable = true;
       wifi.powersave = true;
@@ -8,10 +8,12 @@
 
     firewall = {
       allowedTCPPorts = [
+        22
         57
         621
       ];
       allowedUDPPorts = [
+        22
         5353
         8888
       ];

@@ -47,6 +47,8 @@
     colord.enable = lib.mkForce false;
     printing.enable = lib.mkForce false;
     accounts-daemon.enable = lib.mkForce true;
+
+    relago.enable = true;
   };
 
   networking.networkmanager.enable = true;

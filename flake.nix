@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration for acer and xeon";
+  description = "NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -69,7 +69,15 @@
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
-    yandex-music.url = "/home/xfeusw/workspace/yandex-music-nix";
+    yandex-music.url = "github:xfeusw/yandex-music-nix";
+
+    relago = {
+      url = "github:xinux-org/relago/bootstrap-relago-module";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
+      };
+    };
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 

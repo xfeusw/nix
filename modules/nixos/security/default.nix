@@ -4,84 +4,57 @@
   lib,
   ...
 }: {
-  security = {
-    apparmor = {
-      enable = true;
-      killUnconfinedConfinables = true;
-      packages = with pkgs; [
-        apparmor-profiles
-      ];
-    };
+  # security = {
+  #   apparmor = {
+  #     enable = true;
+  #     killUnconfinedConfinables = true;
+  #     packages = with pkgs; [
+  #       apparmor-profiles
+  #     ];
+  #   };
 
-    sudo = {
-      extraConfig = ''
-        Defaults timestamp_timeout=15
-        Defaults pwfeedback
-        Defaults lecture=always
-        Defaults logfile=/var/log/sudo.log
-        Defaults log_input,log_output
-        Defaults insults
-      '';
-    };
+  #   sudo = {
+  #     extraConfig = ''
+  #       Defaults timestamp_timeout=15
+  #       Defaults pwfeedback
+  #       Defaults lecture=always
+  #       Defaults logfile=/var/log/sudo.log
+  #       Defaults log_input,log_output
+  #       Defaults insults
+  #     '';
+  #   };
 
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
+  #   polkit.enable = true;
+  #   rtkit.enable = true;
+  # };
 
-  # Fail2ban for intrusion prevention
-  services.fail2ban = {
-    enable = true;
-    maxretry = 3;
-    bantime = "1h";
-    bantime-increment = {
-      enable = true;
-      maxtime = "168h";
-      factor = "2";
-    };
+  # # Fail2ban for intrusion prevention
+  # services.fail2ban = {
+  #   enable = true;
+  #   maxretry = 3;
+  #   bantime = "1h";
+  #   bantime-increment = {
+  #     enable = true;
+  #     maxtime = "168h";
+  #     factor = "2";
+  #   };
 
-    jails = {
-      ssh = ''
-        enabled = true
-        port = 22
-        filter = sshd
-        logpath = /var/log/auth.log
-        maxretry = 3
-        bantime = 3600
-      '';
-    };
-  };
+  #   jails = {
+  #     ssh = ''
+  #       enabled = true
+  #       port = 22
+  #       filter = sshd
+  #       logpath = /var/log/auth.log
+  #       maxretry = 3
+  #       bantime = 3600
+  #     '';
+  #   };
+  # };
 
   # Enhanced SSH configuration
   services.openssh = {
     enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PubkeyAuthentication = true;
-      X11Forwarding = false;
-      AllowTcpForwarding = "no";
-      AllowAgentForwarding = false;
-      ClientAliveInterval = 300;
-      ClientAliveCountMax = 2;
-      MaxAuthTries = 3;
-      MaxStartups = "10:30:100";
-      LoginGraceTime = 30;
-      Ciphers = [
-        "chacha20-poly1305@openssh.com"
-        "aes256-gcm@openssh.com"
-        "aes128-gcm@openssh.com"
-      ];
-      KexAlgorithms = [
-        "curve25519-sha256"
-        "curve25519-sha256@libssh.org"
-      ];
-      Macs = [
-        "hmac-sha2-256-etm@openssh.com"
-        "hmac-sha2-512-etm@openssh.com"
-      ];
-    };
-    allowSFTP = false;
+    allowSFTP = true;
   };
 
   # Enhanced firewall
@@ -94,18 +67,6 @@
       5000
       1935
     ];
-    allowPing = false;
-    logReversePathDrops = true;
-    logRefusedConnections = true;
-
-    extraCommands = ''
-      # SSH rate limiting
-      iptables -A nixos-fw -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --set --name SSH
-      iptables -A nixos-fw -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --update --seconds 60 --hitcount 3 --name SSH -j DROP
-
-      # Drop invalid packets
-      iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
-    '';
   };
 
   # System security hardening (MERGED BOOT BLOCK)
