@@ -95,6 +95,13 @@
       inherit system;
       config = {
         allowUnfree = true;
+        allowUnfreePredicate = pkg:
+          builtins.elem (pkgs.lib.getName pkg) [
+            "steam"
+            "steam-original"
+            "steam-unwrapped"
+            "steam-run"
+          ];
         nvidia.acceptLicense = true;
         android_sdk.accept_license = true;
         permittedInsecurePackages = [

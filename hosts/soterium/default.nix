@@ -15,6 +15,7 @@
     # "plasma"
     "services"
     "security"
+    "steam"
     "usbguard"
     "virtualization"
   ];
