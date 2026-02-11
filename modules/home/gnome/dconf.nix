@@ -22,6 +22,7 @@ in {
     [
       dconf-editor
       bibata-cursors
+      gnome-extension-manager
     ]
     ++ extensions;
 

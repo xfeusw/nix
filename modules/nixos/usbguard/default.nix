@@ -7,7 +7,9 @@
     enable = true;
 
     presentControllerPolicy = "keep";
-    insertedDevicePolicy = "block";
-    IPCAllowedUsers = ["xfeusw"];
+    presentDevicePolicy = "keep";
+    insertedDevicePolicy = "apply-policy";
+    implicitPolicyTarget = "allow";
+    IPCAllowedUsers = ["xfeusw" "root"];
   };
 }
