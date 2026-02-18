@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   pinnedJDK = pkgs.jdk17;
   buildToolsVersion = "30.0.0";
   ndkVersion = "27.3.13750724";
@@ -22,7 +23,7 @@
     ];
     includeSources = false;
     includeSystemImages = true;
-    systemImageTypes = ["google_apis_playstore"];
+    systemImageTypes = [ "google_apis_playstore" ];
     abiVersions = [
       "armeabi-v7a"
       "arm64-v8a"
@@ -33,7 +34,7 @@
       "3.22.1"
     ];
     includeNDK = true;
-    ndkVersions = [ndkVersion];
+    ndkVersions = [ ndkVersion ];
     useGoogleAPIs = true;
     useGoogleTVAddOns = false;
     includeExtras = [
@@ -42,7 +43,8 @@
   };
   sdk = androidComposition.androidsdk;
   ANDROID_SDK_ROOT_PATH = "${androidComposition.androidsdk}/libexec/android-sdk";
-in {
+in
+{
   home.packages = with pkgs; [
     pinnedJDK
     gradle

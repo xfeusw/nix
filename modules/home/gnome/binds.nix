@@ -2,10 +2,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   customPath = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/";
   ghostty = customPath + "ghostty";
-in {
+in
+{
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/" = [
       "${ghostty}"

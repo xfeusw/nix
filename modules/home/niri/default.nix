@@ -3,10 +3,11 @@
   inputs,
   wallpaper,
   ...
-}: {
-  imports = [inputs.niri.homeModules.niri];
+}:
+{
+  imports = [ inputs.niri.homeModules.niri ];
 
-  nixpkgs.overlays = [inputs.niri.overlays.niri];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
@@ -50,8 +51,8 @@
       ];
       # Spawn services at startup
       spawn-at-startup = [
-        {argv = ["waybar"];}
-        {argv = ["mako"];}
+        { argv = [ "waybar" ]; }
+        { argv = [ "mako" ]; }
         {
           argv = [
             "swaybg"

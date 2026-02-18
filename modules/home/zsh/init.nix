@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh.initContent = ''
     # --- Environment Variables ---
     export EDITOR='nvim'

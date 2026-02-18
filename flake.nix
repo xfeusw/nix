@@ -86,80 +86,84 @@
     # usbguard-gnome.url = "github:xfeusw/usbguard-gnome";
   };
 
-  outputs = {
-    nixpkgs,
-    nixpkgs-stable,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = pkg:
-          builtins.elem (pkgs.lib.getName pkg) [
-            "steam"
-            "steam-original"
-            "steam-unwrapped"
-            "steam-run"
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate =
+            pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "steam"
+              "steam-original"
+              "steam-unwrapped"
+              "steam-run"
+            ];
+          nvidia.acceptLicense = true;
+          android_sdk.accept_license = true;
+          permittedInsecurePackages = [
+            "olm-3.2.16"
           ];
-        nvidia.acceptLicense = true;
-        android_sdk.accept_license = true;
-        permittedInsecurePackages = [
-          "olm-3.2.16"
+        };
+        overlays = [
+          (import ./overlays)
+          (final: prev: {
+            stable = import nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          })
+          inputs.yandex-music.overlays.default
         ];
       };
-      overlays = [
-        (import ./overlays)
-        (final: prev: {
-          stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        })
-        inputs.yandex-music.overlays.default
-      ];
-    };
 
-    treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-    formatterVar = treefmtEval.config.build.wrapper;
-    wallpaper = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/xfeusw/nix/1fc84abf17f28e43e1b863df639afb345e86e9fd/wallpapers/133.jpg";
-      sha256 = "105ljph96bkvvfzwfy6gdyxjfxynn26g61j2q43z8iw7w9k1fjgx";
-    };
-  in {
-    nixosConfigurations = import ./hosts {
-      inherit
-        inputs
-        pkgs
-        nixpkgs
-        system
-        ;
-    };
+      treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      formatterVar = treefmtEval.config.build.wrapper;
+      wallpaper = builtins.fetchurl {
+        url = "https://raw.githubusercontent.com/xfeusw/nix/1fc84abf17f28e43e1b863df639afb345e86e9fd/wallpapers/133.jpg";
+        sha256 = "105ljph96bkvvfzwfy6gdyxjfxynn26g61j2q43z8iw7w9k1fjgx";
+      };
+    in
+    {
+      nixosConfigurations = import ./hosts {
+        inherit
+          inputs
+          pkgs
+          nixpkgs
+          system
+          ;
+      };
 
-    homeConfigurations = import ./home {
-      inherit
-        inputs
-        home-manager
-        pkgs
-        wallpaper
-        ;
+      homeConfigurations = import ./home {
+        inherit
+          inputs
+          home-manager
+          pkgs
+          wallpaper
+          ;
+      };
+
+      devShells.${system}.default = import ./shell.nix {
+        inherit
+          pkgs
+          inputs
+          system
+          treefmtEval
+          ;
+      };
+
+      formatter.${system} = formatterVar;
+
+      # checks.${system} = {
+      #   formatting = treefmtEval.config.build.check pkgs.hello;
+      # };
     };
-
-    devShells.${system}.default = import ./shell.nix {
-      inherit
-        pkgs
-        inputs
-        system
-        treefmtEval
-        ;
-    };
-
-    formatter.${system} = formatterVar;
-
-    # checks.${system} = {
-    #   formatting = treefmtEval.config.build.check pkgs.hello;
-    # };
-  };
 }

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # imports = [
   #   ./graphics.nix
   # ];

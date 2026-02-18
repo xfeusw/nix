@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   networking = {
     hostName = "nixos-acer";
     networkmanager = {
@@ -11,7 +12,7 @@
         57
         621
       ];
-      allowedUDPPorts = [5353];
+      allowedUDPPorts = [ 5353 ];
     };
 
     # Faster DNS

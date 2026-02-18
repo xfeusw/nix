@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.plasma = {
     configFile = {
       "dolphinrc" = {

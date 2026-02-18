@@ -3,7 +3,8 @@
   lib,
   wallpaper,
   ...
-}: let
+}:
+let
   extensions = with pkgs.gnomeExtensions; [
     appindicator
     bluetooth-quick-connect
@@ -17,8 +18,10 @@
     system-monitor
     transparent-window-moving
   ];
-in {
-  home.packages = with pkgs;
+in
+{
+  home.packages =
+    with pkgs;
     [
       dconf-editor
       bibata-cursors
@@ -95,7 +98,7 @@ in {
             "ru"
           ])
         ];
-        xkb-options = ["grp:win_space_toggle"];
+        xkb-options = [ "grp:win_space_toggle" ];
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
@@ -111,7 +114,7 @@ in {
       };
 
       "org/gnome/mutter" = {
-        experimental-features = ["variable-refresh-rate"];
+        experimental-features = [ "variable-refresh-rate" ];
       };
     };
   };

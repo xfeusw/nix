@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  vscodeExtensions = import ./extensions.nix {inherit pkgs;};
-in {
+{ pkgs, ... }:
+let
+  vscodeExtensions = import ./extensions.nix { inherit pkgs; };
+in
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -58,7 +60,7 @@ in {
         "rust-analyzer.imports.granularity.group" = "module";
         "rust-analyzer.imports.prefix" = "crate";
         "rust-analyzer.inlayHints.enable" = true;
-        "rust-analyzer.diagnostics.disabled" = ["unresolved-proc-macro"];
+        "rust-analyzer.diagnostics.disabled" = [ "unresolved-proc-macro" ];
         # --- Haskell ---
         "haskell.formattingProvider" = "fourmolu";
         "haskell.plugin.ghcide-completions.globalOn" = true;
@@ -70,7 +72,8 @@ in {
           "*.hs-boot" = "haskell";
           "*.cabal" = "cabal";
         };
-        "haskell.serverExecutablePath" = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
+        "haskell.serverExecutablePath" =
+          "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
         # --- Language associations ---
         "[nix]" = {
           "editor.defaultFormatter" = "kamadorueda.alejandra";

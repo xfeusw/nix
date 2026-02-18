@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   config = {
     programs.zed-editor = {
       enable = true;

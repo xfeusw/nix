@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   nixosModules = ./../../modules/nixos;
 
   sharedModules = [
@@ -18,13 +19,13 @@
     "power"
     "users"
   ];
-in {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ]
-    ++ map (m: nixosModules + "/${m}") sharedModules
-    ++ map (m: ./${m}) localModules;
+in
+{
+  imports = [
+    ./hardware-configuration.nix
+  ]
+  ++ map (m: nixosModules + "/${m}") sharedModules
+  ++ map (m: ./${m}) localModules;
 
   # Bootloader with enhanced options
   boot = {
@@ -48,7 +49,7 @@ in {
 
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelModules = ["tcp_bbr"];
+    kernelModules = [ "tcp_bbr" ];
   };
 
   time.timeZone = "Asia/Tashkent";
@@ -60,8 +61,8 @@ in {
     ];
   };
 
-  services.displayManager.sessionPackages = [pkgs.niri];
-  environment.systemPackages = with pkgs; [niri];
+  services.displayManager.sessionPackages = [ pkgs.niri ];
+  environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 
   systemd.services.nixos-upgrade.enable = false;

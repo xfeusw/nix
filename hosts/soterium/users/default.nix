@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  users.groups.plugdev = {};
+{ pkgs, ... }:
+{
+  users.groups.plugdev = { };
 
   users.users.xfeusw = {
     isNormalUser = true;

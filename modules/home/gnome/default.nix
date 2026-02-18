@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   browser = "zen-twilight.desktop";
-in {
+in
+{
   imports = [
     ./dconf.nix
     # ./binds.nix

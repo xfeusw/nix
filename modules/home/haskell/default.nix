@@ -1,7 +1,9 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   h = pkgs.haskell.packages.ghc910;
   hpkgs = pkgs.haskellPackages;
-in {
+in
+{
   home.packages = [
     h.ghc
     h.cabal-install

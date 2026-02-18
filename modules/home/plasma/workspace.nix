@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.plasma = {
     workspace = {
       theme = "breeze-dark";

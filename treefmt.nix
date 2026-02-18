@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   projectRootFile = "flake.nix";
 
   programs = {
@@ -46,17 +47,17 @@
 
     formatter = {
       nixfmt = {
-        options = ["--quiet"];
+        options = [ "--quiet" ];
         priority = 1;
       };
 
       shfmt = {
-        options = [];
+        options = [ ];
         priority = 3;
       };
 
       mdformat = {
-        options = [];
+        options = [ ];
         priority = 5;
       };
     };

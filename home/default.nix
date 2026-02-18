@@ -4,7 +4,8 @@
   inputs,
   wallpaper,
   ...
-}: let
+}:
+let
   commonModules = [
     inputs.sops-nix.homeModules.sops
     inputs.nur.modules.homeManager.default
@@ -16,11 +17,12 @@
     inputs.zen-browser.homeModules.twilight
   ];
 
-  mkHome = {
-    userPath,
-    extraModules ? [],
-    extraSpecialArgs ? {},
-  }:
+  mkHome =
+    {
+      userPath,
+      extraModules ? [ ],
+      extraSpecialArgs ? { },
+    }:
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
@@ -28,16 +30,18 @@
         inherit inputs wallpaper;
       };
 
-      modules = with inputs;
+      modules =
+        with inputs;
         [
           nix-colors.homeManagerModules.default
           # inputs.emacs-overlay.overlays.default
         ]
         ++ commonModules
-        ++ [userPath]
+        ++ [ userPath ]
         ++ extraModules;
     };
-in {
+in
+{
   xfeusw = mkHome {
     userPath = ./xfeusw;
   };

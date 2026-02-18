@@ -1,12 +1,14 @@
 {
   self,
   super,
-}: let
+}:
+let
   gccVersion = self.gcc13;
-in {
+in
+{
   omnix = super.omnix.overrideAttrs (old: {
-    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [gccVersion];
-    buildInputs = (old.buildInputs or []) ++ [gccVersion];
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ gccVersion ];
+    buildInputs = (old.buildInputs or [ ]) ++ [ gccVersion ];
 
     NIX_CC = gccVersion;
     NIX_CXX = gccVersion;

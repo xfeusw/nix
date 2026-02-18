@@ -25,7 +25,7 @@
         "file-name"
         "file-modification-indicator"
       ];
-      center = ["diagnostics"];
+      center = [ "diagnostics" ];
       right = [
         "selections"
         "position"

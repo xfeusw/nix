@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   programs = {
@@ -56,11 +57,11 @@
 
     # relago.enable = true;
 
-    main = {
-      enable = true;
-      user = "xfeusw";
-      group = "wheel";
-    };
+    # main = {
+    #   enable = true;
+    #   user = "xfeusw";
+    #   group = "wheel";
+    # };
   };
 
   networking.networkmanager.enable = true;
@@ -73,6 +74,13 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
+
+  # systemd.services = {
+  #   py-flake = {
+  #     enable = true;
+  #     package = inputs.py-flake.packages.${pkgs.system}.main;
+  #   };
+  # };
 
   # environment.sessionVariables = {
   #   NIXOS_OZONE_WL = "1";

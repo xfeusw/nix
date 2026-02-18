@@ -2,7 +2,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./options.nix

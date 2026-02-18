@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.git = {
     enable = true;
     settings = {
@@ -53,7 +54,7 @@
     };
   };
   home.activation = {
-    setupGhToken = config.lib.dag.entryAfter ["writeBoundary"] ''
+    setupGhToken = config.lib.dag.entryAfter [ "writeBoundary" ] ''
           mkdir -p $HOME/.config/gh
 
           # System-wide secrets are always at /run/secrets/<name>

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   # Hardware acceleration and graphics
   hardware.graphics = {
     enable = true;
@@ -14,7 +15,7 @@
     ];
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required for Wayland
@@ -63,5 +64,5 @@
   };
 
   # Blacklist nouveau (open-source NVIDIA driver)
-  boot.blacklistedKernelModules = ["nouveau"];
+  boot.blacklistedKernelModules = [ "nouveau" ];
 }

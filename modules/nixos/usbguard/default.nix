@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.usbguard = {
     enable = true;
 
@@ -10,6 +11,9 @@
     presentDevicePolicy = "keep";
     insertedDevicePolicy = "apply-policy";
     implicitPolicyTarget = "allow";
-    IPCAllowedUsers = ["xfeusw" "root"];
+    IPCAllowedUsers = [
+      "xfeusw"
+      "root"
+    ];
   };
 }

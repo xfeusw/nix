@@ -3,12 +3,14 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   settings = import ./settings.nix;
   keybindings = import ./keybindings.nix;
-  languages = import ./languages.nix {inherit pkgs;};
-  packages = import ./packages.nix {inherit pkgs;};
-in {
+  languages = import ./languages.nix { inherit pkgs; };
+  packages = import ./packages.nix { inherit pkgs; };
+in
+{
   options.programs.helix.installExtraPackages = lib.mkOption {
     type = lib.types.bool;
     default = true;
@@ -18,11 +20,9 @@ in {
   config = {
     programs.helix = {
       enable = true;
-      settings =
-        settings
-        // {
-          keys = keybindings;
-        };
+      settings = settings // {
+        keys = keybindings;
+      };
       inherit languages;
     };
 

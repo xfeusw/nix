@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # GTK theme integration
   gtk = {
     theme = {

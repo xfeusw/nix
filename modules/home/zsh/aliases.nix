@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh.shellAliases = {
     # Modern CLI tools
     ls = "eza --color=auto --icons --group-directories-first";

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   services.spotifyd = {
     enable = true;
     settings = {

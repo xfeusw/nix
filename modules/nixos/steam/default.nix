@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -27,8 +28,15 @@
           to = 65355;
         }
       ];
-      allowedTCPPorts = [54120 80 27015];
-      allowedUDPPorts = [9 80];
+      allowedTCPPorts = [
+        54120
+        80
+        27015
+      ];
+      allowedUDPPorts = [
+        9
+        80
+      ];
     };
     interfaces = {
       ens3 = {

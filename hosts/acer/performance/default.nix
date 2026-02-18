@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   # Use zram swap — safe system-wide default
   zramSwap = {
     enable = lib.mkDefault true;

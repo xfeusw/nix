@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.kdeconnect.enable = false;
 
   programs.plasma = {
@@ -61,8 +62,8 @@
   systemd.user.services = {
     drkonqi-coredump-pickup = {
       Unit = {
-        After = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
+        After = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
       Service = {
         Type = "oneshot";

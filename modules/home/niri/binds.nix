@@ -1,17 +1,17 @@
 {
   # Window management
-  "Mod+T".action.spawn = ["ghostty"];
-  "Mod+D".action.spawn = ["fuzzel"];
-  "Mod+Q".action.close-window = {};
-  "Mod+E".action.spawn = ["nautilus"];
-  "Mod+B".action.spawn = ["firefox"];
-  "Mod+F".action.fullscreen-window = {};
-  "Mod+M".action.maximize-column = {};
+  "Mod+T".action.spawn = [ "ghostty" ];
+  "Mod+D".action.spawn = [ "fuzzel" ];
+  "Mod+Q".action.close-window = { };
+  "Mod+E".action.spawn = [ "nautilus" ];
+  "Mod+B".action.spawn = [ "firefox" ];
+  "Mod+F".action.fullscreen-window = { };
+  "Mod+M".action.maximize-column = { };
 
   # Screenshots
-  "Print".action.screenshot-screen = {};
-  "Mod+Shift+Alt+S".action.screenshot-window = {};
-  "Mod+Shift+S".action.screenshot = {};
+  "Print".action.screenshot-screen = { };
+  "Mod+Shift+Alt+S".action.screenshot-window = { };
+  "Mod+Shift+S".action.screenshot = { };
 
   # Screen recording
   "Mod+R".action.spawn = [
@@ -23,7 +23,7 @@
   ];
 
   # Lock screen
-  "Mod+L".action.spawn = ["swaylock"];
+  "Mod+L".action.spawn = [ "swaylock" ];
 
   # Color picker
   "Mod+P".action.spawn = [
@@ -89,8 +89,8 @@
   "Mod+7".action.focus-workspace = 7;
   "Mod+8".action.focus-workspace = 8;
   "Mod+9".action.focus-workspace = 9;
-  "Mod+Up".action.focus-workspace-up = {};
-  "Mod+Down".action.focus-workspace-down = {};
+  "Mod+Up".action.focus-workspace-up = { };
+  "Mod+Down".action.focus-workspace-down = { };
 
   # Workspaces - Move window to workspace
   "Mod+Shift+1".action.move-window-to-workspace = 1;
@@ -102,20 +102,20 @@
   "Mod+Shift+7".action.move-window-to-workspace = 7;
   "Mod+Shift+8".action.move-window-to-workspace = 8;
   "Mod+Shift+9".action.move-window-to-workspace = 9;
-  "Mod+Shift+Up".action.move-workspace-up = {};
-  "Mod+Shift+Down".action.move-workspace-down = {};
+  "Mod+Shift+Up".action.move-workspace-up = { };
+  "Mod+Shift+Down".action.move-workspace-down = { };
 
   # Windows - Focus
-  "Mod+Left".action.focus-column-left = {};
-  "Mod+Right".action.focus-column-right = {};
+  "Mod+Left".action.focus-column-left = { };
+  "Mod+Right".action.focus-column-right = { };
 
   # Windows - Move
-  "Mod+Shift+Left".action.move-column-left = {};
-  "Mod+Shift+Right".action.move-column-right = {};
-  "Mod+Shift+H".action.move-column-left = {};
-  "Mod+Shift+L".action.move-column-right = {};
-  "Mod+Shift+J".action.move-window-down = {};
-  "Mod+Shift+K".action.move-window-up = {};
+  "Mod+Shift+Left".action.move-column-left = { };
+  "Mod+Shift+Right".action.move-column-right = { };
+  "Mod+Shift+H".action.move-column-left = { };
+  "Mod+Shift+L".action.move-column-right = { };
+  "Mod+Shift+J".action.move-window-down = { };
+  "Mod+Shift+K".action.move-window-up = { };
 
   # Window resizing
   "Mod+Ctrl+Left".action.set-column-width = "-10%";
@@ -131,13 +131,13 @@
   # "Mod+R".action.reset-window-height = {};
 
   # Toggle floating
-  "Mod+Shift+F".action.toggle-window-floating = {};
+  "Mod+Shift+F".action.toggle-window-floating = { };
 
   # Center window
-  "Mod+C".action.center-column = {};
+  "Mod+C".action.center-column = { };
 
   # System
-  "Mod+Shift+E".action.quit = {};
+  "Mod+Shift+E".action.quit = { };
   "Mod+Shift+R".action.spawn = [
     "niri"
     "msg"
@@ -146,5 +146,5 @@
   ];
 
   # Alt bindings
-  "Super+Shift+E".action.quit = {};
+  "Super+Shift+E".action.quit = { };
 }
