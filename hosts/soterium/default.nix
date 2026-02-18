@@ -79,6 +79,8 @@ in {
     # kernelPackages = pkgs.linuxPackages_zen;
   };
 
+  programs.nix-ld.enable = true;
+
   time.timeZone = "Asia/Tashkent";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -96,5 +98,5 @@ in {
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

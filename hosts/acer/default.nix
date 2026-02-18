@@ -67,5 +67,5 @@ in {
   systemd.services.nixos-upgrade.enable = false;
   systemd.timers.nixos-upgrade.enable = false;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

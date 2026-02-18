@@ -20,6 +20,7 @@
         "flakes"
         "ca-derivations"
         "auto-allocate-uids"
+        "pipe-operators"
       ];
 
       auto-optimise-store = true;
@@ -65,6 +66,4 @@
     cachix
     nix-fast-build
   ];
-
-  programs.nix-ld.enable = true;
 }

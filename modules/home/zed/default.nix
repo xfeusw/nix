@@ -53,7 +53,7 @@
         tab_size = 2;
         preferred_line_length = 75;
 
-        autosave = "off";
+        # autosave = "on_focus_change";
         enable_language_server = true;
 
         auto_update = false;
@@ -88,22 +88,13 @@
           enabled = false;
         };
 
-        load_direnv = "shell_hook";
+        # load_direnv = "shell_hook";
         base_keymap = "VSCode";
 
         session = {
           trust_all_worktrees = true;
         };
       };
-
-      # userKeymaps = [
-      # {
-      #   context = "Workspace";
-      #   bindings = {
-      #     "ctrl-'" = "terminal_panel::toggle";
-      #   };
-      # }
-      # ];
     };
   };
 }

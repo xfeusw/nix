@@ -9,7 +9,7 @@
     inputs.nur.modules.nixos.default
     inputs.niri.nixosModules.niri
     inputs.sops-nix.nixosModules.sops
-    inputs.relago.nixosModules.relago
+    # inputs.relago.nixosModules.relago
     {
       nixpkgs.overlays = [
         inputs.nur.overlays.default

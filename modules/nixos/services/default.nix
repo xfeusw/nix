@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs = {
     mtr.enable = true;
     gnupg.agent = {
@@ -16,6 +20,8 @@
         options = "grp:win_space_toggle";
       };
     };
+
+    flatpak.enable = true;
 
     keyd = {
       enable = true;
@@ -48,11 +54,19 @@
     printing.enable = lib.mkForce false;
     accounts-daemon.enable = lib.mkForce true;
 
-    relago.enable = true;
+    # relago.enable = true;
   };
 
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+
+  systemd.services.flatpak-repo = {
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
 
   # environment.sessionVariables = {
   #   NIXOS_OZONE_WL = "1";

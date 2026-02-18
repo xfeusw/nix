@@ -45,7 +45,7 @@ in {
   home = {
     username = "xfeusw";
     homeDirectory = "/home/xfeusw";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     enableNixpkgsReleaseCheck = false;
     sessionVariables = lib.mkForce {
       XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";

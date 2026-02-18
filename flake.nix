@@ -71,13 +71,13 @@
     sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
 
-    relago = {
-      url = "github:xinux-org/relago/bootstrap-relago-module";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-unstable.follows = "nixpkgs-unstable";
-      };
-    };
+    # relago = {
+    #   url = "github:xinux-org/relago/bootstrap-relago-module";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     nixpkgs-unstable.follows = "nixpkgs-unstable";
+    #   };
+    # };
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 

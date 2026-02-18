@@ -111,5 +111,6 @@
     element-desktop
     postman
     yandex-music-bin
+    package-version-server
   ];
 }

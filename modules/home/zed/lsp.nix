@@ -18,28 +18,25 @@
     };
   };
 
-  rust-analyzer = {
-    binary = {
-      ignore_system_version = false;
-    };
-    initialization_options = {
-      check = {
-        command = "clippy";
-      };
-      checkOnSave = true;
-      inlayHints = {
-        maxLength = null;
-        lifetimeElisionHints = {
-          enable = "skip_trivial";
-          useParameterNames = true;
-        };
-        closureReturnTypeHints = {
-          enable = "always";
-        };
-      };
-    };
-    enable_lsp_tasks = true;
-  };
+  # rust-analyzer = {
+  #   initialization_options = {
+  #     check = {
+  #       command = "clippy";
+  #     };
+  #     checkOnSave = true;
+  #     inlayHints = {
+  #       maxLength = null;
+  #       lifetimeElisionHints = {
+  #         enable = "skip_trivial";
+  #         useParameterNames = true;
+  #       };
+  #       closureReturnTypeHints = {
+  #         enable = "always";
+  #       };
+  #     };
+  #   };
+  #   enable_lsp_tasks = true;
+  # };
 
   deno = {
     binary = {
@@ -80,7 +77,7 @@
     };
   };
 
-  haskell = {
+  hls = {
     initialization_options = {
       haskell = {
         formattingProvider = "fourmolu";
