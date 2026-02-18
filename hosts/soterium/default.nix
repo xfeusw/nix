@@ -30,6 +30,7 @@ in {
   imports =
     [
       ./hardware-configuration.nix
+      inputs.py-flake.nixosModules.main
       # inputs.usbguard-gnome.nixosModules.default
     ]
     ++ map (m: nixosModules + "/${m}") sharedModules

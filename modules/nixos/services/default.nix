@@ -55,6 +55,12 @@
     accounts-daemon.enable = lib.mkForce true;
 
     # relago.enable = true;
+
+    main = {
+      enable = true;
+      user = "xfeusw";
+      group = "wheel";
+    };
   };
 
   networking.networkmanager.enable = true;

@@ -71,6 +71,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
 
+    py-flake.url = "path:/home/xfeusw/workspace/uzinfocom/py-flake";
+
     # relago = {
     #   url = "github:xinux-org/relago/bootstrap-relago-module";
     #   inputs = {
