@@ -7,12 +7,7 @@
 }: let
   cfg = config.services.experimentalus;
 
-  pack = inputs.py-flake.packages.${pkgs.stdenv.hostPlatform.system}.main;
-
-  script = pkgs.writeShellScript "exampulus.sh" ''
-    printf "something";
-    cowsay
-  '';
+  pack = lib.getExe inputs.py-flake.packages.${pkgs.stdenv.hostPlatform.system}.main;
 in {
   imports = [
   ];
