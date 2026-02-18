@@ -37,6 +37,8 @@ in {
     ++ map (m: nixosModules + "/${m}") sharedModules
     ++ map (m: ./${m}) localModules;
 
+  services.experimentalus.enable = true;
+
   # Bootloader with enhanced options
   boot = {
     loader = {

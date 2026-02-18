@@ -2,9 +2,12 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   cfg = config.services.experimentalus;
+
+  pack = inputs.py-flake.packages.${pkgs.stdenv.hostPlatform.system}.main;
 
   script = pkgs.writeShellScript "exampulus.sh" ''
     printf "something";
@@ -60,13 +63,13 @@ in {
       documentation = ["https://google.com"];
 
       wantedBy = ["multi-user.target"];
-      path = [script] ++ (with pkgs; [cowsay]);
+      path = [pack] ++ (with pkgs; [cowsay]);
 
       serviceConfig = {
         Type = "oneshot";
         User = cfg.user;
         Group = cfg.group;
-        ExecStart = "${script}";
+        ExecStart = "${pack}";
         StateDirectory = cfg.user;
         StateDirectoryMode = "0750";
       };
