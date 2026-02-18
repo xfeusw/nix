@@ -63,7 +63,6 @@ in {
       documentation = ["https://google.com"];
 
       wantedBy = ["multi-user.target"];
-      path = [pack] ++ (with pkgs; [cowsay]);
 
       serviceConfig = {
         Type = "oneshot";
