@@ -28,7 +28,7 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/mnt/win" = {
+  fileSystems."/media/win" = {
     device = "/dev/disk/by-uuid/72747AEB747AB189";
     fsType = "ntfs";
   };
