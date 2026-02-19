@@ -54,7 +54,7 @@
     colord.enable = lib.mkForce false;
     printing.enable = lib.mkForce false;
     accounts-daemon.enable = lib.mkForce true;
-
+    # java-flake.enable = true;
     # relago.enable = true;
 
     # main = {
@@ -74,13 +74,6 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
-
-  # systemd.services = {
-  #   py-flake = {
-  #     enable = true;
-  #     package = inputs.py-flake.packages.${pkgs.system}.main;
-  #   };
-  # };
 
   # environment.sessionVariables = {
   #   NIXOS_OZONE_WL = "1";

@@ -18,7 +18,6 @@
     "steam"
     "usbguard"
     "virtualization"
-    "experiment"
   ];
 
   localModules = [
@@ -31,13 +30,13 @@ in {
   imports =
     [
       ./hardware-configuration.nix
-      # inputs.py-flake.nixosModules.main
+      # inputs.java-flake.nixosModules.main
       # inputs.usbguard-gnome.nixosModules.default
     ]
     ++ map (m: nixosModules + "/${m}") sharedModules
     ++ map (m: ./${m}) localModules;
 
-  services.experimentalus.enable = true;
+  # services.experimentalus.enable = true;
 
   # Bootloader with enhanced options
   boot = {
