@@ -13,6 +13,7 @@
   "graphql"
   "haskell"
   "html"
+  "java"
   "just"
   "kanagawa-themes"
   "lua"
