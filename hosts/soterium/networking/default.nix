@@ -1,7 +1,6 @@
-{ ... }:
-{
+{...}: {
   networking = {
-    hostName = "nixos-soterium";
+    hostName = "soterium";
     networkmanager = {
       enable = true;
       wifi.powersave = true;
