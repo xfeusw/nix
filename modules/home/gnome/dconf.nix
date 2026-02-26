@@ -3,8 +3,7 @@
   lib,
   wallpaper,
   ...
-}:
-let
+}: let
   extensions = with pkgs.gnomeExtensions; [
     appindicator
     bluetooth-quick-connect
@@ -18,10 +17,8 @@ let
     system-monitor
     transparent-window-moving
   ];
-in
-{
-  home.packages =
-    with pkgs;
+in {
+  home.packages = with pkgs;
     [
       dconf-editor
       bibata-cursors
@@ -48,7 +45,7 @@ in
           "element-desktop.desktop"
           # "blueman-manager.desktop"
           "spotify.desktop"
-          "zen-twilight.desktop"
+          "zen-beta.desktop"
           "dev.zed.Zed.desktop"
           "code.desktop"
           "com.mitchellh.ghostty.desktop"
@@ -98,7 +95,7 @@ in
             "ru"
           ])
         ];
-        xkb-options = [ "grp:win_space_toggle" ];
+        xkb-options = ["grp:win_space_toggle"];
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
@@ -114,7 +111,7 @@ in
       };
 
       "org/gnome/mutter" = {
-        experimental-features = [ "variable-refresh-rate" ];
+        experimental-features = ["variable-refresh-rate"];
       };
     };
   };
