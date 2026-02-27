@@ -8,7 +8,7 @@
   sharedModules = [
     # "cosmic"
     # "e-imzo"
-    # "fonts"
+    "fonts"
     "gnome"
     "nix-settings"
     "packages"

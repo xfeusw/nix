@@ -33,5 +33,6 @@
     nvtopPackages.nvidia
     ngrok
     ncdu
+    zoxide
   ];
 }
