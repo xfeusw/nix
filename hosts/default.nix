@@ -4,8 +4,7 @@
   nixpkgs,
   system,
   ...
-}:
-let
+}: let
   commonModules = [
     inputs.nur.modules.nixos.default
     inputs.niri.nixosModules.niri
@@ -22,18 +21,16 @@ let
     }
   ];
 
-  mkHost =
-    {
-      hostPath,
-      hardwareModules ? [ ],
-    }:
+  mkHost = {
+    hostPath,
+    hardwareModules ? [],
+  }:
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
-      specialArgs = { inherit inputs; };
-      modules = [ hostPath ] ++ hardwareModules ++ commonModules;
+      specialArgs = {inherit inputs;};
+      modules = [hostPath] ++ hardwareModules ++ commonModules;
     };
-in
-{
+in {
   acer = mkHost {
     hostPath = ./acer;
     hardwareModules = with inputs; [

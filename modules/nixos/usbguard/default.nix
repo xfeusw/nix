@@ -2,10 +2,9 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   services.usbguard = {
-    enable = true;
+    enable = false;
 
     presentControllerPolicy = "keep";
     presentDevicePolicy = "keep";

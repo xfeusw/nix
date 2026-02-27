@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     gh
     lazygit
-    docker-compose
     podman-compose
     vlc
     alsa-utils
@@ -21,7 +19,6 @@
     eza
     fd
     ripgrep
-    zoxide
     fzf
     dust
     procs

@@ -7,8 +7,8 @@
 
   sharedModules = [
     # "cosmic"
-    "e-imzo"
-    "fonts"
+    # "e-imzo"
+    # "fonts"
     "gnome"
     "nix-settings"
     "packages"
@@ -30,11 +30,14 @@ in {
   imports =
     [
       ./hardware-configuration.nix
+      # inputs.crash.nixosModules.assertion
       # inputs.java-flake.nixosModules.main
       # inputs.usbguard-gnome.nixosModules.default
     ]
     ++ map (m: nixosModules + "/${m}") sharedModules
     ++ map (m: ./${m}) localModules;
+
+  # services.assertion.enable = true;
 
   # services.experimentalus.enable = true;
 

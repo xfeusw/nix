@@ -2,11 +2,10 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   programs.zen-browser = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    nativeMessagingHosts = [pkgs.firefoxpwa];
     policies = {
       AutofillAddressEnabled = true;
       AutofillCreditCardEnabled = false;
@@ -25,6 +24,7 @@
         Fingerprinting = true;
       };
     };
+    suppressXdgMigrationWarning = true;
 
     # profiles.xfeusw = {
     #   extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [

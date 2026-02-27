@@ -71,7 +71,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
 
-    # java-flake.url = "path:/home/xfeusw/workspace/uzinfocom/java-flake";
+    # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
     # relago = {
     #   url = "github:xinux-org/relago/bootstrap-relago-module";

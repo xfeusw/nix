@@ -24,7 +24,7 @@
     "nixvim"
     "packages"
     # "plasma"
-    "python"
+    # "python"
     "rust"
     "sops"
     # "spotify"
