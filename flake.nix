@@ -70,6 +70,7 @@
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
+    bleur.url = "github:bleur-org/bleur";
 
     # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 

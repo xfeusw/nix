@@ -2,7 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  bleur = inputs.bleur.packages.${pkgs.system}.default;
+in {
   home.packages = with pkgs; [
     # Core utilities
     bat
@@ -112,5 +114,6 @@
     postman
     yandex-music-bin
     package-version-server
+    bleur
   ];
 }
