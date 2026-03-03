@@ -2,7 +2,7 @@
   programs.nixvim = {
     opts = {
       number = true;
-      relativenumber = true;
+      relativenumber = false;
       tabstop = 2;
       shiftwidth = 2;
       expandtab = true;
@@ -36,7 +36,7 @@
     autocmd = [
       {
         event = "BufWritePre";
-        pattern = [ "*.rs" ];
+        pattern = ["*.rs"];
         callback.__raw = ''
           function()
             vim.lsp.buf.format({ async = false })
@@ -57,7 +57,7 @@
       }
       {
         event = "BufWritePre";
-        pattern = [ "*.nix" ];
+        pattern = ["*.nix"];
         callback.__raw = ''
           function()
             vim.lsp.buf.format({ async = false })

@@ -25,7 +25,7 @@
   #     };
   #     checkOnSave = true;
   #     inlayHints = {
-  #       maxLength = null;
+  #       # maxLength = null;
   #       lifetimeElisionHints = {
   #         enable = "skip_trivial";
   #         useParameterNames = true;
@@ -70,8 +70,8 @@
     settings = {
       experimental = {
         classRegex = [
-          [ "class(Name)?\\s*[:=]\\s*['\"`]([^'\"`]*)['\"`]" ]
-          [ "class(Name)?\\s*[:=]\\s*['\"`]([^'\"`]*)['\"`]" ]
+          ["class(Name)?\\s*[:=]\\s*['\"`]([^'\"`]*)['\"`]"]
+          ["class(Name)?\\s*[:=]\\s*['\"`]([^'\"`]*)['\"`]"]
         ];
       };
     };

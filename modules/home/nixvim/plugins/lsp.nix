@@ -1,5 +1,8 @@
-{ pkgs, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.nixvim.plugins = {
     lsp = {
       enable = true;
@@ -22,6 +25,12 @@
           installGhc = false;
           ghcPackage = pkgs.haskell.packages.ghc910.ghc;
         };
+
+        # rust-analyzer = {
+        #   enable = true;
+        #   package = null;
+        #   autostart = true;
+        # };
       };
       keymaps.lspBuf = {
         "gd" = "definition";
@@ -70,7 +79,56 @@
       };
     };
 
-    rustaceanvim.enable = true;
+    # mini-cmdline = {
+    #   enable = true;
+    #   autoLoad = false;
+    #   settings = {
+    #     autocomplete = true;
+    #     autocorrect = true;
+    #     autopeek = true;
+    #   };
+    # };
+
+    # mini-completion = {
+    #   enable = true;
+    #   settings = {
+    #     delay = {
+    #       completion = 100;
+    #       info = 100;
+    #       signature = 50;
+    #     };
+    #     lsp_completion = {
+    #       source_func = "completefunc";
+    #       auto_setup = true;
+    #     };
+    #   };
+    # };
+
+    rustaceanvim = {
+      enable = true;
+      autoLoad = true;
+      server = {
+        cmd = [
+          "rustup"
+          "run"
+          "nightly"
+          "rust-analyzer"
+        ];
+        default_settings = {
+          rust-analyzer = {
+            check = {
+              command = "clippy";
+            };
+            inlayHints = {
+              lifetimeElisionHints = {
+                enable = "always";
+              };
+            };
+          };
+        };
+        standalone = false;
+      };
+    };
     trouble.enable = true;
     sqls.enable = true;
     yamlls.enable = true;

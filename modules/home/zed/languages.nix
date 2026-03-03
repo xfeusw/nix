@@ -92,17 +92,17 @@
     tab_size = 4;
   };
 
-  Rust = {
-    language_servers = [
-      "rust_analyzer"
-    ];
-    # formatter = "language_server";
-    # format_on_save = "on";
-    tab_size = 2;
-    inlay_hints = {
-      enabled = true;
-    };
-  };
+  # Rust = {
+  #   language_servers = [
+  #     "rust_analyzer"
+  #   ];
+  #   formatter = "language_server";
+  #   # format_on_save = "on";
+  #   tab_size = 4;
+  #   inlay_hints = {
+  #     enabled = true;
+  #   };
+  # };
 
   # Elm = {
   #   language_servers = [
