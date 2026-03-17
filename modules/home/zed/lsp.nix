@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   rust-analyzer = {
     initialization_options = {
       inlayHints = {

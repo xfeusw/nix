@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.nixvim.plugins = {
     lsp = {
       enable = true;

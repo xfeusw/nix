@@ -2,9 +2,11 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   bleur = inputs.bleur.packages.${pkgs.system}.default;
-in {
+in
+{
   home.packages = with pkgs; [
     # Core utilities
     bat

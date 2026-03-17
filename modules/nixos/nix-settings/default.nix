@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   nix = {
     # extraOptions = lib.mkIf (config.sops.secrets ? gh_token) ''
     #   access-tokens = github.com=$(cat ${config.sops.secrets.gh_token.path})

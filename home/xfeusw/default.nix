@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   homeModules = ./../../modules/home;
 
   modules = [
@@ -36,7 +37,8 @@
     "zen"
     "zsh"
   ];
-in {
+in
+{
   imports = map (m: homeModules + "/${m}/") modules;
 
   programs.home-manager.enable = true;

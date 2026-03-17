@@ -3,10 +3,10 @@
   use_system_prompts = false;
   use_system_path_prompts = false;
   disable_ai = true;
-  vim_mode = true;
+  vim_mode = false;
   base_keymap = "VSCode";
-  buffer_font_family = "MonoLisa";
-  buffer_font_size = 14;
+  buffer_font_family = "JetBrains Mono";
+  buffer_font_size = 15;
   buffer_font_features = {
     calt = true;
     ss08 = true;
@@ -29,7 +29,7 @@
   cursor_shape = "bar";
   theme = {
     mode = "system";
-    light = "Gruvbox Light";
+    light = "Tokyo Night Storm";
     dark = "Tokyo Night Storm";
   };
   vim = {
@@ -40,10 +40,12 @@
   };
   terminal = {
     dock = "left";
-    font_size = 13;
+    font_size = 14;
+    cursor_shape = "bar";
     shell = "system";
     line_height = "comfortable";
-    font_family = "JetbrainsMono Nerd Font";
+    font_family = "JetBrains Mono";
+    font_weight = 300;
     default_width = 800;
     font_features = {
       calt = true;

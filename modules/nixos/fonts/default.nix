@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Font configuration
   fonts = {
     packages = with pkgs; [
@@ -16,9 +17,9 @@
 
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif"];
-        sansSerif = ["Noto Sans"];
-        monospace = ["JetBrainsMono Nerd Font"];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
   };
