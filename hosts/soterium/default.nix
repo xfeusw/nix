@@ -13,6 +13,7 @@
     "nix-settings"
     "packages"
     # "plasma"
+    "rust"
     "services"
     "security"
     "steam"
@@ -30,14 +31,14 @@ in {
   imports =
     [
       ./hardware-configuration.nix
-      # inputs.crash.nixosModules.assertion
-      # inputs.java-flake.nixosModules.main
+      # inputs.crash.nixosModules.segfault
+      # inputs.crash.nixosModules.main
       # inputs.usbguard-gnome.nixosModules.default
     ]
     ++ map (m: nixosModules + "/${m}") sharedModules
     ++ map (m: ./${m}) localModules;
 
-  # services.assertion.enable = true;
+  # services.xinux-segfault.enable = true;
 
   # services.experimentalus.enable = true;
 

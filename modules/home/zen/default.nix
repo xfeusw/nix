@@ -24,7 +24,6 @@
         Fingerprinting = true;
       };
     };
-    suppressXdgMigrationWarning = true;
 
     # profiles.xfeusw = {
     #   extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [

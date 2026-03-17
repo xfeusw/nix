@@ -72,7 +72,7 @@
     yandex-music.url = "github:xfeusw/yandex-music-nix";
     bleur.url = "github:bleur-org/bleur";
 
-    # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
+    crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
     # relago = {
     #   url = "github:xinux-org/relago/bootstrap-relago-module";
@@ -109,6 +109,7 @@
         android_sdk.accept_license = true;
         permittedInsecurePackages = [
           "olm-3.2.16"
+          "ventoy-gtk3-1.1.10"
         ];
       };
       overlays = [

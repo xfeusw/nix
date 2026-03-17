@@ -23,6 +23,7 @@
   "nix"
   "one-dark-pro"
   "prisma"
+  "rust"
   "scss"
   "sql"
   "svelte"

@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -24,7 +23,7 @@
     ];
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -40,10 +39,10 @@
       "nvidia-drm.modeset=1"
       "nouveau.modeset=0"
     ];
-    blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = ["nouveau"];
   };
 
-  environment.variables = {
-    ZED_ALLOW_EMULATED_GPU = "1";
-  };
+  # environment.variables = {
+  #   ZED_ALLOW_EMULATED_GPU = "1";
+  # };
 }

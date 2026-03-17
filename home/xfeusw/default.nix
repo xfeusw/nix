@@ -25,7 +25,6 @@
     "packages"
     # "plasma"
     # "python"
-    "rust"
     "sops"
     # "spotify"
     "starship"

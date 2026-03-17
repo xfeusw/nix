@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   nix = {
     # extraOptions = lib.mkIf (config.sops.secrets ? gh_token) ''
     #   access-tokens = github.com=$(cat ${config.sops.secrets.gh_token.path})
@@ -45,6 +44,13 @@
       trusted-users = [
         "root"
         "@wheel"
+      ];
+
+      substituters = [
+        "https://cache.xinux.uz/"
+      ];
+      trusted-public-keys = [
+        "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
       ];
     };
 

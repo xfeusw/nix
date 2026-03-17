@@ -115,5 +115,6 @@ in {
     yandex-music-bin
     package-version-server
     bleur
+    # zed-editor
   ];
 }

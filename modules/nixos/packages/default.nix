@@ -13,7 +13,6 @@
     home-manager
     xclip
     wl-clipboard-rs
-    neofetch
     pavucontrol
     bat
     eza
@@ -34,5 +33,6 @@
     ngrok
     ncdu
     zoxide
+    ventoy-full-gtk
   ];
 }
