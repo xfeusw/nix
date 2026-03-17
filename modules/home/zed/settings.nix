@@ -1,10 +1,12 @@
-{...}: {
+{ ... }:
+{
   use_system_prompts = false;
   use_system_path_prompts = false;
   disable_ai = true;
   vim_mode = true;
   base_keymap = "VSCode";
   buffer_font_family = "MonoLisa";
+  buffer_font_size = 14;
   buffer_font_features = {
     calt = true;
     ss08 = true;
@@ -22,26 +24,27 @@
     ss15 = true;
     ss17 = true;
   };
-  relative_line_numbers = "enabled";
-  cursor_blink = false;
-  cursor_shape = "block";
+  relative_line_numbers = "disabled";
+  cursor_blink = true;
+  cursor_shape = "bar";
   theme = {
     mode = "system";
     light = "Gruvbox Light";
-    dark = "Gruvbox Dark Soft";
+    dark = "Tokyo Night Storm";
   };
   vim = {
-    use_system_clipboard = "never";
+    use_system_clipboard = "always";
   };
   scrollbar = {
     show = "always";
   };
   terminal = {
     dock = "left";
-    font_size = 16;
+    font_size = 13;
     shell = "system";
     line_height = "comfortable";
-    font_family = "MonoLisa";
+    font_family = "JetbrainsMono Nerd Font";
+    default_width = 800;
     font_features = {
       calt = true;
       ss08 = true;
@@ -122,7 +125,8 @@
       enabled = true;
     };
   };
+
   bottom_dock_layout = "contained";
 
-  lsp = import ./lsp.nix {};
+  lsp = import ./lsp.nix { };
 }
