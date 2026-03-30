@@ -17,7 +17,7 @@ let
     "rust"
     "services"
     "security"
-    "steam"
+    # "steam"
     "usbguard"
     "virtualization"
   ];
@@ -32,14 +32,14 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    # inputs.crash.nixosModules.segfault
+    # inputs.crash.nixosModules.c-segfault
     # inputs.crash.nixosModules.main
     # inputs.usbguard-gnome.nixosModules.default
   ]
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
 
-  # services.xinux-segfault.enable = true;
+  # services.xinux-c-segfault.enable = true;
 
   # services.experimentalus.enable = true;
 

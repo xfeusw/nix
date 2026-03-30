@@ -98,10 +98,10 @@
           allowUnfreePredicate =
             pkg:
             builtins.elem (pkgs.lib.getName pkg) [
-              "steam"
-              "steam-original"
-              "steam-unwrapped"
-              "steam-run"
+              # "steam"
+              # "steam-original"
+              # "steam-unwrapped"
+              # "steam-run"
             ];
           nvidia.acceptLicense = true;
           android_sdk.accept_license = true;

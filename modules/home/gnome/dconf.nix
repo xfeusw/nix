@@ -12,7 +12,7 @@ let
     dash-to-dock
     easyScreenCast
     gsconnect
-    lockscreen-extension
+    # lockscreen-extension
     just-perfection
     pomodoro-timer
     system-monitor
@@ -58,24 +58,6 @@ in
 
       "org/gnome/shell/extensions/dash-to-dock" = {
         dash-max-icon-size = 30;
-      };
-
-      "org/gnome/shell/extensions/lockscreen-extension" = {
-        user-background-1 = false;
-
-        # Set custom wallpaper
-        background-image-path-1 = "${wallpaper}";
-        background-size-1 = "cover";
-
-        # Blur settings
-        blur-radius-1 = 30;
-        blur-brightness-1 = 0.6;
-
-        primary-color-1 = lib.mkForce ""; # Override any defaults
-        gradient-direction-1 = "none";
-
-        # Optional: hide the extension button
-        hide-lockscreen-extension-button = true;
       };
 
       "org/gnome/desktop/interface" = {

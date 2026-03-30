@@ -6,7 +6,7 @@
   vim_mode = false;
   base_keymap = "VSCode";
   buffer_font_family = "JetBrains Mono";
-  buffer_font_size = 15;
+  buffer_font_size = 12;
   buffer_font_features = {
     calt = true;
     ss08 = true;
@@ -24,6 +24,7 @@
     ss15 = true;
     ss17 = true;
   };
+  tab_size = 2;
   relative_line_numbers = "disabled";
   cursor_blink = true;
   cursor_shape = "bar";
@@ -40,13 +41,13 @@
   };
   terminal = {
     dock = "left";
-    font_size = 14;
+    font_size = 12;
     cursor_shape = "bar";
     shell = "system";
     line_height = "comfortable";
     font_family = "JetBrains Mono";
     font_weight = 300;
-    default_width = 800;
+    default_width = 450;
     font_features = {
       calt = true;
       ss08 = true;
@@ -115,6 +116,7 @@
       inlay_hints = {
         enabled = true;
       };
+      tab_size = 4;
     };
     JSON = {
       formatter = "prettier";
