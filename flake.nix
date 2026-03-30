@@ -2,7 +2,9 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+https://git.oss.uzinfocom.uz/xinux/nixpkgs?ref=nixos-unstable&shallow=1";
+
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
@@ -68,6 +70,13 @@
     bleur.url = "github:bleur-org/bleur";
 
     crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
+
+    relago-support.url = "path:/home/xfeusw/workspace/uzinfocom/relago-support";
+
+    xinux-modules = {
+      url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # relago = {
     #   url = "github:xinux-org/relago/bootstrap-relago-module";

@@ -14,6 +14,7 @@
     sysprof
     adwaita-icon-theme
     gnome2.GConf
+    papirus-icon-theme
   ];
 
   hardware.sensor.iio.enable = true;

@@ -32,12 +32,18 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.relago-support.nixosModules.server
+    inputs.xinux-modules.nixosModules.branding
+    inputs.xinux-modules.nixosModules.kernel
+    inputs.xinux-modules.nixosModules.xinux
     # inputs.crash.nixosModules.c-segfault
     # inputs.crash.nixosModules.main
     # inputs.usbguard-gnome.nixosModules.default
   ]
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
+
+  services.relago-server.enable = true;
 
   # services.xinux-c-segfault.enable = true;
 
