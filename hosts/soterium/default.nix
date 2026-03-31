@@ -32,7 +32,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.relago-support.nixosModules.server
+    # inputs.relago-support.nixosModules.server
     inputs.xinux-modules.nixosModules.branding
     inputs.xinux-modules.nixosModules.kernel
     inputs.xinux-modules.nixosModules.xinux
@@ -43,7 +43,7 @@ in
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
 
-  services.relago-server.enable = true;
+  # services.relago-server.enable = true;
 
   # services.xinux-c-segfault.enable = true;
 
