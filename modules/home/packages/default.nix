@@ -50,7 +50,7 @@ in
     tree
     unrar
     unzip
-    sops
+    # sops
 
     # Nix ecosystem tools
     alejandra

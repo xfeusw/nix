@@ -14,8 +14,11 @@ let
     "nix-settings"
     "packages"
     # "plasma"
+    "rust"
     "services"
     "security"
+    # "steam"
+    "usbguard"
     "virtualization"
   ];
 
@@ -29,10 +32,22 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    # inputs.relago-support.nixosModules.server
+    inputs.xinux-modules.nixosModules.branding
+    inputs.xinux-modules.nixosModules.kernel
+    inputs.xinux-modules.nixosModules.xinux
+    # inputs.crash.nixosModules.c-segfault
+    # inputs.crash.nixosModules.main
     # inputs.usbguard-gnome.nixosModules.default
   ]
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
+
+  # services.relago-server.enable = true;
+
+  # services.xinux-c-segfault.enable = true;
+
+  # services.experimentalus.enable = true;
 
   # Bootloader with enhanced options
   boot = {
@@ -75,8 +90,10 @@ in
     initrd.systemd.enable = true;
     consoleLogLevel = 3;
     kernelModules = [ "tcp_bbr" ];
-    # kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
+
+  programs.nix-ld.enable = true;
 
   time.timeZone = "Asia/Tashkent";
   i18n = {

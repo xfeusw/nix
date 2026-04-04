@@ -9,7 +9,7 @@ let
   commonModules = [
     inputs.nur.modules.nixos.default
     inputs.niri.nixosModules.niri
-    inputs.sops-nix.nixosModules.sops
+    # inputs.sops-nix.nixosModules.sops
     # inputs.relago.nixosModules.relago
     {
       nixpkgs.overlays = [
@@ -53,6 +53,13 @@ in
     hostPath = ./soterium;
     hardwareModules = with inputs; [
       nixos-hardware.nixosModules.common-cpu-intel
+    ];
+  };
+
+  aegis = mkHost {
+    hostPath = ./aegis;
+    hardwareModules = with inputs; [
+      nixos-hardware.nixosModules.common-cpu-amd
     ];
   };
 }

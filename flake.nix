@@ -65,13 +65,13 @@
     nix-colors.url = "github:misterio77/nix-colors";
     helix.url = "github:helix-editor/helix";
     niri.url = "github:sodiboo/niri-flake";
-    sops-nix.url = "github:Mic92/sops-nix";
+    # sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
     bleur.url = "github:bleur-org/bleur";
 
-    crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
+    # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
-    relago-support.url = "path:/home/xfeusw/workspace/uzinfocom/relago-support";
+    # relago-support.url = "path:/home/xfeusw/workspace/uzinfocom/relago-support";
 
     xinux-modules = {
       url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";

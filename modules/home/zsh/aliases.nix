@@ -8,7 +8,6 @@
     tree = "eza --tree --icons";
     cat = "bat --paging=never";
     grep = "rg";
-    find = "fd";
     du = "dust";
     df = "dust";
     top = "btop";
@@ -19,6 +18,7 @@
     gs = "git status -sb";
     ga = "git add";
     gaa = "git add --all";
+    gfa = "git fetch --all";
     gc = "git commit";
     gcm = "git commit -m";
     gp = "git push";
@@ -30,19 +30,6 @@
 
     # NixOS management (Customize paths as needed)
     check = "nix flake check";
-    build-soterium = "sudo nixos-rebuild build --flake ~/.config/nix#soterium --option restrict-eval false";
-    switch-soterium = "sudo nixos-rebuild switch --flake ~/.config/nix#soterium --option restrict-eval false";
-    update-soterium = "sudo nixos-rebuild switch --flake ~/.config/nix#soterium --upgrade --option restrict-eval false";
-
-    build-acer = "sudo nixos-rebuild build --flake ~/.config/nix#acer --option restrict-eval false";
-    switch-acer = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --option restrict-eval false";
-    update-acer = "sudo nixos-rebuild switch --flake ~/.config/nix#acer --upgrade --option restrict-eval false";
-
-    build-home = "home-manager build --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
-    switch-home = "home-manager switch --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
-    update-home = "home-manager switch --flake ~/.config/nix#xfeusw --option restrict-eval false -b backup";
-
-    nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && home-manager expire-generations 0 && sudo nix-store --optimise";
     nix-search = "nix search nixpkgs";
 
     # Development shortcuts
@@ -54,6 +41,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     "...." = "cd ../../..";
+    "....." = "cd ../../../..";
 
     # Quick navigation
     config = "cd ~/.config";
@@ -63,12 +51,9 @@
     docker = "podman";
 
     # System info
-    temp = "sensors";
     ports = "ss -tuln";
 
     zed = "zeditor";
     lg = "lazygit";
-
-    rust-init = "om init github:srid/rust-nix-template -o slip-stream";
   };
 }

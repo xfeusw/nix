@@ -26,7 +26,7 @@ let
     "packages"
     # "plasma"
     # "python"
-    "sops"
+    # "sops"
     # "spotify"
     "starship"
     "sway"
@@ -54,11 +54,6 @@ in
       XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      QT_QPA_PLATFORM = "wayland";
-      SDL_VIDEODRIVER = "wayland";
-      XDG_SESSION_TYPE = "wayland";
       SHELL = "${pkgs.zsh}/bin/zsh";
     };
   };

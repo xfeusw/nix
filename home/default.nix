@@ -7,7 +7,7 @@
 }:
 let
   commonModules = [
-    inputs.sops-nix.homeModules.sops
+    # inputs.sops-nix.homeModules.sops
     inputs.nur.modules.homeManager.default
     {
       nixpkgs.overlays = [
