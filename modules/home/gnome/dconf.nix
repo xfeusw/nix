@@ -11,12 +11,27 @@ let
     clipboard-indicator
     dash-to-dock
     easyScreenCast
-    gsconnect
+    # gsconnect
     # lockscreen-extension
     just-perfection
-    pomodoro-timer
+    # pomodoro-timer
     system-monitor
     transparent-window-moving
+    runcat
+    blur-my-shell
+    copyous
+    sound-output-device-chooser
+    soundbar
+    removable-drive-menu
+    # coverflow-alt-tab
+    # vitals
+    launch-new-instance
+    workspace-indicator
+    auto-move-windows
+    lock-keys-2
+    tiling-shell
+    # bluetooth-quick-connect
+    impatience
   ];
 in
 {
@@ -32,7 +47,7 @@ in
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Classic";
-    size = 22;
+    size = 20;
     gtk.enable = true;
     x11.enable = true;
   };
@@ -57,7 +72,7 @@ in
       };
 
       "org/gnome/shell/extensions/dash-to-dock" = {
-        dash-max-icon-size = 30;
+        dash-max-icon-size = 25;
       };
 
       "org/gnome/desktop/interface" = {

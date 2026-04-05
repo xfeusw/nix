@@ -14,10 +14,10 @@ in
       package = pkgs.noto-fonts;
     };
 
-    iconTheme = {
-      name = "colloid-icon-theme";
-      package = pkgs.colloid-icon-theme;
-    };
+    # iconTheme = {
+    #   name = "papirus-icon-theme";
+    #   package = pkgs.papirus-icon-theme;
+    # };
 
     # gtk3 = {
     #   extra-config = {

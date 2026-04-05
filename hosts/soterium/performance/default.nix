@@ -3,7 +3,7 @@
   # Use zram swap — safe system-wide default
   zramSwap = {
     enable = lib.mkDefault true;
-    memoryPercent = lib.mkDefault 200;
+    memoryPercent = lib.mkDefault 100;
     algorithm = lib.mkDefault "zstd";
   };
 
