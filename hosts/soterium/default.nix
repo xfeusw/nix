@@ -44,7 +44,10 @@ in
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
 
-  services.relago.enable = true;
+  services.relago = {
+    enable = true;
+    nix-config = "/home/xfeusw/.config/nix";
+  };
 
   # services.xinux-c-segfault.enable = true;
 
@@ -79,18 +82,9 @@ in
       themePackages = [ pkgs.mac-style-plymouth ];
     };
 
-    kernelParams = [
-      "quiet"
-      "splash"
-      "loglevel=3"
-      "systemd.show_status=auto"
-      "rd.udev.log_level=3"
-    ];
-
     initrd.verbose = false;
     initrd.systemd.enable = true;
     consoleLogLevel = 3;
-    kernelModules = [ "tcp_bbr" ];
     # kernelPackages = pkgs.linuxPackages_zen;
   };
 
