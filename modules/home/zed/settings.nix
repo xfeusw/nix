@@ -30,7 +30,7 @@
   cursor_shape = "bar";
   theme = {
     mode = "system";
-    light = "Tokyo Night Storm";
+    light = "One Dark Pro Night Flat";
     dark = "Tokyo Night Storm";
   };
   vim = {

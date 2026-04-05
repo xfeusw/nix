@@ -22,6 +22,7 @@
   "nginx"
   "nix"
   "one-dark-pro"
+  "one-dark-pro-enhanced"
   "prisma"
   "rust"
   "scss"
