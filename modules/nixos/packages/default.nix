@@ -9,7 +9,6 @@
     vim
     git
     git-filter-repo
-    bazaar
     wget
     curl
     home-manager

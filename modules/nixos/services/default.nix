@@ -48,32 +48,13 @@
       jack.enable = false;
     };
 
-    blueman.enable = true;
-
-    packagekit.enable = lib.mkForce false;
-    fwupd.enable = lib.mkForce false;
-    colord.enable = lib.mkForce false;
-    printing.enable = lib.mkForce false;
-    accounts-daemon.enable = lib.mkForce true;
-    # java-flake.enable = true;
-    # relago.enable = true;
-
-    # main = {
-    #   enable = true;
-    #   user = "xfeusw";
-    #   group = "wheel";
-    # };
+    packagekit.enable = true;
+    fwupd.enable = true;
+    colord.enable = false;
+    printing.enable = false;
+    accounts-daemon.enable = true;
   };
 
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
-
-  # environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
-  #   MOZ_ENABLE_WAYLAND = "1";
-  #   QT_QPA_PLATFORM = "wayland;xcb";
-  #   GDK_BACKEND = "wayland,x11";
-  #   KDE_SESSION_VERSION = "6";
-  #   XDG_CURRENT_DESKTOP = "KDE";
-  # };
 }

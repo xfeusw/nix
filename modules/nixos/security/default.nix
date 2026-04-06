@@ -70,46 +70,6 @@
     ];
   };
 
-  # System security hardening (MERGED BOOT BLOCK)
-  boot = {
-    kernel.sysctl = {
-      "kernel.sysrq" = 0;
-      "net.ipv4.ip_forward" = 0;
-      "net.ipv4.conf.all.send_redirects" = 0;
-      "net.ipv4.conf.all.accept_redirects" = 0;
-      "net.ipv4.conf.all.secure_redirects" = 0;
-      "net.ipv6.conf.all.accept_redirects" = 0;
-      "net.ipv4.conf.all.log_martians" = 1;
-      "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
-      "net.ipv4.tcp_syncookies" = 1;
-      "kernel.dmesg_restrict" = 1;
-      "kernel.kptr_restrict" = 2;
-      "kernel.yama.ptrace_scope" = 1;
-    };
-
-    kernelParams = [
-      "slab_nomerge"
-      "init_on_alloc=1"
-      "init_on_free=1"
-      "page_alloc.shuffle=1"
-      "randomize_kstack_offset=on"
-      "vsyscall=none"
-      "lockdown=confidentiality"
-    ];
-
-    blacklistedKernelModules = [
-      "dccp"
-      "sctp"
-      "rds"
-      "tipc"
-      "jffs2"
-      "hfs"
-      "hfsplus"
-      "firewire-core"
-      "thunderbolt"
-    ];
-  };
-
   # Security tools
   environment.systemPackages = with pkgs; [
     lynis
@@ -117,16 +77,4 @@
     wireshark
     tcpdump
   ];
-
-  # Audit framework
-  security.auditd.enable = false;
-  security.audit = {
-    enable = false;
-    # rules = [
-    #   "-w /etc/passwd -p wa -k identity"
-    #   "-w /etc/shadow -p wa -k identity"
-    #   "-w /etc/sudoers -p wa -k identity"
-    #   "-a always,exit -F arch=b64 -S execve -k exec"
-    # ];
-  };
 }

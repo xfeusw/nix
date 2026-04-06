@@ -15,17 +15,9 @@
     modesetting.enable = true;
     # powerManagement.enable = true;
     powerManagement.finegrained = false;
-    open = false;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  boot = {
-    kernelParams = [
-      "nvidia-drm.modeset=1"
-      "nouveau.modeset=0"
-    ];
-    blacklistedKernelModules = [ "nouveau" ];
   };
 
   # environment.variables = {
