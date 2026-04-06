@@ -1,8 +1,8 @@
 { ... }:
 {
-  # imports = [
-  #   ./graphics.nix
-  # ];
+  imports = [
+    ./graphics.nix
+  ];
 
   # SSD optimization
   services.fstrim.enable = true;

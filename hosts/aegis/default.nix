@@ -78,19 +78,7 @@ in
       themePackages = [ pkgs.mac-style-plymouth ];
     };
 
-    kernelParams = [
-      "quiet"
-      "splash"
-      "loglevel=3"
-      "systemd.show_status=auto"
-      "rd.udev.log_level=3"
-    ];
-
-    initrd.verbose = false;
-    initrd.systemd.enable = true;
-    consoleLogLevel = 3;
-    kernelModules = [ "tcp_bbr" ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_;
   };
 
   programs.nix-ld.enable = true;
@@ -109,8 +97,8 @@ in
   # environment.systemPackages = with pkgs; [ niri ];
   programs.xwayland.enable = true;
 
-  systemd.services.nixos-upgrade.enable = false;
-  systemd.timers.nixos-upgrade.enable = false;
+  systemd.services.nixos-upgrade.enable = true;
+  systemd.timers.nixos-upgrade.enable = true;
 
   system.stateVersion = "26.05";
 }

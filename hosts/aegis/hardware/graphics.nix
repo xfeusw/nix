@@ -7,28 +7,13 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      nvidia-vaapi-driver
-      libva-vdpau-driver
-      libvdpau-va-gl
-      vulkan-loader
-      vulkan-validation-layers
-      vulkan-extension-layer
-      vulkan-tools
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      libva-vdpau-driver
-      libvdpau-va-gl
-      vulkan-loader
-      vulkan-tools
-    ];
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    # powerManagement.enable = true;
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;

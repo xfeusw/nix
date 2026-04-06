@@ -79,7 +79,8 @@
     };
 
     relago = {
-      url = "path:/home/xfeusw/workspace/xinux-org/relago";
+      # url = "path:/home/xfeusw/workspace/xinux-org/relago";
+      url = "github:xinux-org/relago/gtk-alert";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-unstable.follows = "nixpkgs-unstable";
