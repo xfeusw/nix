@@ -117,6 +117,10 @@ in
     yandex-music-bin
     package-version-server
     bleur
+    gtk3
+    gtk3-x11
+    bazaar
+    flatpak
     # zed-editor
   ];
 }

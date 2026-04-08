@@ -16,6 +16,7 @@
       "lp"
       "adbusers"
       "plugdev"
+      "relago"
     ];
     shell = "${pkgs.zsh}/bin/zsh";
   };

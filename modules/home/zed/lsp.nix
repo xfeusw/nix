@@ -39,6 +39,7 @@
           "sema-extra-rec"
         ];
       };
+      autoArchive = true;
     };
   };
 }

@@ -31,7 +31,7 @@
   theme = {
     mode = "system";
     light = "One Dark Pro Night Flat";
-    dark = "Tokyo Night Storm";
+    dark = "One Dark Pro Night Flat";
   };
   vim = {
     use_system_clipboard = "always";

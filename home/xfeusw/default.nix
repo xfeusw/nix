@@ -37,6 +37,8 @@ let
     "zen"
     "zsh"
   ];
+
+  browser = "zen-beta.desktop";
 in
 {
   imports = map (m: homeModules + "/${m}/") modules;
@@ -51,7 +53,6 @@ in
     stateVersion = "26.05";
     enableNixpkgsReleaseCheck = false;
     sessionVariables = lib.mkForce {
-      XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
       EDITOR = "nvim";
       VISUAL = "nvim";
       SHELL = "${pkgs.zsh}/bin/zsh";
@@ -63,11 +64,11 @@ in
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/about" = "firefox.desktop";
-        "x-scheme-handler/unknown" = "firefox.desktop";
+        "text/html" = browser;
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+        "x-scheme-handler/about" = browser;
+        "x-scheme-handler/unknown" = browser;
       };
     };
     systemDirs.data = [

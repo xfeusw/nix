@@ -80,7 +80,7 @@
 
     relago = {
       # url = "path:/home/xfeusw/workspace/xinux-org/relago";
-      url = "github:xinux-org/relago/gtk-alert";
+      url = "path:/home/xfeusw/workspace/xinux-org/relago";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-unstable.follows = "nixpkgs-unstable";
