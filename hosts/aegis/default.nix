@@ -44,10 +44,10 @@ in
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
 
-  services.relago = {
-    enable = true;
-    nix-config = "/home/xfeusw/.config/nix";
-  };
+  # services.relago = {
+  #   enable = true;
+  #   nix-config = "/home/xfeusw/.config/nix";
+  # };
 
   # services.relago-server.enable = true;
 

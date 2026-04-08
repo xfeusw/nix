@@ -116,7 +116,7 @@ in
     postman
     yandex-music-bin
     package-version-server
-    bleur
+    # bleur
     gtk3
     gtk3-x11
     bazaar
