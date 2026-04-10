@@ -78,14 +78,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    relago = {
-      # url = "path:/home/xfeusw/workspace/xinux-org/relago";
-      url = "path:/home/xfeusw/workspace/xinux-org/relago";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-unstable.follows = "nixpkgs-unstable";
-      };
-    };
+    # relago = {
+    #   # url = "path:/home/xfeusw/workspace/xinux-org/relago";
+    #   url = "path:/home/xfeusw/workspace/xinux-org/relago";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     nixpkgs-unstable.follows = "nixpkgs-unstable";
+    #   };
+    # };
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 
