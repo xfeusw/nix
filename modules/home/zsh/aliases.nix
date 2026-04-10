@@ -7,11 +7,6 @@
     la = "eza -la --color=auto --icons --group-directories-first";
     tree = "eza --tree --icons";
     cat = "bat --paging=never";
-    grep = "rg";
-    du = "dust";
-    df = "dust";
-    top = "btop";
-    ps = "procs";
 
     # Git shortcuts
     g = "git";

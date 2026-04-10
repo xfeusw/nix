@@ -78,6 +78,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+<<<<<<< HEAD
     # relago = {
     #   # url = "path:/home/xfeusw/workspace/xinux-org/relago";
     #   url = "path:/home/xfeusw/workspace/xinux-org/relago";
@@ -86,6 +87,16 @@
     #     nixpkgs-unstable.follows = "nixpkgs-unstable";
     #   };
     # };
+=======
+    relago = {
+      url = "path:/home/xfeusw/workspace/xinux-org/relago";
+      # url = "github:xinux-org/relago/gui-systemd";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
+      };
+    };
+>>>>>>> 0943fb7 (chore: my changes)
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 
