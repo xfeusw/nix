@@ -36,7 +36,7 @@ in
     inputs.xinux-modules.nixosModules.branding
     inputs.xinux-modules.nixosModules.kernel
     inputs.xinux-modules.nixosModules.xinux
-    inputs.relago.nixosModules.default
+    # inputs.relago.nixosModules.default
     # inputs.crash.nixosModules.c-segfault
     # inputs.crash.nixosModules.main
     # inputs.usbguard-gnome.nixosModules.default

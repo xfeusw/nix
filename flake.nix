@@ -71,21 +71,21 @@
 
     # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
-    # relago-support.url = "path:/home/xfeusw/workspace/uzinfocom/relago-support";
+    relago-support.url = "path:/home/xfeusw/workspace/uzinfocom/relago-support";
 
     xinux-modules = {
       url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # relago = {
-    #   # url = "path:/home/xfeusw/workspace/xinux-org/relago";
-    #   url = "path:/home/xfeusw/workspace/xinux-org/relago";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     nixpkgs-unstable.follows = "nixpkgs-unstable";
-    #   };
-    # };
+    relago = {
+      # url = "path:/home/xfeusw/workspace/xinux-org/relago";
+      url = "github:xinux-org/relago";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
+      };
+    };
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 

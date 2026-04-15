@@ -121,6 +121,7 @@ in
     gtk3-x11
     bazaar
     flatpak
+    fractal
     # zed-editor
   ];
 }

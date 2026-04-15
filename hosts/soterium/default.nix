@@ -32,11 +32,11 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    # inputs.relago-support.nixosModules.server
+    inputs.relago-support.nixosModules.server
     inputs.xinux-modules.nixosModules.branding
     inputs.xinux-modules.nixosModules.kernel
     inputs.xinux-modules.nixosModules.xinux
-    # inputs.relago.nixosModules.default
+    inputs.relago.nixosModules.default
     # inputs.crash.nixosModules.c-segfault
     # inputs.crash.nixosModules.main
     # inputs.usbguard-gnome.nixosModules.default
@@ -44,10 +44,15 @@ in
   ++ map (m: nixosModules + "/${m}") sharedModules
   ++ map (m: ./${m}) localModules;
 
-  # services.relago = {
-  #   enable = true;
-  #   nix-config = "/home/xfeusw/.config/nix";
-  # };
+  services.relago-server = {
+    enable = true;
+    port = 24567;
+  };
+
+  services.relago = {
+    enable = true;
+    nix-config = "/home/xfeusw/.config/nix";
+  };
 
   # services.xinux-c-segfault.enable = true;
 
