@@ -16,6 +16,7 @@
   "java"
   "just"
   "kanagawa-themes"
+  "lean4"
   "lua"
   "make"
   "material-icon-theme"

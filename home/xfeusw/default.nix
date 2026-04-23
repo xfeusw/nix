@@ -20,6 +20,7 @@ let
     "haskell"
     "helix"
     "java"
+    "lean"
     "mako"
     "niri"
     "nixvim"
