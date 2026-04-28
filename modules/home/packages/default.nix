@@ -117,12 +117,12 @@ in
     yandex-music-bin
     package-version-server
     # bleur
-    gtk3
-    gtk3-x11
+    # gtk3
+    # gtk3-x11
     bazaar
     flatpak
     fractal
     # zed-editor
-    qt5
+    # qt5
   ];
 }
