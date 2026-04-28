@@ -71,7 +71,7 @@
 
     # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
-    relago-support.url = "github:xinux-org/relago-support";
+    # relago-support.url = "path:/home/xfeusw/workspace/xinux-org/relago-support";
 
     xinux-modules = {
       url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";

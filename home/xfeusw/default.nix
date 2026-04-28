@@ -16,7 +16,7 @@ let
     "ghostty"
     "git"
     "gnome"
-    "go"
+    # "go"
     "haskell"
     "helix"
     "java"
@@ -56,6 +56,7 @@ in
       EDITOR = "nvim";
       VISUAL = "nvim";
       SHELL = "${pkgs.zsh}/bin/zsh";
+      QT_QPA_PLATFORMTHEME = "gtk3";
     };
   };
 

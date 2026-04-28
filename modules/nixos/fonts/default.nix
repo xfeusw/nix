@@ -9,6 +9,9 @@
       liberation_ttf
       fira-code
       fira-code-symbols
+      source-sans
+      source-sans-pro
+      roboto
       stable.jetbrains-mono
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono

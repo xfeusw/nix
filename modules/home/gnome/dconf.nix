@@ -94,6 +94,10 @@ in
             "xkb"
             "ru"
           ])
+          (mkTuple [
+            "xkb"
+            "de"
+          ])
         ];
         xkb-options = [ "grp:win_space_toggle" ];
       };

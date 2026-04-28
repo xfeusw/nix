@@ -14,7 +14,7 @@
     settings = {
       input = {
         keyboard.xkb = {
-          layout = "us,ru";
+          layout = "us,ru,de";
           options = "grp:win_space_toggle";
         };
         touchpad = {
