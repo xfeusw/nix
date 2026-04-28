@@ -4,7 +4,7 @@
   ...
 }:
 let
-  bleur = inputs.bleur.packages.${pkgs.system}.default;
+  # bleur = inputs.bleur.packages.${pkgs.system}.default;
 in
 {
   home.packages = with pkgs; [
