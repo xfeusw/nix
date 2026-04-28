@@ -121,6 +121,16 @@
     JSON = {
       formatter = "prettier";
     };
+    Haskell = {
+      format_on_save = true;
+      inlay_hints = true;
+      formatter = "fourmolu";
+      tab_size = 4;
+      enable_language_server = true;
+      show_completions_on_input = true;
+      show_completion_documentation = true;
+      colorize_brackets = true;
+    };
   };
   git = {
     git_gutter = "tracked_files";

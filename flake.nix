@@ -67,7 +67,7 @@
     niri.url = "github:sodiboo/niri-flake";
     # sops-nix.url = "github:Mic92/sops-nix";
     yandex-music.url = "github:xfeusw/yandex-music-nix";
-    bleur.url = "github:bleur-org/bleur";
+    # bleur.url = "github:bleur-org/bleur";
 
     # crash.url = "path:/home/xfeusw/workspace/xinux-org/crash";
 
@@ -78,14 +78,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # relago = {
-    #   # url = "path:/home/xfeusw/workspace/xinux-org/relago";
-    #   url = "path:/home/xfeusw/workspace/xinux-org/relago";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     nixpkgs-unstable.follows = "nixpkgs-unstable";
-    #   };
-    # };
+    relago = {
+      # url = "path:/home/xfeusw/workspace/xinux-org/relago";
+      url = "github:xinux-org/relago";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
+      };
+    };
 
     # tarmoqchi.url = "github:floss-uz-community/tarmoqchi";
 
