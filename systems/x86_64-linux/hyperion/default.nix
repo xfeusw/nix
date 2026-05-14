@@ -3,17 +3,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware.nix
-      ./modules.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware.nix
+    ./modules.nix
+  ];
 
-    # Define your hostname.
+  # Define your hostname.
   networking.hostName = "hyperion";
-
-
 
   # Set the keyboard layout.
   services.xserver.xkb = {
@@ -26,15 +23,23 @@
   users.users."xfeusw" = {
     isNormalUser = true;
     description = "xfeusw";
-    extraGroups = [ "wheel" "networkmanager" "dialout" "podman" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "dialout"
+      "podman"
+    ];
   };
 
-  nix.settings.trusted-users = [ "root" "xfeusw" ];
+  nix.settings.trusted-users = [
+    "root"
+    "xfeusw"
+  ];
 
   # Allow unfree packages
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
-    # List packages installed in system profile.
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     libreoffice
     nautilus
@@ -51,6 +56,9 @@
     slirp4netns
     fuse-overlayfs
     zoxide
+    ventoy-full-gtk
+    woeusb-ng
+    ntfs3g
   ];
 
   # This value determines the NixOS release from which the default
@@ -76,4 +84,9 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.12"
+    "ventoy-gtk3-1.1.12"
+  ];
 }
