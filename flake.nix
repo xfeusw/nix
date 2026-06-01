@@ -20,7 +20,8 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.xinux-lib.mkFlake {
       inherit inputs;
       src = ./.;
@@ -28,19 +29,8 @@
       channels-config.allowUnfree = true;
       systems.modules.nixos = with inputs; [
         nix-data.nixosModules.nix-data
-        xinux-modules.nixosModules.branding       
+        xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
-        xinux-modules.nixosModules.gnome
-        xinux-modules.nixosModules.gaming
-        xinux-modules.nixosModules.graphical
-        xinux-modules.nixosModules.kernel
-        xinux-modules.nixosModules.networking
-        xinux-modules.nixosModules.packagemanagers
-        xinux-modules.nixosModules.pipewire
-        xinux-modules.nixosModules.printing
-        xinux-modules.nixosModules.shell
-        xinux-modules.nixosModules.xinux
-        xinux-modules.nixosModules.metadata
       ];
     };
 }
