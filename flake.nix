@@ -18,6 +18,7 @@
       url = "github:itsbilolbek/uzbek-linux-keyboard";
       flake = false;
     };
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
@@ -31,6 +32,7 @@
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
+        # inputs.home-manager.flakeModules.home-manager
       ];
     };
 }

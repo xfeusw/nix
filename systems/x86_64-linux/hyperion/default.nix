@@ -65,6 +65,20 @@
     telegram-desktop
     element-desktop
     fluffychat
+    fastfetch
+    nerd-fonts.jetbrains-mono
+    haskellPackages.tree-sitter-haskell
+    haskellPackages.cabal-gild
+    haskell-language-server
+    alejandra
+    bazaar
+    gnome-tweaks
+    bibata-cursors
+    helvetica-neue-lt-std
+    tree
+    spotify
+    helix
+    rPackages.figma
   ];
 
   system.stateVersion = "26.11";
@@ -89,4 +103,6 @@
     "ventoy-1.1.12"
     "ventoy-gtk3-1.1.12"
   ];
+
+  programs.nix-ld.enable = true;
 }
