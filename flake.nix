@@ -20,6 +20,7 @@
     };
     home-manager.url = "github:nix-community/home-manager";
     relago-support.url = "path:/home/xfeusw/workspace/xinux/relago-support";
+    relago.url = "path:/home/xfeusw/workspace/xinux/relago";
     yandex-music.url = "git+https://codeberg.org/congeries/yandex-music-nix.git";
   };
 
@@ -35,6 +36,7 @@
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
         relago-support.nixosModules.server
+        relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
     };
