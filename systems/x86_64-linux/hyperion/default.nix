@@ -1,7 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -79,6 +84,8 @@
     spotify
     helix
     rPackages.figma
+    qemu_full
+    yandex-music-bin
   ];
 
   system.stateVersion = "26.11";
@@ -105,4 +112,8 @@
   ];
 
   programs.nix-ld.enable = true;
+
+  nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
+
+  # services.relago-server.enable = true;
 }

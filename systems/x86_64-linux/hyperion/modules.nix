@@ -1,7 +1,12 @@
-{ inputs, config, pkgs, lib, system, ... }:
 {
-
-
+  inputs,
+  config,
+  pkgs,
+  lib,
+  system,
+  ...
+}:
+{
 
   services.flatpak.enable = true;
   services.gnome.core-developer-tools.enable = true;
@@ -12,7 +17,7 @@
   modules.xinux.binaryCompat.enable = true;
   modules.graphical.provider = "intel";
   modules.packagemanagers.appimage.enable = true;
-  modules.gnome.removeUtils.enable = true;
+  modules.gnome.remove-utils.enable = true;
   modules.xinux.browser = "zen";
   modules.shell.direnv = true;
   modules.shell.starship = true;
