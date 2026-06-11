@@ -100,15 +100,6 @@
     flakearg = "hyperion";
   };
 
-  virtualisation = {
-    containers.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.12"
     "ventoy-gtk3-1.1.12"
@@ -118,13 +109,13 @@
 
   nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
 
-  services.relago-server = {
-    enable = true;
-    osPassword = "Str0ng!Passw0rd@2025";
-    s3KeyId = "GKf39328305ea6dad6b4831a7e";
-    s3SecretKey = "ed6f8f8f2a300602e1acaab2fbf5b856658a9a04cb33c2b20903159133917c12";
-    s3MainBucket = "default-bucket";
-  };
+  # services.relago-server = {
+  #   enable = true;
+  #   osPassword = "Str0ng!Passw0rd@2025";
+  #   s3KeyId = "GKf39328305ea6dad6b4831a7e";
+  #   s3SecretKey = "ed6f8f8f2a300602e1acaab2fbf5b856658a9a04cb33c2b20903159133917c12";
+  #   s3MainBucket = "default-bucket";
+  # };
 
   services.relago = {
     enable = true;

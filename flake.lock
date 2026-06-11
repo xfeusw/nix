@@ -2061,8 +2061,8 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1781010083,
-        "narHash": "sha256-x3HHksAHOIxQ7I0so78ZwB/FacZGmxP7MAQ2D1S6MwY=",
+        "lastModified": 1781010721,
+        "narHash": "sha256-gSE/srdPZ0W5w6+f1Mjv/js4bMemGdndfyYUpXQ2WgU=",
         "path": "/home/xfeusw/workspace/xinux/relago",
         "type": "path"
       },
