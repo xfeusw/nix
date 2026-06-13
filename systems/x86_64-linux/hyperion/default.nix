@@ -89,6 +89,9 @@
     yandex-music-bin
     slidev-cli
     postman
+    fxlinuxprint
+    foomatic-db-nonfree
+    foomatic-db-ppds-withNonfreeDb
   ];
 
   system.stateVersion = "26.11";
@@ -117,9 +120,9 @@
   #   s3MainBucket = "default-bucket";
   # };
 
-  services.relago = {
-    enable = true;
-    nix-config = "/home/xfeusw/.config/xinux-config";
-    server = "http://localhost:4242";
-  };
+  # services.relago = {
+  #   enable = true;
+  #   nix-config = "/home/xfeusw/.config/xinux-config";
+  #   server = "http://localhost:4242";
+  # };
 }

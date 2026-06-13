@@ -19,7 +19,7 @@
     initialization_options = {
       haskell = {
         formattingProvider = "fourmolu";
-        cabalFormattingProvider = "cabal-gild";
+        cabalFormattingProvider = "cabal-fmt";
 
         plugin = {
           hlint.globalOn = true;
