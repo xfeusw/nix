@@ -92,6 +92,7 @@
     fxlinuxprint
     foomatic-db-nonfree
     foomatic-db-ppds-withNonfreeDb
+    cameractrls-gtk4
   ];
 
   system.stateVersion = "26.11";
