@@ -22,6 +22,7 @@
     # relago-support.url = "path:/home/xfeusw/workspace/xinux/relago-support";
     # relago.url = "path:/home/xfeusw/workspace/xinux/relago";
     yandex-music.url = "git+https://codeberg.org/congeries/yandex-music-nix.git";
+    wallpapers.url = "path:/home/xfeusw/workspace/congeries/wallpapers";
   };
 
   outputs =
@@ -35,6 +36,7 @@
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
+        wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
