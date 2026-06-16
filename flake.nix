@@ -23,6 +23,17 @@
     # relago.url = "path:/home/xfeusw/workspace/xinux/relago";
     yandex-music.url = "git+https://codeberg.org/congeries/yandex-music-nix.git";
     # wallpapers.url = "path:/home/xfeusw/workspace/congeries/wallpapers";
+    zen-browser = {
+      url = "git+https://git.oss.uzinfocom.uz/mirrors/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
