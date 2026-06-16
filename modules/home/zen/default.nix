@@ -54,6 +54,15 @@ in
           unlock-medium-article
         ];
       };
+      mods = [
+        "f4866f39-cfd6-4498-ab92-54213b8279dc" # Animations Plus
+        "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
+        "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better Active Tab
+        "a6335949-4465-4b71-926c-4a52d34bc9c0" # Better Find Bar
+        "ae7868dc-1fa1-469e-8b89-a5edf7ab1f24" # Load Bar
+        "87196c08-8ca1-4848-b13b-7ea41ee830e7" # Tab Preview Enhanced
+        "642854b5-88b4-4c40-b256-e035532109df" # Transparent Zen
+      ];
     };
   };
 }
