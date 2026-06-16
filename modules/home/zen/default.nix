@@ -51,7 +51,7 @@ in
         packages = with firefox-addons; [
           ublock-origin
           darkreader
-          unlock-medium-article
+          # unlock-medium-article # we need to add this
         ];
       };
       mods = [

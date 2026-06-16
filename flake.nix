@@ -42,6 +42,8 @@
       inherit inputs;
       src = ./.;
 
+      home-manager.backupFileExtension = "hm-backup";
+
       channels-config.allowUnfree = true;
       systems.modules.nixos = with inputs; [
         nix-data.nixosModules.nix-data

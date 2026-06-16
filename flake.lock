@@ -128,6 +128,28 @@
         "url": "https://git.oss.uzinfocom.uz/xinux/e-imzo-manager"
       }
     },
+    "firefox-addons": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1781582553,
+        "narHash": "sha256-ums6gaaiUBrN4Ln2DMUAx2ZFiURv5mTSQ17W3VynxdM=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "cafea696a96210c4996e471d6c56bb04708a6f5a",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1925,13 +1947,15 @@
     },
     "root": {
       "inputs": {
+        "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nix-data": "nix-data",
         "nixpkgs": "nixpkgs_2",
         "uz-xkb": "uz-xkb",
         "xinux-lib": "xinux-lib_2",
         "xinux-modules": "xinux-modules",
-        "yandex-music": "yandex-music"
+        "yandex-music": "yandex-music",
+        "zen-browser": "zen-browser_2"
       }
     },
     "rust-overlay": {
@@ -2821,6 +2845,29 @@
       },
       "original": {
         "shallow": true,
+        "type": "git",
+        "url": "https://git.oss.uzinfocom.uz/mirrors/zen-browser-flake"
+      }
+    },
+    "zen-browser_2": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781426426,
+        "narHash": "sha256-yzxJMNgv/sLishhCT9G2lm7W9CjHSlXWkfbWC7vfjqc=",
+        "ref": "refs/heads/main",
+        "rev": "df336067c1a8af3bfce3f0b88b66dc1c57411b4e",
+        "revCount": 1165,
+        "type": "git",
+        "url": "https://git.oss.uzinfocom.uz/mirrors/zen-browser-flake"
+      },
+      "original": {
         "type": "git",
         "url": "https://git.oss.uzinfocom.uz/mirrors/zen-browser-flake"
       }
