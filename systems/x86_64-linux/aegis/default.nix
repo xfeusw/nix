@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -104,14 +105,59 @@
     flakearg = "hyperion";
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
-    "ventoy-gtk3-1.1.12"
-  ];
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "ventoy-1.1.12"
+      "ventoy-gtk3-1.1.12"
+    ];
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-unwrapped"
+      ];
+  };
 
   programs.nix-ld.enable = true;
 
   nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
+
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true;
+  #   dedicatedServer.openFirewall = true;
+  #   extraCompatPackages = with pkgs; [
+  #     proton-ge-bin
+  #     protonup-qt
+  #   ];
+  # };
+
+  # programs.gamemode.enable = true;
+
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32Bit = lib.mkForce false;
+  # };
+
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   open = true;
+  #   nvidiaSettings = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+  #   prime = {
+  #     sync.enable = true;
+  #     intelBusId = "PCI:1:0:0";
+  #     nvidiaBusId = "PCI:6:0:0";
+  #   };
+  # };
+
+  # services.xserver.videoDrivers = [
+  #   "nvidia"
+  # ];
+
+  # 01:00.0 VGA compatible controller: NVIDIA Corporation GA107 [GeForce RTX 2050] (rev a1)
+  # 06:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Rembrandt [Radeon 680M] (rev 0b)
 
   # services.relago-server = {
   #   enable = true;
