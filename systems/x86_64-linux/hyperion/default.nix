@@ -92,6 +92,7 @@
     fxlinuxprint
     foomatic-db-nonfree
     foomatic-db-ppds-withNonfreeDb
+    treefmt
   ];
 
   system.stateVersion = "26.11";

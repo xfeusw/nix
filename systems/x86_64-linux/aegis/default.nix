@@ -95,6 +95,7 @@
     foomatic-db-ppds-withNonfreeDb
     cameractrls-gtk4
     heroic
+    treefmt
   ];
 
   system.stateVersion = "26.11";
