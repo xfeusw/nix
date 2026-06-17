@@ -93,6 +93,7 @@
     foomatic-db-nonfree
     foomatic-db-ppds-withNonfreeDb
     cameractrls-gtk4
+    treefmt
   ];
 
   system.stateVersion = "26.11";
