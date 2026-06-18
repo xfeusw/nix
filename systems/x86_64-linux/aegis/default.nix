@@ -96,6 +96,8 @@
     cameractrls-gtk4
     heroic
     treefmt
+    gparted
+    gnome-disk-utility
   ];
 
   system.stateVersion = "26.11";
@@ -121,6 +123,7 @@
   };
 
   programs.nix-ld.enable = true;
+  programs.gamescope.enable = true;
 
   nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
 
