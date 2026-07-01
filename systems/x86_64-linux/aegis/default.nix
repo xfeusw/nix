@@ -98,6 +98,7 @@
     treefmt
     gparted
     gnome-disk-utility
+    tor-browser
   ];
 
   system.stateVersion = "26.11";
@@ -124,8 +125,20 @@
 
   programs.nix-ld.enable = true;
   programs.gamescope.enable = true;
+  services.udev.packages = [ pkgs.game-devices-udev-rules ];
+  hardware.uinput.enable = true;
 
-  nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.yandex-music.overlays.default
+    inputs.nix-cachyos-kernel.overlays.pinned
+  ];
+
+  nix.settings.substituters = [ "https://cache.xinux.uz" ];
+  nix.settings.trusted-public-keys = [
+    "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
+  ];
+
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
   # programs.steam = {
   #   enable = true;
