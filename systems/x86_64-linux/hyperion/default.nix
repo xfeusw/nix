@@ -24,6 +24,8 @@
   };
   console.useXkbConfig = true;
 
+  users.groups."relago" = { };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."xfeusw" = {
     isNormalUser = true;
@@ -93,6 +95,7 @@
     foomatic-db-nonfree
     foomatic-db-ppds-withNonfreeDb
     treefmt
+    resources
   ];
 
   system.stateVersion = "26.11";
@@ -113,17 +116,19 @@
 
   nixpkgs.overlays = [ inputs.yandex-music.overlays.default ];
 
-  services.relago-server = {
+  # services.relago-server = {
+  #   enable = true;
+  #   osPassword = "Str0ng!Passw0rd@2025";
+  #   s3KeyId = "GKf39328305ea6dad6b4831a7e";
+  #   s3SecretKey = "ed6f8f8f2a300602e1acaab2fbf5b856658a9a04cb33c2b20903159133917c12";
+  #   s3MainBucket = "default-bucket";
+  # };
+
+  services.relago = {
     enable = true;
-    osPassword = "Str0ng!Passw0rd@2025";
-    s3KeyId = "GKf39328305ea6dad6b4831a7e";
-    s3SecretKey = "ed6f8f8f2a300602e1acaab2fbf5b856658a9a04cb33c2b20903159133917c12";
-    s3MainBucket = "default-bucket";
+    nix-config = "/home/xfeusw/.config/nix";
+    server = "http://localhost:4242";
   };
 
-  # services.relago = {
-  #   enable = true;
-  #   nix-config = "/home/xfeusw/.config/nix";
-  #   server = "http://localhost:4242";
-  # };
+  services.pipewire.jack.enable = true;
 }

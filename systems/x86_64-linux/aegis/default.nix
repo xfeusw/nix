@@ -96,6 +96,8 @@
     cameractrls-gtk4
     heroic
     treefmt
+    proton-ge-bin
+    protonup
   ];
 
   system.stateVersion = "26.11";
