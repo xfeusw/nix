@@ -1,0 +1,7 @@
+keys:
+  - &xfeusw age1mxjseq333s6pcshyt7uxzlx75lhhmxxnzr3thkhnphmdf5erhyzs4ppggs
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age:
+        - *xfeusw

@@ -35,6 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    sops-nix.url = "github:mic92/sops-nix";
   };
 
   outputs =
@@ -47,6 +48,7 @@
 
       channels-config.allowUnfree = true;
       systems.modules.nixos = with inputs; [
+        sops-nix.nixosModules.sops
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot

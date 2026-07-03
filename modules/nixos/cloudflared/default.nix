@@ -4,9 +4,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-  ];
 
   sops = {
     age.keyFile = "/home/username/.config/sops/age/keys.txt";
@@ -22,9 +19,15 @@
   services.cloudflared = {
     enable = true;
     tunnels = {
-      "00000000-0000-0000-0000-000000000000" = {
-        credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
-      };
+      "eyJhIjoiMTQ0ZDkyNjE5ZmVlZmQ0MTIwYjU5OTEzY2RmNDcyMWEiLCJ0IjoiMjMyY2Q4MGEtMWU2Mi00NTc1LTlkOWEtY2U1NGU2YzcwNDBkIiwicyI6Ik1HRXdNR0U1TVRBdE9XVXlZeTAwTTJVeExUaGhOREV0TkRobE1HUTJNMkk1TjJJMCJ9" =
+        {
+          credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+          ingress = {
+            "tunnelcha.uz" = "0.0.0.0:22";
+          };
+
+          default = "http_status:404";
+        };
     };
   };
 }
