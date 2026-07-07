@@ -96,6 +96,8 @@
     foomatic-db-ppds-withNonfreeDb
     treefmt
     resources
+    cloudflared
+    gnome-disk-utility
   ];
 
   system.stateVersion = "26.11";
@@ -124,11 +126,11 @@
   #   s3MainBucket = "default-bucket";
   # };
 
-  services.relago = {
-    enable = true;
-    nix-config = "/home/xfeusw/.config/nix";
-    server = "http://localhost:4242";
-  };
+  # services.relago = {
+  #   enable = true;
+  #   nix-config = "/home/xfeusw/.config/nix";
+  #   server = "http://localhost:4242";
+  # };
 
   services.pipewire.jack.enable = true;
 }
