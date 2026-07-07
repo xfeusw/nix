@@ -5,6 +5,7 @@
 }:
 let
   sopsFile = ../../../../secrets.yaml;
+  creds = builtins.readFile config.sops.secrets.cloudflared-creds.path;
 in
 {
   sops = {
@@ -22,10 +23,11 @@ in
     enable = true;
     tunnels = {
       # tunnelcha
-      "232cd80a-1e62-4575-9d9a-ce54e6c7040d" = {
-        credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+      "db931588-3832-4abf-a6c9-8b9d2920e566" = {
+        # credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+        credentialsFile = creds;
         ingress = {
-          "tunnelcha.uz" = "0.0.0.0:22";
+          "ssh.tunnelcha.uz" = "ssh://localhost:22";
         };
 
         default = "http_status:404";
