@@ -13,6 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
+    ./disko.nix
   ];
 
   # Define your hostname.
@@ -36,6 +37,7 @@
       "podman"
       "relago"
     ];
+    initialPassword = "a";
   };
 
   nix.settings.trusted-users = [
@@ -96,8 +98,8 @@
     cameractrls-gtk4
     heroic
     treefmt
-    proton-ge-bin
-    protonup
+    # proton-ge-bin
+    # protonup-ng
     gparted
     gnome-disk-utility
     tor-browser

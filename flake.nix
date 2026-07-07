@@ -20,7 +20,7 @@
     };
     home-manager.url = "github:nix-community/home-manager";
     relago-support.url = "git+https://git.oss.uzinfocom.uz/xinux/relago-support";
-    relago.url = "path:/home/xfeusw/workspace/xinux/relago";
+    # relago.url = "path:/home/xfeusw/workspace/xinux/relago";
     yandex-music.url = "git+https://codeberg.org/congeries/yandex-music-nix.git";
     # wallpapers.url = "path:/home/xfeusw/workspace/congeries/wallpapers";
     zen-browser = {
@@ -36,6 +36,10 @@
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     sops-nix.url = "github:mic92/sops-nix";
+    disko = {
+      url = "git+https://git.oss.uzinfocom.uz/mirrors/disko?ref=master&shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,13 +52,14 @@
 
       channels-config.allowUnfree = true;
       systems.modules.nixos = with inputs; [
+        inputs.disko.nixosModules.disko
         sops-nix.nixosModules.sops
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
         # wallpapers.nixosModules.default
         relago-support.nixosModules.server
-        relago.nixosModules.default
+        # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
     };
