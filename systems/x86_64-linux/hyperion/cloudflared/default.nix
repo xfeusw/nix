@@ -21,8 +21,8 @@ in
 
   users.users.xfeusw = {
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmiQueREM/QMezu/6U5JEv7qPNLBvqoIsqdJa2/+T8o"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIs+UWqdTDRJVG5XfDcGAlA1fvDXFvPbUtRTGQV/Ob9H xfeusw@hyperion"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGhrOip78ANJVzXwAfVEK5Ng0Rgvvt9+eV+nOu5df4ra xfeusw@aegis"
     ];
   };
 
