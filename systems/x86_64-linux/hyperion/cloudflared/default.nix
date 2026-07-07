@@ -8,6 +8,24 @@ let
   creds = builtins.readFile config.sops.secrets.cloudflared-creds.path;
 in
 {
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 22 ];
+
+  users.users.xfeusw = {
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmiQueREM/QMezu/6U5JEv7qPNLBvqoIsqdJa2/+T8o"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIs+UWqdTDRJVG5XfDcGAlA1fvDXFvPbUtRTGQV/Ob9H xfeusw@hyperion"
+    ];
+  };
+
   sops = {
     age.keyFile = "/home/xfeusw/.config/sops/age/keys.txt";
     defaultSopsFile = sopsFile;
