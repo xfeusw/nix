@@ -8,7 +8,7 @@ let
 in
 {
   sops = {
-    age.keyFile = "/home/username/.config/sops/age/keys.txt";
+    age.keyFile = "/home/xfeusw/.config/sops/age/keys.txt";
     defaultSopsFile = sopsFile;
 
     secrets."cloudflared-creds" = {
@@ -19,7 +19,7 @@ in
   };
 
   services.cloudflared = {
-    enable = false;
+    enable = true;
     tunnels = {
       # tunnelcha
       "232cd80a-1e62-4575-9d9a-ce54e6c7040d" = {

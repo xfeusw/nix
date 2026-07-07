@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
+    ./cloudflared
   ];
 
   # Define your hostname.
@@ -86,10 +87,8 @@
     tree
     spotify
     helix
-    rPackages.figma
     qemu_full
     yandex-music-bin
-    slidev-cli
     postman
     fxlinuxprint
     foomatic-db-nonfree
