@@ -30,8 +30,8 @@
   cursor_shape = "bar";
   theme = {
     mode = "system";
-    light = "One Dark Pro Night Flat";
-    dark = "One Dark Pro Night Flat";
+    light = "Ninja Cosmic";
+    dark = "Ninja Cosmic";
   };
   vim = {
     use_system_clipboard = "always";

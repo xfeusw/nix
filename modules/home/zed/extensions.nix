@@ -22,6 +22,7 @@
   "material-icon-theme"
   "nginx"
   "nix"
+  "ninja"
   "one-dark-pro"
   "one-dark-pro-enhanced"
   "prisma"

@@ -9,4 +9,15 @@
   programs.home-manager = {
     enable = true;
   };
+
+  programs.ssh = {
+    enable = true;
+    settings = {
+      "ssh.tunnelcha.uz" = {
+        Hostname = "ssh.tunnelcha.uz";
+        User = "xfeusw";
+        ProxyCommand = "cloudflared access ssh --hostname %h";
+      };
+    };
+  };
 }

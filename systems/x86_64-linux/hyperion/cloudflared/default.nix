@@ -5,14 +5,20 @@
 }:
 let
   sopsFile = ../../../../secrets.yaml;
-  creds = builtins.readFile config.sops.secrets.cloudflared-creds.path;
+  # creds = builtins.readFile config.sops.secrets.cloudflared-creds.path;
+  creds = /home/xfeusw/.cloudflared/8e83e725-c041-4bd2-8bbe-4777f8e3aa2b.json;
 in
 {
   services.openssh = {
     enable = true;
+    openFirewall = true;
     settings = {
+      Protocol = 2;
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
+      AllowUsers = [ "xfeusw" ];
+      MaxAuthTries = 3;
+      UsePAM = true;
       PermitRootLogin = "no";
     };
   };
@@ -41,7 +47,7 @@ in
     enable = true;
     tunnels = {
       # tunnelcha
-      "db931588-3832-4abf-a6c9-8b9d2920e566" = {
+      "8e83e725-c041-4bd2-8bbe-4777f8e3aa2b" = {
         credentialsFile = creds;
         ingress = {
           "ssh.tunnelcha.uz" = "ssh://localhost:22";

@@ -105,7 +105,7 @@
     enable = true;
     systemconfig = "/home/xfeusw/.config/nix/systems/x86_64-linux/hyperion/default.nix";
     flake = "/home/xfeusw/.config/nix/flake.nix";
-    flakearg = "hyperion";
+    hostname = "hyperion";
   };
 
   nixpkgs.config.permittedInsecurePackages = [

@@ -103,6 +103,7 @@
     gparted
     gnome-disk-utility
     tor-browser
+    cloudflared
   ];
 
   system.stateVersion = "26.11";
