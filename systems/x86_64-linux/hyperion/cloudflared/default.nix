@@ -24,7 +24,6 @@ in
     tunnels = {
       # tunnelcha
       "db931588-3832-4abf-a6c9-8b9d2920e566" = {
-        # credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
         credentialsFile = creds;
         ingress = {
           "ssh.tunnelcha.uz" = "ssh://localhost:22";
