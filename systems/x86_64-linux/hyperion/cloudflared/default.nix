@@ -4,7 +4,7 @@
   ...
 }:
 let
-  sopsFile = ../../../secrets.yaml;
+  sopsFile = ../../secrets.yaml;
 in
 {
   sops = {
