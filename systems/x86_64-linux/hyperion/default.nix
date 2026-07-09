@@ -97,6 +97,8 @@
     resources
     cloudflared
     gnome-disk-utility
+    nodejs_22
+    pnpm_11
   ];
 
   system.stateVersion = "26.11";
@@ -132,4 +134,6 @@
   # };
 
   services.pipewire.jack.enable = true;
+
+  services.x2goserver.enable = true;
 }

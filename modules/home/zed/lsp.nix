@@ -1,4 +1,39 @@
 { ... }:
+let
+  ts-js = {
+    inlayHints = {
+      parameterNames = {
+        enabled = "all";
+        suppressWhenArgumentMatchesName = false;
+      };
+      parameterTypes = {
+        enabled = true;
+      };
+      variableTypes = {
+        enabled = true;
+        suppressWhenTypeMatchesName = true;
+      };
+      propertyDeclarationTypes = {
+        enabled = true;
+      };
+      functionLikeReturnTypes = {
+        enabled = true;
+      };
+      enumMemberValues = {
+        enabled = true;
+      };
+    };
+    implementationsCodeLens = {
+      enabled = true;
+      showOnAllClassMethods = true;
+      showOnInterfaceMethods = true;
+    };
+    referencesCodeLens = {
+      enabled = true;
+      showOnAllFunctions = true;
+    };
+  };
+in
 {
   rust-analyzer = {
     initialization_options = {
@@ -54,6 +89,15 @@
         ];
       };
       autoArchive = true;
+    };
+  };
+
+  vtsls = {
+    initialization_options = {
+      settings = {
+        javascript = ts-js;
+        typescript = ts-js;
+      };
     };
   };
 }

@@ -88,19 +88,52 @@
     dock = "right";
   };
   use_autoclose = true;
+
+  # Languages
   languages = {
-    TypeScript = {
+    JavaScript = {
+      inlay_hints = {
+        show_type_hints = true;
+      };
       code_actions_on_format = {
         "source.organizeImports" = true;
       };
+      language_servers = [
+        "vtsls"
+      ];
+    };
+    JSX = {
+      inlay_hints = {
+        show_type_hints = true;
+      };
+      code_actions_on_format = {
+        "source.organizeImports" = true;
+      };
+      language_servers = [
+        "vtsls"
+      ];
+    };
+    TypeScript = {
+      inlay_hints = {
+        show_type_hints = true;
+      };
+      code_actions_on_format = {
+        "source.organizeImports" = true;
+      };
+      language_servers = [
+        "vtsls"
+      ];
     };
     TSX = {
       inlay_hints = {
-        show_type_hints = false;
+        show_type_hints = true;
       };
       code_actions_on_format = {
         "source.organizeImports" = true;
       };
+      language_servers = [
+        "vtsls"
+      ];
     };
     SCSS = {
       formatter = "prettier";
