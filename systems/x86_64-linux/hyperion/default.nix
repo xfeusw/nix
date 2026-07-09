@@ -99,6 +99,7 @@
     gnome-disk-utility
     nodejs_22
     pnpm_11
+    spotiflac
   ];
 
   system.stateVersion = "26.11";
