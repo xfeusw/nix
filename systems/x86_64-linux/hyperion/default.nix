@@ -100,6 +100,8 @@
     nodejs_22
     pnpm_11
     spotiflac
+    ffmpeg
+    mpv
   ];
 
   system.stateVersion = "26.11";
