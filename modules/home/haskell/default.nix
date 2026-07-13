@@ -20,11 +20,11 @@ let
   };
 in
 {
-  home.file.".ghci".source = ./.ghci;
+  # home.file.".ghci".source = ./.ghci;
 
-  home.packages = [
-    h.ghc
-    htools
-    # hpkgs.ghcprofview
-  ];
+  # home.packages = [
+  #   h.ghc
+  #   htools
+  #   # hpkgs.ghcprofview
+  # ];
 }

@@ -87,7 +87,7 @@
     tree
     spotify
     helix
-    qemu_full
+    # qemu_full
     yandex-music-bin
     postman
     fxlinuxprint

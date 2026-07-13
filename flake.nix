@@ -8,6 +8,7 @@
     };
     xinux-modules = {
       url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";
+      # url = "/home/xfeusw/workspace/xinux/modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-data = {
