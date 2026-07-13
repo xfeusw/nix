@@ -102,6 +102,7 @@
     spotiflac
     ffmpeg
     mpv
+    vscode-langservers-extracted
   ];
 
   system.stateVersion = "26.11";

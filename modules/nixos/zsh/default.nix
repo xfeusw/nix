@@ -2,5 +2,6 @@
 {
   programs.zsh.shellAliases = {
     zed = "zeditor";
+    home = "cd ~";
   };
 }
