@@ -103,6 +103,7 @@
     ffmpeg
     mpv
     vscode-langservers-extracted
+    e-imzo-manager
   ];
 
   system.stateVersion = "26.11";
@@ -140,4 +141,6 @@
   services.pipewire.jack.enable = true;
 
   services.x2goserver.enable = true;
+
+  services.e-imzo.enable = true;
 }
