@@ -41,6 +41,7 @@
       url = "git+https://git.oss.uzinfocom.uz/mirrors/disko?ref=master&shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ngrok.url = "github:ngrok/ngrok-nix";
   };
 
   outputs =
@@ -60,6 +61,7 @@
         xinux-modules.nixosModules.efiboot
         # wallpapers.nixosModules.default
         relago-support.nixosModules.server
+        ngrok.nixosModules.ngrok
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
