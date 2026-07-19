@@ -13,6 +13,8 @@ let
     runcat
     transparent-window-moving
   ];
+
+  wallpaper = ../../../wallpapers/chair-under-neon-lights.jpg;
 in
 {
   home.packages = extensions;
@@ -208,6 +210,11 @@ in
         workspace-background-corner-size = mkInt32 0;
         workspace-popup = true;
         workspaces-in-app-grid = true;
+      };
+
+      "org/gnome/desktop/background" = {
+        picture-uri = wallpaper;
+        picture-uri-dark = wallpaper;
       };
     };
   };
