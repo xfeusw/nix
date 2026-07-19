@@ -29,6 +29,17 @@
   #   system = "x86_64-linux";
   # };
 
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/1dca58d3-993b-4533-9069-1f0651b6321e";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/38CD-585B";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
   services.thermald.enable = true;
 
   hardware = {

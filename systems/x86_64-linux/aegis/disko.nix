@@ -19,16 +19,16 @@
                 ];
               };
             };
-            SWAP = {
-              size = "33G";
-              content = {
-                type = "swap";
-                resumeDevice = true;
-                discardPolicy = "both";
-              };
-            };
+            # SWAP = {
+            #   size = "33G";
+            #   content = {
+            #     type = "swap";
+            #     resumeDevice = true;
+            #     discardPolicy = "both";
+            #   };
+            # };
             ROOT = {
-              size = "440G";
+              size = "475G";
               content = {
                 type = "filesystem";
                 format = "ext4";

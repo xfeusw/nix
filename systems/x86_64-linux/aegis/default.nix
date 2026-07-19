@@ -13,7 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
-    ./disko.nix
+    # ./disko.nix
   ];
 
   # Define your hostname.
