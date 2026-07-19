@@ -2,58 +2,43 @@
   disko.devices = {
     disk = {
       nvme0n1 = {
+        device = "/dev/nvme0n1";
+        type = "disk";
         content = {
+          type = "gpt";
           partitions = {
-            nvme0n11 = {
+            BOOT = {
+              size = "1G";
+              type = "EF00";
               content = {
+                type = "filesystem";
                 format = "vfat";
+                mountpoint = "/boot";
                 mountOptions = [
                   "umask=0077"
                 ];
-                mountpoint = "/boot";
-                type = "filesystem";
               };
-              size = "1G";
-              type = "EF00";
             };
-            nvme0n12 = {
-              content = {
-                content = {
-                  resumeDevice = true;
-                  type = "swap";
-                };
-                name = "crypted-nvme0n12";
-                passwordFile = "/run/xeonitte-luks.key";
-                settings = {
-                  allowDiscards = true;
-                };
-                type = "luks";
-              };
+            SWAP = {
               size = "33G";
-            };
-            nvme0n13 = {
               content = {
-                content = {
-                  format = "ext4";
-                  mountpoint = "/";
-                  type = "filesystem";
-                };
-                name = "crypted-nvme0n13";
-                passwordFile = "/run/xeonitte-luks.key";
-                settings = {
-                  allowDiscards = true;
-                };
-                type = "luks";
+                type = "swap";
+                resumeDevice = true;
+                discardPolicy = "both";
               };
+            };
+            ROOT = {
               size = "440G";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+              };
             };
           };
-          type = "gpt";
         };
-        device = "/dev/nvme0n1";
       };
     };
   };
   boot.initrd.systemd.enable = true;
 }
-

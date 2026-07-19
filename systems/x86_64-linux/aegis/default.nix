@@ -88,7 +88,7 @@
     spotify
     helix
     rPackages.figma
-    qemu_full
+    # qemu_full
     yandex-music-bin
     slidev-cli
     postman
@@ -110,9 +110,9 @@
 
   programs.nix-data = {
     enable = true;
-    systemconfig = "/home/xfeusw/.config/nix/systems/x86_64-linux/hyperion/default.nix";
+    systemconfig = "/home/xfeusw/.config/nix/systems/x86_64-linux/aegis/default.nix";
     flake = "/home/xfeusw/.config/nix/flake.nix";
-    flakearg = "hyperion";
+    flakearg = "aegis";
   };
 
   nixpkgs.config = {
@@ -143,7 +143,7 @@
     "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
   ];
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # programs.steam = {
   #   enable = true;
