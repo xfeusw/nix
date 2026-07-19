@@ -1,5 +1,5 @@
 {...}: {
-  services.ngrok = {
-    enable = true;
-  };
+  # services.ngrok = {
+  #   enable = true;
+  # };
 }
