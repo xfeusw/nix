@@ -19,6 +19,14 @@ in
 {
   home.packages = extensions;
 
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Original-Classic";
+    size = 20;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   dconf = {
     enable = true;
 
@@ -212,9 +220,36 @@ in
         workspaces-in-app-grid = true;
       };
 
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        clock-format = "12h";
+        # clock-show-seconds = true;
+        toolbar-icons-size = "small";
+        window-scaling-factor = 0;
+        text-scaling-factor = 0.9;
+      };
+
+      "org/gnome/desktop/input-sources" = with lib.gvariant; {
+        sources = [
+          (mkTuple [
+            "xkb"
+            "us"
+          ])
+          (mkTuple [
+            "xkb"
+            "ru"
+          ])
+          (mkTuple [
+            "xkb"
+            "de"
+          ])
+        ];
+        xkb-options = [ "grp:win_space_toggle" ];
+      };
+
       "org/gnome/desktop/background" = {
-        picture-uri = wallpaper;
-        picture-uri-dark = wallpaper;
+        picture-uri = "${wallpaper}";
+        picture-uri-dark = "${wallpaper}";
       };
     };
   };
