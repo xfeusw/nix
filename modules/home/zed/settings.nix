@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   use_system_prompts = false;
   use_system_path_prompts = false;
@@ -180,5 +180,5 @@
 
   bottom_dock_layout = "contained";
 
-  lsp = import ./lsp.nix { };
+  lsp = import ./lsp.nix { inherit pkgs; };
 }

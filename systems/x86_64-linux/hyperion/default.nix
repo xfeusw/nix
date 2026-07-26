@@ -104,6 +104,7 @@
     mpv
     vscode-langservers-extracted
     e-imzo-manager
+    ngrok
   ];
 
   system.stateVersion = "26.11";

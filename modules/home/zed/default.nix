@@ -7,7 +7,7 @@
 
     # userKeymaps = import ./keymaps.nix {};
 
-    userSettings = import ./settings.nix { };
+    userSettings = import ./settings.nix { inherit pkgs; };
 
     extensions = import ./extensions.nix;
   };

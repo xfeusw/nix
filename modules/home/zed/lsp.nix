@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   ts-js = {
     inlayHints = {
@@ -57,16 +57,29 @@ in
         cabalFormattingProvider = "cabal-fmt";
 
         plugin = {
+          class.globalOn = true;
+          eval.globalOn = true;
+
+          fourmolu = {
+            config.external = pkgs.fourmolu;
+          };
+
+          ghcide-code-actions-bindings.globalOn = true;
+          ghcide-code-actions-fill-holes.globalOn = true;
+          ghcide-code-actions-imports-exports.globalOn = true;
+          ghcide-code-actions-type-signatures.globalOn = true;
+          ghcide-completions.globalOn = true;
+          ghcide-hover-and-symbols.globalOn = true;
+          ghcide-type-lenses.globalOn = true;
           hlint.globalOn = true;
           importLens.globalOn = true;
-          eval.globalOn = true;
-          ghcide-completions.globalOn = true;
           moduleName.globalOn = true;
-          ghcide-code-actions-bindings.globalOn = true;
+          pragmas.globalOn = true;
+          rename.globalOn = true;
+          semanticTokens.globalOn = true;
+          splice.globalOn = true;
+          stan.globalOn = true;
           signatureHelp.globalOn = true;
-          ghcide-type-lenses.globalOn = true;
-          ghcide-hover-and-symbols.globalOn = true;
-          class.globalOn = true;
         };
       };
     };
