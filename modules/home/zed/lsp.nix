@@ -120,4 +120,10 @@ in
       };
     };
   };
+
+  idris2 = {
+    binary = {
+      path = "idris2-lsp";
+    };
+  };
 }

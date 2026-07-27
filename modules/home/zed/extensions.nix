@@ -13,6 +13,7 @@
   "graphql"
   "haskell"
   "html"
+  "idris2"
   "java"
   "just"
   "kanagawa-themes"

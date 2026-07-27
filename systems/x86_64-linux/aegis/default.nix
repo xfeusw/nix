@@ -24,6 +24,7 @@
     layout = "uz";
     variant = "latin";
   };
+
   console.useXkbConfig = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -20,6 +20,7 @@ in
   home.packages = extensions;
 
   home.pointerCursor = {
+    enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Classic";
     size = 20;
@@ -244,7 +245,7 @@ in
             "de"
           ])
         ];
-        xkb-options = [ "grp:win_space_toggle" ];
+        xkb-options = [ "grp:win_space_toggle" "ctrl:nocaps" ];
       };
 
       "org/gnome/desktop/background" = {
