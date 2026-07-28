@@ -52,7 +52,10 @@
 
       home-manager.backupFileExtension = "hm-backup";
 
-      channels-config.allowUnfree = true;
+      channels-config = {
+        allowUnfree = true;
+        android_sdk.accept_license = true;
+      };
       systems.modules.nixos = with inputs; [
         inputs.disko.nixosModules.disko
         sops-nix.nixosModules.sops
