@@ -23,4 +23,5 @@
   modules.shell.direnv = true;
   modules.shell.starship = true;
   modules.shell.rusted-tools = true;
+  modules.developer.android.enable = true;
 }
