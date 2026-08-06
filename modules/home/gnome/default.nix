@@ -12,9 +12,10 @@ let
     just-perfection
     runcat
     transparent-window-moving
+    tiling-shell
   ];
 
-  wallpaper = ../../../wallpapers/chair-under-neon-lights.jpg;
+  wallpaper = ../../../wallpapers/darth-vader-custom-xfeusw.jpg;
 in
 {
   home.packages = extensions;
