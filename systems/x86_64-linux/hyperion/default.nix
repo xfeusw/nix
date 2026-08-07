@@ -79,7 +79,7 @@
     haskellPackages.tree-sitter-haskell
     haskellPackages.cabal-gild
     haskell-language-server
-    alejandra
+    nixfmt
     bazaar
     gnome-tweaks
     bibata-cursors

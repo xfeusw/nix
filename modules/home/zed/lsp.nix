@@ -85,23 +85,37 @@ in
     };
   };
 
-  nixd = {
-    binary = {
-      ignore_system_version = false;
+  # nixd = {
+  #   binary = {
+  #     ignore_system_version = false;
+  #   };
+  #   settings = {
+  #     formatting = {
+  #       command = [
+  #         "alejandra"
+  #       ];
+  #     };
+  #     diagnostic = {
+  #       suppress = [
+  #         "sema-extra-with"
+  #         "sema-extra-rec"
+  #       ];
+  #     };
+  #     autoArchive = true;
+  #   };
+  # };
+
+  nil = {
+    formatting = {
+      command = "nixfmt";
     };
-    settings = {
-      formatting = {
-        command = [
-          "alejandra"
-        ];
+    nix = {
+      binary = "nix";
+      maxMemoryMB = "3584";
+      flake = {
+        autoArchive = true;
+        autoEvalInputs = true;
       };
-      diagnostic = {
-        suppress = [
-          "sema-extra-with"
-          "sema-extra-rec"
-        ];
-      };
-      autoArchive = true;
     };
   };
 
