@@ -144,4 +144,9 @@
   services.x2goserver.enable = true;
 
   services.e-imzo.enable = true;
+
+  nix.settings.substituters = [ "https://cache.xinux.uz?priority=10" ];
+  nix.settings.trusted-public-keys = [
+    "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
+  ];
 }
