@@ -42,6 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ngrok.url = "github:ngrok/ngrok-nix";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
@@ -65,8 +66,12 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
+        chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
+      ];
+      homes.modules = with inputs; [
+        inputs.chaotic.homeModules.default
       ];
     };
 }

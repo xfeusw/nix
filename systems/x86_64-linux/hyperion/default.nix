@@ -53,7 +53,7 @@
     libreoffice
     nautilus
     gnome-system-monitor
-    jetbrains-mono
+    # jetbrains-mono
     nil
     nixd
     git
@@ -75,7 +75,7 @@
     element-desktop
     fluffychat
     fastfetch
-    nerd-fonts.jetbrains-mono
+    # nerd-fonts.jetbrains-mono
     haskellPackages.tree-sitter-haskell
     haskellPackages.cabal-gild
     haskell-language-server
