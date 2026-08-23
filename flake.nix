@@ -42,9 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ngrok.url = "github:ngrok/ngrok-nix";
-<<<<<<< HEAD
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-=======
     sls-steam = {
       url = "github:AceSLS/SLSsteam";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +50,6 @@
       url = "github:ciscosweater/enter-the-wired";
       inputs.nixpkgs.follows = "nixpkgs";
     };
->>>>>>> 860f077 (ba'zi changes)
   };
 
   outputs =
