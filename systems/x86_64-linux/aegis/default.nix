@@ -13,6 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
+    ./graphics.nix
     # ./disko.nix
   ];
 
@@ -76,7 +77,7 @@
     element-desktop
     fluffychat
     fastfetch
-    nerd-fonts.jetbrains-mono
+    # nerd-fonts.jetbrains-mono
     haskellPackages.tree-sitter-haskell
     haskellPackages.cabal-gild
     haskell-language-server
@@ -91,7 +92,7 @@
     rPackages.figma
     # qemu_full
     yandex-music-bin
-    slidev-cli
+    # slidev-cli
     postman
     fxlinuxprint
     foomatic-db-nonfree
@@ -105,6 +106,7 @@
     gnome-disk-utility
     tor-browser
     cloudflared
+    ngrok
   ];
 
   system.stateVersion = "26.11";
@@ -139,7 +141,7 @@
     inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
-  nix.settings.substituters = [ "https://cache.xinux.uz?priority=10" ];
+  nix.settings.substituters = [ "https://cache.xinux.uz?priority=10" "https://cache.nixos.org/" ];
   nix.settings.trusted-public-keys = [
     "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
   ];

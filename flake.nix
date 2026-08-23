@@ -42,7 +42,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ngrok.url = "github:ngrok/ngrok-nix";
+<<<<<<< HEAD
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+=======
+    sls-steam = {
+      url = "github:AceSLS/SLSsteam";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    enter-the-wired = {
+      url = "github:ciscosweater/enter-the-wired";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+>>>>>>> 860f077 (ba'zi changes)
   };
 
   outputs =
@@ -58,7 +69,7 @@
         android_sdk.accept_license = true;
       };
       systems.modules.nixos = with inputs; [
-        inputs.disko.nixosModules.disko
+        disko.nixosModules.disko
         sops-nix.nixosModules.sops
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
