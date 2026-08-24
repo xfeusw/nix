@@ -3,10 +3,6 @@ let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
 in
 {
-  imports = [
-    inputs.sls-steam.homeModules.sls-steam
-  ];
-
   home = {
     stateVersion = "26.11";
     username = "xfeusw";

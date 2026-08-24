@@ -73,12 +73,11 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
-        chaotic.nixosModules.default
+        # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
       homes.modules = with inputs; [
-        inputs.chaotic.homeModules.default
       ];
     };
 }

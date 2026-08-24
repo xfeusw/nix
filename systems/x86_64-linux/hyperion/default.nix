@@ -67,7 +67,6 @@
     slirp4netns
     fuse-overlayfs
     zoxide
-    ventoy-full-gtk
     woeusb-ng
     ntfs3g
     ghostty
@@ -116,10 +115,6 @@
     hostname = "hyperion";
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
-    "ventoy-gtk3-1.1.12"
-  ];
 
   programs.nix-ld.enable = true;
 
