@@ -82,7 +82,7 @@
     bazaar
     gnome-tweaks
     bibata-cursors
-    helvetica-neue-lt-std
+    # helvetica-neue-lt-std
     tree
     spotify
     helix
