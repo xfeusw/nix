@@ -12,7 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
-    ./cloudflared
+    # ./cloudflared
   ];
 
   # Define your hostname.
@@ -104,14 +104,15 @@
     vscode-langservers-extracted
     e-imzo-manager
     ngrok
+    discord
   ];
 
   system.stateVersion = "26.11";
 
   programs.nix-data = {
     enable = true;
-    systemconfig = "/home/xfeusw/.config/nix/systems/x86_64-linux/hyperion/default.nix";
-    flake = "/home/xfeusw/.config/nix/flake.nix";
+    systemconfig = "/home/xfeusw/workspace/congeries/xinux-config/systems/x86_64-linux/hyperion/default.nix";
+    flake = "/home/xfeusw/workspace/congeries/xinux-config/flake.nix";
     hostname = "hyperion";
   };
 
