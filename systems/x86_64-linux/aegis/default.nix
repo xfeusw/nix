@@ -36,7 +36,7 @@
       "wheel"
       "networkmanager"
       "dialout"
-      "podman"
+      "docker"
       "relago"
     ];
     initialPassword = "a";
@@ -59,10 +59,6 @@
     nil
     nixd
     git
-    podman
-    podman-compose
-    pods
-    podman-tui
     runc
     conmon
     skopeo

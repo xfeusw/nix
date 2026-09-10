@@ -5,7 +5,7 @@ let
   extensions = with pkgs.gnomeExtensions; [
     appindicator
     auto-move-windows
-    blur-my-shell
+    # blur-my-shell
     clipboard-indicator
     dash-to-dock
     impatience
@@ -80,114 +80,114 @@ in
         idle-threshold = mkInt32 20;
       };
 
-      "org/gnome/shell/extensions/blur-my-shell" = {
-        pipelines =
-          with lib.gvariant;
-          mkArray [
-            (mkDictionaryEntry "pipeline_default" (mkArray [
-              (mkDictionaryEntry "name" (mkVariant "Default"))
-              (mkDictionaryEntry "effects" (
-                mkVariant (mkArray [
-                  (mkVariant (mkArray [
-                    (mkDictionaryEntry "type" (mkVariant "luminosity"))
-                    (mkDictionaryEntry "id" (mkVariant "effect_24936439677212"))
-                    (mkDictionaryEntry "params" (
-                      mkVariant (mkArray [
-                        (mkDictionaryEntry "contrast_center" (mkVariant (mkDouble 0.5)))
-                        (mkDictionaryEntry "brightness_shift" (mkVariant (mkDouble (-0.1))))
-                      ])
-                    ))
-                  ]))
-                ])
-              ))
-            ]))
+      # "org/gnome/shell/extensions/blur-my-shell" = {
+      #   pipelines =
+      #     with lib.gvariant;
+      #     mkArray [
+      #       (mkDictionaryEntry "pipeline_default" (mkArray [
+      #         (mkDictionaryEntry "name" (mkVariant "Default"))
+      #         (mkDictionaryEntry "effects" (
+      #           mkVariant (mkArray [
+      #             (mkVariant (mkArray [
+      #               (mkDictionaryEntry "type" (mkVariant "luminosity"))
+      #               (mkDictionaryEntry "id" (mkVariant "effect_24936439677212"))
+      #               (mkDictionaryEntry "params" (
+      #                 mkVariant (mkArray [
+      #                   (mkDictionaryEntry "contrast_center" (mkVariant (mkDouble 0.5)))
+      #                   (mkDictionaryEntry "brightness_shift" (mkVariant (mkDouble (-0.1))))
+      #                 ])
+      #               ))
+      #             ]))
+      #           ])
+      #         ))
+      #       ]))
 
-            (mkDictionaryEntry "pipeline_default_rounded" (mkArray [
-              (mkDictionaryEntry "name" (mkVariant "Default rounded"))
-              (mkDictionaryEntry "effects" (
-                mkVariant (mkArray [
-                  (mkVariant (mkArray [
-                    (mkDictionaryEntry "type" (mkVariant "luminosity"))
-                    (mkDictionaryEntry "id" (mkVariant "effect_31384154838796"))
-                    (mkDictionaryEntry "params" (
-                      mkVariant (mkEmptyArray (type.dictionaryEntryOf type.string type.variant))
-                    ))
-                  ]))
+      #       (mkDictionaryEntry "pipeline_default_rounded" (mkArray [
+      #         (mkDictionaryEntry "name" (mkVariant "Default rounded"))
+      #         (mkDictionaryEntry "effects" (
+      #           mkVariant (mkArray [
+      #             (mkVariant (mkArray [
+      #               (mkDictionaryEntry "type" (mkVariant "luminosity"))
+      #               (mkDictionaryEntry "id" (mkVariant "effect_31384154838796"))
+      #               (mkDictionaryEntry "params" (
+      #                 mkVariant (mkEmptyArray (type.dictionaryEntryOf type.string type.variant))
+      #               ))
+      #             ]))
 
-                  (mkVariant (mkArray [
-                    (mkDictionaryEntry "type" (mkVariant "corner"))
-                    (mkDictionaryEntry "id" (mkVariant "effect_000000000002"))
-                    (mkDictionaryEntry "params" (
-                      mkVariant (mkArray [
-                        (mkDictionaryEntry "radius" (mkVariant (mkInt32 24)))
-                      ])
-                    ))
-                  ]))
-                ])
-              ))
-            ]))
-          ];
+      #             (mkVariant (mkArray [
+      #               (mkDictionaryEntry "type" (mkVariant "corner"))
+      #               (mkDictionaryEntry "id" (mkVariant "effect_000000000002"))
+      #               (mkDictionaryEntry "params" (
+      #                 mkVariant (mkArray [
+      #                   (mkDictionaryEntry "radius" (mkVariant (mkInt32 24)))
+      #                 ])
+      #               ))
+      #             ]))
+      #           ])
+      #         ))
+      #       ]))
+      #     ];
 
-        rounded-blur-found = false;
-        settings-version = mkInt32 2;
-      };
+      #   rounded-blur-found = false;
+      #   settings-version = mkInt32 2;
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
-        brightness = mkInt32 0.6;
-        sigma = mkInt32 30;
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
+      #   brightness = mkInt32 0.6;
+      #   sigma = mkInt32 30;
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/applications" = {
-        blacklist = [
-          "Plank"
-          "com.desktop.ding"
-          "Conky"
-        ];
-        blur = true;
-        blur-on-overview = true;
-        brightness = mkDouble 0.68;
-        corner-when-maximized = false;
-        dynamic-opacity = false;
-        enable-all = true;
-        opacity = mkInt32 199;
-        pipeline = "pipeline_default";
-        sigma = mkInt32 25;
-        static-blur = false;
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      #   blacklist = [
+      #     "Plank"
+      #     "com.desktop.ding"
+      #     "Conky"
+      #   ];
+      #   blur = true;
+      #   blur-on-overview = true;
+      #   brightness = mkDouble 0.68;
+      #   corner-when-maximized = false;
+      #   dynamic-opacity = false;
+      #   enable-all = true;
+      #   opacity = mkInt32 199;
+      #   pipeline = "pipeline_default";
+      #   sigma = mkInt32 25;
+      #   static-blur = false;
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab" = {
-        pipeline = "pipeline_default";
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab" = {
+      #   pipeline = "pipeline_default";
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
-        blur = true;
-        brightness = mkDouble 0.6;
-        override-background = false;
-        pipeline = "pipeline_default_rounded";
-        sigma = mkInt32 30;
-        static-blur = true;
-        style-dash-to-dock = mkInt32 0;
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
+      #   blur = true;
+      #   brightness = mkDouble 0.6;
+      #   override-background = false;
+      #   pipeline = "pipeline_default_rounded";
+      #   sigma = mkInt32 30;
+      #   static-blur = true;
+      #   style-dash-to-dock = mkInt32 0;
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/lockscreen" = {
-        pipeline = "pipeline_default";
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/lockscreen" = {
+      #   pipeline = "pipeline_default";
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/overview" = {
-        pipeline = "pipeline_default";
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/overview" = {
+      #   pipeline = "pipeline_default";
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/panel" = {
-        brightness = mkDouble 0.6;
-        corner-radius = mkInt32 0;
-        pipeline = "pipeline_default";
-        sigma = mkInt32 30;
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      #   brightness = mkDouble 0.6;
+      #   corner-radius = mkInt32 0;
+      #   pipeline = "pipeline_default";
+      #   sigma = mkInt32 30;
+      # };
 
-      "org/gnome/shell/extensions/blur-my-shell/window-list" = {
-        brightness = mkDouble 0.6;
-        sigma = mkInt32 30;
-      };
+      # "org/gnome/shell/extensions/blur-my-shell/window-list" = {
+      #   brightness = mkDouble 0.6;
+      #   sigma = mkInt32 30;
+      # };
 
       "org/gnome/shell/extensions/just-perfection" = {
         accessibility-menu = true;

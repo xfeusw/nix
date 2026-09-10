@@ -35,7 +35,7 @@
       "wheel"
       "networkmanager"
       "dialout"
-      "podman"
+      "docker"
       "relago"
     ];
   };
@@ -57,10 +57,6 @@
     nil
     nixd
     git
-    podman
-    podman-compose
-    pods
-    podman-tui
     runc
     conmon
     skopeo
@@ -105,6 +101,7 @@
     e-imzo-manager
     ngrok
     discord
+    firefoxpwa
   ];
 
   system.stateVersion = "26.11";
