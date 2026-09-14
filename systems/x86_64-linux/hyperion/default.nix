@@ -5,8 +5,12 @@
   config,
   pkgs,
   inputs,
+  stdenv,
   ...
 }:
+let
+  release-notes-assistant = inputs.release-notes-assistant.packages."x86_64-linux".default;
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -102,6 +106,9 @@
     ngrok
     discord
     firefoxpwa
+    release-notes-assistant
+    qbittorrent
+    audacity
   ];
 
   system.stateVersion = "26.11";

@@ -50,6 +50,9 @@
       url = "github:ciscosweater/enter-the-wired";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    release-notes-assistant = {
+      url = "git+https://codeberg.org/congeries/release-notes-assistant?ref=main&shallow=1";
+    };
   };
 
   outputs =
