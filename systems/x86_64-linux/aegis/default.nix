@@ -13,9 +13,11 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./modules.nix
-    ./graphics.nix
+    # ./graphics.nix
     # ./disko.nix
   ];
+
+  boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
 
   # Define your hostname.
   networking.hostName = "aegis";

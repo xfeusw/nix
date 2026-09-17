@@ -13,52 +13,21 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  swapDevices = [ ];
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-   nix.settings.system-features = [
-    "gccarch-znver3"
-    "gccarch-znver2"
-    "gccarch-x86-64-v3"
-    "gccarch-x86-64-v2"
-    "gccarch-x86-64"
-  ];
-  # nixpkgs.localSystem = {
-  #   gcc.arch = "znver3";
-  #   gcc.tune = "generic";
-  #   system = "x86_64-linux";
-  # };
-
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1dca58d3-993b-4533-9069-1f0651b6321e";
+    { device = "/dev/disk/by-uuid/a4a3cf8a-bac0-4c67-9047-1980e18b3fd1";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/38CD-585B";
+    { device = "/dev/disk/by-uuid/0CFC-B536";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  services.thermald.enable = true;
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/91a73eac-f58c-4608-8246-f73df7e9f604"; }
+    ];
 
-  hardware = {
-  # CPU (Intel/Ryzen) luchshe kupi ryzen: https://www.youtube.com/watch?v=GOkm2C0rk-w
-  # GPU (Nvidia)
-    # nvidia = {
-    #   open = true;
-    #   package = config.boot.kernelPackages.nvidiaPackages.latest;
-    # };
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        vpl-gpu-rt # For modern QSV
-        libvdpau
-        libva-vdpau-driver
-        vulkan-validation-layers
-      ];
-    };
-    cpu.amd.updateMicrocode = true;
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
