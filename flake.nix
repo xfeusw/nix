@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xinux-modules = {
-      url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";
+      url = "git+https://git.oss.uzinfocom.uz/xfeusw/modules?ref=main&shallow=1";
       # url = "/home/xfeusw/workspace/xinux/modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -53,6 +53,10 @@
     release-notes-assistant = {
       url = "git+https://codeberg.org/congeries/release-notes-assistant?ref=main&shallow=1";
     };
+    relago-support = {
+      url = "git+https://git.oss.uzinfocom.uz/xinux/relago-support";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -76,6 +80,7 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
+        relago-support.nixosModules.server
         # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
