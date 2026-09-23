@@ -128,8 +128,6 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  services.relago-server.enable = false;
-
   virtualisation.vmware.host.enable = true;
 
   boot.loader.grub = {

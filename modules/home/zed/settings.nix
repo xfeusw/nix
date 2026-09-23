@@ -156,7 +156,9 @@
       formatter = "prettier";
     };
     Haskell = {
-      format_on_save = "off";
+      format_on_save = "on";
+      formatter = "language_server";
+
       inlay_hints = {
         enabled = true;
         show_type_hints = true;
@@ -164,7 +166,13 @@
         show_other_hints = true;
         show_background = true;
       };
+
       tab_size = 2;
+
+      language_servers = [
+        "hls"
+      ];
+
       enable_language_server = true;
       show_completions_on_input = true;
       show_completion_documentation = true;

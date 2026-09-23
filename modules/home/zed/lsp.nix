@@ -76,6 +76,7 @@ in
           moduleName.globalOn = true;
           pragmas.globalOn = true;
           rename.globalOn = true;
+          retrie.globalOn = true;
           semanticTokens.globalOn = true;
           splice.globalOn = true;
           stan.globalOn = true;

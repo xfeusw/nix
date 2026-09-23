@@ -53,10 +53,6 @@
     release-notes-assistant = {
       url = "git+https://codeberg.org/congeries/release-notes-assistant?ref=main&shallow=1";
     };
-    relago-support = {
-      url = "git+https://git.oss.uzinfocom.uz/xinux/relago-support";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     space-isolation.url = "github:xfeusw/space-isolation";
     freesmlauncher = {
       url = "github:FreesmTeam/FreesmLauncher";
@@ -85,7 +81,6 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
-        relago-support.nixosModules.server
         # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
