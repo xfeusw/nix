@@ -152,6 +152,7 @@
       tab_size = 4;
     };
     JSON = {
+      format_on_save = "on";
       formatter = "prettier";
     };
     Haskell = {
@@ -194,10 +195,13 @@
   };
   git = {
     git_gutter = "tracked_files";
+
     inline_blame = {
-      delay_ms = 300;
       enabled = true;
+      delay_ms = 300;
     };
+
+    hunk_summary = "tracked_files";
   };
 
   bottom_dock_layout = "contained";
