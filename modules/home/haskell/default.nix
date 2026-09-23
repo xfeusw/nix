@@ -20,23 +20,23 @@ let
   };
 in
 {
-  # home.file.".ghci".source = ./.ghci;
+  home.file.".ghci".source = ./.ghci;
 
-  # home.packages = [
-  #   h.ghc
-  #   htools
-  #   hpkgs.hpack
-  #   hpkgs.bindings-libzip
-  #   hpkgs.bzlib
-  #   hpkgs.bzlib-conduit
-  #   hpkgs.bzip2-clib
-  #   pkgs.haskellPackages.cabal-fmt
-  #   pkgs.pkg-config
-  #   pkgs.zlib
-  #   pkgs.zlib.dev
-  #   pkgs.bzip2
-  #   pkgs.bzip2.dev
-  #   pkgs.libzip
-  #   # hpkgs.ghcprofview
-  # ];
+  home.packages = [
+    h.ghc
+    htools
+    hpkgs.hpack
+    hpkgs.bindings-libzip
+    hpkgs.bzlib
+    hpkgs.bzlib-conduit
+    hpkgs.bzip2-clib
+    pkgs.haskellPackages.cabal-fmt
+    pkgs.pkg-config
+    pkgs.zlib
+    pkgs.zlib.dev
+    pkgs.bzip2
+    pkgs.bzip2.dev
+    pkgs.libzip
+    # hpkgs.ghcprofview
+  ];
 }

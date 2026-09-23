@@ -8,6 +8,9 @@
   lib,
   ...
 }:
+let
+  space-isolation = inputs.space-isolation.packages.${pkgs.system};
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -82,6 +85,9 @@
     cloudflared
     ngrok
     discord
+    qbittorrent
+    mpv
+    makemkv
   ];
 
   system.stateVersion = "26.11";
@@ -123,4 +129,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.relago-server.enable = false;
+
+  virtualisation.vmware.host.enable = true;
+
+  boot.loader.grub = {
+    enable = true;
+
+    theme = lib.mkForce space-isolation.theme-1920x1200;
+  };
 }

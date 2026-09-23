@@ -57,6 +57,11 @@
       url = "git+https://git.oss.uzinfocom.uz/xinux/relago-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    space-isolation.url = "github:xfeusw/space-isolation";
+    freesmlauncher = {
+      url = "github:FreesmTeam/FreesmLauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

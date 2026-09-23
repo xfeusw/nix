@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, system, ... }:
 let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
 in
@@ -42,5 +42,5 @@ in
 
   # };
 
-  home.packages = [ accela ];
+  home.packages = [ accela inputs.freesmlauncher.packages.${system}.freesmlauncher ];
 }
