@@ -183,7 +183,7 @@
         "source.organizeImports" = true;
       };
       language_servers = [
-        "vtsls"
+        "nixd"
       ];
       enable_language_server = true;
       show_completions_on_input = true;
