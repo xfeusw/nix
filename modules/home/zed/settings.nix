@@ -155,7 +155,7 @@
       formatter = "prettier";
     };
     Haskell = {
-      format_on_save = "on";
+      format_on_save = "off";
       inlay_hints = {
         enabled = true;
         show_type_hints = true;
