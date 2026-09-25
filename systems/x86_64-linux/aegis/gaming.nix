@@ -7,10 +7,12 @@
 }:
 let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
+  amethyst = inputs.amethyst.packages.${pkgs.system}.default;
 in
 {
   environment.systemPackages = [
     accela
+    amethyst
     pkgs.heroic
     pkgs.protontricks
     pkgs.mangohud

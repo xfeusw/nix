@@ -58,6 +58,7 @@
       url = "github:FreesmTeam/FreesmLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    amethyst.url = "github:ChrisDKN/Amethyst-Mod-Manager";
   };
 
   outputs =

@@ -88,6 +88,9 @@ in
     qbittorrent
     mpv
     makemkv
+    shntool
+    flac
+    flacon
   ];
 
   system.stateVersion = "26.11";
@@ -135,4 +138,6 @@ in
 
     theme = lib.mkForce space-isolation.theme-1920x1200;
   };
+
+  services.relago.enable = false;
 }
