@@ -59,6 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     amethyst.url = "github:ChrisDKN/Amethyst-Mod-Manager";
+    xeonitte.url = "git+https://git.oss.uzinfocom.uz/xinux/xeonitte?ref=main&shallow=1";
   };
 
   outputs =
