@@ -17,6 +17,7 @@ in
     ./hardware.nix
     ./modules.nix
     ./gaming.nix
+    ./ventoy.nix
     # ./graphics.nix
     # ./disko.nix
   ];
