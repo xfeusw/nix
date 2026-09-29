@@ -18,6 +18,7 @@
     gnome-tweaks
     bibata-cursors
     cameractrls-gtk4
+    loupe
 
     nil
     nixd
@@ -40,6 +41,7 @@
     spotify
     discord
     mpv
+    celluloid
     makemkv
     shntool
     flac
