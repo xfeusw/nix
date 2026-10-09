@@ -9,7 +9,7 @@ let
     "2620:fe::fe"
     "2620:fe::9"
   ];
-  # Public: y8+s+MtQ6GIpOEMFW68qGrEs2y13BVDWQV+mjJ/fjmI=
+  # Public: 8Dw46+cC3Vm5iC0sBVp1fQDmjrmoyV3qzu57Puni+Xo=
   privateKeyFile = "/home/xfeusw/.config/wireguard/privatekey";
 in
 {
