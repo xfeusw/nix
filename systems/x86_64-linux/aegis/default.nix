@@ -11,7 +11,9 @@
     ./hardware.nix
     ./software.nix
     ./modules.nix
+    ./mxmaster.nix
     ./gaming.nix
+    ./postgresql.nix
     ./ventoy.nix
   ];
 

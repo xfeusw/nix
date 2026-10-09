@@ -19,6 +19,8 @@
     bibata-cursors
     cameractrls-gtk4
     loupe
+    gnome-clocks
+    solaar
 
     nil
     nixd
@@ -47,6 +49,9 @@
     flac
     flacon
     spotiflac
+    evince
+    ghostscript
+    bazaar
 
     woeusb-ng
     ntfs3g

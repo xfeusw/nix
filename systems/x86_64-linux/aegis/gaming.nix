@@ -19,9 +19,21 @@ in
     pkgs.protonup-qt
   ];
 
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+
+    intelBusId = "PCI:0@0:2:0";
+    nvidiaBusId = "PCI:1@0:0:0";
+  };
+
   programs.steam = {
     enable = true;
+
     gamescopeSession.enable = true;
+
     package = pkgs.steam.override {
       extraEnv = {
         LD_AUDIT = "${

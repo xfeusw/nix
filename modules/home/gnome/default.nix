@@ -15,7 +15,7 @@ let
     tiling-shell
   ];
 
-  wallpaper = ../../../wallpapers/darth-vader-custom-xfeusw.jpg;
+  wallpaper = ../../../wallpapers/the-monk-by-the-sea.jpg;
 in
 {
   home.packages = extensions;
@@ -246,7 +246,10 @@ in
             "de"
           ])
         ];
-        xkb-options = [ "grp:win_space_toggle" "ctrl:nocaps" ];
+        xkb-options = [
+          "grp:win_space_toggle"
+          "ctrl:nocaps"
+        ];
       };
 
       "org/gnome/desktop/background" = {
