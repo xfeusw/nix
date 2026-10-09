@@ -60,6 +60,8 @@
     };
     amethyst.url = "github:ChrisDKN/Amethyst-Mod-Manager";
     xeonitte.url = "git+https://git.oss.uzinfocom.uz/xinux/xeonitte?ref=main&shallow=1";
+    # lsfg-vk.url = "github:xfeusw/lsfg-vk";
+    lsfg-vk.url = "path:///home/xfeusw/workspace/github/lsfg-vk";
   };
 
   outputs =
@@ -80,6 +82,7 @@
         nix-data.nixosModules.nix-data
         xinux-modules.nixosModules.meta
         xinux-modules.nixosModules.efiboot
+        lsfg-vk.nixosModules.default
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok

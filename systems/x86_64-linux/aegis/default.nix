@@ -15,6 +15,7 @@
     ./gaming.nix
     ./postgresql.nix
     ./ventoy.nix
+    ./wireguard.nix
   ];
 
   networking.hostName = "aegis";

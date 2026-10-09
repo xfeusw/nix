@@ -8,16 +8,25 @@
 let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
   amethyst = inputs.amethyst.packages.${pkgs.system}.default;
+  # lsfg-vk-cli = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk-cli;
+  # lsfg-vk-ui = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk-ui;
 in
 {
   environment.systemPackages = [
     accela
     amethyst
+    # lsfg-vk-cli
+    # lsfg-vk-ui
     pkgs.heroic
     pkgs.protontricks
     pkgs.mangohud
     pkgs.protonup-qt
   ];
+
+  # services.lsfg-vk = {
+  #   enable = true;
+  #   ui.enable = true;
+  # };
 
   hardware.nvidia.prime = {
     offload = {
