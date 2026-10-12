@@ -8,6 +8,7 @@
 
 {
   imports = [
+    ./bluetooth.nix
     ./hardware.nix
     ./software.nix
     ./modules.nix

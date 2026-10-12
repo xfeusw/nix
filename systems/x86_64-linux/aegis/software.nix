@@ -52,6 +52,7 @@
     evince
     ghostscript
     bazaar
+    baobab
 
     woeusb-ng
     ntfs3g

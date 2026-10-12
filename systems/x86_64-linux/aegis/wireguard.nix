@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   ...
 }:
 let
@@ -13,7 +14,7 @@ let
   privateKeyFile = "/home/xfeusw/.config/wireguard/privatekey";
 in
 {
-  networking.wg-quick.interfaces = {
+  networking.wg-quick.interfaces = lib.mkForce {
     wg-work =
       let
         subnet4 = address: "10.66.66.${toString address}/32";

@@ -1,15 +1,15 @@
-{ inputs
-, config
-, pkgs
-, lib
-, system
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  system,
+  ...
 }:
 {
 
   services.flatpak.enable = true;
   services.gnome.core-developer-tools.enable = true;
-  services.pipewire.jack.enable = true;
   services.printing.enable = true;
 
   # Select internationalisation properties.
