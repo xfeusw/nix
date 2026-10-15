@@ -11,6 +11,7 @@
     ./bluetooth.nix
     ./hardware.nix
     ./software.nix
+    ./mic.nix
     ./modules.nix
     ./mxmaster.nix
     ./gaming.nix

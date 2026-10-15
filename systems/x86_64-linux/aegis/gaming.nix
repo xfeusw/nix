@@ -7,7 +7,22 @@
 }:
 let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
-  amethyst = inputs.amethyst.packages.${pkgs.system}.default;
+  amethyst-unwrapped = inputs.amethyst.packages.${pkgs.system}.default;
+
+  # For Amethyst proton - /lib/ld-linux.so.2 and libvulkan on LD_LIBRARY_PATH
+  amethyst = pkgs.symlinkJoin {
+    name = "amethyst-mod-manager-wrapped";
+    paths = [ amethyst-unwrapped ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      rm $out/bin/amethyst-mod-manager
+      makeWrapper ${pkgs.steam-run}/bin/steam-run $out/bin/amethyst-mod-manager \
+        --add-flags ${amethyst-unwrapped}/bin/amethyst-mod-manager \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ pkgs.vulkan-loader ]} \
+        --unset LD_AUDIT
+    '';
+  };
+
   # lsfg-vk-cli = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk-cli;
   # lsfg-vk-ui = inputs.lsfg-vk.packages.${pkgs.system}.lsfg-vk-ui;
 in
