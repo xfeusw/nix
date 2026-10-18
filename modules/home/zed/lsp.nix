@@ -97,12 +97,12 @@ in
     };
   };
 
-  jdtls = {
-    settings = {
-      java_home = pkgs.openjdk25;
-      lombok_support = true;
-    };
-  };
+  # jdtls = {
+  #   settings = {
+  #     java_home = pkgs.jdk17;
+  #     lombok_support = true;
+  #   };
+  # };
 
   vtsls = {
     initialization_options = {

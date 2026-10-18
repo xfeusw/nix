@@ -1,13 +1,13 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
-  programs.java = {
-    enable = true;
-    package = pkgs.openjdk25;
-  };
+  # programs.java = {
+  #   enable = true;
+  #   package = pkgs.jdk17;
+  # };
 
-  home.packages = with pkgs; [
-    jdt-language-server
-    lombok
-  ];
+  # home.packages = with pkgs; [
+  #   jdt-language-server
+  #   lombok
+  # ];
 }

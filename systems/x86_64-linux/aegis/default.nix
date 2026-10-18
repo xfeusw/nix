@@ -41,6 +41,7 @@
       "dialout"
       "docker"
       "relago"
+      "adbusers"
     ];
 
     initialPassword = "a";
