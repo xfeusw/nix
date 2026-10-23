@@ -1,10 +1,9 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  system,
-  ...
+{ inputs
+, config
+, pkgs
+, lib
+, system
+, ...
 }:
 {
 
@@ -14,6 +13,7 @@
 
   # Select internationalisation properties.
   modules.xinux.language = "en_US.UTF-8";
+  modules.developer.android.enable = true;
   # modules.gaming.steam = true;
   modules.xinux.binaryCompat.enable = true;
   modules.graphical.provider = "nvidia";

@@ -57,6 +57,7 @@ in
     inputs.freesmlauncher.packages.${system}.freesmlauncher
     pkgs.github-cli
     pkgs.forgejo-cli
+    pkgs.devenv
   ];
 
   home.shellAliases = {
