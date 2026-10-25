@@ -40,7 +40,7 @@
     cloudflared
     ngrok
 
-    spotify
+    # spotify
     discord
     mpv
     celluloid

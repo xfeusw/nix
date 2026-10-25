@@ -24,6 +24,8 @@
 
   modules.graphical.provider = "nvidia";
 
+  # spotify-xfeusw.enable = true;
+
   services.xserver.xkb = {
     layout = "uz";
     variant = "latin";

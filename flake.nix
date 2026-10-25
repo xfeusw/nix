@@ -62,7 +62,7 @@
     xeonitte.url = "git+https://git.oss.uzinfocom.uz/xinux/xeonitte?ref=main&shallow=1";
     # lsfg-vk.url = "github:xfeusw/lsfg-vk";
     # lsfg-vk.url = "path:///home/xfeusw/workspace/github/lsfg-vk";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spotify-xfeusw.url = "github:xfeusw/spotify-custom";
   };
 
   outputs =
@@ -87,13 +87,13 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
-        spicetify-nix.nixosModules.default
         # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
       homes.modules = with inputs; [
-        spicetify-nix.homeManagerModules.default
+        # spicetify-nix.homeManagerModules.default
+        spotify-xfeusw.homeManagerModules.default
       ];
     };
 }
