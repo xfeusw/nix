@@ -63,6 +63,7 @@
     # lsfg-vk.url = "github:xfeusw/lsfg-vk";
     # lsfg-vk.url = "path:///home/xfeusw/workspace/github/lsfg-vk";
     spotify-xfeusw.url = "github:xfeusw/spotify-custom";
+    # spotify-xfeusw.url = "path:///home/xfeusw/workspace/github/xfeusw/spotify-custom";
   };
 
   outputs =
@@ -87,13 +88,13 @@
         # wallpapers.nixosModules.default
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
+        spotify-xfeusw.nixosModules.default
         # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager
       ];
       homes.modules = with inputs; [
         # spicetify-nix.homeManagerModules.default
-        spotify-xfeusw.homeManagerModules.default
       ];
     };
 }

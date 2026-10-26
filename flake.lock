@@ -2007,11 +2007,11 @@
         "spicetify-ohitstom": "spicetify-ohitstom"
       },
       "locked": {
-        "lastModified": 1792896938,
-        "narHash": "sha256-mZqCQUw4fX2bybvprVec6ds+Km5HyxFsH+GXT0GAiRs=",
+        "lastModified": 1792985688,
+        "narHash": "sha256-dqO27SRZ4TVJegRr/DVGpVZ8V109J6qUcHzLq6l6Ydc=",
         "owner": "xfeusw",
         "repo": "spotify-custom",
-        "rev": "761ba7cccf70a60db38dde22d59d72fce34bbaf5",
+        "rev": "b6570ba41c2d7decf7149bfbefc9158c19aea383",
         "type": "github"
       },
       "original": {

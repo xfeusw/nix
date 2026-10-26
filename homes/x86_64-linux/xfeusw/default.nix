@@ -64,6 +64,4 @@ in
     berg = "fj --host codeberg.org";
     fg = "fj --host git.oss.uzinfocom.uz";
   };
-
-  spotify-xfeusw.enable = true;
 }

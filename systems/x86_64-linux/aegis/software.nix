@@ -61,6 +61,10 @@
     qbittorrent
 
     tor-browser
+    libxkbcommon
+    xkbutils
+    xkbset
+    xwayland-satellite
   ];
 
   zramSwap = {

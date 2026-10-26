@@ -20,11 +20,11 @@
     ./wireguard.nix
   ];
 
+  spotify-xfeusw.enable = true;
+
   networking.hostName = "aegis";
 
   modules.graphical.provider = "nvidia";
-
-  # spotify-xfeusw.enable = true;
 
   services.xserver.xkb = {
     layout = "uz";
