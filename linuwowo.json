@@ -1,0 +1,12 @@
+{
+  "cpuVendor": "intel",
+  "cpuFamily": 6,
+  "cpuModel": 183,
+  "modelName": "Intel(R) Core(TM) i7-14650HX",
+  "amdZenGen": 0,
+  "intelGen": 14,
+  "isSteamDeck": false,
+  "disableUmip": true,
+  "cpuidFaultEmulation": false,
+  "dmiProduct": "TUF Gaming F16 FX608JHI"
+}

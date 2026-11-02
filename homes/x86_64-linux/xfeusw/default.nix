@@ -8,6 +8,8 @@
 }:
 let
   accela = inputs.enter-the-wired.packages.${pkgs.system}.default;
+  system = pkgs.stdenv.hostPlatform.system;
+
 in
 {
   imports = [
@@ -46,6 +48,10 @@ in
       [ "$last" = "$want" ] || echo "$want" >> "$f"
     done
   '';
+
+  # For Steam
+  home.file.".steam/root/compatibilitytools.d/GE-Proton11-1-LinUwUx-patch".source =
+    inputs.linuwowo.packages.${system}.GE-Proton11-1-LinUwUx-patch;
 
   # services.sls-steam.config = {
   #   PlayNotOwnedGames = true;

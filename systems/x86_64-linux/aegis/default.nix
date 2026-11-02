@@ -16,11 +16,21 @@
     ./mxmaster.nix
     ./gaming.nix
     ./postgresql.nix
-    ./ventoy.nix
+    # ./ventoy.nix
     ./wireguard.nix
   ];
 
   spotify-xfeusw.enable = true;
+  musnix.enable = true;
+
+  # programs.linuwowo = {
+  #   enable = true;
+  #   json = ../../../linuwowo.json;
+
+  #   # Optional: Automatically start the cpuid-fault-emulation service at boot.
+  #   # If false, you can start/stop the service manually.
+  #   cpuidFaultEmulation.enable = true;
+  # };
 
   networking.hostName = "aegis";
 
@@ -44,6 +54,9 @@
       "docker"
       "relago"
       "adbusers"
+      "audio"
+      "video"
+      "kvm"
     ];
 
     initialPassword = "a";
@@ -61,9 +74,10 @@
     flakearg = "aegis";
   };
 
-  virtualisation.vmware.host.enable = true;
+  # virtualisation.vmware.host.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages =
+    inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest;
 
   boot.loader.grub = {
     enable = true;

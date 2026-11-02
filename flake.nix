@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xinux-modules = {
-      url = "git+https://git.oss.uzinfocom.uz/xfeusw/modules?ref=main&shallow=1";
+      url = "git+https://git.oss.uzinfocom.uz/xinux/modules?ref=main&shallow=1";
       # url = "/home/xfeusw/workspace/xinux/modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -63,6 +63,11 @@
     # lsfg-vk.url = "github:xfeusw/lsfg-vk";
     # lsfg-vk.url = "path:///home/xfeusw/workspace/github/lsfg-vk";
     spotify-xfeusw.url = "github:xfeusw/spotify-custom";
+    musnix.url = "github:musnix/musnix";
+    linuwowo = {
+      url = "github:loystonpais/linuwowo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # spotify-xfeusw.url = "path:///home/xfeusw/workspace/github/xfeusw/spotify-custom";
   };
 
@@ -89,6 +94,8 @@
         # relago-support.nixosModules.server
         ngrok.nixosModules.ngrok
         spotify-xfeusw.nixosModules.default
+        musnix.nixosModules.musnix
+        linuwowo.nixosModules.default
         # chaotic.nixosModules.default
         # relago.nixosModules.default
         # inputs.home-manager.flakeModules.home-manager

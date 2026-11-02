@@ -60,6 +60,15 @@
     gnome-disk-utility
     qbittorrent
 
+    reaper
+    reaper-reapack-extension
+    reaper-sws-extension
+    lmms-full
+    bitwig-studio6
+    ardour
+    yabridge
+    yabridgectl
+
     tor-browser
     libxkbcommon
     xkbutils
