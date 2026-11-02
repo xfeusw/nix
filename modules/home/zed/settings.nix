@@ -3,6 +3,7 @@
   use_system_prompts = false;
   use_system_path_prompts = false;
   disable_ai = true;
+  code_lens = "on";
   vim_mode = false;
   base_keymap = "VSCode";
   buffer_font_family = "JetBrainsMono Nerd Font";
@@ -199,6 +200,29 @@
       show_completion_documentation = true;
       colorize_brackets = true;
       tab_size = 2;
+    };
+    Go = {
+      format_on_save = "on";
+      formatter = "language_server";
+      hard_tabs = true;
+      tab_size = 4;
+      code_actions_on_format = {
+        "source.organizeImports" = true;
+      };
+      language_servers = [
+        "gopls"
+      ];
+      inlay_hints = {
+        enabled = true;
+        show_type_hints = true;
+        show_parameter_hints = true;
+        show_other_hints = true;
+        show_background = true;
+      };
+      enable_language_server = true;
+      show_completions_on_input = true;
+      show_completion_documentation = true;
+      colorize_brackets = true;
     };
   };
   git = {

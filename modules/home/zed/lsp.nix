@@ -118,4 +118,37 @@ in
       path = "idris2-lsp";
     };
   };
+
+  gopls = {
+    initialization_options = {
+      gofumpt = true;
+      staticcheck = true;
+      usePlaceholders = true;
+      completeUnimported = true;
+      analyses = {
+        unusedparams = true;
+        unusedwrite = true;
+        useany = true;
+        nilness = true;
+        shadow = true; # noisy, drop if it annoys you
+      };
+      codelenses = {
+        test = true;
+        generate = true;
+        tidy = true;
+        upgrade_dependency = true;
+        vendor = true;
+        regenerate_cgo = true;
+      };
+      hints = {
+        assignVariableTypes = true;
+        compositeLiteralFields = true;
+        compositeLiteralTypes = true;
+        constantValues = true;
+        functionTypeParameters = true;
+        parameterNames = true;
+        rangeVariableTypes = true;
+      };
+    };
+  };
 }
